@@ -117,6 +117,10 @@
     --excellent: #4ade80;
     --cls-book: #a78bfa;
     --cls-theory: #8b5cf6;
+    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: "Domine", Georgia, "Times New Roman", serif;
+    --font-data: "Datatype", ui-monospace, "Cascadia Mono", monospace;
+    --font-family: var(--font-sans);
 }
 
 html, body {
@@ -124,9 +128,94 @@ html, body {
     min-height: 100%;
     background: var(--surface-ground);
     color: var(--text-color);
-    font-family: var(--font-family);
+    font-family: var(--font-sans);
     overflow-x: hidden;
     color-scheme: light dark;
+}
+
+/* Display titles / subtitles — Domine, optically narrowed */
+#profile-display-name,
+.game-matchup-title,
+.about-title,
+.tab-empty-title,
+.bw-title,
+.review-stats-title,
+.p-card-title,
+.cm-modal h2 {
+    font-family: var(--font-display);
+    letter-spacing: -0.035em;
+}
+
+/* Data / console — Datatype (variable wght + wdth; set both axes together for Safari) */
+.font-data,
+.font-data-medium,
+.font-data-bold,
+.font-data-black,
+.p-tag,
+#profile-stat-row .p-tag,
+.accuracy-hero,
+.form-metric-value,
+.chart-game-stat-value,
+.quality-pct,
+.finish-pct,
+.theme-freq-pct,
+.elo-chart-summary,
+.elo-axis-label,
+.review-depth-badge,
+.mini-result,
+.faq-code,
+#debug-log,
+.learn-moves,
+.move-label,
+.game-elo-value {
+    font-family: var(--font-data);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "calt" 1;
+    font-weight: 400;
+    font-stretch: 90%;
+    font-variation-settings: "wght" 400, "wdth" 90;
+}
+
+.font-data-medium,
+.accuracy-hero,
+.form-metric-value,
+.chart-game-stat-value,
+.theme-freq-pct {
+    font-weight: 600;
+    font-stretch: 75%;
+    font-variation-settings: "wght" 600, "wdth" 75;
+}
+
+.font-data-bold,
+.p-tag,
+.p-tag .p-tag-value,
+.p-tag .font-bold,
+#profile-stat-row .p-tag,
+.match-sort-chip.p-tag,
+.elo-chart-summary,
+.quality-pct,
+.finish-pct,
+.mini-result,
+.review-depth-badge,
+.move-label {
+    font-weight: 700;
+    font-stretch: 85%;
+    font-variation-settings: "wght" 700, "wdth" 85;
+}
+
+.font-data-black,
+.game-elo-value {
+    font-weight: 800;
+    font-stretch: 80%;
+    font-variation-settings: "wght" 800, "wdth" 80;
+}
+
+#debug-log,
+.faq-code,
+.learn-moves {
+    font-weight: 400;
+    font-stretch: 90%;
+    font-variation-settings: "wght" 400, "wdth" 90;
 }
 
 .app-shell {
@@ -150,12 +239,12 @@ html, body {
     background: transparent;
     color: var(--text-color);
     font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: -0.04em;
     cursor: pointer;
     padding: 0.15rem 0;
     text-decoration: none;
-    font-family: inherit;
+    font-family: var(--font-display);
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
@@ -363,7 +452,43 @@ html[data-theme="dark"] .app-brand-king-black {
 
 #review-view { display: none; grid-template-columns: 1fr; gap: 1.25rem; }
 @media (min-width: 992px) {
-    #review-view { grid-template-columns: 1fr 380px; }
+    #review-view { grid-template-columns: minmax(0, 1fr) minmax(360px, 460px); }
+}
+
+.review-side {
+    min-width: 0;
+}
+.review-side .p-tabview-nav {
+    flex-wrap: nowrap;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+.review-side .p-tabview-nav > li {
+    flex: 0 0 auto;
+}
+.review-side .p-tabview-nav-link {
+    padding: 0.85rem 0.7rem;
+    white-space: nowrap;
+}
+.review-side .p-tabview-panel {
+    max-height: min(70vh, 640px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.review-side #graph-tab {
+    max-height: none;
+    height: min(70vh, 420px);
+}
+/* Sidebar is too narrow for side-by-side YOU/OPP cards — stack them (mobile already did via 640px). */
+.review-side .game-elo-row {
+    grid-template-columns: 1fr;
+}
+.review-side .phase-stars {
+    flex-wrap: wrap;
+}
+.review-side .phase-row {
+    grid-template-columns: minmax(4.5rem, 5.5rem) minmax(0, 1fr);
 }
 
 .board-wrapper {
@@ -979,9 +1104,10 @@ html[data-theme="dark"] .app-brand-king-black {
 
 .review-matchup {
     font-size: 1.15rem;
-    font-weight: 800;
+    font-weight: 700;
+    font-family: var(--font-display);
     line-height: 1.35;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.035em;
 }
 .game-matchup-title {
     line-height: 1.35;
@@ -1458,7 +1584,7 @@ button.coach-evidence-item:hover { text-decoration: underline; }
 .faq-term { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
 .faq-def { font-size: 0.85rem; color: var(--text-color-secondary); line-height: 1.45; }
 .faq-code {
-    margin-top: 0.4rem; font-size: 0.75rem; font-family: monospace;
+    margin-top: 0.4rem; font-size: 0.75rem; font-family: var(--font-data);
     background: var(--surface-ground); border: 1px solid var(--surface-border);
     border-radius: var(--border-radius); padding: 0.5rem 0.65rem; color: var(--text-color-secondary);
 }
@@ -1516,7 +1642,7 @@ button.coach-evidence-item:hover { text-decoration: underline; }
 }
 
 #debug-log {
-    background: #020617; color: #4ade80; font-family: ui-monospace, monospace;
+    background: #020617; color: #4ade80; font-family: var(--font-data);
     font-size: 0.75rem; padding: 0.75rem; border-radius: var(--border-radius);
     max-height: 420px; min-height: 180px; overflow-y: auto;
     border: 1px solid var(--surface-border);
@@ -1530,7 +1656,7 @@ button.coach-evidence-item:hover { text-decoration: underline; }
 .learn-group.open .learn-group-body { display: block; }
 .learn-item-meta { display: block; margin-top: 0.15rem; font-size: 0.75rem; color: var(--text-color-secondary); font-weight: 400; }
 .learn-moves {
-    font-family: ui-monospace, monospace; font-size: 0.8rem; line-height: 1.55;
+    font-family: var(--font-data); font-size: 0.8rem; line-height: 1.55;
     background: var(--surface-ground); border: 1px solid var(--surface-border);
     border-radius: var(--border-radius); padding: 0.75rem; max-height: 240px; overflow-y: auto;
     white-space: pre-wrap; word-break: break-word;

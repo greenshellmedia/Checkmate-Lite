@@ -6,15 +6,21 @@
     --cm-accent: #f87171;
     --cm-success: #34d399;
     --cm-line: color-mix(in srgb, var(--text-color, #1e293b) 12%, transparent);
+    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: "Domine", Georgia, "Times New Roman", serif;
+    --font-data: "Datatype", ui-monospace, "Cascadia Mono", monospace;
+    --font-family: var(--font-sans);
 }
 
 html, body {
     margin: 0;
     min-height: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body.cm-landing {
-    font-family: var(--font-family, "Inter var", system-ui, sans-serif);
+    font-family: var(--font-sans);
     color: var(--text-color, #1e293b);
     background:
         radial-gradient(1100px 640px at 88% -8%, color-mix(in srgb, var(--primary-color, #3f51b5) 18%, transparent), transparent 55%),
@@ -22,14 +28,17 @@ body.cm-landing {
         var(--surface-ground, #f8fafc);
     background-attachment: fixed;
     color-scheme: light dark;
+    overflow-x: hidden;
 }
 
 .cm-landing a { color: inherit; }
 
 .cm-shell {
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 1.25rem 4rem;
+    box-sizing: border-box;
 }
 
 /* —— Top bar —— */
@@ -40,16 +49,24 @@ body.cm-landing {
     gap: 1rem;
     padding: 1.1rem 0 0.5rem;
     animation: cm-fade-up 0.7s ease both;
+    min-width: 0;
+}
+.cm-top-note {
+    font-size: 0.85rem;
+    color: var(--text-color-secondary, #64748b);
+    font-weight: 600;
+    text-align: right;
+    min-width: 0;
 }
 
 .cm-logo {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.35rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.045em;
     text-decoration: none;
     color: var(--text-color, #1e293b);
 }
@@ -93,12 +110,6 @@ html[data-theme="dark"] .cm-logo-king-black {
     color: #e2e8f0;
 }
 
-.cm-top-note {
-    font-size: 0.85rem;
-    color: var(--text-color-secondary, #64748b);
-    font-weight: 600;
-}
-
 /* —— Hero (first viewport = one composition) —— */
 .cm-hero {
     position: relative;
@@ -108,12 +119,13 @@ html[data-theme="dark"] .cm-logo-king-black {
     justify-content: center;
     padding: 2.5rem 0 3.5rem;
     isolation: isolate;
+    overflow: hidden;
 }
 
 .cm-hero::before {
     content: "";
     position: absolute;
-    inset: 8% -8% -5% 40%;
+    inset: 8% 0 -5% 35%;
     z-index: -1;
     background:
         repeating-conic-gradient(
@@ -125,18 +137,20 @@ html[data-theme="dark"] .cm-logo-king-black {
     mask-image: radial-gradient(ellipse 70% 65% at 55% 45%, #000 20%, transparent 75%);
     opacity: 0.55;
     transform: rotate(-8deg) scale(1.05);
+    transform-origin: center;
     animation: cm-board-drift 18s ease-in-out infinite alternate;
+    pointer-events: none;
 }
 html[data-theme="dark"] .cm-hero::before {
     opacity: 0.28;
 }
 
 .cm-brand {
-    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: clamp(2.8rem, 8vw, 5.2rem);
     line-height: 0.95;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
     color: var(--text-color, #1e293b);
     margin: 0 0 1.1rem;
     max-width: 12ch;
@@ -144,11 +158,11 @@ html[data-theme="dark"] .cm-hero::before {
 }
 
 .cm-headline {
-    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 600;
     font-size: clamp(1.25rem, 2.6vw, 1.75rem);
     line-height: 1.25;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     max-width: 28ch;
     margin: 0 0 0.85rem;
     color: var(--text-color, #1e293b);
@@ -196,10 +210,10 @@ html[data-theme="dark"] .cm-hero::before {
 }
 
 .cm-section h2 {
-    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: clamp(1.6rem, 3vw, 2.15rem);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     margin: 0 0 0.75rem;
     max-width: 22ch;
     color: var(--text-color, #1e293b);
@@ -229,7 +243,10 @@ html[data-theme="dark"] .cm-hero::before {
 
 .cm-points strong {
     display: block;
+    font-family: var(--font-display);
     font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     margin-bottom: 0.2rem;
     color: var(--text-color, #1e293b);
 }
@@ -258,10 +275,10 @@ html[data-theme="dark"] .cm-hero::before {
 }
 .cm-roadmap strong {
     display: block;
-    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-family: var(--font-display);
     font-size: 1.12rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     margin-bottom: 0.3rem;
     color: var(--text-color, #1e293b);
 }
@@ -288,10 +305,10 @@ html[data-theme="dark"] .cm-hero::before {
 }
 
 .cm-panel h3 {
-    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-family: var(--font-display);
     font-size: 1.35rem;
     margin: 0 0 0.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     color: var(--text-color, #1e293b);
 }
 
@@ -352,11 +369,11 @@ html[data-theme="dark"] .cm-hero::before {
 }
 
 .cm-modal h2 {
-    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-family: var(--font-display);
     font-size: 1.55rem;
     margin: 0 0 0.5rem;
     color: var(--text-color, #1e293b);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
 }
 
 .cm-modal p {
@@ -454,8 +471,8 @@ html[data-theme="dark"] .cm-hero::before {
 }
 
 @keyframes cm-board-drift {
-    from { transform: rotate(-8deg) scale(1.05) translate(0, 0); }
-    to { transform: rotate(-6deg) scale(1.08) translate(-1.5%, 1%); }
+    from { transform: rotate(-8deg) scale(1.04) translate(0, 0); }
+    to { transform: rotate(-6deg) scale(1.06) translate(-1%, 1%); }
 }
 
 @keyframes cm-modal-in {
