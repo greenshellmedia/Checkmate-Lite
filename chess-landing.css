@@ -1,0 +1,392 @@
+/* Checkmate More — marketing landing (aligned with Lite app / PrimeNG indigo themes) */
+
+:root {
+    --board-white: #ebecd0;
+    --board-black: #779556;
+    --cm-accent: #f87171;
+    --cm-success: #34d399;
+    --cm-line: color-mix(in srgb, var(--text-color, #1e293b) 12%, transparent);
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body.cm-landing {
+    font-family: var(--font-family, "Inter var", system-ui, sans-serif);
+    color: var(--text-color, #1e293b);
+    background:
+        radial-gradient(1100px 640px at 88% -8%, color-mix(in srgb, var(--primary-color, #3f51b5) 18%, transparent), transparent 55%),
+        radial-gradient(900px 560px at -12% 28%, color-mix(in srgb, var(--board-black) 22%, transparent), transparent 52%),
+        var(--surface-ground, #f8fafc);
+    background-attachment: fixed;
+    color-scheme: light dark;
+}
+
+.cm-landing a { color: inherit; }
+
+.cm-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem 4rem;
+}
+
+/* —— Top bar —— */
+.cm-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 0 0.5rem;
+    animation: cm-fade-up 0.7s ease both;
+}
+
+.cm-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+    color: var(--text-color, #1e293b);
+}
+.cm-logo:hover { color: var(--primary-color, #3f51b5); }
+
+.cm-logo-icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.12rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.cm-logo-king {
+    font-size: 1.35rem;
+    line-height: 1;
+    display: inline-block;
+}
+.cm-logo-king-white {
+    color: #f8fafc;
+    text-shadow:
+        0 0 1px #0f172a,
+        1px 0 0 #0f172a,
+        -1px 0 0 #0f172a,
+        0 1px 0 #0f172a,
+        0 -1px 0 #0f172a;
+}
+.cm-logo-king-black {
+    color: #0f172a;
+    transform: rotate(180deg);
+}
+html[data-theme="dark"] .cm-logo-king-white {
+    color: #f1f5f9;
+    text-shadow:
+        0 0 1px #020617,
+        1px 0 0 #94a3b8,
+        -1px 0 0 #94a3b8,
+        0 1px 0 #94a3b8,
+        0 -1px 0 #94a3b8;
+}
+html[data-theme="dark"] .cm-logo-king-black {
+    color: #e2e8f0;
+}
+
+.cm-top-note {
+    font-size: 0.85rem;
+    color: var(--text-color-secondary, #64748b);
+    font-weight: 600;
+}
+
+/* —— Hero (first viewport = one composition) —— */
+.cm-hero {
+    position: relative;
+    min-height: min(88vh, 760px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem 0 3.5rem;
+    isolation: isolate;
+}
+
+.cm-hero::before {
+    content: "";
+    position: absolute;
+    inset: 8% -8% -5% 40%;
+    z-index: -1;
+    background:
+        repeating-conic-gradient(
+            from 0deg at 50% 50%,
+            color-mix(in srgb, var(--board-black) 28%, transparent) 0deg 90deg,
+            color-mix(in srgb, var(--board-white) 55%, transparent) 90deg 180deg
+        );
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 65% at 55% 45%, #000 20%, transparent 75%);
+    opacity: 0.55;
+    transform: rotate(-8deg) scale(1.05);
+    animation: cm-board-drift 18s ease-in-out infinite alternate;
+}
+html[data-theme="dark"] .cm-hero::before {
+    opacity: 0.28;
+}
+
+.cm-brand {
+    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 8vw, 5.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--text-color, #1e293b);
+    margin: 0 0 1.1rem;
+    max-width: 12ch;
+    animation: cm-fade-up 0.75s ease 0.05s both;
+}
+
+.cm-headline {
+    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    max-width: 28ch;
+    margin: 0 0 0.85rem;
+    color: var(--text-color, #1e293b);
+    animation: cm-fade-up 0.75s ease 0.12s both;
+}
+
+.cm-lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.5;
+    max-width: 36ch;
+    margin: 0 0 1.75rem;
+    color: var(--text-color-secondary, #64748b);
+    animation: cm-fade-up 0.75s ease 0.18s both;
+}
+
+.cm-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    align-items: center;
+    animation: cm-fade-up 0.75s ease 0.26s both;
+}
+
+.cm-cta-row .p-button {
+    font-weight: 700;
+    padding: 0.85rem 1.35rem;
+}
+
+/* Let PrimeNG theme own primary / outlined button colors */
+
+/* —— Sections —— */
+.cm-section {
+    padding: 3.25rem 0 1rem;
+    border-top: 1px solid var(--surface-border, var(--cm-line));
+    animation: cm-fade-up 0.8s ease both;
+}
+
+.cm-kicker {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary-color, #3f51b5);
+    margin: 0 0 0.65rem;
+}
+
+.cm-section h2 {
+    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3vw, 2.15rem);
+    letter-spacing: -0.03em;
+    margin: 0 0 0.75rem;
+    max-width: 22ch;
+    color: var(--text-color, #1e293b);
+}
+
+.cm-section > p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    max-width: 52ch;
+    margin: 0 0 1.5rem;
+    color: var(--text-color-secondary, #64748b);
+}
+
+.cm-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.15rem;
+    max-width: 640px;
+}
+
+.cm-points li {
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--board-black);
+}
+
+.cm-points strong {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+    color: var(--text-color, #1e293b);
+}
+
+.cm-points span {
+    font-size: 0.98rem;
+    line-height: 1.45;
+    color: var(--text-color-secondary, #64748b);
+}
+
+.cm-roadmap {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.15rem 1.5rem;
+}
+@media (min-width: 720px) {
+    .cm-roadmap {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.cm-roadmap li {
+    padding: 0 0 0 1.1rem;
+    border-left: 3px solid var(--primary-color, #3f51b5);
+}
+.cm-roadmap strong {
+    display: block;
+    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-size: 1.12rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+    color: var(--text-color, #1e293b);
+}
+.cm-roadmap span {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: var(--text-color-secondary, #64748b);
+}
+
+.cm-split {
+    display: grid;
+    gap: 1.5rem;
+}
+@media (min-width: 768px) {
+    .cm-split {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+}
+
+.cm-panel {
+    padding: 1.25rem 0 0;
+}
+
+.cm-panel h3 {
+    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-size: 1.35rem;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+    color: var(--text-color, #1e293b);
+}
+
+.cm-panel p {
+    margin: 0;
+    line-height: 1.5;
+    color: var(--text-color-secondary, #64748b);
+}
+
+.cm-footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--surface-border, var(--cm-line));
+    font-size: 0.9rem;
+    color: var(--text-color-secondary, #64748b);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    justify-content: space-between;
+}
+
+.cm-footer a {
+    color: var(--primary-color, #3f51b5);
+    font-weight: 600;
+    text-decoration: none;
+}
+.cm-footer a:hover { text-decoration: underline; }
+
+/* —— Coming soon modal —— */
+.cm-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1300;
+    background: color-mix(in srgb, var(--maskbg, #0f172a) 55%, transparent);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+}
+.cm-modal-overlay.is-open { display: flex; }
+
+.cm-modal {
+    width: min(420px, 100%);
+    background: var(--surface-card, var(--surface-ground, #fff));
+    color: var(--text-color, #1e293b);
+    border-radius: 12px;
+    border: 1px solid var(--surface-border, var(--cm-line));
+    box-shadow: 0 24px 60px color-mix(in srgb, #0f172a 28%, transparent);
+    padding: 1.5rem 1.4rem 1.25rem;
+    animation: cm-modal-in 0.28s ease both;
+}
+
+.cm-modal h2 {
+    font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+    font-size: 1.55rem;
+    margin: 0 0 0.5rem;
+    color: var(--text-color, #1e293b);
+    letter-spacing: -0.02em;
+}
+
+.cm-modal p {
+    margin: 0 0 1.25rem;
+    line-height: 1.5;
+    color: var(--text-color-secondary, #64748b);
+}
+
+.cm-modal .p-button {
+    font-weight: 700;
+}
+
+@keyframes cm-fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cm-board-drift {
+    from { transform: rotate(-8deg) scale(1.05) translate(0, 0); }
+    to { transform: rotate(-6deg) scale(1.08) translate(-1.5%, 1%); }
+}
+
+@keyframes cm-modal-in {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cm-hero::before,
+    .cm-top,
+    .cm-brand,
+    .cm-headline,
+    .cm-lede,
+    .cm-cta-row,
+    .cm-section,
+    .cm-modal {
+        animation: none !important;
+    }
+}
