@@ -1326,6 +1326,233 @@ function playerGameElo(analysis) {
     return Number(elo);
 }
 
+function escHtml(s) {
+    return String(s ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+function fmtChartDate(ts) {
+    if (!ts) return '—';
+    return new Date(ts * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+function niceEloDomain(minE, maxE, approxCount = 5) {
+    let lo = minE;
+    let hi = maxE;
+    if (lo === hi) {
+        lo -= 50;
+        hi += 50;
+    } else {
+        const padE = Math.max(20, Math.round((hi - lo) * 0.1));
+        lo -= padE;
+        hi += padE;
+    }
+    const range = Math.max(1, hi - lo);
+    const rawStep = range / Math.max(1, approxCount - 1);
+    const niceSteps = [25, 50, 100, 200, 250, 500, 1000];
+    const step = niceSteps.find(s => s >= rawStep) || Math.ceil(rawStep / 100) * 100;
+    const start = Math.floor(lo / step) * step;
+    const end = Math.ceil(hi / step) * step;
+    const ticks = [];
+    for (let v = start; v <= end + 0.001; v += step) {
+        ticks.push(v);
+        if (ticks.length > 8) break;
+    }
+    return { min: start, max: end, ticks };
+}
+
+let chartGameDialogKey = null;
+let chartGameEscBound = false;
+
+function chartSupportsHover() {
+    try {
+        return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    } catch {
+        return true;
+    }
+}
+
+function hideChartGameTip() {
+    const tip = document.getElementById('chart-game-tip');
+    if (!tip) return;
+    tip.style.display = 'none';
+    tip.setAttribute('aria-hidden', 'true');
+    tip.innerHTML = '';
+}
+
+function showChartGameTip(html, clientX, clientY) {
+    const tip = document.getElementById('chart-game-tip');
+    if (!tip || !html) return;
+    tip.innerHTML = html;
+    tip.style.display = 'block';
+    tip.setAttribute('aria-hidden', 'false');
+    const pad = 12;
+    const tw = tip.offsetWidth || 180;
+    const th = tip.offsetHeight || 60;
+    let left = clientX + 14;
+    let top = clientY + 14;
+    if (left + tw > window.innerWidth - pad) left = clientX - tw - 10;
+    if (top + th > window.innerHeight - pad) top = clientY - th - 10;
+    tip.style.left = `${Math.max(pad, left)}px`;
+    tip.style.top = `${Math.max(pad, top)}px`;
+}
+
+function clearChartActive(svg) {
+    if (!svg) return;
+    svg.classList.remove('chart-svg-dim');
+    svg.querySelectorAll('.is-active').forEach(el => {
+        el.classList.remove('is-active');
+        if (el.dataset.baseR) el.setAttribute('r', el.dataset.baseR);
+    });
+}
+
+/**
+ * @param {SVGElement} svg
+ * @param {Array<{ gameKey: string|null, tipHtml: string, hitEls: Element[], dotEls: Element[] }>} items
+ */
+function bindChartGameInteractions(svg, items) {
+    const canHover = chartSupportsHover();
+    const setActive = (item) => {
+        clearChartActive(svg);
+        svg.classList.add('chart-svg-dim');
+        item.dotEls.forEach(dot => {
+            dot.classList.add('is-active');
+            const base = Number(dot.getAttribute('r') || 3);
+            if (!dot.dataset.baseR) dot.dataset.baseR = String(base);
+            dot.setAttribute('r', String(Math.max(base + 1.5, base * 1.45)));
+        });
+    };
+
+    items.forEach(item => {
+        item.hitEls.forEach(hit => {
+            if (canHover) {
+                hit.addEventListener('pointerenter', (e) => {
+                    setActive(item);
+                    showChartGameTip(item.tipHtml, e.clientX, e.clientY);
+                });
+                hit.addEventListener('pointermove', (e) => {
+                    showChartGameTip(item.tipHtml, e.clientX, e.clientY);
+                });
+                hit.addEventListener('pointerleave', () => {
+                    clearChartActive(svg);
+                    hideChartGameTip();
+                });
+            }
+            hit.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                hideChartGameTip();
+                clearChartActive(svg);
+                if (item.gameKey) openChartGameDialog(item.gameKey);
+            });
+        });
+    });
+}
+
+function chartGameTipHtml({ title, lines }) {
+    const meta = (lines || []).filter(Boolean).map(l => `<div class="tip-meta">${escHtml(l)}</div>`).join('');
+    return `<strong>${escHtml(title)}</strong>${meta}`;
+}
+
+function findAnalyzedGame(gameKey) {
+    if (!gameKey || !profileState?.analyzedGames) return null;
+    return profileState.analyzedGames.find(x => x.gameKey === gameKey) || null;
+}
+
+function onChartGameEsc(e) {
+    if (e.key === 'Escape') closeChartGameDialog();
+}
+
+function openChartGameDialog(gameKey) {
+    const g = findAnalyzedGame(gameKey);
+    const overlay = document.getElementById('chart-game-overlay');
+    if (!g || !overlay) return;
+
+    attachGamePlayers(g, null, g.username || profileState?.username);
+    chartGameDialogKey = gameKey;
+
+    const you = typeof sideMoveStats === 'function' ? sideMoveStats(g, true) : null;
+    const chessCom = playerGameElo(g);
+    const gameElo = you?.gameElo ?? null;
+    const gap = chessCom != null && gameElo != null ? gameElo - chessCom : null;
+    const when = g.endTime
+        ? new Date(g.endTime * 1000).toLocaleString(undefined, {
+            month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'
+        })
+        : '—';
+
+    const resultEl = document.getElementById('chart-game-result');
+    const titleEl = document.getElementById('chart-game-title');
+    const subEl = document.getElementById('chart-game-sub');
+    const statsEl = document.getElementById('chart-game-stats');
+    const detailEl = document.getElementById('chart-game-detail');
+
+    if (resultEl) {
+        resultEl.textContent = g.result || '—';
+        resultEl.style.color = resultColor(g.result);
+    }
+    if (titleEl) titleEl.textContent = gameMatchupTitle(g);
+    if (subEl) {
+        const bits = [
+            g.isWhite ? 'White' : 'Black',
+            g.openingName || null,
+            g.timeClass ? String(g.timeClass) : null,
+            when
+        ].filter(Boolean);
+        subEl.textContent = bits.join(' · ');
+    }
+    if (statsEl) {
+        const cells = [];
+        if (you?.accuracy != null) {
+            cells.push(`<div class="chart-game-stat"><div class="chart-game-stat-value">${escHtml(you.accuracy)}%</div><div class="chart-game-stat-label">Accuracy</div></div>`);
+        }
+        if (you?.avgCpl != null) {
+            cells.push(`<div class="chart-game-stat"><div class="chart-game-stat-value">${escHtml(you.avgCpl)}</div><div class="chart-game-stat-label">Avg CPL</div></div>`);
+        }
+        if (chessCom != null) {
+            cells.push(`<div class="chart-game-stat"><div class="chart-game-stat-value">${escHtml(chessCom)}</div><div class="chart-game-stat-label">Chess.com</div></div>`);
+        }
+        if (gameElo != null) {
+            cells.push(`<div class="chart-game-stat"><div class="chart-game-stat-value">${escHtml(formatGameEloLabel(gameElo))}</div><div class="chart-game-stat-label">Game ELO</div></div>`);
+        }
+        if (gap != null) {
+            const cls = gap >= 0 ? 'elo-up' : 'elo-down';
+            cells.push(`<div class="chart-game-stat"><div class="chart-game-stat-value ${cls}">${gap >= 0 ? '+' : ''}${escHtml(gap)}</div><div class="chart-game-stat-label">Gap</div></div>`);
+        }
+        statsEl.innerHTML = cells.join('') || '<div class="text-color-secondary text-sm">No extra stats for this game.</div>';
+    }
+    if (detailEl) {
+        const reason = outcomeReason(g);
+        const detail = g.resultDetail ? chessComResultLabel(g.resultDetail) : '';
+        detailEl.textContent = [reason, detail && detail !== reason ? detail : ''].filter(Boolean).join(' · ') || '';
+    }
+
+    overlay.style.display = 'flex';
+    if (!chartGameEscBound) {
+        document.addEventListener('keydown', onChartGameEsc);
+        chartGameEscBound = true;
+    }
+}
+
+function closeChartGameDialog() {
+    const overlay = document.getElementById('chart-game-overlay');
+    if (overlay) overlay.style.display = 'none';
+    chartGameDialogKey = null;
+    if (chartGameEscBound) {
+        document.removeEventListener('keydown', onChartGameEsc);
+        chartGameEscBound = false;
+    }
+}
+
+function confirmChartGameDialog() {
+    const key = chartGameDialogKey;
+    closeChartGameDialog();
+    if (key) openReviewFromStore(key);
+}
+
 function renderOverviewAccuracy(profile, analytics) {
     const el = document.getElementById('overview-accuracy');
     if (!el) return;
@@ -1358,8 +1585,8 @@ function renderOverviewAccuracy(profile, analytics) {
     }
 
     const W = 640;
-    const H = 140;
-    const pad = { t: 14, b: 24, l: 36, r: 12 };
+    const H = 156;
+    const pad = { t: 18, b: 34, l: 48, r: 16 };
     const plotW = W - pad.l - pad.r;
     const plotH = H - pad.t - pad.b;
     const vals = series.map(p => p.accuracy);
@@ -1373,6 +1600,7 @@ function renderOverviewAccuracy(profile, analytics) {
         minA = Math.max(0, minA - padA);
         maxA = Math.min(100, maxA + padA);
     }
+    const midA = (minA + maxA) / 2;
     const xAt = (i) => pad.l + (i / Math.max(1, series.length - 1)) * plotW;
     const yAt = (a) => pad.t + (1 - (a - minA) / (maxA - minA)) * plotH;
     const linePts = series.map((p, i) => `${xAt(i).toFixed(2)},${yAt(p.accuracy).toFixed(2)}`).join(' ');
@@ -1382,20 +1610,30 @@ function renderOverviewAccuracy(profile, analytics) {
         `${xAt(series.length - 1).toFixed(2)},${(pad.t + plotH).toFixed(2)}`
     ].join(' ');
 
+    const tFirst = series[0].t;
+    const tLast = series[series.length - 1].t;
+
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
     svg.classList.add('accuracy-spark-svg');
     svg.setAttribute('role', 'img');
     svg.setAttribute('aria-label', 'Move accuracy over recent games');
     svg.innerHTML = `
-        <line class="elo-grid-line" x1="${pad.l}" y1="${yAt(minA)}" x2="${W - pad.r}" y2="${yAt(minA)}"></line>
         <line class="elo-grid-line" x1="${pad.l}" y1="${yAt(maxA)}" x2="${W - pad.r}" y2="${yAt(maxA)}"></line>
-        <text class="elo-axis-label" x="${pad.l - 4}" y="${yAt(maxA) + 3}" text-anchor="end">${Math.round(maxA)}</text>
-        <text class="elo-axis-label" x="${pad.l - 4}" y="${yAt(minA) + 3}" text-anchor="end">${Math.round(minA)}</text>
+        <line class="elo-grid-line" x1="${pad.l}" y1="${yAt(midA)}" x2="${W - pad.r}" y2="${yAt(midA)}"></line>
+        <line class="elo-grid-line" x1="${pad.l}" y1="${yAt(minA)}" x2="${W - pad.r}" y2="${yAt(minA)}"></line>
+        <text class="elo-axis-label" x="${pad.l - 8}" y="${yAt(maxA) + 4}" text-anchor="end">${Math.round(maxA)}</text>
+        <text class="elo-axis-label" x="${pad.l - 8}" y="${yAt(midA) + 4}" text-anchor="end">${Math.round(midA)}</text>
+        <text class="elo-axis-label" x="${pad.l - 8}" y="${yAt(minA) + 4}" text-anchor="end">${Math.round(minA)}</text>
         <polygon class="accuracy-spark-area" points="${areaPts}"></polygon>
         <polyline class="accuracy-spark-path" points="${linePts}"></polyline>
+        <text class="elo-axis-label elo-axis-x" x="${pad.l}" y="${H - 10}" text-anchor="start">${series.length} games · ${fmtChartDate(tFirst)}</text>
+        <text class="elo-axis-label elo-axis-x" x="${W - pad.r}" y="${H - 10}" text-anchor="end">${fmtChartDate(tLast)}</text>
     `;
+
+    const hitR = Math.max(7, plotW / Math.max(series.length, 1) / 2);
+    const interactItems = [];
 
     series.forEach((p, idx) => {
         const cx = xAt(idx);
@@ -1403,14 +1641,8 @@ function renderOverviewAccuracy(profile, analytics) {
         const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         hit.setAttribute('cx', cx);
         hit.setAttribute('cy', cy);
-        hit.setAttribute('r', Math.max(6, plotW / Math.max(series.length, 1) / 2));
+        hit.setAttribute('r', hitR);
         hit.classList.add('elo-line-hit');
-        const tip = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-        tip.textContent = `${p.accuracy}% · ${p.result || ''}${p.avgCpl != null ? ` · ${p.avgCpl} CPL` : ''}`;
-        hit.appendChild(tip);
-        if (p.gameKey) {
-            hit.addEventListener('click', () => openReviewFromStore(p.gameKey));
-        }
         svg.appendChild(hit);
         const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         dot.setAttribute('cx', cx);
@@ -1419,7 +1651,25 @@ function renderOverviewAccuracy(profile, analytics) {
         dot.classList.add('accuracy-spark-dot');
         if (idx === series.length - 1) dot.classList.add('is-latest');
         svg.appendChild(dot);
+
+        const g = p.gameKey ? findAnalyzedGame(p.gameKey) : null;
+        const matchup = g ? gameMatchupTitle(g) : (p.result || 'Game');
+        interactItems.push({
+            gameKey: p.gameKey,
+            tipHtml: chartGameTipHtml({
+                title: matchup,
+                lines: [
+                    `${p.accuracy}% accuracy · ${p.result || '—'}`,
+                    p.avgCpl != null ? `${p.avgCpl} avg CPL` : null,
+                    fmtChartDate(p.t)
+                ]
+            }),
+            hitEls: [hit],
+            dotEls: [dot]
+        });
     });
+
+    bindChartGameInteractions(svg, interactItems);
 
     el.innerHTML = `<div class="accuracy-summary">${metaBits}</div>`;
     el.appendChild(svg);
@@ -1441,6 +1691,7 @@ function renderOverviewEloChart(profile, analytics) {
                 t: g.endTime || 0,
                 chessCom: playerGameElo(g),
                 gameElo: you?.gameElo ?? null,
+                accuracy: you?.accuracy ?? null,
                 gameKey: g.gameKey || null,
                 result: g.result || ''
             };
@@ -1458,20 +1709,13 @@ function renderOverviewEloChart(profile, analytics) {
     const allVals = drawable.flatMap(p => [p.chessCom, p.gameElo]).filter(v => v != null);
     const gameElos = drawable.map(p => p.gameElo).filter(v => v != null);
     const W = 640;
-    const H = 220;
-    const pad = { t: 18, b: 28, l: 44, r: 14 };
+    const H = 248;
+    const pad = { t: 20, b: 38, l: 52, r: 16 };
     const plotW = W - pad.l - pad.r;
     const plotH = H - pad.t - pad.b;
-    let minE = Math.min(...allVals);
-    let maxE = Math.max(...allVals);
-    if (minE === maxE) {
-        minE -= 50;
-        maxE += 50;
-    } else {
-        const padE = Math.max(20, Math.round((maxE - minE) * 0.1));
-        minE -= padE;
-        maxE += padE;
-    }
+    const domain = niceEloDomain(Math.min(...allVals), Math.max(...allVals), 5);
+    const minE = domain.min;
+    const maxE = domain.max;
 
     // Index X-axis: equal spacing makes volatility readable even when timestamps bunch
     const xAt = (i) => pad.l + (i / Math.max(1, drawable.length - 1)) * plotW;
@@ -1501,22 +1745,18 @@ function renderOverviewEloChart(profile, analytics) {
     });
 
     let grid = '';
-    for (let i = 0; i <= 4; i++) {
-        const elo = minE + ((maxE - minE) * i) / 4;
+    domain.ticks.forEach(elo => {
         const y = yAt(elo);
         grid += `<line class="elo-grid-line" x1="${pad.l}" y1="${y}" x2="${W - pad.r}" y2="${y}"></line>`;
-        grid += `<text class="elo-axis-label" x="${pad.l - 6}" y="${y + 3}" text-anchor="end">${Math.round(elo)}</text>`;
-    }
+        grid += `<text class="elo-axis-label" x="${pad.l - 8}" y="${y + 4}" text-anchor="end">${Math.round(elo)}</text>`;
+    });
 
-    const fmtDate = (ts) => ts
-        ? new Date(ts * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
-        : '—';
     const tFirst = drawable[0].t;
     const tLast = drawable[drawable.length - 1].t;
 
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
     svg.classList.add('elo-line-svg');
     svg.setAttribute('role', 'img');
     svg.setAttribute('aria-label', 'Chess.com ELO and estimated Game ELO over analyzed games');
@@ -1526,28 +1766,27 @@ function renderOverviewEloChart(profile, analytics) {
         ${stems}
         ${siteLine ? `<polyline class="elo-line-path" points="${siteLine}"></polyline>` : ''}
         ${gameLine ? `<polyline class="elo-line-path elo-line-perf" points="${gameLine}"></polyline>` : ''}
-        <text class="elo-axis-label" x="${pad.l}" y="${H - 8}" text-anchor="start">${drawable.length} games · ${fmtDate(tFirst)}</text>
-        <text class="elo-axis-label" x="${W - pad.r}" y="${H - 8}" text-anchor="end">${fmtDate(tLast)}</text>
+        <text class="elo-axis-label elo-axis-x" x="${pad.l}" y="${H - 12}" text-anchor="start">${drawable.length} games · ${fmtChartDate(tFirst)}</text>
+        <text class="elo-axis-label elo-axis-x" x="${W - pad.r}" y="${H - 12}" text-anchor="end">${fmtChartDate(tLast)}</text>
     `;
 
+    const hitR = Math.max(7, plotW / Math.max(drawable.length, 1) / 2.2);
+    const interactItems = [];
+
     drawable.forEach((p, idx) => {
-        const addDot = (val, cls, label) => {
+        const hitEls = [];
+        const dotEls = [];
+        const addDot = (val, cls) => {
             if (val == null) return;
             const cx = xAt(idx);
             const cy = yAt(val);
             const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             hit.setAttribute('cx', cx);
             hit.setAttribute('cy', cy);
-            hit.setAttribute('r', Math.max(6, plotW / Math.max(drawable.length, 1) / 2.2));
+            hit.setAttribute('r', hitR);
             hit.classList.add('elo-line-hit');
-            const tip = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-            const gap = p.chessCom != null && p.gameElo != null
-                ? ` · gap ${p.gameElo - p.chessCom >= 0 ? '+' : ''}${p.gameElo - p.chessCom}`
-                : '';
-            tip.textContent = `${label} ${val}${p.chessCom != null && p.gameElo != null && label === 'Game ELO' ? gap : ''} · ${fmtDate(p.t)} · ${p.result}`;
-            hit.appendChild(tip);
-            if (p.gameKey) hit.addEventListener('click', () => openReviewFromStore(p.gameKey));
             svg.appendChild(hit);
+            hitEls.push(hit);
             const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             dot.setAttribute('cx', cx);
             dot.setAttribute('cy', cy);
@@ -1555,10 +1794,36 @@ function renderOverviewEloChart(profile, analytics) {
             dot.classList.add(cls);
             if (idx === drawable.length - 1) dot.classList.add('is-latest');
             svg.appendChild(dot);
+            dotEls.push(dot);
         };
-        addDot(p.chessCom, 'elo-line-dot', 'Chess.com');
-        addDot(p.gameElo, 'elo-perf-dot', 'Game ELO');
+        addDot(p.chessCom, 'elo-line-dot');
+        addDot(p.gameElo, 'elo-perf-dot');
+
+        const gap = p.chessCom != null && p.gameElo != null
+            ? `Gap ${p.gameElo - p.chessCom >= 0 ? '+' : ''}${p.gameElo - p.chessCom}`
+            : null;
+        const eloLine = [
+            p.chessCom != null ? `Chess.com ${p.chessCom}` : null,
+            p.gameElo != null ? `Game ELO ${p.gameElo}` : null,
+            gap
+        ].filter(Boolean).join(' · ');
+
+        interactItems.push({
+            gameKey: p.gameKey,
+            tipHtml: chartGameTipHtml({
+                title: gameMatchupTitle(p.g),
+                lines: [
+                    `${p.result || '—'}${p.accuracy != null ? ` · ${p.accuracy}%` : ''}`,
+                    eloLine,
+                    fmtChartDate(p.t)
+                ]
+            }),
+            hitEls,
+            dotEls
+        });
     });
+
+    bindChartGameInteractions(svg, interactItems);
 
     const last = drawable[drawable.length - 1];
     const avgGame = gameElos.length
@@ -2575,19 +2840,36 @@ function openReview(analysis) {
     renderReviewCoachTab(analysis);
     renderReviewStatsTab(analysis);
 
-    // Default to Coaching tab
-    const reviewNav = document.querySelector('#review-view .p-tabview-nav');
-    if (reviewNav) {
-        reviewNav.querySelectorAll('li').forEach((li, i) => li.classList.toggle('p-highlight', i === 0));
+    // Default to Game stats tab
+    const statsLink = document.querySelector('#review-view [data-review-tab="stats"]');
+    if (statsLink) {
+        switchTab('stats', statsLink);
+    } else {
+        const coachEl = document.getElementById('coach-tab');
+        const statsEl = document.getElementById('stats-tab');
+        if (coachEl) coachEl.style.display = 'none';
+        if (statsEl) statsEl.style.display = 'block';
+        document.getElementById('moves-tab').style.display = 'none';
+        document.getElementById('graph-tab').style.display = 'none';
     }
-    const coachEl = document.getElementById('coach-tab');
-    const statsEl = document.getElementById('stats-tab');
-    if (coachEl) coachEl.style.display = 'block';
-    if (statsEl) statsEl.style.display = 'none';
-    document.getElementById('moves-tab').style.display = 'none';
-    document.getElementById('graph-tab').style.display = 'none';
 
     goToMove(0);
+}
+
+function moveClassFillColor(classification) {
+    const label = classification?.label;
+    if (!label || !Array.isArray(MOVE_QUALITY_ORDER)) {
+        return 'var(--text-color-secondary, #94a3b8)';
+    }
+    const q = MOVE_QUALITY_ORDER.find(x => x.label === label);
+    return q?.color || 'var(--text-color-secondary, #94a3b8)';
+}
+
+function evalDotBaseRadius(moveCount) {
+    if (moveCount > 80) return 2.1;
+    if (moveCount > 50) return 2.5;
+    if (moveCount > 30) return 2.9;
+    return 3.35;
 }
 
 function renderEvalLineGraph(analysis) {
@@ -2601,11 +2883,12 @@ function renderEvalLineGraph(analysis) {
 
     const W = 320;
     const H = 220;
-    const pad = { t: 14, b: 18, l: 10, r: 10 };
+    const pad = { t: 16, b: 20, l: 12, r: 12 };
     const plotW = W - pad.l - pad.r;
     const plotH = H - pad.t - pad.b;
     const CAP = 1000; // ±10 pawns on the scale
     const keyIdx = analysis.gameStory?.keyMoveIndex;
+    const baseR = evalDotBaseRadius(moves.length);
 
     const vals = moves.map(m => {
         const v = playerEvalAt(analysis, m);
@@ -2641,24 +2924,62 @@ function renderEvalLineGraph(analysis) {
     vals.forEach((v, idx) => {
         const cx = xAt(idx);
         const cy = yAt(v);
+        const m = moves[idx];
+        const cls = m.classification?.class || '';
+        const label = m.classification?.label || '';
+        const fill = moveClassFillColor(m.classification);
+
         const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         hit.setAttribute('cx', cx);
         hit.setAttribute('cy', cy);
         hit.setAttribute('r', Math.max(6, plotW / Math.max(moves.length, 1) / 2));
         hit.classList.add('eval-line-hit');
+        if (label) hit.setAttribute('aria-label', `${m.moveNum}${m.turn === 'w' ? '.' : '...'} ${m.san} · ${label}`);
         hit.addEventListener('click', () => goToMove(idx));
         svg.appendChild(hit);
+
+        if (keyIdx === idx) {
+            const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            ring.setAttribute('cx', cx);
+            ring.setAttribute('cy', cy);
+            ring.setAttribute('r', baseR + 2.6);
+            ring.classList.add('eval-line-key-ring');
+            ring.dataset.moveIdx = String(idx);
+            svg.appendChild(ring);
+        }
 
         const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         dot.setAttribute('cx', cx);
         dot.setAttribute('cy', cy);
-        dot.setAttribute('r', 3.5);
+        dot.setAttribute('r', baseR);
         dot.classList.add('eval-line-dot');
+        if (cls) dot.classList.add(cls);
         if (keyIdx === idx) dot.classList.add('is-key');
+        dot.style.fill = fill;
         dot.dataset.moveIdx = String(idx);
+        dot.dataset.baseR = String(baseR);
         svg.appendChild(dot);
     });
 
+    const usedLabels = new Set(
+        moves.map(m => m.classification?.label).filter(Boolean)
+    );
+    const legendBits = MOVE_QUALITY_ORDER
+        .filter(q => usedLabels.has(q.label))
+        .map(q => `
+            <span class="eval-legend-item">
+                <i class="eval-legend-swatch" style="background:${q.color}"></i>${q.label}
+            </span>
+        `)
+        .join('');
+
+    graphUi.innerHTML = '';
+    if (legendBits) {
+        const legend = document.createElement('div');
+        legend.className = 'eval-graph-legend text-color-secondary';
+        legend.innerHTML = legendBits;
+        graphUi.appendChild(legend);
+    }
     graphUi.appendChild(svg);
     graphUi.title = `${side} perspective · + is better for ${side.toLowerCase()} · click a point to jump`;
 }
@@ -3037,9 +3358,9 @@ function goToMove(idx) {
     document.getElementById(`move-${idx}`)?.classList.add('active');
     document.querySelectorAll('.eval-line-dot').forEach(dot => {
         const isActive = Number(dot.dataset.moveIdx) === idx;
-        const isKey = currentReviewGame.gameStory?.keyMoveIndex === Number(dot.dataset.moveIdx);
+        const baseR = Number(dot.dataset.baseR) || 3.35;
         dot.classList.toggle('is-active', isActive);
-        if (!isKey) dot.setAttribute('r', isActive ? 4.5 : 3.5);
+        dot.setAttribute('r', isActive ? String(baseR + 1.6) : String(baseR));
     });
 }
 

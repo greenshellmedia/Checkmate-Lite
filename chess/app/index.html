@@ -30,11 +30,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css">
     <link rel="stylesheet" href="../../chess.css?v=20260811h">
+    <script src="../../js/clean-url.js"></script>
 </head>
 <body>
 <div class="app-shell">
     <header class="app-topnav" role="banner">
-        <a href="../../chess.html" class="app-brand" title="CheckmateMore Lite">
+        <a href="../../" class="app-brand" title="CheckmateMore Lite">
             <span class="app-brand-icons" aria-hidden="true">
                 <span class="app-brand-king app-brand-king-white">♔</span>
                 <span class="app-brand-king app-brand-king-black">♚</span>
@@ -102,6 +103,36 @@
                 <div class="flex justify-content-end">
                     <button type="button" class="p-button p-component" onclick="confirmAnalysisPresetModal()">
                         <span class="p-button-label">Continue with this preset</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chart-game-tip" class="chart-game-tip" style="display:none" role="tooltip" aria-hidden="true"></div>
+
+    <div id="chart-game-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeChartGameDialog()">
+        <div class="p-card single-game-dialog chart-game-dialog" role="dialog" aria-modal="true" aria-labelledby="chart-game-title">
+            <div class="p-card-body">
+                <div class="flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <div id="chart-game-result" class="chart-game-result mb-1"></div>
+                        <div id="chart-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem"></div>
+                        <div id="chart-game-sub" class="text-color-secondary text-sm"></div>
+                    </div>
+                    <button type="button" class="p-button p-component p-button-text p-button-rounded" onclick="closeChartGameDialog()" title="Close">
+                        <span class="p-button-icon pi pi-times"></span>
+                    </button>
+                </div>
+                <div id="chart-game-stats" class="chart-game-stats mb-3"></div>
+                <div id="chart-game-detail" class="text-color-secondary text-sm mb-3"></div>
+                <div class="flex justify-content-end gap-2">
+                    <button type="button" class="p-button p-component p-button-text" onclick="closeChartGameDialog()">
+                        <span class="p-button-label">Cancel</span>
+                    </button>
+                    <button type="button" class="p-button p-component" id="chart-game-open-btn" onclick="confirmChartGameDialog()">
+                        <span class="p-button-icon-left pi pi-eye"></span>
+                        <span class="p-button-label">Open review</span>
                     </button>
                 </div>
             </div>
@@ -440,10 +471,10 @@
                 <div class="p-tabview-nav-container">
                     <div class="p-tabview-nav-content">
                         <ul class="p-tabview-nav" role="tablist">
-                            <li class="p-highlight" role="presentation">
+                            <li role="presentation">
                                 <a href="#" class="p-tabview-nav-link" data-review-tab="coaching" onclick="switchTab('coaching', this); return false;" role="tab"><span class="p-tabview-title">Coaching</span></a>
                             </li>
-                            <li role="presentation">
+                            <li class="p-highlight" role="presentation">
                                 <a href="#" class="p-tabview-nav-link" data-review-tab="stats" onclick="switchTab('stats', this); return false;" role="tab"><span class="p-tabview-title">Game stats</span></a>
                             </li>
                             <li role="presentation">
@@ -456,8 +487,8 @@
                     </div>
                 </div>
                 <div class="p-tabview-panels">
-                    <div id="coach-tab" class="p-tabview-panel" style="max-height:400px;overflow:auto"></div>
-                    <div id="stats-tab" class="p-tabview-panel" style="display:none;max-height:400px;overflow:auto"></div>
+                    <div id="coach-tab" class="p-tabview-panel" style="display:none;max-height:400px;overflow:auto"></div>
+                    <div id="stats-tab" class="p-tabview-panel" style="max-height:400px;overflow:auto"></div>
                     <div id="moves-tab" class="p-tabview-panel" style="display:none;max-height:400px;overflow:auto"></div>
                     <div id="graph-tab" class="p-tabview-panel" style="display:none;height:400px">
                         <div id="eval-graph" class="graph-container"></div>

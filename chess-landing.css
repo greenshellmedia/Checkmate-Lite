@@ -345,6 +345,12 @@ html[data-theme="dark"] .cm-hero::before {
     animation: cm-modal-in 0.28s ease both;
 }
 
+.cm-modal.cm-waitlist-modal {
+    width: min(480px, 100%);
+    max-height: min(92vh, 720px);
+    overflow-y: auto;
+}
+
 .cm-modal h2 {
     font-family: Fraunces, "Iowan Old Style", Georgia, serif;
     font-size: 1.55rem;
@@ -361,6 +367,85 @@ html[data-theme="dark"] .cm-hero::before {
 
 .cm-modal .p-button {
     font-weight: 700;
+}
+
+.cm-waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.cm-waitlist-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.cm-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.cm-field label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-color, #1e293b);
+}
+
+.cm-field .p-inputtext {
+    width: 100%;
+}
+
+.cm-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.15rem;
+}
+
+.cm-check {
+    display: grid;
+    grid-template-columns: 1.15rem 1fr;
+    gap: 0.55rem;
+    align-items: start;
+    font-size: 0.84rem;
+    line-height: 1.4;
+    color: var(--text-color-secondary, #64748b);
+    cursor: pointer;
+}
+
+.cm-check input {
+    margin-top: 0.15rem;
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--primary-color, #6366f1);
+    cursor: pointer;
+}
+
+.cm-waitlist-status {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text-color-secondary, #64748b);
+}
+
+.cm-waitlist-status.is-error {
+    color: var(--red-500, #ef4444);
+}
+
+.cm-waitlist-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+}
+
+@media (max-width: 480px) {
+    .cm-waitlist-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 @keyframes cm-fade-up {

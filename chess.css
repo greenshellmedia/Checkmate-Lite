@@ -467,14 +467,48 @@ html[data-theme="dark"] .app-brand-king-black {
 }
 .eval-line-hit { fill: transparent; cursor: pointer; }
 .eval-line-dot {
-    fill: var(--primary-color, #60a5fa);
+    fill: var(--text-color-secondary, #94a3b8);
     stroke: var(--surface-card, #1f2937);
-    stroke-width: 1.5;
+    stroke-width: 1.35;
     pointer-events: none;
-    opacity: 0;
+    opacity: 0.92;
 }
-.eval-line-dot.is-key { opacity: 1; fill: var(--warning, #fbbf24); }
-.eval-line-dot.is-active { opacity: 1; }
+.eval-line-dot.is-key {
+    stroke: var(--warning, #fbbf24);
+    stroke-width: 2;
+}
+.eval-line-dot.is-active {
+    opacity: 1;
+    stroke: var(--text-color, #e2e8f0);
+    stroke-width: 2;
+}
+.eval-line-key-ring {
+    fill: none;
+    stroke: var(--warning, #fbbf24);
+    stroke-width: 1.5;
+    opacity: 0.85;
+    pointer-events: none;
+}
+.eval-graph-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+    font-size: 0.68rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+}
+.eval-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+}
+.eval-legend-swatch {
+    display: inline-block;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+}
 
 .overview-accuracy { width: 100%; min-height: 8rem; }
 .accuracy-summary {
@@ -500,8 +534,10 @@ html[data-theme="dark"] .app-brand-king-black {
 }
 .accuracy-spark-svg {
     width: 100%;
-    height: 8.5rem;
+    height: auto;
+    aspect-ratio: 640 / 156;
     display: block;
+    overflow: visible;
 }
 .accuracy-spark-path {
     fill: none;
@@ -519,6 +555,7 @@ html[data-theme="dark"] .app-brand-king-black {
     stroke: var(--surface-card, #1f2937);
     stroke-width: 1.5;
     pointer-events: none;
+    transition: r 0.12s ease, opacity 0.12s ease;
 }
 .accuracy-spark-dot.is-latest { fill: var(--primary-color, #6366f1); }
 
@@ -602,18 +639,24 @@ html[data-theme="dark"] .app-brand-king-black {
 .game-card-finish { margin-top: 0.25rem; }
 .elo-line-svg {
     width: 100%;
-    height: 12.5rem;
+    height: auto;
+    aspect-ratio: 640 / 248;
     display: block;
+    overflow: visible;
 }
 .elo-grid-line {
     stroke: var(--surface-border, #475569);
     stroke-width: 1;
     stroke-dasharray: 3 4;
-    opacity: 0.7;
+    opacity: 0.55;
 }
 .elo-axis-label {
     fill: var(--text-color-secondary);
-    font-size: 10px;
+    font-size: 11.5px;
+    font-variant-numeric: tabular-nums;
+}
+.elo-axis-label.elo-axis-x {
+    font-size: 11px;
 }
 .elo-line-path {
     fill: none;
@@ -632,8 +675,78 @@ html[data-theme="dark"] .app-brand-king-black {
     stroke: var(--surface-card, #1f2937);
     stroke-width: 1.5;
     pointer-events: none;
+    transition: r 0.12s ease, opacity 0.12s ease;
 }
 .elo-line-dot.is-latest { fill: var(--success, #34d399); }
+.elo-line-dot.is-active,
+.accuracy-spark-dot.is-active,
+.elo-perf-dot.is-active {
+    opacity: 1;
+}
+.chart-svg-dim .elo-line-dot:not(.is-active),
+.chart-svg-dim .accuracy-spark-dot:not(.is-active),
+.chart-svg-dim .elo-perf-dot:not(.is-active) {
+    opacity: 0.35;
+}
+.chart-game-tip {
+    position: fixed;
+    z-index: 1200;
+    max-width: min(16rem, calc(100vw - 1.5rem));
+    padding: 0.55rem 0.7rem;
+    border-radius: 0.45rem;
+    background: color-mix(in srgb, var(--surface-card, #1f2937) 94%, #000);
+    border: 1px solid var(--surface-border, #334155);
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.45);
+    color: var(--text-color, #e2e8f0);
+    font-size: 0.8rem;
+    line-height: 1.35;
+    pointer-events: none;
+}
+.chart-game-tip strong {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 0.15rem;
+}
+.chart-game-tip .tip-meta {
+    color: var(--text-color-secondary, #94a3b8);
+    font-size: 0.75rem;
+}
+.chart-game-dialog {
+    width: min(420px, 100%);
+    max-height: none;
+}
+.chart-game-dialog .p-card-body {
+    max-height: none;
+}
+.chart-game-result {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.chart-game-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+    gap: 0.55rem;
+}
+.chart-game-stat {
+    padding: 0.55rem 0.65rem;
+    border-radius: 0.4rem;
+    background: color-mix(in srgb, var(--surface-ground, #0f172a) 70%, transparent);
+}
+.chart-game-stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.15;
+}
+.chart-game-stat-label {
+    font-size: 0.68rem;
+    color: var(--text-color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 0.15rem;
+}
 .elo-line-path.elo-line-perf {
     stroke: var(--warning, #fbbf24);
     stroke-width: 2.5;
@@ -653,6 +766,7 @@ html[data-theme="dark"] .app-brand-king-black {
     stroke: var(--surface-card, #1f2937);
     stroke-width: 1.5;
     pointer-events: none;
+    transition: r 0.12s ease, opacity 0.12s ease;
 }
 .elo-perf-dot.is-latest { fill: var(--warning, #fbbf24); }
 .elo-legend {
