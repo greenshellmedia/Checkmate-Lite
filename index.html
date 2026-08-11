@@ -30,12 +30,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap">
-    <link rel="stylesheet" href="chess-landing.css?v=20260811h">
+    <link rel="stylesheet" href="chess-landing.css?v=20260811i">
+    <script src="js/clean-url.js"></script>
 </head>
 <body class="cm-landing">
     <div class="cm-shell">
         <header class="cm-top">
-            <a class="cm-logo" href="chess.html">
+            <a class="cm-logo" href="./">
                 <span class="cm-logo-icons" aria-hidden="true">
                     <span class="cm-logo-king cm-logo-king-white">♔</span>
                     <span class="cm-logo-king cm-logo-king-black">♚</span>
@@ -170,36 +171,179 @@
         </footer>
     </div>
 
-    <div id="pro-waitlist-overlay" class="cm-modal-overlay" role="presentation" onclick="if (event.target === this) closeProWaitlistModal()">
-        <div class="cm-modal" role="dialog" aria-modal="true" aria-labelledby="pro-waitlist-title">
-            <h2 id="pro-waitlist-title">Coming soon</h2>
-            <p>The Pro waitlist isn’t open for emails yet — we’re finishing the product. Thanks for the interest; check back soon, or jump into the Lite app meanwhile.</p>
-            <div class="flex justify-content-end gap-2">
-                <a href="chess/app/" class="p-button p-component p-button-outlined">
-                    <span class="p-button-label">Try Lite</span>
-                </a>
-                <button type="button" class="p-button p-component" onclick="closeProWaitlistModal()">
-                    <span class="p-button-label">Got it</span>
-                </button>
+    <div id="pro-waitlist-overlay" class="cm-modal-overlay" role="presentation" aria-hidden="true" onclick="if (event.target === this) closeProWaitlistModal()">
+        <div class="cm-modal cm-waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="pro-waitlist-title">
+            <div id="pro-waitlist-form-view">
+                <h2 id="pro-waitlist-title">Join the Pro waitlist</h2>
+                <p>Be first to hear when cloud history, sync, and play modes land. We’ll only email you about what you opt into below.</p>
+                <form id="pro-waitlist-form" class="cm-waitlist-form" novalidate>
+                    <div class="cm-waitlist-row">
+                        <div class="cm-field">
+                            <label for="wl-first-name">First name</label>
+                            <input id="wl-first-name" name="firstName" type="text" class="p-inputtext p-component" autocomplete="given-name" required maxlength="80">
+                        </div>
+                        <div class="cm-field">
+                            <label for="wl-last-name">Last name</label>
+                            <input id="wl-last-name" name="lastName" type="text" class="p-inputtext p-component" autocomplete="family-name" required maxlength="80">
+                        </div>
+                    </div>
+                    <div class="cm-field">
+                        <label for="wl-email">Email</label>
+                        <input id="wl-email" name="email" type="email" class="p-inputtext p-component" autocomplete="email" required maxlength="254" inputmode="email">
+                    </div>
+                    <div class="cm-checks">
+                        <label class="cm-check">
+                            <input id="wl-pro-updates" name="proUpdates" type="checkbox" required>
+                            <span>I agree to receive updates about the Checkmate More Pro feature set.</span>
+                        </label>
+                        <label class="cm-check">
+                            <input id="wl-other-content" name="otherContent" type="checkbox">
+                            <span>Also send me other Checkmate More related content and product news.</span>
+                        </label>
+                    </div>
+                    <p id="pro-waitlist-status" class="cm-waitlist-status" role="status" aria-live="polite" hidden></p>
+                    <div class="cm-waitlist-actions">
+                        <button type="button" class="p-button p-component p-button-text" onclick="closeProWaitlistModal()">
+                            <span class="p-button-label">Cancel</span>
+                        </button>
+                        <button type="submit" id="pro-waitlist-submit" class="p-button p-component">
+                            <span class="p-button-label">Join waitlist</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div id="pro-waitlist-success-view" hidden>
+                <h2>You’re on the list</h2>
+                <p id="pro-waitlist-success-copy">Thanks — we’ll email you when Pro is ready. Meanwhile, the Lite app is free and runs entirely in your browser.</p>
+                <div class="cm-waitlist-actions">
+                    <a href="chess/app/" class="p-button p-component p-button-outlined">
+                        <span class="p-button-label">Try Lite</span>
+                    </a>
+                    <button type="button" class="p-button p-component" onclick="closeProWaitlistModal()">
+                        <span class="p-button-label">Done</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+    var PRO_WAITLIST_URL = 'https://api.freewaitlists.com/waitlists/cmsov6sv502ye01qt4iet7hp7';
+    var waitlistBusy = false;
+
     function openProWaitlistModal() {
         var el = document.getElementById('pro-waitlist-overlay');
-        if (el) {
-            el.classList.add('is-open');
-            el.setAttribute('aria-hidden', 'false');
-        }
+        if (!el) return;
+        resetProWaitlistForm();
+        el.classList.add('is-open');
+        el.setAttribute('aria-hidden', 'false');
+        var first = document.getElementById('wl-first-name');
+        if (first) setTimeout(function () { first.focus(); }, 40);
     }
+
     function closeProWaitlistModal() {
+        if (waitlistBusy) return;
         var el = document.getElementById('pro-waitlist-overlay');
-        if (el) {
-            el.classList.remove('is-open');
-            el.setAttribute('aria-hidden', 'true');
+        if (!el) return;
+        el.classList.remove('is-open');
+        el.setAttribute('aria-hidden', 'true');
+    }
+
+    function resetProWaitlistForm() {
+        var form = document.getElementById('pro-waitlist-form');
+        var formView = document.getElementById('pro-waitlist-form-view');
+        var successView = document.getElementById('pro-waitlist-success-view');
+        var status = document.getElementById('pro-waitlist-status');
+        if (form) form.reset();
+        if (formView) formView.hidden = false;
+        if (successView) successView.hidden = true;
+        if (status) {
+            status.hidden = true;
+            status.textContent = '';
+            status.className = 'cm-waitlist-status';
+        }
+        setWaitlistBusy(false);
+    }
+
+    function setWaitlistBusy(busy) {
+        waitlistBusy = busy;
+        var btn = document.getElementById('pro-waitlist-submit');
+        if (!btn) return;
+        btn.disabled = busy;
+        var label = btn.querySelector('.p-button-label');
+        if (label) label.textContent = busy ? 'Joining…' : 'Join waitlist';
+    }
+
+    function showWaitlistStatus(message, isError) {
+        var status = document.getElementById('pro-waitlist-status');
+        if (!status) return;
+        status.hidden = !message;
+        status.textContent = message || '';
+        status.className = 'cm-waitlist-status' + (isError ? ' is-error' : '');
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    async function submitProWaitlist(e) {
+        e.preventDefault();
+        if (waitlistBusy) return;
+
+        var firstName = (document.getElementById('wl-first-name').value || '').trim();
+        var lastName = (document.getElementById('wl-last-name').value || '').trim();
+        var email = (document.getElementById('wl-email').value || '').trim();
+        var proUpdates = !!document.getElementById('wl-pro-updates').checked;
+        var otherContent = !!document.getElementById('wl-other-content').checked;
+
+        if (!firstName || !lastName) {
+            showWaitlistStatus('Please enter your first and last name.', true);
+            return;
+        }
+        if (!email || !isValidEmail(email)) {
+            showWaitlistStatus('Please enter a valid email address.', true);
+            return;
+        }
+        if (!proUpdates) {
+            showWaitlistStatus('Please agree to receive Pro feature updates to join the waitlist.', true);
+            return;
+        }
+
+        setWaitlistBusy(true);
+        showWaitlistStatus('');
+
+        try {
+            var res = await fetch(PRO_WAITLIST_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: email,
+                    meta: {
+                        firstName: firstName,
+                        lastName: lastName,
+                        name: firstName + ' ' + lastName,
+                        source: 'landing-page',
+                        proUpdates: proUpdates,
+                        otherContent: otherContent
+                    }
+                })
+            });
+            var data = null;
+            try { data = await res.json(); } catch (_) { data = null; }
+            if (!res.ok) {
+                var msg = (data && (data.message || data.error)) || ('Could not join waitlist (' + res.status + '). Try again.');
+                throw new Error(typeof msg === 'string' ? msg : 'Could not join waitlist. Try again.');
+            }
+            document.getElementById('pro-waitlist-form-view').hidden = true;
+            document.getElementById('pro-waitlist-success-view').hidden = false;
+            setWaitlistBusy(false);
+        } catch (err) {
+            showWaitlistStatus(err.message || 'Something went wrong. Please try again.', true);
+            setWaitlistBusy(false);
         }
     }
+
+    document.getElementById('pro-waitlist-form').addEventListener('submit', submitProWaitlist);
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeProWaitlistModal();
     });
