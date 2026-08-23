@@ -1262,6 +1262,9 @@ function renderProfileHeader(profile) {
         <span class="p-tag p-component">Black win ${blackWin}</span>
         ${eloBits || '<span class="p-tag p-component">ELO —</span>'}
     `;
+
+    const accountPromo = document.getElementById('profile-app-promo');
+    if (accountPromo) accountPromo.hidden = profile.games < 2;
 }
 
 function qualityRowsHtml(profile) {

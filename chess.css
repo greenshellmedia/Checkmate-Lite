@@ -134,6 +134,106 @@ html, body {
     color-scheme: light dark;
 }
 
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.lite-review-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: stretch;
+}
+.lite-review-select {
+    min-width: min(19rem, 100%);
+    font-weight: 600;
+}
+
+.app-upgrade-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid color-mix(in srgb, var(--primary-color) 42%, var(--surface-border));
+    border-radius: var(--border-radius);
+    background: linear-gradient(120deg,
+        color-mix(in srgb, var(--primary-color) 10%, var(--surface-card)),
+        color-mix(in srgb, var(--success) 7%, var(--surface-card)));
+}
+.app-upgrade-card[hidden] { display: none !important; }
+.app-upgrade-copy { min-width: 0; }
+.app-upgrade-kicker {
+    display: block;
+    margin-bottom: 0.15rem;
+    color: var(--primary-color);
+    font-family: var(--font-data);
+    font-size: 0.68rem;
+    font-variation-settings: "wght" 700, "wdth" 82;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.app-upgrade-copy strong {
+    display: block;
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+}
+.app-upgrade-copy p {
+    margin: 0.25rem 0 0;
+    color: var(--text-color-secondary);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+.app-upgrade-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    margin: 0.45rem 0 0;
+    padding-left: 1rem;
+    color: var(--text-color-secondary);
+    font-size: 0.76rem;
+}
+.app-upgrade-features li::marker { color: var(--success); }
+.app-upgrade-actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.app-upgrade-actions .p-button { text-decoration: none; white-space: nowrap; }
+.review-app-promo { align-items: flex-start; }
+
+.lite-promo-dialog { width: min(590px, 100%); }
+.lite-promo-icon {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 0.8rem;
+    place-items: center;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--primary-color) 14%, transparent);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+.lite-promo-points { display: grid; gap: 0.5rem; }
+.lite-promo-points span { color: var(--text-color-secondary); font-size: 0.85rem; }
+.lite-promo-points i { width: 1.25rem; color: var(--success); }
+
+@media (max-width: 760px) {
+    .lite-review-actions, .lite-review-select, .lite-review-actions .p-button { width: 100%; }
+    .app-upgrade-card { align-items: stretch; flex-direction: column; }
+    .app-upgrade-actions .p-button { flex: 1 1 auto; justify-content: center; }
+}
+
 /* Keep Prime components on Inter (theme tokens otherwise pull Roboto) */
 body,
 .p-component,

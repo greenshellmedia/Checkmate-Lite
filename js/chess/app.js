@@ -2,32 +2,42 @@
 
 function setScanButtonsReady() {
     const btn = document.getElementById('btnScan');
-    const single = document.getElementById('btnSingle');
     btn.disabled = false;
-    btn.innerHTML = '<span class="p-button-icon-left pi pi-search"></span><span class="p-button-label">Review Profile</span>';
-    if (single) {
-        single.disabled = false;
-        single.style.display = '';
-    }
+    updateReviewModeButton();
 }
 
 function setScanButtonsBusy(busy) {
     const btn = document.getElementById('btnScan');
-    const single = document.getElementById('btnSingle');
     if (busy) {
         btn.style.display = 'none';
-        if (single) single.style.display = 'none';
+        const mode = document.getElementById('review-mode');
+        if (mode) mode.style.display = 'none';
         document.getElementById('btnStop').style.display = 'inline-flex';
     } else {
         btn.style.display = '';
-        if (single) single.style.display = '';
+        const mode = document.getElementById('review-mode');
+        if (mode) mode.style.display = '';
         document.getElementById('btnStop').style.display = 'none';
     }
 }
 
+function updateReviewModeButton() {
+    const btn = document.getElementById('btnScan');
+    const mode = document.getElementById('review-mode')?.value || 'single';
+    if (!btn || btn.disabled) return;
+    btn.innerHTML = mode === 'profile'
+        ? '<span class="p-button-icon-left pi pi-chart-bar"></span><span class="p-button-label">Compare last 10</span>'
+        : '<span class="p-button-icon-left pi pi-eye"></span><span class="p-button-label">Choose game</span>';
+}
+
+function startSelectedAnalysis() {
+    const mode = document.getElementById('review-mode')?.value || 'single';
+    if (mode === 'profile') startAnalysis();
+    else openSingleGamePicker();
+}
+
 async function initApp() {
     const btn = document.getElementById('btnScan');
-    const single = document.getElementById('btnSingle');
     log(`Build ${APP_BUILD}`);
     
     log("Fetching opening book...");
@@ -94,11 +104,34 @@ async function initApp() {
     } catch (err) { 
         log(`Engine Error: ${err.message}`, true);
         btn.innerHTML = '<span class="p-button-icon-left pi pi-exclamation-triangle"></span><span class="p-button-label">Engine Error</span>';
-        if (single) {
-            single.disabled = true;
-            single.innerHTML = '<span class="p-button-icon-left pi pi-exclamation-triangle"></span><span class="p-button-label">Engine Error</span>';
-        }
     }
+}
+
+function readLiteRunCount() {
+    try { return Math.max(0, Number(localStorage.getItem(LITE_RUN_COUNT_KEY)) || 0); }
+    catch (_) { return 0; }
+}
+
+function recordLiteRunCompletion() {
+    const count = readLiteRunCount() + 1;
+    try { localStorage.setItem(LITE_RUN_COUNT_KEY, String(count)); } catch (_) {}
+    if (count > 1) {
+        let seen = false;
+        try { seen = localStorage.getItem(LITE_PROMO_SEEN_KEY) === '1'; } catch (_) {}
+        if (!seen) setTimeout(openLitePromo, 350);
+    }
+}
+
+function openLitePromo() {
+    const overlay = document.getElementById('lite-promo-overlay');
+    if (!overlay) return;
+    overlay.style.display = 'flex';
+    try { localStorage.setItem(LITE_PROMO_SEEN_KEY, '1'); } catch (_) {}
+}
+
+function closeLitePromo() {
+    const overlay = document.getElementById('lite-promo-overlay');
+    if (overlay) overlay.style.display = 'none';
 }
 
 function applyAnalysisToUi(game, analysis, gameKey, stats, opts = {}) {
@@ -122,6 +155,11 @@ function applyAnalysisToUi(game, analysis, gameKey, stats, opts = {}) {
     hydrateCachedAnalysis(analysis, analysis.pgn);
     enrichAnalysisMeta(analysis);
     ingestAnalysis(profileState, analysis, gameKey);
+    if (profileState?.analyzedGames?.length > SCAN_NEW_LIMIT) {
+        sortAnalyzedGames(profileState);
+        profileState.analyzedGames = profileState.analyzedGames.slice(0, SCAN_NEW_LIMIT);
+        rebuildProfileAggregates(profileState);
+    }
     // During parallel scans, defer heavy overview rebuilds so workers aren't starved by main-thread work
     const delay = opts.snapshotDelay ?? (typeof isScanning !== 'undefined' && isScanning ? 2200 : 280);
     scheduleAnalysisSnapshot(profileState, { delay });
@@ -296,12 +334,18 @@ async function selectSingleGame(index) {
         }
         enrichAnalysisMeta(analysis);
         ingestAnalysis(profileState, analysis, item.gameKey);
+        if (profileState.analyzedGames.length > SCAN_NEW_LIMIT) {
+            sortAnalyzedGames(profileState);
+            profileState.analyzedGames = profileState.analyzedGames.slice(0, SCAN_NEW_LIMIT);
+            rebuildProfileAggregates(profileState);
+        }
         rebuildAnalysisSnapshot(profileState);
         refreshDashboard();
 
         singleGameBusy = false;
         closeSingleGamePicker();
         openReview(analysis);
+        recordLiteRunCompletion();
     } catch (e) {
         isScanning = false;
         status.innerText = `Analysis failed: ${e.message}`;
@@ -318,40 +362,20 @@ async function selectSingleGame(index) {
 }
 
 async function fetchNewGamesToAnalyze(username, cachedKeys, limit = SCAN_NEW_LIMIT) {
-    const res = await fetch(`https://api.chess.com/pub/player/${username.toLowerCase()}/games/archives`);
-    const data = await res.json();
-    if (!data.archives || data.archives.length === 0) throw new Error("No games found");
-
-    const archives = [...data.archives].reverse(); // newest month first
+    // Deliberately inspect only the latest `limit` games. Lite must never walk older
+    // archives looking for extra uncached games; connected history belongs in the app.
+    const latestGames = await fetchRecentGames(username, limit);
     const newGames = [];
-    let cachedStreak = 0;
     let scanned = 0;
     let skippedCached = 0;
-
-    for (const archiveUrl of archives) {
+    for (const g of latestGames) {
         if (!isScanning) break;
-        if (newGames.length >= limit) break;
-        if (cachedKeys.size && cachedStreak >= CACHE_CATCHUP_STREAK) break;
-
-        log(`Fetching archive ${archiveUrl.split('/').slice(-2).join('/')}...`);
-        const gRes = await fetch(archiveUrl);
-        const gData = await gRes.json();
-        const monthGames = [...(gData.games || [])].reverse();
-
-        for (const g of monthGames) {
-            if (!isScanning) break;
-            if (newGames.length >= limit) break;
-            scanned++;
-            const gameKey = getGameKey(g);
-            if (cachedKeys.has(gameKey) || hasCachedAnalysis(username, gameKey)) {
-                skippedCached++;
-                cachedStreak++;
-                cachedKeys.add(gameKey);
-                // Newest-first: once we've hit a run of known games, older months are already covered
-                if (cachedKeys.size && cachedStreak >= CACHE_CATCHUP_STREAK) break;
-                continue;
-            }
-            cachedStreak = 0;
+        scanned++;
+        const gameKey = getGameKey(g);
+        if (cachedKeys.has(gameKey) || hasCachedAnalysis(username, gameKey)) {
+            skippedCached++;
+            cachedKeys.add(gameKey);
+        } else {
             newGames.push({ game: g, gameKey });
         }
     }
@@ -388,7 +412,9 @@ async function startAnalysis() {
         }
 
         // Restore every game already processed at this CACHE_VERSION
-        const cachedAnalyses = loadAllCachedAnalyses(user);
+        const cachedAnalyses = loadAllCachedAnalyses(user)
+            .sort((a, b) => (b.endTime || 0) - (a.endTime || 0))
+            .slice(0, SCAN_NEW_LIMIT);
         const cachedKeys = new Set(cachedAnalyses.map(a => a.gameKey).filter(Boolean));
         profileState.analyzedGames = cachedAnalyses;
         sortAnalyzedGames(profileState);
@@ -419,6 +445,7 @@ async function startAnalysis() {
             sortAnalyzedGames(profileState);
             renderProfileOverview(profileState);
             log('Nothing new to analyze — using cached games only.');
+            recordLiteRunCompletion();
             stopAnalysis();
             return;
         }
@@ -467,9 +494,11 @@ async function startAnalysis() {
             renderProfileOverview(profileState);
             refreshDashboard();
         }
-        log(isScanning
+        const completedNormally = isScanning;
+        log(completedNormally
             ? `Done. Analyzed ${completed} new game${completed === 1 ? '' : 's'} · ${cacheSaves} saved · profile now ${profileState.games} total.`
             : `Stopped after ${completed} / ${totalNew} new games · profile has ${profileState.games} total.`);
+        if (completedNormally && profileState?.games) recordLiteRunCompletion();
     } catch (e) { log(`Analysis Error: ${e.message}`, true); }
     stopAnalysis();
 }
@@ -591,6 +620,8 @@ async function deepenCurrentReview() {
 // HTML onclick / onload bridge
 window.ChessApp = ChessApp;
 window.startAnalysis = startAnalysis;
+window.startSelectedAnalysis = startSelectedAnalysis;
+window.updateReviewModeButton = updateReviewModeButton;
 window.stopAnalysis = stopAnalysis;
 window.openSingleGamePicker = openSingleGamePicker;
 window.closeSingleGamePicker = closeSingleGamePicker;
@@ -614,6 +645,8 @@ window.clearMatchesSort = clearMatchesSort;
 window.openReviewFromStore = openReviewFromStore;
 window.openChartGameDialog = openChartGameDialog;
 window.closeChartGameDialog = closeChartGameDialog;
+window.openLitePromo = openLitePromo;
+window.closeLitePromo = closeLitePromo;
 window.confirmChartGameDialog = confirmChartGameDialog;
 window.openCoachEvidence = openCoachEvidence;
 window.deepenCurrentReview = deepenCurrentReview;
@@ -623,3 +656,7 @@ window.goToEnd = goToEnd;
 window.goToKeyMove = goToKeyMove;
 window.stepMove = stepMove;
 window.onload = initApp;
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeLitePromo();
+});

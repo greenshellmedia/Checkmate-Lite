@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
-    <link rel="stylesheet" href="../../chess.css?v=20260811n">
+    <link rel="stylesheet" href="../../chess.css?v=20260823a">
     <script src="../../js/clean-url.js"></script>
 </head>
 <body>
@@ -57,19 +57,40 @@
                     <i class="pi pi-user"></i>
                     <input type="text" id="username" class="p-inputtext p-component w-full" placeholder="Chess.com Username">
                 </span>
-                <div class="flex gap-2 flex-wrap">
-                    <button id="btnScan" type="button" class="p-button p-component" onclick="startAnalysis()" disabled>
+                <div class="lite-review-actions">
+                    <label class="sr-only" for="review-mode">Review mode</label>
+                    <select id="review-mode" class="p-inputtext p-component lite-review-select" onchange="updateReviewModeButton()">
+                        <option value="single" selected>Select a game from the last 10</option>
+                        <option value="profile">Compare all from the last 10</option>
+                    </select>
+                    <button id="btnScan" type="button" class="p-button p-component" onclick="startSelectedAnalysis()" disabled>
                         <span class="p-button-icon-left pi pi-spin pi-spinner"></span>
                         <span class="p-button-label">Initializing…</span>
-                    </button>
-                    <button id="btnSingle" type="button" class="p-button p-component p-button-outlined" onclick="openSingleGamePicker()" disabled>
-                        <span class="p-button-icon-left pi pi-eye"></span>
-                        <span class="p-button-label">Review single game</span>
                     </button>
                     <button id="btnStop" type="button" class="p-button p-component p-button-danger" onclick="stopAnalysis()">
                         <span class="p-button-icon-left pi pi-stop"></span>
                         <span class="p-button-label">Stop</span>
                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lite-promo-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeLitePromo()">
+        <div class="p-card single-game-dialog lite-promo-dialog" role="dialog" aria-modal="true" aria-labelledby="lite-promo-title">
+            <div class="p-card-body">
+                <div class="lite-promo-icon" aria-hidden="true"><i class="pi pi-star-fill"></i></div>
+                <div id="lite-promo-title" class="p-card-title mb-2">Keep your chess progress connected</div>
+                <p class="text-color-secondary mt-0">You’ve used Lite more than once. A free CheckmateMore account adds game caching and starter coaching across your games; Pro unlocks deeper analysis, longer-term patterns, and richer coaching.</p>
+                <div class="lite-promo-points">
+                    <span><i class="pi pi-check"></i> Free account with cached game history</span>
+                    <span><i class="pi pi-check"></i> Starter coaching and profile insights</span>
+                    <span><i class="pi pi-star"></i> Pro depth, trends, and coaching plans</span>
+                </div>
+                <div class="flex flex-wrap justify-content-end gap-2 mt-4">
+                    <button type="button" class="p-button p-component p-button-text" onclick="closeLitePromo()"><span class="p-button-label">Keep using Lite</span></button>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component p-button-outlined"><span class="p-button-label">Create free account</span></a>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Explore Pro</span></a>
                 </div>
             </div>
         </div>
@@ -153,6 +174,10 @@
                 </div>
             </div>
         </div>
+        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Connected profile analysis">
+            <div class="app-upgrade-copy"><span class="app-upgrade-kicker">Free with an account</span><strong>Turn these games into a connected profile.</strong><p>Keep cached game history, starter coaching, and better profile analysis across visits. Upgrade to Pro when you want deeper trends and coaching plans.</p></div>
+            <div class="app-upgrade-actions"><a href="https://app.checkmatemore.com/" class="p-button p-component p-button-outlined"><span class="p-button-label">Create free account</span></a><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">View Pro features</span></a></div>
+        </aside>
 
         <div id="dash-tabs" class="p-tabview p-component">
             <div class="p-tabview-nav-container">
@@ -402,6 +427,11 @@
 
             <div id="review-matchup" class="review-matchup mb-3"></div>
 
+            <aside class="app-upgrade-card review-app-promo mb-3" aria-label="CheckmateMore account analysis">
+                <div class="app-upgrade-copy"><span class="app-upgrade-kicker">Continue in CheckmateMore</span><strong>Save this review and analyse it with more context.</strong><p>The free account tier includes game caching and starter coaching. The full app adds:</p><ul class="app-upgrade-features"><li>Deeper, multi-pass engine analysis</li><li>Connected profile trends and recurring patterns</li><li>Critical-position practice, annotations, and richer coaching explanations</li></ul></div>
+                <div class="app-upgrade-actions"><a href="https://app.checkmatemore.com/" class="p-button p-component p-button-outlined"><span class="p-button-label">Use free account</span></a><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Explore Pro analysis</span></a></div>
+            </aside>
+
             <div id="game-story-box" class="p-card game-story mb-3" style="display:none">
                 <div class="p-card-body">
                     <div class="game-story-kicker" id="game-story-kicker">Why you won</div>
@@ -548,15 +578,15 @@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
-<script src="../../js/chess/constants.js?v=20260811h"></script>
+<script src="../../js/chess/constants.js?v=20260823a"></script>
 <script src="../../js/chess/tactics.js?v=20260811h"></script>
 <script src="../../js/chess/openings.js?v=20260811h"></script>
 <script src="../../js/chess/learning.js?v=20260811h"></script>
 <script src="../../js/chess/cache.js?v=20260811h"></script>
 <script src="../../js/chess/analysis.js?v=20260811h"></script>
 <script src="../../js/chess/pieces.js?v=20260811h"></script>
-<script src="../../js/chess/ui.js?v=20260811h"></script>
+<script src="../../js/chess/ui.js?v=20260823a"></script>
 <script src="../../js/chess/insights.js?v=20260811h"></script>
-<script src="../../js/chess/app.js?v=20260811h"></script>
+<script src="../../js/chess/app.js?v=20260823a"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 const APP_ASSET_ROOT = '../../';
 const STOCKFISH_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/stockfish.js/10.0.2/stockfish.js';
 const STOCKFISH_LOCAL = APP_ASSET_ROOT + 'stockfish.js?v=20260803';
-const APP_BUILD = '2026-08-11h';
+const APP_BUILD = '2026-08-23a';
 const CACHE_VERSION = 14;
 /** Soft ceiling for estimated Game ELO (IM territory). */
 const GAME_ELO_IM = 2400;
@@ -121,12 +121,13 @@ const ANALYSIS_PRESETS = {
 };
 const DEFAULT_ANALYSIS_PRESET = 'recommended';
 const ANALYSIS_PRESET_ORDER = ['lite', 'familiar', 'recommended', 'deep', 'imgm'];
-/** Max NEW (uncached) games to analyze in one scan. Cached games accumulate beyond this. */
-const SCAN_NEW_LIMIT = 100;
-/** Newest-first archive walk stops after this many consecutive already-cached games. */
-const CACHE_CATCHUP_STREAK = 10;
+/** Lite only works with the latest ten games. Larger connected histories live in the account app. */
+const SCAN_NEW_LIMIT = 10;
 /** Games shown in the single-game picker. */
 const SINGLE_GAME_PICK_LIMIT = 10;
+const PRO_APP_URL = 'https://app.checkmatemore.com/';
+const LITE_RUN_COUNT_KEY = 'checkmateMore:liteRuns:v1';
+const LITE_PROMO_SEEN_KEY = 'checkmateMore:litePromoSeen:v1';
 const PARALLEL_GAMES = Math.min(4, navigator.hardwareConcurrency || 4);
 
 const INTERNAL_BOOK = [
