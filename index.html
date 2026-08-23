@@ -1,352 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkmate More — Chess analysis that helps you win more</title>
-    <meta name="description" content="Checkmate More reviews your Chess.com games in the browser with Stockfish — accuracy, coaching, openings, and famous-game theory. Try the free Lite app with no account, or join the Pro waitlist.">
-    <meta name="color-scheme" content="light dark">
-    <script>
-    (function () {
-        var base = 'https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/themes/';
-        var light = base + 'md-light-indigo/theme.css';
-        var dark = base + 'md-dark-indigo/theme.css';
-        var link = document.createElement('link');
-        link.id = 'pf-theme';
-        link.rel = 'stylesheet';
-        var mq = window.matchMedia('(prefers-color-scheme: dark)');
-        function apply(isDark) {
-            link.href = isDark ? dark : light;
-            document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
-            document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
-        }
-        apply(mq.matches);
-        document.head.appendChild(link);
-        if (mq.addEventListener) mq.addEventListener('change', function (e) { apply(e.matches); });
-        else if (mq.addListener) mq.addListener(function (e) { apply(e.matches); });
-    })();
-    </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/primeng.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
-    <link rel="stylesheet" href="chess-landing.css?v=20260811m">
-    <script src="js/clean-url.js"></script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CheckmateMore Pro — Turn your games into a coaching plan</title>
+  <meta name="description" content="CheckmateMore Pro connects your games, coaching history, and progress insights. Try the Pro beta, or analyse a game instantly with free CheckmateMore Lite.">
+  <meta name="color-scheme" content="light dark">
+  <script>(function(){var b='https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/themes/',l=document.createElement('link'),m=matchMedia('(prefers-color-scheme: dark)');l.rel='stylesheet';l.id='pf-theme';function a(d){l.href=b+(d?'md-dark-indigo':'md-light-indigo')+'/theme.css';document.documentElement.dataset.theme=d?'dark':'light';document.documentElement.style.colorScheme=d?'dark':'light'}a(m.matches);document.head.appendChild(l);m.addEventListener&&m.addEventListener('change',function(e){a(e.matches)})})();</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/primeng.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
+  <link rel="stylesheet" href="chess-landing.css?v=20260823a"><script src="js/clean-url.js"></script>
 </head>
 <body class="cm-landing">
-    <div class="cm-shell">
-        <header class="cm-top">
-            <a class="cm-logo" href="./">
-                <span class="cm-logo-icons" aria-hidden="true">
-                    <span class="cm-logo-king cm-logo-king-white">♔</span>
-                    <span class="cm-logo-king cm-logo-king-black">♚</span>
-                </span>
-                <span>Checkmate More</span>
-            </a>
-            <span class="cm-top-note">Lite is free · runs in your browser</span>
-        </header>
+<header class="cm-top"><div class="cm-wrap cm-nav-wrap">
+  <a class="cm-logo" href="./" aria-label="CheckmateMore home"><span aria-hidden="true">♔♚</span>CheckmateMore</a>
+  <nav class="cm-nav" aria-label="Primary navigation"><a href="#compare">Lite vs Pro</a><a href="#features">Pro features</a><a href="chess/app/">Use Lite</a><a href="https://app.checkmatemore.com/" class="p-button p-component p-button-sm"><span class="p-button-label">Try Pro Version</span></a></nav>
+</div></header>
 
-        <section class="cm-hero" aria-label="Introduction">
-            <h1 class="cm-brand">Checkmate More</h1>
-            <p class="cm-headline">Turn Chess.com games into clearer coaching — without uploading your life to a server.</p>
-            <p class="cm-lede">Stockfish runs on your machine. You get move labels, accuracy, openings, famous-game theory, and habits you can actually train.</p>
-            <div class="cm-cta-row">
-                <button type="button" class="p-button p-component" onclick="openProWaitlistModal()">
-                    <span class="p-button-icon-left pi pi-bolt"></span>
-                    <span class="p-button-label">Join Pro Waitlist</span>
-                </button>
-                <a href="chess/app/" class="p-button p-component p-button-outlined">
-                    <span class="p-button-icon-left pi pi-play"></span>
-                    <span class="p-button-label">Use Lite App (No Account Required)</span>
-                </a>
-            </div>
-        </section>
+<main>
+<section class="cm-hero" aria-labelledby="hero-title"><div class="cm-wrap cm-hero-grid">
+  <div class="cm-hero-copy"><p class="cm-eyebrow">♞ Chess analysis that grows with your game</p><h1 id="hero-title">Go beyond the <span>blunder review.</span></h1>
+    <p class="cm-lede">CheckmateMore Pro turns your games into a coaching plan. Track your progress, understand the ideas behind your moves, and build a clearer picture of the habits shaping your chess.</p>
+    <div class="cm-cta"><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Try Pro Version</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a><a href="chess/app/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore the free Lite version</span></a></div>
+    <p class="cm-beta"><span></span><strong>Now in beta</strong> — explore the full coaching experience and help shape what comes next.</p>
+  </div>
+  <div class="cm-visual" aria-hidden="true"><div class="cm-board"><b>♚</b><em>♞</em></div><div class="cm-coach"><small>WEEKLY FOCUS</small><strong>Convert the advantage</strong><p>You reach strong middlegames. Next, choose the simplest winning plan.</p><div><span></span></div><small>3 evidence positions ready</small></div><div class="cm-stat"><small>PATTERN</small><strong>+8.4%</strong><span>Endgame accuracy</span></div></div>
+</div></section>
 
-        <section class="cm-section" id="what">
-            <p class="cm-kicker">What we do</p>
-            <h2>Game review that talks like a coach, not a spreadsheet.</h2>
-            <p>Paste a Chess.com username. We pull your recent games, run an engine pass in the browser, and build a profile of how you actually play — not a generic tip dump.</p>
-            <ul class="cm-points">
-                <li>
-                    <strong>Move quality you can trust the shape of</strong>
-                    <span>Expected-points labels aligned with modern review (Best → Blunder), plus our Book / Theory split so openings and famous games stay distinct.</span>
-                </li>
-                <li>
-                    <strong>Form across many games</strong>
-                    <span>Accuracy trends, Game ELO estimates, phase CPL, punish rates, piece habits, and heatmaps — so one blunder doesn’t define the story.</span>
-                </li>
-                <li>
-                    <strong>Coaching with receipts</strong>
-                    <span>Theme tags, material events, and clickable evidence moves. Learn openings and theory lines from the same catalog we use to classify your games.</span>
-                </li>
-            </ul>
-        </section>
+<div class="cm-strip"><div class="cm-wrap"><span>♟</span><p>Your games. Your patterns. <strong>A plan for what to improve next.</strong></p></div></div>
 
-        <section class="cm-section" id="how">
-            <p class="cm-kicker">How we do it</p>
-            <h2>Local Stockfish. Your data stays with you.</h2>
-            <p>Lite is fully client-side: Chess.com’s public API for games, Stockfish in a web worker for analysis, and localStorage for your cache. Depth presets from Lite Rapid to IM &amp; GM let you trade speed for sharpness.</p>
-            <ul class="cm-points">
-                <li>
-                    <strong>Parallel game scans</strong>
-                    <span>Multiple engine workers chew through new games while already-analyzed ones load from cache at the depth you chose.</span>
-                </li>
-                <li>
-                    <strong>Critical moments, not noise</strong>
-                    <span>On deeper presets we re-search sharp swings; Familiar stays closer to what other online engines feel like day to day.</span>
-                </li>
-                <li>
-                    <strong>Privacy by architecture</strong>
-                    <span>No Checkmate More account for Lite. Analysis never leaves your browser session’s machine.</span>
-                </li>
-            </ul>
-        </section>
+<section class="cm-section" id="compare" aria-labelledby="compare-title"><div class="cm-wrap">
+  <p class="cm-kicker">Choose your experience</p><h2 id="compare-title">Start free. Unlock the full picture with Pro.</h2><p class="cm-intro">Lite gives you a focused review right now. Pro connects those reviews into a coaching history that becomes more useful over time.</p>
+  <div class="cm-comparison">
+    <article class="cm-plan"><div class="cm-plan-head"><span>♙</span><div><h3>CheckmateMore Lite</h3><p>Free, instant, no account needed.</p></div></div><p class="cm-plan-intro">Analyse an individual game in your browser and get a fast, practical breakdown.</p>
+      <ul class="cm-checks"><li>Analyse a game without creating an account</li><li>Move classifications and evaluation changes</li><li>Opening, middlegame, and endgame summaries</li><li>Lightweight coaching notes for a single game</li><li>Interactive board review and move playback</li><li>Opening explorer and theory learning tools</li><li>Play simple local practice bots</li><li>Your analysis stays focused on the game in front of you</li></ul>
+      <p class="cm-closing">Perfect for a quick review after a game.</p><a href="chess/app/" class="p-button p-component p-button-outlined"><span class="p-button-label">Use Lite for free</span></a>
+    </article>
+    <article class="cm-plan cm-pro"><b class="cm-badge">BETA</b><div class="cm-plan-head"><span>♛</span><div><h3>CheckmateMore Pro</h3><p>Your connected chess profile, coaching history, and deeper analysis.</p></div></div><p class="cm-plan-intro">Connect your chess account and turn analysed games into a coaching system that improves over time.</p>
+      <div class="cm-summary"><span><i class="pi pi-folder-open"></i> Connected library</span><span><i class="pi pi-compass"></i> Personal coaching</span><span><i class="pi pi-chart-line"></i> Progress insights</span><span><i class="pi pi-bolt"></i> Guided practice</span></div>
+      <p class="cm-closing">Built for players who want more than a verdict — they want to know what to work on next.</p><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Try Pro Version</span></a><p class="cm-paid">Pro features are available through a low-cost subscription. Beta access and available features may evolve as we improve the platform.</p>
+    </article>
+  </div>
+</div></section>
 
-        <section class="cm-section" id="plans">
-            <p class="cm-kicker">Lite &amp; Pro</p>
-            <h2>Start free. Pro is on the way.</h2>
-            <div class="cm-split">
-                <div class="cm-panel">
-                    <h3>Lite — available now</h3>
-                    <p>Full local engine review for your Chess.com games: presets, coaching, openings, theory, and stats. No signup. Perfect for grinding your own games tonight.</p>
-                </div>
-                <div class="cm-panel">
-                    <h3>Pro — coming soon</h3>
-                    <p>Cloud history, automatic sync, play modes, and cross-platform sources — so coaching can see months of patterns, not just what fits in localStorage.</p>
-                </div>
-            </div>
-        </section>
+<section class="cm-section cm-tinted" id="features" aria-labelledby="features-title"><div class="cm-wrap">
+  <p class="cm-kicker">The Pro experience</p><h2 id="features-title">A coaching system built around how you play.</h2><p class="cm-intro">Bring your games together, find the ideas that recur, and turn them into practical work for the week ahead.</p>
+  <div class="cm-features">
+    <article><b>01</b><i class="pi pi-folder-open"></i><h3>Connected game library</h3><ul><li>Import and organise your analysed games</li><li>Search, filter, sort, save filters, and revisit key games</li><li>Track accuracy, estimated game strength, blunders, openings, and results over time</li><li>Review opening-book context, theory alternatives, and leave-book moments</li></ul></article>
+    <article class="accent"><b>02</b><i class="pi pi-compass"></i><h3>Personal coaching</h3><ul><li>Weekly coaching reviews built from your own games</li><li>One to three practical objectives with evidence positions</li><li>Model answers, best lines, and measurable success conditions</li><li>See recurring habits, emerging issues, and improvements that have held over enough games</li><li>Tactical, strategic, opening, endgame, and time-management themes</li></ul></article>
+    <article><b>03</b><i class="pi pi-search"></i><h3>Deeper game analysis</h3><ul><li>Multi-depth engine analysis and richer move context</li><li>Game plans, strategies, attacks, defences, tendencies, and human explanations</li><li>Endgame insights including king activity, passed pawns, rook activity, opposition, pawn majorities, and conversion technique</li><li>Clock-data insights when the source game provides timing information</li><li>Save annotations, bookmarks, critical positions, arrows, and highlights</li></ul></article>
+    <article><b>04</b><i class="pi pi-chart-line"></i><h3>Progress and profile insights</h3><ul><li>Weekly rating, accuracy, and phase-score trends</li><li>Opening, middlegame, and endgame performance over time</li><li>Opening and variation strengths and weaknesses based on how you actually play</li><li>Coaching dossiers and deeper profile analysis where available</li><li>Public and external-player profile exploration</li></ul></article>
+    <article><b>05</b><i class="pi pi-bolt"></i><h3>Practice and bots</h3><ul><li>Play against preset bots</li><li>Coach mode with suggested moves and explanations</li><li>Play critical positions again to practise a better continuation</li><li>Your personal playing-style bot as the product develops</li></ul></article>
+  </div>
+</div></section>
 
-        <section class="cm-section" id="roadmap">
-            <p class="cm-kicker">Pro roadmap</p>
-            <h2>Where Checkmate More is headed.</h2>
-            <p>Pro unlocks the long game: unlimited history, always-fresh stats, and ways to play that train the same habits we measure.</p>
-            <ul class="cm-roadmap">
-                <li>
-                    <strong>Cloud game storage</strong>
-                    <span>Unlimited analyzed games so the coach can show patterns you’ve fixed — and ones you’ve slipped on — over time.</span>
-                </li>
-                <li>
-                    <strong>Automatic data sync</strong>
-                    <span>Our backend polls your Chess.com profile and scans new games for you, so stats update without waiting on local engines.</span>
-                </li>
-                <li>
-                    <strong>Cross-platform compatibility</strong>
-                    <span>More than Chess.com — Lichess &amp; Duolingo integrations, plus onboard games with data import and API push.</span>
-                </li>
-                <li>
-                    <strong>Play mode</strong>
-                    <span>Bot levels that play differently each game, with customisable human “traits” so practice feels less scripted.</span>
-                </li>
-                <li>
-                    <strong>Multiplayer</strong>
-                    <span>Play vs friends or in ranked for ELO — keep competing while you keep learning.</span>
-                </li>
-                <li>
-                    <strong>Beat yourself mode</strong>
-                    <span>Train against a bot built from your scanned games — see how opponents experience your style by beating yourself.</span>
-                </li>
-                <li>
-                    <strong>Variant game modes</strong>
-                    <span>Bots and online play in custom variants with different pieces and rules.</span>
-                </li>
-                <li>
-                    <strong>Android &amp; iOS apps</strong>
-                    <span>Take Checkmate More with you — review and play on the go.</span>
-                </li>
-            </ul>
-            <div class="cm-cta-row" style="margin-top:1.75rem">
-                <button type="button" class="p-button p-component" onclick="openProWaitlistModal()">
-                    <span class="p-button-label">Join Pro Waitlist</span>
-                </button>
-                <a href="chess/app/" class="p-button p-component p-button-outlined">
-                    <span class="p-button-label">Open Lite App</span>
-                </a>
-            </div>
-        </section>
+<section class="cm-section cm-why" aria-labelledby="why-title"><div class="cm-wrap">
+  <div><p class="cm-kicker">More than a verdict</p><h2 id="why-title">Why Pro instead of a one-off engine review?</h2><p>A single review can tell you where a move went wrong. CheckmateMore Pro looks for the patterns behind it: the openings that repeatedly cause trouble, the plans you execute well, the habits you are correcting, and the positions worth practising again.</p></div>
+  <div class="cm-benefits"><article><span>♜</span><div><h3>See the pattern</h3><p>Spot repeat mistakes and strengths across games, not just one position.</p></div></article><article><span>♝</span><div><h3>Understand the why</h3><p>Turn engine lines into clear coaching explanations and practical objectives.</p></div></article><article><span>♟</span><div><h3>Measure progress</h3><p>Use weekly reviews and trend charts to see whether your work is paying off.</p></div></article></div>
+</div></section>
 
-        <footer class="cm-footer">
-            <span>© Checkmate More</span>
-            <a href="chess/app/">Open Lite app</a>
-        </footer>
-    </div>
+<section class="cm-final" aria-labelledby="final-title"><div class="cm-wrap"><p class="cm-kicker">Your next move</p><h2 id="final-title">Ready to turn your games into a plan?</h2><p>Try the Pro beta, connect your games, and start building a clearer picture of your chess.</p><div class="cm-cta"><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Try Pro Version</span><i class="pi pi-arrow-right"></i></a><a href="chess/app/" class="p-button p-component p-button-outlined"><span class="p-button-label">Use Lite for free</span></a></div><small><i class="pi pi-info-circle"></i> Pro is a paid product currently in beta. Features and availability may evolve.</small></div></section>
+</main>
 
-    <div id="pro-waitlist-overlay" class="cm-modal-overlay" role="presentation" aria-hidden="true" onclick="if (event.target === this) closeProWaitlistModal()">
-        <div class="cm-modal cm-waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="pro-waitlist-title">
-            <div id="pro-waitlist-form-view">
-                <h2 id="pro-waitlist-title">Join the Pro waitlist</h2>
-                <p>Be first to hear when cloud history, sync, and play modes land. We’ll only email you about what you opt into below.</p>
-                <form id="pro-waitlist-form" class="cm-waitlist-form" novalidate>
-                    <div class="cm-waitlist-row">
-                        <div class="cm-field">
-                            <label for="wl-first-name">First name</label>
-                            <input id="wl-first-name" name="firstName" type="text" class="p-inputtext p-component" autocomplete="given-name" required maxlength="80">
-                        </div>
-                        <div class="cm-field">
-                            <label for="wl-last-name">Last name</label>
-                            <input id="wl-last-name" name="lastName" type="text" class="p-inputtext p-component" autocomplete="family-name" required maxlength="80">
-                        </div>
-                    </div>
-                    <div class="cm-field">
-                        <label for="wl-email">Email</label>
-                        <input id="wl-email" name="email" type="email" class="p-inputtext p-component" autocomplete="email" required maxlength="254" inputmode="email">
-                    </div>
-                    <div class="cm-checks">
-                        <label class="cm-check">
-                            <input id="wl-pro-updates" name="proUpdates" type="checkbox" required>
-                            <span>I agree to receive updates about the Checkmate More Pro feature set.</span>
-                        </label>
-                        <label class="cm-check">
-                            <input id="wl-other-content" name="otherContent" type="checkbox">
-                            <span>Also send me other Checkmate More related content and product news.</span>
-                        </label>
-                    </div>
-                    <p id="pro-waitlist-status" class="cm-waitlist-status" role="status" aria-live="polite" hidden></p>
-                    <div class="cm-waitlist-actions">
-                        <button type="button" class="p-button p-component p-button-text" onclick="closeProWaitlistModal()">
-                            <span class="p-button-label">Cancel</span>
-                        </button>
-                        <button type="submit" id="pro-waitlist-submit" class="p-button p-component">
-                            <span class="p-button-label">Join waitlist</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div id="pro-waitlist-success-view" hidden>
-                <h2>You’re on the list</h2>
-                <p id="pro-waitlist-success-copy">Thanks — we’ll email you when Pro is ready. Meanwhile, the Lite app is free and runs entirely in your browser.</p>
-                <div class="cm-waitlist-actions">
-                    <a href="chess/app/" class="p-button p-component p-button-outlined">
-                        <span class="p-button-label">Try Lite</span>
-                    </a>
-                    <button type="button" class="p-button p-component" onclick="closeProWaitlistModal()">
-                        <span class="p-button-label">Done</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-    var PRO_WAITLIST_URL = 'https://api.freewaitlists.com/waitlists/cmsov6sv502ye01qt4iet7hp7';
-    var waitlistBusy = false;
-
-    function openProWaitlistModal() {
-        var el = document.getElementById('pro-waitlist-overlay');
-        if (!el) return;
-        resetProWaitlistForm();
-        el.classList.add('is-open');
-        el.setAttribute('aria-hidden', 'false');
-        var first = document.getElementById('wl-first-name');
-        if (first) setTimeout(function () { first.focus(); }, 40);
-    }
-
-    function closeProWaitlistModal() {
-        if (waitlistBusy) return;
-        var el = document.getElementById('pro-waitlist-overlay');
-        if (!el) return;
-        el.classList.remove('is-open');
-        el.setAttribute('aria-hidden', 'true');
-    }
-
-    function resetProWaitlistForm() {
-        var form = document.getElementById('pro-waitlist-form');
-        var formView = document.getElementById('pro-waitlist-form-view');
-        var successView = document.getElementById('pro-waitlist-success-view');
-        var status = document.getElementById('pro-waitlist-status');
-        if (form) form.reset();
-        if (formView) formView.hidden = false;
-        if (successView) successView.hidden = true;
-        if (status) {
-            status.hidden = true;
-            status.textContent = '';
-            status.className = 'cm-waitlist-status';
-        }
-        setWaitlistBusy(false);
-    }
-
-    function setWaitlistBusy(busy) {
-        waitlistBusy = busy;
-        var btn = document.getElementById('pro-waitlist-submit');
-        if (!btn) return;
-        btn.disabled = busy;
-        var label = btn.querySelector('.p-button-label');
-        if (label) label.textContent = busy ? 'Joining…' : 'Join waitlist';
-    }
-
-    function showWaitlistStatus(message, isError) {
-        var status = document.getElementById('pro-waitlist-status');
-        if (!status) return;
-        status.hidden = !message;
-        status.textContent = message || '';
-        status.className = 'cm-waitlist-status' + (isError ? ' is-error' : '');
-    }
-
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    async function submitProWaitlist(e) {
-        e.preventDefault();
-        if (waitlistBusy) return;
-
-        var firstName = (document.getElementById('wl-first-name').value || '').trim();
-        var lastName = (document.getElementById('wl-last-name').value || '').trim();
-        var email = (document.getElementById('wl-email').value || '').trim();
-        var proUpdates = !!document.getElementById('wl-pro-updates').checked;
-        var otherContent = !!document.getElementById('wl-other-content').checked;
-
-        if (!firstName || !lastName) {
-            showWaitlistStatus('Please enter your first and last name.', true);
-            return;
-        }
-        if (!email || !isValidEmail(email)) {
-            showWaitlistStatus('Please enter a valid email address.', true);
-            return;
-        }
-        if (!proUpdates) {
-            showWaitlistStatus('Please agree to receive Pro feature updates to join the waitlist.', true);
-            return;
-        }
-
-        setWaitlistBusy(true);
-        showWaitlistStatus('');
-
-        try {
-            var res = await fetch(PRO_WAITLIST_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email: email,
-                    meta: {
-                        firstName: firstName,
-                        lastName: lastName,
-                        name: firstName + ' ' + lastName,
-                        source: 'landing-page',
-                        proUpdates: proUpdates,
-                        otherContent: otherContent
-                    }
-                })
-            });
-            var data = null;
-            try { data = await res.json(); } catch (_) { data = null; }
-            if (!res.ok) {
-                var msg = (data && (data.message || data.error)) || ('Could not join waitlist (' + res.status + '). Try again.');
-                throw new Error(typeof msg === 'string' ? msg : 'Could not join waitlist. Try again.');
-            }
-            document.getElementById('pro-waitlist-form-view').hidden = true;
-            document.getElementById('pro-waitlist-success-view').hidden = false;
-            setWaitlistBusy(false);
-        } catch (err) {
-            showWaitlistStatus(err.message || 'Something went wrong. Please try again.', true);
-            setWaitlistBusy(false);
-        }
-    }
-
-    document.getElementById('pro-waitlist-form').addEventListener('submit', submitProWaitlist);
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeProWaitlistModal();
-    });
-    </script>
-</body>
-</html>
+<footer class="cm-footer"><div class="cm-wrap"><a class="cm-logo" href="./"><span>♔♚</span>CheckmateMore</a><p>Thoughtful chess analysis, from one game to the bigger picture.</p><nav><a href="chess/app/">Lite</a><a href="https://app.checkmatemore.com/">Pro beta</a></nav></div></footer>
+</body></html>

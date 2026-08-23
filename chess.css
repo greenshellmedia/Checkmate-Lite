@@ -117,10 +117,11 @@
     --excellent: #4ade80;
     --cls-book: #a78bfa;
     --cls-theory: #8b5cf6;
-    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-    --font-display: "Domine", Georgia, "Times New Roman", serif;
-    --font-data: "Datatype", ui-monospace, "Cascadia Mono", monospace;
-    --font-family: var(--font-sans);
+    --font-sans: "Inter", sans-serif;
+    --font-display: "Domine", serif;
+    --font-data: "Datatype", monospace;
+    /* Override PrimeNG Material theme (defaults to Roboto) */
+    --font-family: "Inter", sans-serif;
 }
 
 html, body {
@@ -131,6 +132,18 @@ html, body {
     font-family: var(--font-sans);
     overflow-x: hidden;
     color-scheme: light dark;
+}
+
+/* Keep Prime components on Inter (theme tokens otherwise pull Roboto) */
+body,
+.p-component,
+.p-inputtext,
+.p-button,
+.p-tabview,
+.p-card,
+.p-tag,
+.p-progressbar {
+    font-family: var(--font-sans);
 }
 
 /* Display titles / subtitles — Domine, optically narrowed */
