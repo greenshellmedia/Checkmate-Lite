@@ -1,0 +1,59 @@
+.cm-logo-assets,
+.seo-logo-assets,
+.app-brand-logo {
+    display: block;
+    width: clamp(10.5rem, 16vw, 13rem);
+    line-height: 0;
+}
+
+.cm-logo-assets img,
+.seo-logo-assets img,
+.app-brand-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.cm-logo-dark,
+.seo-logo-dark,
+.app-brand-logo-dark {
+    display: none !important;
+}
+
+html[data-theme="dark"] .cm-logo-light,
+html[data-theme="dark"] .seo-logo-light,
+html[data-theme="dark"] .app-brand-logo-light {
+    display: none !important;
+}
+
+html[data-theme="dark"] .cm-logo-dark,
+html[data-theme="dark"] .seo-logo-dark,
+html[data-theme="dark"] .app-brand-logo-dark {
+    display: block !important;
+}
+
+.cm-footer .cm-logo-assets,
+.seo-footer .seo-logo-assets {
+    width: 10.5rem;
+}
+
+.app-brand-logo { width: 11.5rem; }
+.app-brand-tier {
+    padding: 0.18rem 0.4rem;
+    border: 1px solid var(--surface-border);
+    border-radius: 999px;
+    color: var(--text-color-secondary);
+    font-family: var(--font-data);
+    font-size: 0.6rem;
+    font-variation-settings: "wght" 700, "wdth" 84;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+    .cm-logo-assets,
+    .seo-logo-assets { width: 9rem; }
+    .app-brand-logo { width: 9.5rem; }
+}
