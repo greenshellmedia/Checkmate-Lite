@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">CheckmateMore personalised chess coaching</title>
+  <desc id="desc">A calm branded chessboard with coaching cards and the words Chess analysis that remembers how you play.</desc>
+  <rect width="1200" height="630" fill="#101827"/>
+  <circle cx="1030" cy="80" r="300" fill="#3f51b5" opacity=".24"/>
+  <g opacity=".18" transform="translate(820 190) rotate(-8)"><path fill="#779556" d="M0 0h90v90H0zm180 0h90v90h-90zM90 90h90v90H90zm180 0h90v90h-90zM0 180h90v90H0zm180 0h90v90h-90zM90 270h90v90H90zm180 0h90v90h-90z"/></g>
+  <text x="78" y="96" fill="#ebecd0" font-size="32" font-family="serif">♔♚</text>
+  <text x="145" y="94" fill="#fff" font-size="30" font-weight="700" font-family="Arial,sans-serif">CheckmateMore</text>
+  <text x="78" y="235" fill="#fff" font-size="66" font-weight="700" font-family="Georgia,serif">Chess analysis that</text>
+  <text x="78" y="315" fill="#fff" font-size="66" font-weight="700" font-family="Georgia,serif">remembers how you play.</text>
+  <text x="78" y="385" fill="#aeb9c9" font-size="27" font-family="Arial,sans-serif">Your games → recurring patterns → weekly objectives → practice</text>
+  <rect x="78" y="452" width="245" height="62" rx="9" fill="#3f51b5"/>
+  <text x="116" y="493" fill="#fff" font-size="23" font-weight="700" font-family="Arial,sans-serif">Try Pro beta</text>
+  <rect x="351" y="452" width="300" height="62" rx="9" fill="none" stroke="#779556" stroke-width="2"/>
+  <text x="383" y="493" fill="#ebecd0" font-size="23" font-weight="700" font-family="Arial,sans-serif">Explore featured players</text>
+</svg>

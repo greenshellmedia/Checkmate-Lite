@@ -1,0 +1,12 @@
+{
+  "name": "CheckmateMore",
+  "short_name": "CheckmateMore",
+  "description": "Personalised chess coaching based on your own games.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101827",
+  "theme_color": "#3f51b5",
+  "icons": [
+    { "src": "/assets/checkmatemore-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
