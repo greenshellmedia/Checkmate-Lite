@@ -629,11 +629,14 @@ async function analyzeGame(game, user, engine, onMove, opts = {}) {
         let reliable = true;
         let moveDepth = depth;
         let engineGapCp = null;
+        let engineReliable = true;
+        let comparisonSignal = null;
 
         // Classify both sides after leaving book/theory (same quality labels)
         if (!isBook && !isTheory) {
             best = await getEngineAnalysis(engine, fenBefore, { depth, multiPv, timeoutMs });
             actual = await getEngineAnalysis(engine, fenAfter, { depth, multiPv: 1, timeoutMs });
+            const firstBestMove = best.bestMove;
             let gap = topEngineGapCp(best);
             engineGapCp = gap;
             let rawProbe = computeEvalDelta(best, actual, { engineGapCp: gap });
@@ -664,6 +667,14 @@ async function analyzeGame(game, user, engine, onMove, opts = {}) {
                     deepened: true
                 });
                 moveDepth = critDepth;
+                comparisonSignal = {
+                    checked: true,
+                    depthFrom: depth,
+                    depthTo: critDepth,
+                    changed: !!(firstBestMove && best.bestMove && firstBestMove !== best.bestMove),
+                    firstMove: firstBestMove || '',
+                    deeperMove: best.bestMove || ''
+                };
             } else {
                 rawProbe = computeEvalDelta(best, actual, {
                     engineGapCp: gap,
@@ -680,6 +691,7 @@ async function analyzeGame(game, user, engine, onMove, opts = {}) {
                 (typeof getActiveAnalysisPreset === 'function' ? getActiveAnalysisPreset()?.bestTieCp : 0) || 0
             );
             reliable = !!(best.reliable && actual.reliable);
+            engineReliable = reliable;
             lastEval = actual;
         }
 
@@ -695,6 +707,16 @@ async function analyzeGame(game, user, engine, onMove, opts = {}) {
             theoryName: theoryMatch.name,
             openingName: openingMatch.name
         });
+
+        // A shallow forced mate disappearing after the played move is always an error,
+        // never a positive classification, even if noisy expected-points bands disagree.
+        const missedMate = !isBook && !isTheory && best.isMate && best.score > 0 &&
+            !(actual.isMate && actual.score < 0);
+        if (typeof LiteScoring !== 'undefined') {
+            cls = LiteScoring.normalizeMissedMateClassification(cls, missedMate);
+        } else if (missedMate && ['Great', 'Best', 'Excellent', 'Good'].includes(cls.label)) {
+            cls = { label: 'Miss', class: 'cls-miss', desc: 'Missed a forced mate found by the local engine.' };
+        }
 
         let themes = [];
         let narrative = cls.desc || '';
@@ -765,7 +787,7 @@ async function analyzeGame(game, user, engine, onMove, opts = {}) {
 
         moveData.push({ 
             san: history[i].san, from: history[i].from, to: history[i].to,
-            eval: evalWhite, isMate: actual.isMate,
+            eval: evalWhite, isMate: actual.isMate, mateScore: actual.isMate ? actual.score : null,
             fen: fenAfter, classification: cls,
             openingName: isTheory ? theoryMatch.name : (isBook ? openingMatch.name : null),
             moveNum: Math.floor(i/2) + 1, turn: i % 2 === 0 ? 'w' : 'b',
@@ -784,7 +806,10 @@ async function analyzeGame(game, user, engine, onMove, opts = {}) {
             winBefore: !isBook && !isTheory ? winBefore : null,
             engineGapCp: !isBook && !isTheory ? engineGapCp : null,
             playedBest: !isBook && !isTheory ? !!playedBest : null,
-            engineDepth: !isBook && !isTheory ? moveDepth : null
+            engineDepth: !isBook && !isTheory ? moveDepth : null,
+            engineReliable: !isBook && !isTheory ? engineReliable : null,
+            comparisonSignal: !isBook && !isTheory ? comparisonSignal : null,
+            missedMate: !isBook && !isTheory ? missedMate : false
         });
     }
 

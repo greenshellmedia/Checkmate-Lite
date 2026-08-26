@@ -1811,11 +1811,32 @@ function buildGameByPieceNotes(analysis) {
 function renderGameCoachNotes(analysis) {
     const notes = generateGameCoachNotes(analysis);
     const byPiece = buildGameByPieceNotes(analysis);
+    const playerMoves = (analysis.moves || []).map((move, index) => ({ move, index }))
+        .filter(x => isPlayerMove(analysis, x.move) && x.move.classification?.label);
+    const best = playerMoves.filter(x => ['Great', 'Best', 'Excellent'].includes(x.move.classification.label))
+        .sort((a, b) => (b.move.engineGapCp || 0) - (a.move.engineGapCp || 0))[0];
+    const worst = playerMoves.filter(x => ['Miss', 'Mistake', 'Blunder'].includes(x.move.classification.label))
+        .sort((a, b) => (b.move.evalDeltaCp || 0) - (a.move.evalDeltaCp || 0))[0];
+    const momentButton = (x, fallback) => x ? `
+        <button type="button" class="coach-evidence-item" onclick="goToMove(${x.index})">
+            ${escInsightHtml(`${x.move.moveNum}${x.move.turn === 'w' ? '.' : '...'} ${x.move.san}`)} · ${escInsightHtml(x.move.classification.label)}
+        </button>` : `<span class="coach-evidence-item is-static">${fallback}</span>`;
+    const biggest = worst || (analysis.gameStory?.keyMoveIndex != null
+        ? { index: analysis.gameStory.keyMoveIndex, move: analysis.moves[analysis.gameStory.keyMoveIndex] }
+        : null);
     return `
         <div class="game-coach">
             <div class="coach-block">
-                <div class="coach-kicker">Overview</div>
+                <div class="coach-kicker">Game overview</div>
                 ${insightParagraphsHtml(notes.overview)}
+            </div>
+            <div class="coach-block">
+                <div class="game-coach-cols">
+                    <div><div class="game-coach-side-label good">What went well</div>${momentButton(best, 'No standout engine move in this sample.')}</div>
+                    <div><div class="game-coach-side-label bad">Improve next</div>${momentButton(worst, 'No major error detected; review your lowest-rated phase.')}</div>
+                </div>
+                <div class="coach-kicker mt-3">Biggest swing / key moment</div>
+                ${momentButton(biggest, 'No reliable swing was detected.')}
             </div>
             ${gameCoachPhaseHtml('Opening', notes.opening)}
             ${gameCoachPhaseHtml('Middlegame', notes.middlegame)}

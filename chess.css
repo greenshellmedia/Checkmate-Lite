@@ -672,10 +672,10 @@ html[data-theme="dark"] .app-brand-king-black {
 .cls-great { background: #38bdf8; color: #0c4a6e; }
 .cls-excellent { background: color-mix(in srgb, var(--success) 70%, var(--excellent)); color: #062; }
 .cls-good { background: var(--excellent); color: #043; }
-.cls-okay,
-.cls-inaccuracy { background: var(--primary-color); color: var(--primary-color-text, #fff); }
+.cls-okay { background: var(--surface-hover); color: var(--text-color); }
+.cls-inaccuracy { background: #f59e0b; color: #422006; }
 .cls-miss { background: var(--warning); color: #422006; }
-.cls-mistake { background: #fb923c; color: #431407; }
+.cls-mistake { background: #f97316; color: #431407; }
 .cls-blunder { background: var(--accent); color: #450a0a; }
 .cls-book { background: var(--cls-book); color: #1e1b4b; }
 .cls-theory { background: var(--cls-theory); color: #fff; }
@@ -692,6 +692,7 @@ html[data-theme="dark"] .app-brand-king-black {
     overflow: visible;
 }
 .eval-line-zero { stroke: var(--surface-border, #475569); stroke-width: 1; stroke-dasharray: 3 3; }
+.eval-line-axis-label { fill: var(--text-color-secondary, #94a3b8); font: 600 8px var(--font-data, monospace); }
 .eval-line-path {
     fill: none;
     stroke: var(--primary-color, #60a5fa);
@@ -1148,6 +1149,15 @@ html[data-theme="dark"] .app-brand-king-black {
     color: var(--text-color-secondary);
     line-height: 1.3;
 }
+.phase-row-explain,
+.game-level-explain { color: var(--text-color-secondary); font-size: 0.72rem; line-height: 1.4; margin-top: 0.2rem; }
+.phase-row-explain { grid-column: 1 / -1; }
+.phase-overall { margin-bottom: 0.55rem; border-bottom: 1px solid var(--surface-border, #334155); padding-bottom: 0.55rem; }
+.game-level-label { color: var(--text-color-secondary); font-size: 0.74rem; margin: -0.15rem 0 0.35rem; }
+.confidence-pill { display: inline-flex; margin-left: 0.3rem; padding: 0.1rem 0.38rem; border-radius: 999px; font-size: 0.64rem; font-weight: 700; background: var(--surface-hover); }
+.confidence-high { color: var(--success); }
+.confidence-medium { color: var(--warning); }
+.confidence-low { color: var(--accent); }
 .phase-row.is-na .phase-row-label { color: var(--text-color-secondary); }
 .phase-stars {
     display: inline-flex;

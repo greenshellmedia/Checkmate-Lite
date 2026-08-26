@@ -2886,10 +2886,10 @@ function renderEvalLineGraph(analysis) {
 
     const W = 320;
     const H = 220;
-    const pad = { t: 16, b: 20, l: 12, r: 12 };
+    const pad = { t: 16, b: 24, l: 28, r: 12 };
     const plotW = W - pad.l - pad.r;
     const plotH = H - pad.t - pad.b;
-    const CAP = 1000; // ±10 pawns on the scale
+    const CAP = 1200; // fixed ±12-pawn scale prevents outliers flattening the game
     const keyIdx = analysis.gameStory?.keyMoveIndex;
     const baseR = evalDotBaseRadius(moves.length);
 
@@ -2919,6 +2919,9 @@ function renderEvalLineGraph(analysis) {
     svg.setAttribute('aria-label', `Evaluation graph from ${side}'s perspective`);
 
     svg.innerHTML = `
+        <text class="eval-line-axis-label" x="${pad.l - 4}" y="${pad.t + 4}" text-anchor="end">+12</text>
+        <text class="eval-line-axis-label" x="${pad.l - 4}" y="${zeroY + 3}" text-anchor="end">0</text>
+        <text class="eval-line-axis-label" x="${pad.l - 4}" y="${H - pad.b}" text-anchor="end">−12</text>
         <line class="eval-line-zero" x1="${pad.l}" y1="${zeroY}" x2="${W - pad.r}" y2="${zeroY}"></line>
         <polygon class="eval-line-area" points="${areaPts}"></polygon>
         <polyline class="eval-line-path" points="${linePts}"></polyline>
@@ -2938,6 +2941,10 @@ function renderEvalLineGraph(analysis) {
         hit.setAttribute('r', Math.max(6, plotW / Math.max(moves.length, 1) / 2));
         hit.classList.add('eval-line-hit');
         if (label) hit.setAttribute('aria-label', `${m.moveNum}${m.turn === 'w' ? '.' : '...'} ${m.san} · ${label}`);
+        const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+        const evalText = formatReviewEval(m, playerEvalAt(analysis, m));
+        title.textContent = `${m.moveNum}${m.turn === 'w' ? '.' : '...'} ${m.san} · ${label || 'Unclassified'} · ${evalText}`;
+        hit.appendChild(title);
         hit.addEventListener('click', () => goToMove(idx));
         svg.appendChild(hit);
 
@@ -3264,7 +3271,7 @@ function starsHtml(stars) {
     return html;
 }
 
-function phaseRowsHtml(breakdown) {
+function phaseRowsHtml(breakdown, assessment) {
     const labels = {
         opening: 'Opening',
         middlegame: 'Middlegame',
@@ -3272,6 +3279,7 @@ function phaseRowsHtml(breakdown) {
     };
     return ['opening', 'middlegame', 'endgame'].map(key => {
         const seg = breakdown.segments[key];
+        const assessed = assessment?.phases?.[key];
         let meta;
         if (!seg.reached) {
             meta = key === 'endgame' ? 'Did not reach an endgame' : 'No moves in this phase';
@@ -3285,6 +3293,7 @@ function phaseRowsHtml(breakdown) {
                 <div class="phase-row-label">${labels[key]}</div>
                 <div class="phase-row-stars">${starsHtml(seg.reached ? seg.stars : null)}</div>
                 <div class="phase-row-meta">${meta}</div>
+                <div class="phase-row-explain">${assessed?.explanation || ''}</div>
             </div>
         `;
     }).join('');
@@ -3312,20 +3321,28 @@ function renderReviewStatsTab(analysis) {
 
     const youPhases = sidePhaseBreakdown(analysis, true);
     const oppPhases = sidePhaseBreakdown(analysis, false);
+    const youAssessment = typeof LiteScoring !== 'undefined'
+        ? LiteScoring.buildSideAssessment(you, youPhases, { opponentRating: chessComOpp })
+        : null;
+    const oppAssessment = typeof LiteScoring !== 'undefined'
+        ? LiteScoring.buildSideAssessment(opp, oppPhases, { opponentRating: chessComYou })
+        : null;
 
-    const eloCard = (label, stats, chessComElo, phaseBreakdown) => `
+    const eloCard = (label, stats, chessComElo, phaseBreakdown, assessment) => `
         <div class="game-elo-card">
             <div class="game-elo-kicker">${label}</div>
-            <div class="game-elo-value">${formatGameEloLabel(stats.gameElo)}</div>
+            <div class="game-elo-value">${assessment?.level?.value ?? '—'}</div>
+            <div class="game-level-label">Estimated game level <span class="confidence-pill confidence-${(assessment?.level?.confidence || 'low').toLowerCase()}">${assessment?.level?.confidence || 'Low'} confidence</span></div>
             <div class="game-elo-meta">
                 ${chessComElo != null ? `Chess.com ${chessComElo} · ` : ''}
                 ${stats.accuracy != null ? `${stats.accuracy}% accuracy` : 'No rated moves'}
                 · ${stats.ratedN}/${stats.total} rated moves
-                ${stats.gameElo >= (typeof GAME_ELO_IM === 'number' ? GAME_ELO_IM : 2400) ? ' · capped at title level' : ''}
             </div>
+            <div class="game-level-explain">${assessment?.level?.explanation || 'Insufficient local engine data.'}</div>
             <div class="game-elo-groups">
                 <div class="game-elo-groups-title">Phase ratings</div>
-                <div class="phase-list">${phaseRowsHtml(phaseBreakdown)}</div>
+                <div class="phase-row phase-overall"><div class="phase-row-label">Overall</div><div class="phase-row-stars">${starsHtml(assessment?.overall?.stars)}</div><div class="phase-row-meta">${assessment?.overall?.explanation || ''}</div></div>
+                <div class="phase-list">${phaseRowsHtml(phaseBreakdown, assessment)}</div>
             </div>
             <div class="game-elo-groups">
                 <div class="game-elo-groups-title">Moves by group</div>
@@ -3336,12 +3353,12 @@ function renderReviewStatsTab(analysis) {
 
     el.innerHTML = `
         <div class="review-stats">
-            <div class="review-stats-title">Game ELO &amp; phases</div>
+            <div class="review-stats-title">Estimated game level &amp; phase ratings</div>
             <div class="game-elo-row">
-                ${eloCard(youName, you, chessComYou, youPhases)}
-                ${eloCard(oppName, opp, chessComOpp, oppPhases)}
+                ${eloCard(youName, you, chessComYou, youPhases, youAssessment)}
+                ${eloCard(oppName, opp, chessComOpp, oppPhases, oppAssessment)}
             </div>
-            <div class="review-stats-note">Phase stars rate your play in opening, middlegame, and endgame (N/A if that phase never happened). Game ELO is a rough guess from rated non-book moves — not your Chess.com rating. High accuracy caps at IM (~${typeof GAME_ELO_IM === 'number' ? GAME_ELO_IM : 2400}) / GM (~${typeof GAME_ELO_GM === 'number' ? GAME_ELO_GM : 2500}).</div>
+            <div class="review-stats-note">Local Stockfish estimates only. Phase scores exclude phases that were not reached. Estimated game level blends accuracy, CPL, error severity, positive moves, tactical mistakes, phase play, sample size, and light opponent context; it is not an official or persistent rating.</div>
         </div>
     `;
 }
@@ -3428,7 +3445,17 @@ function updateMoveCard(m) {
         const candidate = (m.altEngineMoves || []).find(a =>
             a?.move && a.move.toLowerCase() !== playedUci
         );
-        if (candidate?.move) {
+        const signal = m.comparisonSignal;
+        if (signal?.checked && signal.changed && signal.deeperMove) {
+            const practical = signal.firstMove ? (uciToSanNearMove(m, signal.firstMove) || signal.firstMove) : 'the first choice';
+            const deeper = uciToSanNearMove(m, signal.deeperMove) || signal.deeperMove;
+            altEl.style.display = '';
+            altEl.textContent = `Practical move at depth ${signal.depthFrom}: ${practical}. Deeper idea at depth ${signal.depthTo}: ${deeper}.`;
+        } else if (signal?.checked && !signal.changed && signal.deeperMove) {
+            const stable = uciToSanNearMove(m, signal.deeperMove) || signal.deeperMove;
+            altEl.style.display = '';
+            altEl.textContent = `Stable critical-position check: ${stable} remained the engine idea through depth ${signal.depthTo}.`;
+        } else if (candidate?.move) {
             const san = uciToSanNearMove(m, candidate.move) || candidate.move;
             const scoreTxt = candidate.isMate
                 ? `mate ${candidate.scoreCp}`
@@ -3443,21 +3470,25 @@ function updateMoveCard(m) {
 
     // Fixed reviewed-player perspective for the whole game (left = that colour)
     const playerRelativeEval = playerEvalAt(currentReviewGame, m);
-    const fillPercent = Math.min(100, Math.max(0, 50 + (playerRelativeEval / 20)));
+    const fillPercent = Math.min(100, Math.max(0, 50 + (playerRelativeEval / 24)));
     document.getElementById('eval-fill').style.width = `${fillPercent}%`;
 
     const side = currentReviewGame.isWhite ? 'White' : 'Black';
-    if (m.isMate) {
-        const matePlies = Math.max(1, Math.abs(Math.round(playerRelativeEval / 1000)) || 1);
-        document.getElementById('eval-label').innerText =
-            (playerRelativeEval >= 0 ? 'M+' : 'M-') + matePlies;
-    } else {
-        const displayScore = (playerRelativeEval / 100).toFixed(1);
-        document.getElementById('eval-label').innerText =
-            (playerRelativeEval > 0 ? '+' : '') + displayScore;
-    }
+    document.getElementById('eval-label').innerText = formatReviewEval(m, playerRelativeEval);
     document.getElementById('eval-bar').title =
         `${side} perspective · + is better for ${side.toLowerCase()}`;
+}
+
+function formatReviewEval(move, playerRelativeEval) {
+    if (move?.isMate) {
+        const raw = Number(move.mateScore);
+        const whiteMate = move.turn === 'b' ? raw : -raw;
+        const playerMate = currentReviewGame?.isWhite ? whiteMate : -whiteMate;
+        const n = Math.max(1, Math.abs(Math.round(Number.isFinite(playerMate) ? playerMate : 1)));
+        return `M${playerMate < 0 ? '-' : ''}${n}`;
+    }
+    const capped = Math.max(-1200, Math.min(1200, Number(playerRelativeEval) || 0));
+    return `${capped > 0 ? '+' : ''}${(capped / 100).toFixed(1)}`;
 }
 
 function renderBoard(fen, move) {

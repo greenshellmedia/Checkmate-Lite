@@ -435,9 +435,9 @@ const MOVE_QUALITY_ORDER = [
     { label: 'Good', className: 'cls-good', color: 'var(--excellent)' },
     { label: 'Book', className: 'cls-book', color: '#a29bfe' },
     { label: 'Theory', className: 'cls-theory', color: '#6c5ce7' },
-    { label: 'Inaccuracy', className: 'cls-inaccuracy', color: 'var(--primary)' },
+    { label: 'Inaccuracy', className: 'cls-inaccuracy', color: '#f59e0b' },
     { label: 'Miss', className: 'cls-miss', color: 'var(--warning)' },
-    { label: 'Mistake', className: 'cls-mistake', color: '#e67e22' },
+    { label: 'Mistake', className: 'cls-mistake', color: '#f97316' },
     { label: 'Blunder', className: 'cls-blunder', color: 'var(--accent)' }
 ];
 
