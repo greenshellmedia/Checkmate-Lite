@@ -57,3 +57,13 @@ html[data-theme="dark"] .app-brand-logo-dark {
     .seo-logo-assets { width: 9rem; }
     .app-brand-logo { width: 9.5rem; }
 }
+
+.seo-legal { max-width: 860px; }
+.seo-legal h2 { margin: 2.8rem 0 0.8rem; font-size: clamp(1.45rem, 2.8vw, 2rem); letter-spacing: -0.03em; }
+.seo-legal h2:first-child { margin-top: 0; }
+.seo-legal p,
+.seo-legal li { color: var(--cm-muted); }
+.seo-legal ul { padding-left: 1.35rem; }
+.seo-legal li { margin: 0.4rem 0; }
+.seo-legal a { color: var(--cm-primary); }
+.seo-legal address { font-style: normal; }
