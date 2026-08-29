@@ -1550,7 +1550,7 @@ function renderCoachInsights(profile, insightsData) {
     const insights = insightsData || generateProfileInsights(profile);
     const focusBlock = insights.focus
         ? `<div class="coach-block coach-focus-block">
-                <div class="coach-kicker">This week’s focus</div>
+                <div class="coach-kicker">Focus from these games</div>
                 ${insightCardsHtml([insights.focus], { focusStyle: true })}
            </div>`
         : '';
@@ -1826,10 +1826,12 @@ function renderGameCoachNotes(analysis) {
         : null);
     return `
         <div class="game-coach">
-            <div class="coach-block">
+            ${typeof CmUi !== 'undefined'
+                ? CmUi.coachMessage({ kicker: 'Game overview', body: insightParagraphsHtml(notes.overview) })
+                : `<div class="coach-block">
                 <div class="coach-kicker">Game overview</div>
                 ${insightParagraphsHtml(notes.overview)}
-            </div>
+            </div>`}
             <div class="coach-block">
                 <div class="game-coach-cols">
                     <div><div class="game-coach-side-label good">What went well</div>${momentButton(best, 'No standout engine move in this sample.')}</div>

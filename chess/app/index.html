@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CheckmateMore Lite</title>
-    <meta name="description" content="CheckmateMore Lite. load your Chess.com profile or game for a clear Stockfish review in your browser. No account required.">
+    <meta name="description" content="CheckmateMore Lite. Load a Chess.com profile or game for a Stockfish review in your browser. No account required.">
+    <link rel="canonical" href="https://checkmatemore.com/chess/app/">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"CheckmateMore Lite","applicationCategory":"GameApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Free in-browser Stockfish chess game review. No account required.","url":"https://checkmatemore.com/chess/app/"}
+    </script>
     <meta name="color-scheme" content="light dark">
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
@@ -35,11 +39,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
-    <link rel="stylesheet" href="../../chess.css?v=20260823a">
-    <link rel="stylesheet" href="../../brand.css?v=20260825a">
+    <link rel="stylesheet" href="../../brand-tokens.css?v=20260829a">
+    <link rel="stylesheet" href="../../chess.css?v=20260829d">
+    <link rel="stylesheet" href="../../lite-theme.css?v=20260829d">
+    <link rel="stylesheet" href="../../brand.css?v=20260829d">
     <script src="../../js/clean-url.js"></script>
 </head>
-<body>
+<body class="cm-lite">
+<a class="cm-skip" href="#analyze-view">Skip to content</a>
 <div class="app-shell">
     <header class="app-topnav" role="banner">
         <a href="../../" class="app-brand" title="CheckmateMore Lite" aria-label="CheckmateMore Lite home">
@@ -55,21 +62,28 @@
         </nav>
     </header>
 
-    <div id="analyze-view">
-    <div class="p-card mb-3">
+    <div id="analyze-view" tabindex="-1">
+    <section class="p-card lite-intro mb-3" data-tone="accuracy" aria-labelledby="lite-intro-title">
         <div class="p-card-body">
-            <div class="flex flex-column md:flex-row gap-2 align-items-stretch md:align-items-center">
-                <span class="p-input-icon-left flex-1 w-full">
-                    <i class="pi pi-user"></i>
-                    <input type="text" id="username" class="p-inputtext p-component w-full" placeholder="Chess.com Username">
-                </span>
+            <h1 id="lite-intro-title" class="p-card-title mb-2">Review Chess.com games in your browser</h1>
+            <p class="lite-intro-lede">Lite reviews Chess.com games locally in this browser with Stockfish. It is free, needs no account, and does not keep a coaching history between visits.</p>
+            <div class="flex flex-column md:flex-row gap-3 align-items-stretch md:align-items-end">
+                <div class="lite-field flex-1 w-full">
+                    <label for="username">Chess.com username</label>
+                    <span class="p-input-icon-left w-full">
+                        <i class="pi pi-user"></i>
+                        <input type="text" id="username" class="p-inputtext p-component w-full" placeholder="e.g. hikaru" autocomplete="username">
+                    </span>
+                </div>
                 <div class="lite-review-actions">
-                    <label class="sr-only" for="review-mode">Review mode</label>
-                    <select id="review-mode" class="p-inputtext p-component lite-review-select" onchange="updateReviewModeButton()">
-                        <option value="single" selected>Select a game from the last 10</option>
-                        <option value="profile">Compare all from the last 10</option>
-                    </select>
-                    <button id="btnScan" type="button" class="p-button p-component" onclick="startSelectedAnalysis()" disabled>
+                    <div class="lite-field" id="review-mode-field">
+                        <label for="review-mode">Review mode</label>
+                        <select id="review-mode" class="p-inputtext p-component lite-review-select" onchange="updateReviewModeButton()">
+                            <option value="single" selected>Review one of my latest games</option>
+                            <option value="profile">Compare my latest games</option>
+                        </select>
+                    </div>
+                    <button id="btnScan" type="button" class="p-button p-component cm-primary" onclick="startSelectedAnalysis()" disabled>
                         <span class="p-button-icon-left pi pi-spin pi-spinner"></span>
                         <span class="p-button-label">Starting engine…</span>
                     </button>
@@ -79,24 +93,25 @@
                     </button>
                 </div>
             </div>
+            <p class="lite-privacy"><i class="pi pi-lock" aria-hidden="true"></i>Your game review runs in this browser. You don’t need an account.</p>
         </div>
-    </div>
+    </section>
 
     <div id="lite-promo-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeLitePromo()">
         <div class="p-card single-game-dialog lite-promo-dialog" role="dialog" aria-modal="true" aria-labelledby="lite-promo-title">
             <div class="p-card-body">
                 <div class="lite-promo-icon" aria-hidden="true"><i class="pi pi-star-fill"></i></div>
                 <div id="lite-promo-title" class="p-card-title mb-2">Keep your chess progress connected</div>
-                <p class="text-color-secondary mt-0">You’ve used Lite more than once. A free CheckmateMore account adds game caching and starter coaching across your games; Pro adds more thorough reviews, longer-term trends and fuller coaching.</p>
+                <p class="text-color-secondary mt-0">A free CheckmateMore account stores analysed games and connects them into a longer-term picture. Pro adds weekly coaching, trend tracking and personal practice.</p>
                 <div class="lite-promo-points">
-                    <span><i class="pi pi-check"></i> Free account with cached game history</span>
-                    <span><i class="pi pi-check"></i> Starter coaching and profile trends</span>
-                    <span><i class="pi pi-star"></i> Pro depth, trends, and coaching plans</span>
+                    <span><i class="pi pi-check"></i> Free account with stored game history</span>
+                    <span><i class="pi pi-check"></i> Games connected into one picture</span>
+                    <span><i class="pi pi-star"></i> Pro weekly coaching, trends, and practice</span>
                 </div>
                 <div class="flex flex-wrap justify-content-end gap-2 mt-4">
                     <button type="button" class="p-button p-component p-button-text" onclick="closeLitePromo()"><span class="p-button-label">Keep using Lite</span></button>
-                    <a href="https://app.checkmatemore.com/" class="p-button p-component p-button-outlined"><span class="p-button-label">Create free account</span></a>
-                    <a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Explore Pro</span></a>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span></a>
+                    <a href="../../pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore Pro</span></a>
                 </div>
             </div>
         </div>
@@ -168,7 +183,7 @@
     </div>
 
     <div id="dashboard">
-        <div class="p-card mb-3" id="profile-header">
+        <div class="p-card mb-3" id="profile-header" hidden>
             <div class="p-card-body">
                 <div class="flex gap-3 align-items-center">
                     <img id="profile-avatar" class="profile-avatar" alt="avatar" src="">
@@ -180,9 +195,16 @@
                 </div>
             </div>
         </div>
-        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Connected profile analysis">
-            <div class="app-upgrade-copy"><span class="app-upgrade-kicker">Free with an account</span><strong>Build a profile from these games.</strong><p>Keep cached game history, starter coaching, and better profile analysis across visits. Upgrade to Pro when you want longer-term trends and coaching plans.</p></div>
-            <div class="app-upgrade-actions"><a href="https://app.checkmatemore.com/" class="p-button p-component p-button-outlined"><span class="p-button-label">Create free account</span></a><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">View Pro features</span></a></div>
+        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Create a CheckmateMore account">
+            <div class="app-upgrade-copy">
+                <span class="app-upgrade-kicker">After this review</span>
+                <strong>Keep your games connected.</strong>
+                <p>A free CheckmateMore account stores analysed games and connects them into a longer-term picture. Pro adds weekly coaching, trend tracking and personal practice.</p>
+            </div>
+            <div class="app-upgrade-actions">
+                <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span></a>
+                <a href="../../pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore Pro</span></a>
+            </div>
         </aside>
 
         <div id="dash-tabs" class="p-tabview p-component">
@@ -191,26 +213,31 @@
                     <ul class="p-tabview-nav" role="tablist">
                         <li class="p-highlight" role="presentation">
                             <a href="#" class="p-tabview-nav-link" data-tab="overview" onclick="switchDashTab('overview', this); return false;" role="tab">
+                                <i class="pi pi-th-large" aria-hidden="true"></i>
                                 <span class="p-tabview-title">Overview</span>
                             </a>
                         </li>
                         <li role="presentation">
                             <a href="#" class="p-tabview-nav-link" data-tab="matches" onclick="switchDashTab('matches', this); return false;" role="tab">
+                                <i class="pi pi-list" aria-hidden="true"></i>
                                 <span class="p-tabview-title">Matches</span>
                             </a>
                         </li>
                         <li role="presentation">
                             <a href="#" class="p-tabview-nav-link" data-tab="coaching" onclick="switchDashTab('coaching', this); return false;" role="tab">
+                                <i class="pi pi-comments" aria-hidden="true"></i>
                                 <span class="p-tabview-title">Coaching</span>
                             </a>
                         </li>
                         <li role="presentation">
                             <a href="#" class="p-tabview-nav-link" data-tab="stats" onclick="switchDashTab('stats', this); return false;" role="tab">
+                                <i class="pi pi-chart-bar" aria-hidden="true"></i>
                                 <span class="p-tabview-title">Game stats</span>
                             </a>
                         </li>
                         <li role="presentation">
                             <a href="#" class="p-tabview-nav-link" data-tab="learning" onclick="switchDashTab('learning', this); return false;" role="tab">
+                                <i class="pi pi-book" aria-hidden="true"></i>
                                 <span class="p-tabview-title">Learn</span>
                             </a>
                         </li>
@@ -246,14 +273,14 @@
                         <div class="p-card full">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Accuracy form</div>
-                                <div class="text-color-secondary text-sm mb-3">Average move accuracy across analysed games. Select a point to open that game.</div>
+                                <div class="text-color-secondary text-sm mb-3">Average move accuracy across analysed games. Select a point to open that game. Accuracy is estimated from this review, not from Chess.com’s own Game Review.</div>
                                 <div id="overview-accuracy" class="overview-accuracy"></div>
                             </div>
                         </div>
                         <div class="p-card full">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Chess.com ELO &amp; Game ELO</div>
-                                <div class="text-color-secondary text-sm mb-3">Chess.com rating compared with the estimated performance in each game. Select a point to open that game.</div>
+                                <div class="p-card-title mb-1">Chess.com rating vs estimated game performance</div>
+                                <div class="text-color-secondary text-sm mb-3">Your Chess.com rating after each game, compared with a local Stockfish estimate of how that game was played. The estimate is not an official rating.</div>
                                 <div id="overview-elo-chart" class="overview-elo-chart"></div>
                             </div>
                         </div>
@@ -323,7 +350,7 @@
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Coach notes</div>
-                                <div class="text-color-secondary text-sm mb-3">A game-by-game view of your opening, middlegame and endgame play.</div>
+                                <div class="text-color-secondary text-sm mb-3">Notes from the games Lite has reviewed in this browser. This is not weekly account coaching.</div>
                                 <div id="analysis-coach"></div>
                             </div>
                         </div>
@@ -433,11 +460,6 @@
 
             <div id="review-matchup" class="review-matchup mb-3"></div>
 
-            <aside class="app-upgrade-card review-app-promo mb-3" aria-label="CheckmateMore account analysis">
-                <div class="app-upgrade-copy"><span class="app-upgrade-kicker">Continue in CheckmateMore</span><strong>Save this review and compare it with your other games.</strong><p>The free account tier includes game caching and starter coaching. The full app adds:</p><ul class="app-upgrade-features"><li>A more thorough, multi-pass engine review</li><li>Trends across your saved games</li><li>Critical-position practice, annotations, and clearer coaching explanations</li></ul></div>
-                <div class="app-upgrade-actions"><a href="https://app.checkmatemore.com/" class="p-button p-component p-button-outlined"><span class="p-button-label">Use free account</span></a><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Explore Pro analysis</span></a></div>
-            </aside>
-
             <div id="game-story-box" class="p-card game-story mb-3" style="display:none">
                 <div class="p-card-body">
                     <div class="game-story-kicker" id="game-story-kicker">Why you won</div>
@@ -501,6 +523,18 @@
                     <span class="p-button-icon-right pi pi-caret-right"></span>
                 </button>
             </div>
+
+            <aside class="app-upgrade-card review-app-promo mt-4" aria-label="Create a CheckmateMore account">
+                <div class="app-upgrade-copy">
+                    <span class="app-upgrade-kicker">After this review</span>
+                    <strong>Keep this game in a longer-term picture.</strong>
+                    <p>A free CheckmateMore account stores analysed games and connects them over time. Pro adds weekly coaching, trend tracking and personal practice.</p>
+                </div>
+                <div class="app-upgrade-actions">
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span></a>
+                    <a href="../../pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore Pro</span></a>
+                </div>
+            </aside>
         </div>
 
         <div class="review-side">
@@ -508,24 +542,36 @@
                 <div class="p-tabview-nav-container">
                     <div class="p-tabview-nav-content">
                         <ul class="p-tabview-nav" role="tablist">
-                            <li role="presentation">
-                                <a href="#" class="p-tabview-nav-link" data-review-tab="coaching" onclick="switchTab('coaching', this); return false;" role="tab"><span class="p-tabview-title">Coaching</span></a>
-                            </li>
                             <li class="p-highlight" role="presentation">
-                                <a href="#" class="p-tabview-nav-link" data-review-tab="stats" onclick="switchTab('stats', this); return false;" role="tab"><span class="p-tabview-title">Game stats</span></a>
+                                <a href="#" class="p-tabview-nav-link" data-review-tab="coaching" onclick="switchTab('coaching', this); return false;" role="tab">
+                                    <i class="pi pi-comments" aria-hidden="true"></i>
+                                    <span class="p-tabview-title">Coaching</span>
+                                </a>
                             </li>
                             <li role="presentation">
-                                <a href="#" class="p-tabview-nav-link" data-review-tab="moves" onclick="switchTab('moves', this); return false;" role="tab"><span class="p-tabview-title">Moves</span></a>
+                                <a href="#" class="p-tabview-nav-link" data-review-tab="stats" onclick="switchTab('stats', this); return false;" role="tab">
+                                    <i class="pi pi-chart-bar" aria-hidden="true"></i>
+                                    <span class="p-tabview-title">Game stats</span>
+                                </a>
                             </li>
                             <li role="presentation">
-                                <a href="#" class="p-tabview-nav-link" data-review-tab="graph" onclick="switchTab('graph', this); return false;" role="tab"><span class="p-tabview-title">Graph</span></a>
+                                <a href="#" class="p-tabview-nav-link" data-review-tab="moves" onclick="switchTab('moves', this); return false;" role="tab">
+                                    <i class="pi pi-sort-alt" aria-hidden="true"></i>
+                                    <span class="p-tabview-title">Moves</span>
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#" class="p-tabview-nav-link" data-review-tab="graph" onclick="switchTab('graph', this); return false;" role="tab">
+                                    <i class="pi pi-chart-line" aria-hidden="true"></i>
+                                    <span class="p-tabview-title">Graph</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="p-tabview-panels">
-                    <div id="coach-tab" class="p-tabview-panel" style="display:none"></div>
-                    <div id="stats-tab" class="p-tabview-panel"></div>
+                    <div id="coach-tab" class="p-tabview-panel"></div>
+                    <div id="stats-tab" class="p-tabview-panel" style="display:none"></div>
                     <div id="moves-tab" class="p-tabview-panel" style="display:none"></div>
                     <div id="graph-tab" class="p-tabview-panel" style="display:none">
                         <div id="eval-graph" class="graph-container"></div>
@@ -534,6 +580,24 @@
             </div>
         </div>
     </div>
+
+    <nav id="app-float-nav" class="app-float-nav" aria-label="Workspace">
+        <button type="button" class="app-float-item is-active" data-tab="overview" onclick="switchDashTab('overview')">
+            <i class="pi pi-th-large" aria-hidden="true"></i><span>Overview</span>
+        </button>
+        <button type="button" class="app-float-item" data-tab="matches" onclick="switchDashTab('matches')">
+            <i class="pi pi-list" aria-hidden="true"></i><span>Matches</span>
+        </button>
+        <button type="button" class="app-float-item" data-tab="coaching" onclick="switchDashTab('coaching')">
+            <i class="pi pi-comments" aria-hidden="true"></i><span>Coach</span>
+        </button>
+        <button type="button" class="app-float-item" data-tab="stats" onclick="switchDashTab('stats')">
+            <i class="pi pi-chart-bar" aria-hidden="true"></i><span>Stats</span>
+        </button>
+        <button type="button" class="app-float-item" data-tab="learning" onclick="switchDashTab('learning')">
+            <i class="pi pi-book" aria-hidden="true"></i><span>Learn</span>
+        </button>
+    </nav>
     </div><!-- /#analyze-view -->
 
     <div id="about-view" class="about-view" style="display:none">
@@ -584,16 +648,17 @@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
-<script src="../../js/chess/constants.js?v=20260823a"></script>
+<script src="../../js/chess/constants.js?v=20260829d"></script>
 <script src="../../js/chess/tactics.js?v=20260811h"></script>
 <script src="../../js/chess/openings.js?v=20260811h"></script>
-<script src="../../js/chess/learning.js?v=20260811h"></script>
+<script src="../../js/chess/learning.js?v=20260829d"></script>
 <script src="../../js/chess/cache.js?v=20260811h"></script>
-<script src="../../js/chess/analysis.js?v=20260811h"></script>
+<script src="../../js/chess/analysis.js?v=20260829a"></script>
 <script src="../../js/chess/pieces.js?v=20260811h"></script>
 <script src="../../js/chess/scoring.js?v=20260826a"></script>
-<script src="../../js/chess/ui.js?v=20260823a"></script>
-<script src="../../js/chess/insights.js?v=20260811h"></script>
-<script src="../../js/chess/app.js?v=20260823a"></script>
+<script src="../../js/chess/components.js?v=20260829d"></script>
+<script src="../../js/chess/ui.js?v=20260829d"></script>
+<script src="../../js/chess/insights.js?v=20260829a"></script>
+<script src="../../js/chess/app.js?v=20260829a"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
 const APP_ASSET_ROOT = '../../';
 const STOCKFISH_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/stockfish.js/10.0.2/stockfish.js';
 const STOCKFISH_LOCAL = APP_ASSET_ROOT + 'stockfish.js?v=20260803';
-const APP_BUILD = '2026-08-23a';
+const APP_BUILD = '2026-08-29a';
 const CACHE_VERSION = 14;
 /** Soft ceiling for estimated Game ELO (IM territory). */
 const GAME_ELO_IM = 2400;
@@ -275,7 +275,7 @@ const PIECE_VAL = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 100 };
 const THEME_CATALOG = {
     claimed_center: {
         polarity: 'good',
-        text: (pct) => `You fight for / claim the center in ${pct}% of your games`,
+        text: (pct) => `You fight for / claim the centre in ${pct}% of your games`,
         detail: 'Central pawn breaks and piece pressure on d4/d5/e4/e5 show up often in your play.'
     },
     developed_piece: {
@@ -356,7 +356,7 @@ const THEME_CATALOG = {
     king_in_center: {
         polarity: 'bad',
         text: (pct) => `An uncastled king gets punished in ${pct}% of your games`,
-        detail: 'The center opens or tactics land while the king is still on e1/e8.'
+        detail: 'The centre opens or tactics land while the king is still on e1/e8.'
     },
     quiet_improve: {
         polarity: 'good',
@@ -429,16 +429,16 @@ const THEME_LABEL_PHRASES = {
     missed_capture: 'missed a capture'
 };
 const MOVE_QUALITY_ORDER = [
-    { label: 'Great', className: 'cls-great', color: '#38bdf8' },
-    { label: 'Best', className: 'cls-best', color: 'var(--success)' },
-    { label: 'Excellent', className: 'cls-excellent', color: 'var(--excellent)' },
-    { label: 'Good', className: 'cls-good', color: 'var(--excellent)' },
-    { label: 'Book', className: 'cls-book', color: '#a29bfe' },
-    { label: 'Theory', className: 'cls-theory', color: '#6c5ce7' },
-    { label: 'Inaccuracy', className: 'cls-inaccuracy', color: '#f59e0b' },
-    { label: 'Miss', className: 'cls-miss', color: 'var(--warning)' },
-    { label: 'Mistake', className: 'cls-mistake', color: '#f97316' },
-    { label: 'Blunder', className: 'cls-blunder', color: 'var(--accent)' }
+    { label: 'Great', className: 'cls-great', color: 'var(--cls-great, #6ee7b7)' },
+    { label: 'Best', className: 'cls-best', color: 'var(--cls-best, #34d399)' },
+    { label: 'Excellent', className: 'cls-excellent', color: 'var(--cls-excellent, #4ade80)' },
+    { label: 'Good', className: 'cls-good', color: 'var(--cls-good, #86c96a)' },
+    { label: 'Book', className: 'cls-book', color: 'var(--cls-book, #a78bfa)' },
+    { label: 'Theory', className: 'cls-theory', color: 'var(--cls-theory, #8b5cf6)' },
+    { label: 'Inaccuracy', className: 'cls-inaccuracy', color: 'var(--cls-inaccuracy, #f59e0b)' },
+    { label: 'Miss', className: 'cls-miss', color: 'var(--cls-miss, #fbbf24)' },
+    { label: 'Mistake', className: 'cls-mistake', color: 'var(--cls-mistake, #f97316)' },
+    { label: 'Blunder', className: 'cls-blunder', color: 'var(--cls-blunder, #f87171)' }
 ];
 
 /** Runtime user settings (persisted). */

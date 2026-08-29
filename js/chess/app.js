@@ -10,11 +10,15 @@ function setScanButtonsBusy(busy) {
     const btn = document.getElementById('btnScan');
     if (busy) {
         btn.style.display = 'none';
+        const modeField = document.getElementById('review-mode-field');
+        if (modeField) modeField.style.display = 'none';
         const mode = document.getElementById('review-mode');
         if (mode) mode.style.display = 'none';
         document.getElementById('btnStop').style.display = 'inline-flex';
     } else {
         btn.style.display = '';
+        const modeField = document.getElementById('review-mode-field');
+        if (modeField) modeField.style.display = '';
         const mode = document.getElementById('review-mode');
         if (mode) mode.style.display = '';
         document.getElementById('btnStop').style.display = 'none';
@@ -23,11 +27,9 @@ function setScanButtonsBusy(busy) {
 
 function updateReviewModeButton() {
     const btn = document.getElementById('btnScan');
-    const mode = document.getElementById('review-mode')?.value || 'single';
     if (!btn || btn.disabled) return;
-    btn.innerHTML = mode === 'profile'
-        ? '<span class="p-button-icon-left pi pi-chart-bar"></span><span class="p-button-label">Compare last 10</span>'
-        : '<span class="p-button-icon-left pi pi-eye"></span><span class="p-button-label">Choose game</span>';
+    btn.classList.add('cm-primary');
+    btn.innerHTML = '<span class="p-button-icon-left pi pi-search"></span><span class="p-button-label">Find games</span>';
 }
 
 function startSelectedAnalysis() {
@@ -73,9 +75,8 @@ async function initApp() {
 
     // Learning + empty tab states are usable before a profile is loaded
     document.getElementById('dashboard').style.display = 'block';
-    document.getElementById('profile-display-name').innerText = 'CheckmateMore Lite';
-    document.getElementById('profile-header-sub').innerText =
-        "Load your Chess.com profile or game for a customised, fully client-side engine review. Insights across recent games, openings, and learnable theory. open About in the top menu for how labels work.";
+    const header = document.getElementById('profile-header');
+    if (header) header.hidden = true;
     refreshDashboard();
 
         log(`Initializing up to ${PARALLEL_GAMES} engines (preset ${typeof getActiveAnalysisPreset === 'function' ? getActiveAnalysisPreset().name : '?'} · depth ${typeof getScanEngineDepth === 'function' ? getScanEngineDepth() : ENGINE_DEPTH})...`);
@@ -115,11 +116,7 @@ function readLiteRunCount() {
 function recordLiteRunCompletion() {
     const count = readLiteRunCount() + 1;
     try { localStorage.setItem(LITE_RUN_COUNT_KEY, String(count)); } catch (_) {}
-    if (count > 1) {
-        let seen = false;
-        try { seen = localStorage.getItem(LITE_PROMO_SEEN_KEY) === '1'; } catch (_) {}
-        if (!seen) setTimeout(openLitePromo, 350);
-    }
+    // Upgrade panels sit below review content; do not interrupt the first look with a modal.
 }
 
 function openLitePromo() {

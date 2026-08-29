@@ -473,7 +473,7 @@ function ratingGapBand(delta) {
 const GAP_BAND_LABELS = {
     underdog: 'Underdog (−150+)',
     even: 'Even (±149)',
-    favorite: 'Favorite (+150+)'
+    favorite: 'Favourite (+150+)'
 };
 
 function emptyWldAcc() {
@@ -1113,21 +1113,12 @@ function focusUsernameInput() {
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-function tabEmptyHtml({ icon, title, body }) {
+function tabEmptyHtml(opts) {
+    if (typeof CmUi !== 'undefined') return CmUi.emptyState(opts);
     return `
-        <div class="tab-empty-icon"><i class="pi ${icon}"></i></div>
-        <div class="tab-empty-title">${title}</div>
-        <div class="tab-empty-body">${body}</div>
-        <div class="tab-empty-actions flex flex-wrap gap-2">
-            <button type="button" class="p-button p-component" onclick="focusUsernameInput()">
-                <span class="p-button-icon-left pi pi-user"></span>
-                <span class="p-button-label">Enter username</span>
-            </button>
-            <button type="button" class="p-button p-component p-button-outlined" onclick="switchDashTab('learning')">
-                <span class="p-button-icon-left pi pi-book"></span>
-                <span class="p-button-label">Browse Learn</span>
-            </button>
-        </div>
+        <div class="tab-empty-icon"><i class="pi ${opts.icon || 'pi-info-circle'}"></i></div>
+        <div class="tab-empty-title">${opts.title || ''}</div>
+        <div class="tab-empty-body">${opts.body || ''}</div>
     `;
 }
 
@@ -1137,14 +1128,39 @@ function showTabEmpty(prefix, opts) {
     if (empty) {
         empty.innerHTML = tabEmptyHtml(opts);
         empty.classList.add('is-visible');
+        empty.classList.toggle('is-hint', opts?.variant === 'hint');
     }
     if (content) content.style.display = 'none';
+}
+
+function overviewStartEmpty() {
+    return {
+        variant: 'start',
+        title: 'Start a Lite review',
+        body: 'Lite is ready in this browser. Pick a starting point. No account is needed.',
+        actions: [
+            {
+                icon: 'pi-search',
+                title: 'Find recent games',
+                body: 'Enter a Chess.com username above, then find one of your latest games or compare several.',
+                onclick: 'focusUsernameInput()'
+            },
+            {
+                icon: 'pi-book',
+                title: 'Browse Learn',
+                body: 'Openings and famous games are available now, before you load a profile.',
+                onclick: "switchDashTab('learning')"
+            }
+        ]
+    };
 }
 
 function showTabContent(prefix) {
     const empty = document.getElementById(`${prefix}-empty`);
     const content = document.getElementById(`${prefix}-content`);
-    if (empty) empty.classList.remove('is-visible');
+    if (empty) {
+        empty.classList.remove('is-visible', 'is-hint');
+    }
     if (content) content.style.display = '';
 }
 
@@ -1164,13 +1180,25 @@ function switchAppView(view) {
         if (typeof currentReviewGame !== 'undefined' && currentReviewGame && typeof exitReview === 'function') {
             exitReview();
         }
+        document.body.classList.add('is-about');
+        document.body.classList.remove('is-review');
         if (analyze) analyze.style.display = 'none';
         if (about) about.style.display = 'block';
         renderFaqTab();
         return;
     }
+    document.body.classList.remove('is-about');
     if (about) about.style.display = 'none';
     if (analyze) analyze.style.display = 'block';
+}
+
+function syncTabAria(nav) {
+    if (!nav) return;
+    nav.querySelectorAll('[role="tab"]').forEach(tab => {
+        const selected = !!tab.closest('li')?.classList.contains('p-highlight');
+        tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+        tab.tabIndex = selected ? 0 : -1;
+    });
 }
 
 function switchDashTab(name, el) {
@@ -1188,6 +1216,10 @@ function switchDashTab(name, el) {
         ? el
         : document.querySelector(`#dash-tabs .p-tabview-nav-link[data-tab="${name}"]`);
     if (link) link.closest('li')?.classList.add('p-highlight');
+    syncTabAria(document.querySelector('#dash-tabs .p-tabview-nav'));
+    document.querySelectorAll('#app-float-nav .app-float-item').forEach(btn => {
+        btn.classList.toggle('is-active', btn.dataset.tab === name);
+    });
     const panel = document.getElementById('tab-' + name);
     if (panel) panel.classList.add('active');
     if (name === 'learning') renderLearningBrowse();
@@ -1228,6 +1260,8 @@ async function fetchPlayerProfile(username) {
 }
 
 function renderProfileHeader(profile) {
+    const header = document.getElementById('profile-header');
+    if (header) header.hidden = false;
     const info = profile.playerInfo;
     const display = info?.name
         ? `${info.name} (@${info.username || profile.username})`
@@ -1264,7 +1298,7 @@ function renderProfileHeader(profile) {
     `;
 
     const accountPromo = document.getElementById('profile-app-promo');
-    if (accountPromo) accountPromo.hidden = profile.games < 2;
+    if (accountPromo) accountPromo.hidden = !profile.games;
 }
 
 function qualityRowsHtml(profile) {
@@ -1519,7 +1553,7 @@ function openChartGameDialog(gameKey) {
             cells.push(`<div class="chart-game-stat"><div class="chart-game-stat-value">${escHtml(chessCom)}</div><div class="chart-game-stat-label">Chess.com</div></div>`);
         }
         if (gameElo != null) {
-            cells.push(`<div class="chart-game-stat"><div class="chart-game-stat-value">${escHtml(formatGameEloLabel(gameElo))}</div><div class="chart-game-stat-label">Game ELO</div></div>`);
+            cells.push(`<div class="chart-game-stat"><div class="chart-game-stat-value">${escHtml(formatGameEloLabel(gameElo))}</div><div class="chart-game-stat-label">Estimated</div></div>`);
         }
         if (gap != null) {
             const cls = gap >= 0 ? 'elo-up' : 'elo-down';
@@ -1582,6 +1616,7 @@ function renderOverviewAccuracy(profile, analytics) {
     if (series.length < 2) {
         el.innerHTML = `
             <div class="accuracy-summary">${metaBits}</div>
+            <p class="cm-stat-note">Accuracy is Lite’s Stockfish estimate of your moves, not Chess.com Game Review.</p>
             <div class="insight-empty">One more analysed game will draw your accuracy sparkline.</div>
         `;
         return;
@@ -1674,7 +1709,8 @@ function renderOverviewAccuracy(profile, analytics) {
 
     bindChartGameInteractions(svg, interactItems);
 
-    el.innerHTML = `<div class="accuracy-summary">${metaBits}</div>`;
+    el.innerHTML = `<div class="accuracy-summary">${metaBits}</div>
+        <p class="cm-stat-note">Accuracy is Lite’s Stockfish estimate of your moves, not Chess.com Game Review.</p>`;
     el.appendChild(svg);
 }
 
@@ -1847,20 +1883,24 @@ function renderOverviewEloChart(profile, analytics) {
     el.innerHTML = `
         <div class="elo-chart-summary">
             ${last.chessCom != null ? `<span><strong>${last.chessCom}</strong> Chess.com</span>` : ''}
-            ${last.gameElo != null ? `<span><strong>${formatGameEloLabel(last.gameElo)}</strong> Game ELO</span>` : ''}
-            ${avgGame != null ? `<span>Avg ${formatGameEloLabel(avgGame)}</span>` : ''}
-            ${volatility != null ? `<span>±${volatility} Game ELO volatility</span>` : ''}
+            ${last.gameElo != null ? `<span><strong>${formatGameEloLabel(last.gameElo)}</strong> estimated</span>` : ''}
+            ${avgGame != null ? `<span>Avg ${formatGameEloLabel(avgGame)} estimated</span>` : ''}
+            ${volatility != null ? `<span>±${volatility} estimated volatility</span>` : ''}
             ${lastGap != null ? `<span class="${lastGap >= 0 ? 'elo-up' : 'elo-down'}">Latest gap ${lastGap >= 0 ? '+' : ''}${lastGap}</span>` : ''}
             ${siteDelta != null ? `<span class="${siteDelta >= 0 ? 'elo-up' : 'elo-down'}">${siteDelta >= 0 ? '+' : ''}${siteDelta} Chess.com</span>` : ''}
         </div>
         <div class="elo-legend text-color-secondary text-sm mb-2">
-            <span class="elo-legend-item"><i class="elo-legend-swatch site"></i> Chess.com ELO</span>
-            <span class="elo-legend-item"><i class="elo-legend-swatch perf"></i> Estimated Game ELO (caps IM/GM)</span>
+            <span class="elo-legend-item"><i class="elo-legend-swatch site"></i> Chess.com rating</span>
+            <span class="elo-legend-item"><i class="elo-legend-swatch perf"></i> Estimated game performance</span>
             <span class="elo-legend-item"><i class="elo-legend-swatch stem"></i> Per-game gap</span>
-            <span class="elo-legend-item"><i class="elo-legend-swatch band"></i> ±1σ Game ELO band</span>
+            <span class="elo-legend-item"><i class="elo-legend-swatch band"></i> ±1σ estimated-performance band</span>
         </div>
     `;
     el.appendChild(svg);
+    const note = document.createElement('p');
+    note.className = 'cm-stat-note';
+    note.textContent = 'Chess.com rating is your live site rating. Estimated game performance is a local Stockfish score for that game only.';
+    el.appendChild(note);
 }
 
 function renderOverviewForm(profile, analytics) {
@@ -1905,16 +1945,8 @@ function renderOverviewForm(profile, analytics) {
 function renderOverviewTab(profile) {
     if (!hasAnalysedGames(profile)) {
         showTabEmpty('overview', profile
-            ? {
-                icon: 'pi-hourglass',
-                title: 'Waiting for games',
-                body: 'Your overview will fill in as each game finishes analysing. accuracy form, ELO trend, move quality, best and worst games, and your last five results.'
-            }
-            : {
-                icon: 'pi-chart-bar',
-                title: 'No profile loaded',
-                body: 'Enter a Chess.com username above and hit Review Profile to see your stats, or review a single game. You can browse Learn anytime.'
-            });
+            ? { variant: 'hint', body: 'Games will appear here as each review finishes.' }
+            : overviewStartEmpty());
         return;
     }
     showTabContent('overview');
@@ -1933,7 +1965,17 @@ function renderOverviewTab(profile) {
     if (!recent.length) {
         recentEl.innerHTML = '<div class="insight-empty">Games will show here after analysis.</div>';
     } else {
-        recentEl.innerHTML = recent.map((g, i) => `
+        recentEl.innerHTML = recent.map((g, i) => {
+            if (typeof CmUi !== 'undefined') {
+                return CmUi.miniGameRow({
+                    title: gameMatchupTitle(g),
+                    result: g.result,
+                    color: g.isWhite ? 'White' : 'Black',
+                    reason: `${outcomeReason(g)}${g.resultDetail ? ' · ' + chessComResultLabel(g.resultDetail) : ''}`,
+                    gameKey: g.gameKey
+                });
+            }
+            return `
             <div class="p-card p-component mb-2" data-idx="${i}" onclick="openReviewFromStore('${escAttr(g.gameKey)}')" style="cursor:pointer">
                 <div class="p-card-body mini-game-row py-2">
                     <div class="mini-result" style="color:${resultColor(g.result)}">${g.result}</div>
@@ -1943,8 +1985,8 @@ function renderOverviewTab(profile) {
                         <div class="mini-reason">${outcomeReason(g)}${g.resultDetail ? ' · ' + chessComResultLabel(g.resultDetail) : ''}</div>
                     </div>
                 </div>
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
     }
 
     const bw = document.getElementById('overview-best-worst');
@@ -1985,17 +2027,12 @@ function openReviewFromStore(gameKey) {
 
 function renderMatchesTab() {
     if (!hasAnalysedGames()) {
-        showTabEmpty('matches', profileState
-            ? {
-                icon: 'pi-hourglass',
-                title: 'No matches yet',
-                body: 'Analysed games will land here as they finish. You can filter by colour, result, and time control once you have some.'
-            }
-            : {
-                icon: 'pi-list',
-                title: 'No matches yet',
-                body: 'Load a Chess.com profile or review a single game and your analysed games will appear here.'
-            });
+        showTabEmpty('matches', {
+            variant: 'hint',
+            body: profileState
+                ? 'Matches will land here as each game finishes analysing.'
+                : 'Find games above to fill this list.'
+        });
         return;
     }
     showTabContent('matches');
@@ -2057,29 +2094,19 @@ function analysisSnapshotIsFresh(profile) {
 
 function profileInsightEmptyCopy(profile, kind) {
     if (kind === 'coaching') {
-        return profile
-            ? {
-                icon: 'pi-comments',
-                title: 'No coaching yet',
-                body: 'Once a few games are analysed, coach notes and theme frequency land here.'
-            }
-            : {
-                icon: 'pi-comments',
-                title: 'Coaching needs a profile',
-                body: 'Load a Chess.com profile and analyze games to get phase-by-phase coaching.'
-            };
-    }
-    return profile
-        ? {
-            icon: 'pi-chart-bar',
-            title: 'No game stats yet',
-            body: 'Form, openings, heatmaps, and piece patterns show up after games are analysed.'
-        }
-        : {
-            icon: 'pi-chart-bar',
-            title: 'Game stats need a profile',
-            body: 'Load a Chess.com profile and analyze games to see form, tactics rates, and tendencies.'
+        return {
+            variant: 'hint',
+            body: profile
+                ? 'Coach notes appear as soon as a game has been reviewed.'
+                : 'Coach notes appear after you review a game. This is not weekly account coaching.'
         };
+    }
+    return {
+        variant: 'hint',
+        body: profile
+            ? 'Form, openings and heatmaps show up after games are analysed.'
+            : 'Game stats appear after you review a game.'
+    };
 }
 
 /** Paint Coaching tab panels from snapshot (or placeholders while building). */
@@ -2323,6 +2350,7 @@ function switchAboutTab(name, el) {
         ? el
         : document.querySelector(`#about-view .p-tabview-nav-link[data-about="${tab}"]`);
     if (link) link.closest('li')?.classList.add('p-highlight');
+    syncTabAria(document.querySelector('#about-view .about-tabs .p-tabview-nav'));
     const panels = {
         how: document.getElementById('about-panel-how'),
         features: document.getElementById('about-panel-features'),
@@ -2553,7 +2581,7 @@ function renderAboutFeatureSet() {
         <h3 class="about-section-title">Dashboard · Overview</h3>
         ${[
             ['Accuracy form', 'Average move accuracy across analysed games, with a sparkline over time. Click a point to open that game.'],
-            ['Chess.com ELO & Game ELO', 'Your Chess.com rating after each game vs estimated Game ELO from accuracy. Stems show the gap; the band is ±1σ Game ELO volatility. Game ELO soft-caps at IM (~${im}) and hard-caps at GM (~${gm}).'],
+            ['Chess.com rating vs estimated game performance', 'Your Chess.com rating after each game vs a local Stockfish estimate of that game. Stems show the gap. The estimate is not an official rating and soft-caps at IM (~${im}) / GM (~${gm}).'],
             ['Move quality', 'Share of your moves in each quality band (Best → Blunder). Click a band to rank Matches by that share.'],
             ['Quality form', 'Distribution of per-game quality scores (excellent / solid / mixed / rough) and your current hot or cold streak.'],
             ['Best & worst', 'Highest and lowest qualityScore games in the sample, with opening and outcome context.'],
@@ -2569,7 +2597,7 @@ function renderAboutFeatureSet() {
 
         <h3 class="about-section-title">Dashboard · Coaching</h3>
         ${[
-            ['Coach notes', 'Evidence-backed cards for overview, opening, middlegame, and endgame, plus a weekly focus. Cards include confidence, advice, and clickable evidence moves.'],
+            ['Coach notes', 'Evidence-backed cards for overview, opening, middlegame, and endgame, plus a focus card from the games in this session. Cards include confidence, advice, and clickable evidence moves.'],
             ['By piece', 'Pros and cons for how you handle each piece type across the sample.'],
             ['Theme frequency', 'How often each tagged theme appears across games (% of games), with healthy-habits called out separately and evidence links.']
         ].map(([t, d]) => aboutFeatureItem(t, d)).join('')}
@@ -2578,7 +2606,7 @@ function renderAboutFeatureSet() {
         ${[
             ['Form & finishes', 'Avg accuracy, Game ELO, CPL (overall and per game), max eval swing, collapses vs comebacks, opponent accuracy, rating gap. Finish breakdown by mate / resign / timeout / draw. Early-resign note when you resign before the position is fully dead.'],
             ['CPL by phase', 'Average centipawn loss in opening, middlegame, and endgame.'],
-            ['Performance vs rating gap', 'Win rate and accuracy when underdog (−150+), even, or favorite (+150+).'],
+            ['Performance vs rating gap', 'Win rate and accuracy when underdog (−150+), even, or favourite (+150+).'],
             ['By time control', 'Per time-class games, W/L/D, accuracy, and CPL.'],
             ['Tactics, engine & opponents', 'Material-event rates (hang / missed capture / sac / winning capture); missed engine capture/check shots; MultiPV top-2 hits after deepen; punish-opp vs get-punished rates; dedicated king-safety themes.'],
             ['Player tendencies', 'Favourite opening families as White and Black; destination-square heatmaps by colour × phase.'],
@@ -2595,7 +2623,7 @@ function renderAboutFeatureSet() {
         <h3 class="about-section-title">Single-game review</h3>
         ${[
             ['Coaching', 'Per-game coach notes: overview, opening / middlegame / endgame, and by-piece pros/cons from that game’s themes and material events.'],
-            ['Game stats', 'Estimated Game ELO for you and opponent, accuracy, phase star ratings, and move-quality group breakdowns.'],
+            ['Game stats', 'Estimated game performance for you and opponent (separate from Chess.com rating), accuracy, phase star ratings, and move-quality group breakdowns.'],
             ['Moves', 'Move list with quality labels; key moment highlighted from the game story.'],
             ['Graph', 'Eval curve for the game; click points to jump to a move.'],
             ['Run a fuller review', `Re-run the current game at depth ${REVIEW_ENGINE_DEPTH} with MultiPV ${REVIEW_MULTIPV} for sharper labels and alternate engine lines.`]
@@ -2607,7 +2635,7 @@ function renderAboutFeatureSet() {
             ['Opening reads', 'Book depth, who left theory first, favourite / weak opening families, early bishop sacs, knight development vs early exchanges.'],
             ['Middlegame reads', 'Blunder rates by phase, hang / fork / missed-hanging themes, knight activity, heatmap hotspots.'],
             ['Endgame reads', 'How often you enter the endgame up or down material, pawn endgames, back-rank issues.'],
-            ['Weekly focus', 'Highest-priority card from the corpus (confidence-weighted) as a single practice target.'],
+            ['Focus from these games', 'Highest-priority card from the games Lite has reviewed in this browser. This is not weekly account coaching.'],
             ['Evidence', 'Up to three concrete moves you can open in review at the exact ply.']
         ].map(([t, d]) => aboutFeatureItem(t, d)).join('')}
 
@@ -2717,10 +2745,8 @@ function renderGameItem(game, analysis) {
     if (!analysis.gameStory) finalizeAnalysis(analysis);
     const list = document.getElementById('game-list-view');
     const card = document.createElement('div');
-    card.className = "p-card p-component stat-card";
+    card.className = 'p-card p-component cm-game-card';
     card.onclick = () => openReview(analysis);
-    const resultColor = analysis.result === 'WIN' ? 'var(--success)'
-        : analysis.result === 'DRAW' ? 'var(--warning)' : 'var(--accent)';
     const story = analysis.gameStory?.headline
         ? `<div class="game-card-story">${analysis.gameStory.headline}</div>`
         : '';
@@ -2740,18 +2766,39 @@ function renderGameItem(game, analysis) {
                 : analysis.resultDetail
         )
         : '';
-    const youAcc = sideMoveStats(analysis, true).accuracy;
+    const you = sideMoveStats(analysis, true);
+    const youAcc = you.accuracy;
+    const chessComYou = analysis.isWhite ? analysis.whiteRating : analysis.blackRating;
+    const youPhases = typeof sidePhaseBreakdown === 'function' ? sidePhaseBreakdown(analysis, true) : null;
+    const assessment = typeof LiteScoring !== 'undefined'
+        ? LiteScoring.buildSideAssessment(you, youPhases, {
+            opponentRating: analysis.isWhite ? analysis.blackRating : analysis.whiteRating
+        })
+        : null;
+    const badge = typeof CmUi !== 'undefined' ? CmUi.resultBadge(analysis.result) : `<span class="p-tag p-component">${analysis.result}</span>`;
+    const phases = typeof CmUi !== 'undefined' && youPhases ? CmUi.phaseScores(youPhases) : '';
+    const est = assessment?.level?.value;
+    const eloLine = (est != null || chessComYou != null)
+        ? `<div class="cm-game-elo">${est != null ? `Estimated game performance <b>${typeof formatGameEloLabel === 'function' ? formatGameEloLabel(est) : est}</b>` : ''}${chessComYou != null ? ` · Chess.com rating ${chessComYou}` : ''}</div>`
+        : '';
     card.innerHTML = `
         <div class="p-card-body" style="text-align:left">
-            <div class="font-bold text-lg game-matchup-title">${gameMatchupTitle(analysis)}</div>
+            <div class="flex justify-content-between align-items-start gap-2">
+                <div class="font-bold text-lg game-matchup-title">${gameMatchupTitle(analysis)}</div>
+                ${badge}
+            </div>
             <div class="text-primary text-sm mb-2">${analysis.openingName || ''}</div>
-            <div class="flex justify-content-between align-items-center">
-                <span class="text-color-secondary text-sm">${analysis.isWhite ? 'White' : 'Black'}${tcLabel ? ` · ${tcLabel}` : ''} · ${analysis.moves.length} moves${youAcc != null ? ` · ${youAcc}%` : ''}</span>
-                <span class="p-tag p-component" style="background:${resultColor}">${analysis.result}</span>
+            <div class="cm-game-card-meta">
+                <span>${analysis.isWhite ? 'White' : 'Black'}</span>
+                ${tcLabel ? `<span>${tcLabel}</span>` : ''}
+                <span>${analysis.moves.length} moves</span>
+                ${youAcc != null ? `<span>${youAcc}% accuracy</span>` : ''}
             </div>
             ${finish ? `<div class="game-card-finish text-color-secondary text-sm">${finish}</div>` : ''}
             ${sortLine}
             ${story}
+            ${phases}
+            ${eloLine}
         </div>
     `;
     list.appendChild(card);
@@ -2771,7 +2818,7 @@ function updateReviewDepthBadge(analysis) {
         btn.disabled = deepened || !enginesReady;
         btn.title = deepened
             ? `Already analysed at depth ${depth}`
-            : `Re-analyze this game at depth ${REVIEW_ENGINE_DEPTH}`;
+            : `Re-analyse this game at depth ${REVIEW_ENGINE_DEPTH}`;
     }
 }
 
@@ -2779,6 +2826,8 @@ function openReview(analysis) {
     if (!analysis.gameStory) finalizeAnalysis(analysis);
     attachGamePlayers(analysis, null, analysis.username || profileState?.username);
     currentReviewGame = analysis;
+    document.body.classList.add('is-review');
+    document.body.classList.remove('is-about');
     document.getElementById('dashboard').style.display = 'none';
     document.getElementById('review-view').style.display = 'grid';
     const listUi = document.getElementById('moves-tab');
@@ -2831,9 +2880,11 @@ function openReview(analysis) {
         row.id = `move-${idx}`;
         row.onclick = () => goToMove(idx);
         const isKey = story && story.keyMoveIndex === idx;
-        const label = m.classification?.label
-            ? `<span class="move-label ${m.classification.class}">${m.classification.label}</span>`
-            : '';
+        const label = typeof CmUi !== 'undefined'
+            ? CmUi.moveTag(m.classification)
+            : (m.classification?.label
+                ? `<span class="move-label ${m.classification.class}">${m.classification.label}</span>`
+                : '');
         const turnMark = m.turn === 'w' ? '.' : '...';
         row.innerHTML = `<span style="color:#666; width:36px">${m.moveNum}${turnMark}</span><b style="width:50px">${m.san}</b>${isKey ? '<span style="color:var(--primary);font-size:10px;margin-right:6px;">KEY</span>' : ''}${label}`;
         listUi.appendChild(row);
@@ -2843,15 +2894,15 @@ function openReview(analysis) {
     renderReviewCoachTab(analysis);
     renderReviewStatsTab(analysis);
 
-    // Default to Game stats tab
-    const statsLink = document.querySelector('#review-view [data-review-tab="stats"]');
-    if (statsLink) {
-        switchTab('stats', statsLink);
+    // Default to Coaching so the coach sits above the stats it explains
+    const coachingLink = document.querySelector('#review-view [data-review-tab="coaching"]');
+    if (coachingLink) {
+        switchTab('coaching', coachingLink);
     } else {
         const coachEl = document.getElementById('coach-tab');
         const statsEl = document.getElementById('stats-tab');
-        if (coachEl) coachEl.style.display = 'none';
-        if (statsEl) statsEl.style.display = 'block';
+        if (coachEl) coachEl.style.display = 'block';
+        if (statsEl) statsEl.style.display = 'none';
         document.getElementById('moves-tab').style.display = 'none';
         document.getElementById('graph-tab').style.display = 'none';
     }
@@ -3259,6 +3310,7 @@ function sidePhaseBreakdown(analysis, forPlayer) {
 }
 
 function starsHtml(stars) {
+    if (typeof CmUi !== 'undefined') return CmUi.stars(stars);
     if (stars == null) {
         return `<span class="phase-stars na" title="Not applicable">N/A</span>`;
     }
@@ -3329,12 +3381,13 @@ function renderReviewStatsTab(analysis) {
         : null;
 
     const eloCard = (label, stats, chessComElo, phaseBreakdown, assessment) => `
-        <div class="game-elo-card">
+        <div class="game-elo-card" data-tone="rating">
             <div class="game-elo-kicker">${label}</div>
             <div class="game-elo-value">${assessment?.level?.value ?? '-'}</div>
             <div class="game-level-label">Estimated game performance <span class="confidence-pill confidence-${(assessment?.level?.confidence || 'low').toLowerCase()}">${assessment?.level?.confidence || 'Low'} confidence</span></div>
+            <p class="cm-stat-note">A local Stockfish estimate for this game only. It is not your Chess.com rating.</p>
             <div class="game-elo-meta">
-                ${chessComElo != null ? `Chess.com ${chessComElo} · ` : ''}
+                ${chessComElo != null ? `Chess.com rating ${chessComElo} · ` : 'Chess.com rating unavailable · '}
                 ${stats.accuracy != null ? `${stats.accuracy}% accuracy` : 'No rated moves'}
                 · ${stats.ratedN}/${stats.total} rated moves
             </div>
@@ -3354,6 +3407,7 @@ function renderReviewStatsTab(analysis) {
     el.innerHTML = `
         <div class="review-stats">
             <div class="review-stats-title">Estimated game performance &amp; phase ratings</div>
+            <p class="cm-stat-note mb-3">Estimated game performance is how Stockfish scored this game. Chess.com rating is the player’s live rating on the site.</p>
             <div class="game-elo-row">
                 ${eloCard(youName, you, chessComYou, youPhases, youAssessment)}
                 ${eloCard(oppName, opp, chessComOpp, oppPhases, oppAssessment)}
@@ -3574,6 +3628,7 @@ function switchTab(t, el) {
     const nav = el?.closest('.p-tabview-nav');
     if (nav) nav.querySelectorAll('li').forEach(li => li.classList.remove('p-highlight'));
     el?.closest('li')?.classList.add('p-highlight');
+    syncTabAria(nav);
     const coachEl = document.getElementById('coach-tab');
     const statsEl = document.getElementById('stats-tab');
     if (coachEl) coachEl.style.display = t === 'coaching' ? 'block' : 'none';
@@ -3590,7 +3645,13 @@ function exitReview() {
         }
     }
     currentReviewGame = null;
+    document.body.classList.remove('is-review');
     document.getElementById('review-view').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
     refreshDashboard();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[role="tablist"]').forEach(syncTabAria);
+});
+

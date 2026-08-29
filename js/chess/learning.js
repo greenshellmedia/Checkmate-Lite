@@ -1,7 +1,7 @@
 /* chess/learning.js. interactive opening / theory lessons */
 
 const OPENING_FAMILY_INTROS = {
-    "Indian Defense": "The Indian Defence is a family of chess openings for Black that begins with 1.d4 Nf6. Instead of staking an immediate symmetrical claim in the center with 1...d5, Black adopts a hypermodern approach: let White occupy the center with pawns, then counter-attack it dynamically from the flanks.",
+    "Indian Defense": "The Indian Defence is a family of chess openings for Black that begins with 1.d4 Nf6. Instead of staking an immediate symmetrical claim in the centre with 1...d5, Black adopts a hypermodern approach: let White occupy the centre with pawns, then counter-attack it dynamically from the flanks.",
     "King's Indian Defense": "The King's Indian Defence is a hypermodern opening where Black allows White a big pawn centre, then challenges it with ...d6, ...g6, ...Bg7 and later ...e5 or ...c5. Black accepts temporary space disadvantage for sharp counterplay.",
     "King's Indian Attack": "The King's Indian Attack is a flexible White system built around Nf3, g3, Bg2, and O-O. White often delays the central confrontation and aims for a kingside build-up similar to a reversed King's Indian.",
     "Queen's Indian Defense": "The Queen's Indian Defence answers 1.d4 Nf6 2.c4 with ...e6 and ...b6, planning ...Bb7. Black controls e4 with pieces rather than an early ...d5, aiming for a solid, flexible structure.",

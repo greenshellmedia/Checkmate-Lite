@@ -20,6 +20,19 @@
     display: none !important;
 }
 
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) .cm-logo-light,
+    html:not([data-theme="light"]) .seo-logo-light,
+    html:not([data-theme="light"]) .app-brand-logo-light {
+        display: none !important;
+    }
+    html:not([data-theme="light"]) .cm-logo-dark,
+    html:not([data-theme="light"]) .seo-logo-dark,
+    html:not([data-theme="light"]) .app-brand-logo-dark {
+        display: block !important;
+    }
+}
+
 html[data-theme="dark"] .cm-logo-light,
 html[data-theme="dark"] .seo-logo-light,
 html[data-theme="dark"] .app-brand-logo-light {
@@ -30,6 +43,18 @@ html[data-theme="dark"] .cm-logo-dark,
 html[data-theme="dark"] .seo-logo-dark,
 html[data-theme="dark"] .app-brand-logo-dark {
     display: block !important;
+}
+
+html[data-theme="light"] .cm-logo-light,
+html[data-theme="light"] .seo-logo-light,
+html[data-theme="light"] .app-brand-logo-light {
+    display: block !important;
+}
+
+html[data-theme="light"] .cm-logo-dark,
+html[data-theme="light"] .seo-logo-dark,
+html[data-theme="light"] .app-brand-logo-dark {
+    display: none !important;
 }
 
 .cm-footer .cm-logo-assets,

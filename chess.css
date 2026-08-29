@@ -32,11 +32,8 @@
 
     .p-tabview-nav-container { position: relative; }
     .p-tabview-nav-content {
-        overflow-x: auto;
-        overflow-y: hidden;
-        scrollbar-width: none;
+        overflow: visible;
     }
-    .p-tabview-nav-content::-webkit-scrollbar { display: none; }
     .p-tabview-nav {
         display: flex;
         flex-wrap: wrap;
@@ -108,20 +105,11 @@
 }
 
 :root {
-    --board-white: #ebecd0;
-    --board-black: #779556;
     --board-highlight: rgba(255, 255, 0, 0.4);
-    --accent: #f87171;
-    --warning: #fbbf24;
-    --success: #34d399;
-    --excellent: #4ade80;
-    --cls-book: #a78bfa;
-    --cls-theory: #8b5cf6;
-    --font-sans: "Inter", sans-serif;
-    --font-display: "Domine", serif;
-    --font-data: "Datatype", monospace;
-    /* Override PrimeNG Material theme (defaults to Roboto) */
-    --font-family: "Inter", sans-serif;
+    --accent: var(--cls-blunder, #f87171);
+    --warning: var(--cls-miss, #fbbf24);
+    --success: var(--cls-best, #34d399);
+    --excellent: var(--cls-excellent, #4ade80);
 }
 
 html, body {
@@ -572,10 +560,10 @@ html[data-theme="dark"] .app-brand-king-black {
     min-width: 0;
 }
 .review-side .p-tabview-nav {
-    flex-wrap: nowrap;
-    gap: 0;
-    overflow-x: auto;
-    scrollbar-width: thin;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    overflow: visible;
+    scrollbar-width: none;
 }
 .review-side .p-tabview-nav > li {
     flex: 0 0 auto;
@@ -668,17 +656,17 @@ html[data-theme="dark"] .app-brand-king-black {
     font-size: 0.65rem; padding: 0.15rem 0.45rem; border-radius: var(--border-radius);
     margin-left: auto; font-weight: 700; text-transform: uppercase;
 }
-.cls-best { background: var(--success); color: #062; }
-.cls-great { background: #38bdf8; color: #0c4a6e; }
-.cls-excellent { background: color-mix(in srgb, var(--success) 70%, var(--excellent)); color: #062; }
-.cls-good { background: var(--excellent); color: #043; }
+.cls-best { background: var(--cls-best, #34d399); color: var(--cls-ink-dark, #062014); }
+.cls-excellent { background: var(--cls-excellent, #4ade80); color: var(--cls-ink-dark, #062014); }
+.cls-great { background: var(--cls-great, #6ee7b7); color: var(--cls-ink-dark, #062014); }
+.cls-good { background: var(--cls-good, #86c96a); color: var(--cls-ink-dark, #062014); }
 .cls-okay { background: var(--surface-hover); color: var(--text-color); }
-.cls-inaccuracy { background: #f59e0b; color: #422006; }
-.cls-miss { background: var(--warning); color: #422006; }
-.cls-mistake { background: #f97316; color: #431407; }
-.cls-blunder { background: var(--accent); color: #450a0a; }
-.cls-book { background: var(--cls-book); color: #1e1b4b; }
-.cls-theory { background: var(--cls-theory); color: #fff; }
+.cls-inaccuracy { background: var(--cls-inaccuracy, #f59e0b); color: #422006; }
+.cls-miss { background: var(--cls-miss, #fbbf24); color: #422006; }
+.cls-mistake { background: var(--cls-mistake, #f97316); color: #431407; }
+.cls-blunder { background: var(--cls-blunder, #f87171); color: #450a0a; }
+.cls-book { background: var(--cls-book, #a78bfa); color: #1e1b4b; }
+.cls-theory { background: var(--cls-theory, #8b5cf6); color: #fff; }
 
 .graph-container {
     padding: 0.75rem 0.5rem 0.5rem;
@@ -1810,8 +1798,7 @@ button.coach-evidence-item:hover { text-decoration: underline; }
 .dash-panel { display: none; }
 .dash-panel.active { display: block; }
 
-#dash-tabs .p-tabview-nav > li { flex: 1 1 auto; }
-#dash-tabs .p-tabview-nav-link { width: 100%; }
+#dash-tabs .p-tabview-nav > li { flex: 0 1 auto; }
 
 .p-card.stat-card { cursor: pointer; }
 .bw-card { cursor: pointer; text-align: left; }

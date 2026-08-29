@@ -1,37 +1,229 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Chess Game Analysis With Clear Explanations | CheckmateMore</title>
-    <meta name="description" content="Analyse Chess.com games with move classifications, accuracy, phase ratings, engine lines, graphs, strategic ideas, and plain-English explanations.">
+    <meta name="description" content="Review a Chess.com or Lichess game with move classifications, accuracy, phase ratings, engine lines, graphs, and a readable explanation. Start in Lite or store the review in a free account.">
     <link rel="canonical" href="https://checkmatemore.com/chess-game-analysis/">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="CheckmateMore">
     <meta property="og:title" content="Chess Game Analysis With Clear Explanations | CheckmateMore">
-    <meta property="og:description" content="Analyse Chess.com games with move classifications, accuracy, phase ratings, engine lines, graphs, strategic ideas, and plain-English explanations.">
+    <meta property="og:description" content="Review a Chess.com or Lichess game with move classifications, accuracy, phase ratings, engine lines, graphs, and a readable explanation.">
     <meta property="og:url" content="https://checkmatemore.com/chess-game-analysis/">
     <meta property="og:image" content="https://checkmatemore.com/assets/social-card.svg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Chess Game Analysis With Clear Explanations | CheckmateMore">
-    <meta name="twitter:description" content="Analyse Chess.com games with move classifications, accuracy, phase ratings, engine lines, graphs, strategic ideas, and plain-English explanations.">
+    <meta name="twitter:description" content="Review a Chess.com or Lichess game with move classifications, accuracy, phase ratings, engine lines, graphs, and a readable explanation.">
     <meta name="twitter:image" content="https://checkmatemore.com/assets/social-card.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="manifest" href="../site.webmanifest">
-    <meta name="theme-color" content="#3f51b5">
+    
+    
+    
+    
+    
+    
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://checkmatemore.com/#organization","name":"CheckmateMore","url":"https://checkmatemore.com","logo":"https://checkmatemore.com/assets/android-chrome-512x512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","url":"https://checkmatemore.com/contact/"}},{"@type":"WebSite","@id":"https://checkmatemore.com/#website","url":"https://checkmatemore.com","name":"CheckmateMore","publisher":{"@id":"https://checkmatemore.com/#organization"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can CheckmateMore analyse Chess.com games?","acceptedAnswer":{"@type":"Answer","text":"Yes. Lite can review a Chess.com game in the browser. A free account can import Chess.com and Lichess games so they can be stored. Availability still depends on the game data."}},{"@type":"Question","name":"What is a single-game performance estimate?","acceptedAnswer":{"@type":"Answer","text":"It is a separate estimate based on rated decisions in one game, shown with Low, Moderate, or Strong sample confidence. It is not the player’s real Chess.com, FIDE, or over-the-board rating."}},{"@type":"Question","name":"Does a review promise a rating gain?","acceptedAnswer":{"@type":"Answer","text":"No. A review explains decisions in that game. It does not guarantee wins or a particular rating outcome."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://checkmatemore.com/"},{"@type":"ListItem","position":2,"name":"Chess game analysis","item":"https://checkmatemore.com/chess-game-analysis/"}]}]}</script>
+    
+
+    <meta name="theme-color" content="#101914">
+    <meta name="color-scheme" content="light dark">
     <script src="../js/site-theme.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/primeng.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
-    <link rel="stylesheet" href="../seo.css?v=20260824a">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://checkmatemore.com/#organization","name":"CheckmateMore","url":"https://checkmatemore.com","logo":"https://checkmatemore.com/assets/android-chrome-512x512.png","contactPoint":{"@type":"ContactPoint","contactType":"customer support","url":"https://checkmatemore.com/contact/"}},{"@type":"WebSite","@id":"https://checkmatemore.com/#website","url":"https://checkmatemore.com","name":"CheckmateMore","publisher":{"@id":"https://checkmatemore.com/#organization"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can CheckmateMore analyse Chess.com games?","acceptedAnswer":{"@type":"Answer","text":"Yes. Yes. Link a Chess.com profile and import its games. Analysis availability depends on the game data and beta plan limits."}},{"@type":"Question","name":"What is a single-game performance estimate?","acceptedAnswer":{"@type":"Answer","text":"It is a separate estimate based on rated decisions in one game, shown with Low, Moderate, or Strong sample confidence. It is not the player’s real Chess.com, FIDE or over-the-board rating."}},{"@type":"Question","name":"Does CheckmateMore promise rating improvement?","acceptedAnswer":{"@type":"Answer","text":"No. CheckmateMore provides analysis, coaching objectives, and practice tools. It does not guarantee wins or a particular rating outcome."}}]}]}</script>
-    <link rel="stylesheet" href="../brand.css?v=20260825a">
+    <link rel="stylesheet" href="../chess-landing.css?v=20260829d">
+    <link rel="stylesheet" href="../brand.css?v=20260829d">
+    <script src="../js/clean-url.js"></script>
 </head>
-<body>
-    <header class="seo-header"><div class="seo-wrap seo-nav"><a class="seo-logo" href="../" aria-label="CheckmateMore home"><span class="seo-logo-assets"><img class="seo-logo-light" src="../assets/checkmatemore-logo-black.svg" alt="CheckmateMore"><img class="seo-logo-dark" src="../assets/checkmatemore-logo-white.svg" alt="CheckmateMore"></span></a><nav class="seo-links" aria-label="Primary"><a href="../how-it-works/">How it works</a><a href="../chess-game-analysis/">Game analysis</a><a href="../weekly-chess-coaching/">Weekly coaching</a><a href="../guides/">Guides</a><a href="../pricing/">Pricing</a><a href="https://app.checkmatemore.com/featured">Featured</a><a href="https://app.checkmatemore.com" class="p-button p-component"><span class="p-button-label">Open CheckmateMore</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a></nav></div></header><main><section class="seo-hero"><div class="seo-wrap"><nav class="seo-breadcrumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="../chess-game-analysis/">Chess game analysis</a></nav><p class="seo-eyebrow">Chess game analysis</p><h1>Understand the move, not only the engine score.</h1><p class="seo-answer">CheckmateMore analyses a chess game move by move, then combines engine evaluation with classifications, opening context, phase performance, tactical and strategic ideas, and a plain-English game story. Where the data supports it, the review also surfaces clock use, endgame themes, and playable alternatives.</p><div class="seo-cta"><a href="https://app.checkmatemore.com" class="p-button p-component"><span class="p-button-label">Open CheckmateMore</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a><a href="https://app.checkmatemore.com/featured" class="p-button p-component p-button-outlined"><span class="p-button-label">View featured players</span></a></div></div></section><section class="seo-section"><div class="seo-wrap"><h2>What appears in a game review</h2><div class="seo-grid"><article class="seo-card"><i class="pi pi-tags" aria-hidden="true"></i><h3>Move classifications</h3><p>Best, Excellent, Good, Book, Theory, Inaccuracy, Miss, Mistake, Blunder, and Hang are used where appropriate. A missed forced mate is never labelled positively.</p></article><article class="seo-card"><i class="pi pi-chart-bar" aria-hidden="true"></i><h3>Accuracy and phase ratings</h3><p>Opening, middlegame, and endgame breakdowns put the overall result into phase context.</p></article><article class="seo-card"><i class="pi pi-book" aria-hidden="true"></i><h3>Game story</h3><p>Critical moments, plans, attacks, defensive ideas, material events, and alternatives become a readable explanation.</p></article><article class="seo-card"><i class="pi pi-sitemap" aria-hidden="true"></i><h3>Engine continuation</h3><p>Best lines and more detailed analysis can clarify why a recommendation works.</p></article><article class="seo-card"><i class="pi pi-chart-line" aria-hidden="true"></i><h3>Board and graph</h3><p>Navigate moves alongside evaluation changes, annotations, arrows, highlights, and bookmarks.</p></article><article class="seo-card"><i class="pi pi-clock" aria-hidden="true"></i><h3>Clock and endgame context</h3><p>Time-use and endgame findings appear only when the source game and position support them.</p></article></div></div></section><section class="seo-section alt"><div class="seo-wrap"><h2>Source rating and performance estimate are different</h2><div class="seo-callout"><strong>A one-game estimate is not your actual rating.</strong><p>The source rating comes from the game provider. CheckmateMore’s single-game performance estimate describes the decisions in that game only and reports sample confidence based on the number of rated decisions.</p></div><p class="seo-prose">One game does not define a player. A strong estimate can reflect one clean game; a low estimate can reflect a difficult position or a small sample. Cross-game trends are more useful when enough games have been analysed.</p></div></section><section class="seo-section"><div class="seo-wrap"><h2>Illustrative review layout</h2><div class="seo-example"><span class="seo-example-badge">ILLUSTRATIVE PRODUCT VISUAL</span><h3>Critical moment: simplify while ahead</h3><p class="seo-prose">Evaluation changed after a forcing capture. The review pairs the classification with the material event, the safer continuation, and a note about the same conversion theme appearing in recent games. This synthetic example shows the type of explanation; it is not a claim about a real player.</p></div></div></section><section class="seo-section alt"><div class="seo-wrap"><h2>Frequently asked questions</h2><div class="seo-faq"><details><summary>Can CheckmateMore analyse Chess.com games?</summary><p>Yes. Yes. Link a Chess.com profile and import its games. Analysis availability depends on the game data and beta plan limits.</p></details><details><summary>What is a single-game performance estimate?</summary><p>It is a separate estimate based on rated decisions in one game, shown with Low, Moderate, or Strong sample confidence. It is not the player’s real Chess.com, FIDE or over-the-board rating.</p></details><details><summary>Does CheckmateMore promise rating improvement?</summary><p>No. CheckmateMore provides analysis, coaching objectives, and practice tools. It does not guarantee wins or a particular rating outcome.</p></details></div></div></section><section class="seo-final"><div class="seo-wrap"><h2>See what your games have been telling you.</h2><p>Review a game in Lite, or open CheckmateMore to build a clearer picture over time.</p><div class="seo-cta"><a href="https://app.checkmatemore.com" class="p-button p-component"><span class="p-button-label">Open CheckmateMore</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a></div></div></section></main><footer class="seo-footer"><div class="seo-wrap seo-footer-grid"><div><a class="seo-logo" href="../" aria-label="CheckmateMore home"><span class="seo-logo-assets"><img class="seo-logo-light" src="../assets/checkmatemore-logo-black.svg" alt="CheckmateMore"><img class="seo-logo-dark" src="../assets/checkmatemore-logo-white.svg" alt="CheckmateMore"></span></a><p>Chess analysis that remembers how you play.</p></div><div><h3>Product</h3><a href="../how-it-works/">How it works</a><a href="../chess-game-analysis/">Game analysis</a><a href="../weekly-chess-coaching/">Weekly coaching</a><a href="../pricing/">Pricing</a></div><div><h3>Learn</h3><a href="../guides/">Chess guides</a><a href="../research/">Research notes</a><a href="../compare/chess-com-analysis/">Compare approaches</a><a href="https://app.checkmatemore.com/featured">Featured players</a></div><div><h3>Company</h3><a href="../contact/">Contact</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="https://app.checkmatemore.com">Open CheckmateMore</a></div></div></footer>
+<body class="cm-landing">
+  <a class="cm-skip" href="#main">Skip to content</a>
+  <header class="cm-top">
+    <div class="cm-wrap cm-nav-wrap">
+      <a class="cm-logo" href="../" aria-label="CheckmateMore home">
+        <span class="cm-logo-assets">
+          <img class="cm-logo-light" src="../assets/checkmatemore-logo-black.svg" alt="CheckmateMore">
+          <img class="cm-logo-dark" src="../assets/checkmatemore-logo-white.svg" alt="CheckmateMore">
+        </span>
+      </a>
+      <nav class="cm-nav" aria-label="Primary navigation">
+        <a href="../how-it-works/">How it works</a>
+        <a href="../guides/">Guides</a>
+        <a href="../pricing/">Pricing</a>
+        <a href="https://app.checkmatemore.com/featured" class="cm-featured-nav"><i class="pi pi-star-fill" aria-hidden="true"></i> Featured</a>
+        <a href="../chess/app/" class="p-button p-component p-button-sm cm-btn">Use Lite</a>
+        <a href="https://app.checkmatemore.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Create free account</span></a>
+      </nav>
+      <div class="cm-nav-compact">
+        <a href="../chess/app/" class="p-button p-component p-button-sm cm-btn">Use Lite</a>
+        <a href="https://app.checkmatemore.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Free account</span></a>
+        <details class="cm-nav-menu">
+          <summary aria-label="Open menu"><i class="pi pi-bars" aria-hidden="true"></i></summary>
+          <div class="cm-nav-drawer">
+            <a href="../chess/app/">Use Lite without an account</a>
+            <a href="../how-it-works/">How it works</a>
+            <a href="../guides/">Guides</a>
+            <a href="../pricing/">Pricing</a>
+            <a href="https://app.checkmatemore.com/featured">Featured players</a>
+            <a href="../chess-game-analysis/">Game analysis</a>
+            <a href="../weekly-chess-coaching/">Weekly coaching</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="cm-page-hero">
+      <div class="cm-wrap">
+        <nav class="cm-crumbs" aria-label="Breadcrumb"><a href="../">Home</a> / <a href="../chess-game-analysis/">Chess game analysis</a></nav>
+        <p class="cm-eyebrow">Single-game review</p>
+        <h1>Understand the move, not only the engine score.</h1>
+        <p class="cm-lede">This page is about one reviewed game. Lite can do that in the browser with Stockfish. A free account stores the same kind of review so later weeks can use it.</p>
+        <div class="cm-cta">
+          <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span></a>
+          <a href="../chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Review a Chess.com game in Lite</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-section cm-tinted" aria-labelledby="review-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">What a review actually shows</p>
+        <h2 id="review-title">A classification is the start of the explanation.</h2>
+        <div class="cm-loop">
+          <article class="cm-card" data-tone="mistake">
+            <p class="cm-kicker">The move</p>
+            <h3>23…Qd6 is labelled a blunder</h3>
+            <p>The review keeps the evaluation swing, names the hanging queen, and shows Nb5. It does not stop at a number.</p>
+          </article>
+          <article class="cm-card is-focus" data-tone="opening">
+            <p class="cm-kicker">The context</p>
+            <h3>The Najdorf structure stays on screen</h3>
+            <p>Opening names, phase ratings, and a playable alternative such as 23…Qc7 sit with the board, graph, and engine continuation.</p>
+          </article>
+          <article class="cm-card" data-tone="accuracy">
+            <p class="cm-kicker">What happens next</p>
+            <h3>The position can return as practice</h3>
+            <p>If the game is stored, <a href="../weekly-chess-coaching/">weekly coaching</a> can wait for a second example, then send the capture to <a href="../chess-tactics-practice-from-your-games/">personal puzzles</a>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-section" aria-labelledby="lite-account-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Lite versus a stored review</p>
+        <h2 id="lite-account-title">Same kind of explanation. Different memory.</h2>
+        <div class="cm-split-2">
+          <article class="cm-card" data-tone="opening">
+            <h3>Lite</h3>
+            <p>Free, no account. You paste or load a Chess.com game and Stockfish reviews it in the browser. Nothing is stored as account history.</p>
+          </article>
+          <article class="cm-card" data-tone="accuracy">
+            <h3>Free account</h3>
+            <p>Chess.com and Lichess games can be imported and kept. That library is what openings, puzzles, bots, and later Pro coaching read from.</p>
+          </article>
+        </div>
+        <p class="cm-intro cm-followup">Clock use and endgame notes appear only when the source game supports them. A missed forced mate is never labelled as a good move.</p>
+        
+        <nav class="cm-related" aria-label="Related pages">
+          <a href="../chess-game-analysis/">Game analysis</a>
+          <a href="../weekly-chess-coaching/">Weekly coaching</a>
+          <a href="../chess-tactics-practice-from-your-games/">Personal puzzles</a>
+          <a href="../play-chess-bots/">Bots</a>
+          <a href="../guides/opening-mistakes-by-rating/">Openings</a>
+          <a href="https://app.checkmatemore.com/featured">Public profiles</a>
+          <a href="../pricing/">Pricing</a>
+          
+        </nav>
+      </div>
+    </section>
+
+    <section class="cm-section cm-tinted" aria-labelledby="estimate-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Ratings</p>
+        <h2 id="estimate-title">A one-game performance estimate is not your Chess.com rating.</h2>
+        <article class="cm-card cm-example" data-tone="warning">
+          <span class="cm-example-badge">Keep these separate</span>
+          <h3>Source rating versus estimated performance</h3>
+          <p>The source rating comes from Chess.com or Lichess. CheckmateMore’s single-game estimate describes the rated decisions in that game and shows Low, Moderate, or Strong sample confidence. It is not a FIDE, over-the-board, or platform rating, and one game does not define a player.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cm-section cm-home-faq" aria-labelledby="analysis-faq">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Questions</p>
+        <h2 id="analysis-faq">Game analysis FAQ</h2>
+        <div class="cm-faq-list">
+          <details>
+            <summary>Can CheckmateMore analyse Chess.com games?</summary>
+            <p>Yes. Lite can review a Chess.com game in the browser. A free account can import Chess.com and Lichess games so they can be stored. Availability still depends on the game data.</p>
+          </details>
+          <details>
+            <summary>What is a single-game performance estimate?</summary>
+            <p>It is a separate estimate based on rated decisions in one game, shown with Low, Moderate, or Strong sample confidence. It is not the player’s real Chess.com, FIDE, or over-the-board rating.</p>
+          </details>
+          <details>
+            <summary>Does a review promise a rating gain?</summary>
+            <p>No. A review explains decisions in that game. It does not guarantee wins or a particular rating outcome.</p>
+          </details>
+        </div>
+        <p class="cm-beta-note"><strong>Pro and Unlimited are in beta.</strong> Stored coaching features and availability may evolve. The app shows current entitlements before you upgrade.</p>
+      </div>
+    </section>
+
+    <section class="cm-final" aria-labelledby="analysis-final">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Start with one game</p>
+        <h2 id="analysis-final">Review tonight’s game before you worry about a weekly plan.</h2>
+        <p>Lite is enough to see the explanation. Create a free account when you want that review to stay in a library.</p>
+        <div class="cm-cta">
+          <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span></a>
+          <a href="../chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Use Lite without an account</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="cm-footer">
+    <div class="cm-wrap cm-footer-grid">
+      <div>
+        <a class="cm-logo" href="../" aria-label="CheckmateMore home">
+          <span class="cm-logo-assets">
+            <img class="cm-logo-light" src="../assets/checkmatemore-logo-black.svg" alt="CheckmateMore">
+            <img class="cm-logo-dark" src="../assets/checkmatemore-logo-white.svg" alt="CheckmateMore">
+          </span>
+        </a>
+        <p>Chess analysis that remembers how you play.</p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <a href="../how-it-works/">How it works</a>
+        <a href="../chess-game-analysis/">Game analysis</a>
+        <a href="../weekly-chess-coaching/">Weekly coaching</a>
+        <a href="../pricing/">Pricing</a>
+        <a href="../chess/app/">CheckmateMore Lite</a>
+      </div>
+      <div>
+        <h3>Learn</h3>
+        <a href="../guides/">Chess guides</a>
+        <a href="../research/">Research notes</a>
+        <a href="../compare/chess-com-analysis/">Compare approaches</a>
+        <a href="https://app.checkmatemore.com/featured">Featured players</a>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <a href="../contact/">Contact</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="../terms/">Terms</a>
+        <a href="https://app.checkmatemore.com/">Create a free account</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

@@ -1084,7 +1084,7 @@ function explainGameOutcome(analysis) {
         if (tacticalWin) {
             key = tacticalWin;
             const theme = tacticalWin.themes.find(t => themeHeadline(t, true, tacticalWin.materialEvent)) || tacticalWin.themes[0];
-            headline = themeHeadline(theme, true, tacticalWin.materialEvent) || `A strong shot on ${formatMoveRef(tacticalWin.move)} decided the game`;
+            headline = themeHeadline(theme, true, tacticalWin.materialEvent) || 'A strong shot decided the game';
             detail = `${formatMoveRef(tacticalWin.move)}: ${tacticalWin.narrative || 'You seized a concrete advantage and never gave it back.'}`;
         } else if (earlyMaterialWin && latePositive) {
             key = earlyMaterialWin;
@@ -1099,7 +1099,7 @@ function explainGameOutcome(analysis) {
             detail = `From ${formatMoveRef(firstAdv.cause.move)}, the evaluation stayed in your favour. ${firstAdv.cause.narrative || 'Pressure and accurate follow-up finished the job.'}`;
         } else if (bestUp.swing > 80) {
             key = bestUp;
-            headline = `The game swung your way around ${formatMoveRef(bestUp.move)}`;
+            headline = 'The game swung your way at the key moment';
             detail = bestUp.narrative || 'That was the biggest swing in your favour.';
         } else {
             headline = 'You outplayed the position without a single obvious blow';
@@ -1114,12 +1114,12 @@ function explainGameOutcome(analysis) {
         if (criticalBlunder && criticalBlunder.evalDelta >= 2.5) {
             key = criticalBlunder;
             const theme = (criticalBlunder.themes || []).find(t => themeHeadline(t, false, criticalBlunder.materialEvent));
-            headline = themeHeadline(theme, false, criticalBlunder.materialEvent) || `A heavy slip on ${formatMoveRef(criticalBlunder.move)} decided the game`;
+            headline = themeHeadline(theme, false, criticalBlunder.materialEvent) || 'A heavy slip decided the game';
             detail = `${formatMoveRef(criticalBlunder.move)} (${criticalBlunder.evalDelta.toFixed(1)} pawn eval loss): ${criticalBlunder.narrative || criticalBlunder.label + '.'}`;
         } else if (tacticalLoss) {
             key = tacticalLoss;
             const theme = tacticalLoss.themes.find(t => themeHeadline(t, false, tacticalLoss.materialEvent)) || tacticalLoss.themes[0];
-            headline = themeHeadline(theme, false, tacticalLoss.materialEvent) || `A tactical miss on ${formatMoveRef(tacticalLoss.move)} cost the game`;
+            headline = themeHeadline(theme, false, tacticalLoss.materialEvent) || 'A tactical miss cost the game';
             detail = `${formatMoveRef(tacticalLoss.move)}: ${tacticalLoss.narrative || 'The position collapsed after this idea.'}`;
         } else if (firstDef && firstDef.cause) {
             key = firstDef.cause;
@@ -1127,7 +1127,7 @@ function explainGameOutcome(analysis) {
             detail = `After ${formatMoveRef(firstDef.cause.move)} the eval stayed against you. ${firstDef.cause.narrative || 'The deficit was converted in the endgame.'}`;
         } else if (worstDown.swing < -80) {
             key = worstDown;
-            headline = `The decisive downturn came on ${formatMoveRef(worstDown.move)}`;
+            headline = 'The decisive downturn came at a critical moment';
             detail = worstDown.narrative || 'That was the biggest swing against you.';
         } else {
             headline = 'You were gradually outplayed';

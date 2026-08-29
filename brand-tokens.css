@@ -1,0 +1,101 @@
+/* Shared CheckmateMore colour, type and surface tokens (Lite + marketing). */
+
+:root {
+    --board-white: #ebecd0;
+    --board-black: #779556;
+    --cm-green: #779556;
+    --cm-green-ink: #102116;
+    --cm-accuracy: #34d399;
+    --cm-rating: #38bdf8;
+    --cm-opening: #a78bfa;
+    --cm-middle: #60a5fa;
+    --cm-end: #f59e0b;
+    --cm-warning: #fbbf24;
+    --cm-mistake: #f97316;
+    --cm-blunder: #f87171;
+    --cls-best: #34d399;
+    --cls-excellent: #4ade80;
+    --cls-great: #6ee7b7;
+    --cls-good: #86c96a;
+    --cls-book: #a78bfa;
+    --cls-theory: #8b5cf6;
+    --cls-inaccuracy: #f59e0b;
+    --cls-miss: #fbbf24;
+    --cls-mistake: #f97316;
+    --cls-blunder: #f87171;
+    --cls-ink-dark: #062014;
+    --font-sans: "Inter", sans-serif;
+    --font-display: "Domine", serif;
+    --font-data: "Datatype", monospace;
+    --font-family: "Inter", sans-serif;
+    --radius: 12px;
+    --cm-shadow: 0 10px 28px color-mix(in srgb, #020805 16%, transparent);
+}
+
+html[data-theme="light"] {
+    --cm-shell: #e7ece3;
+    --cm-card: #f4f6f2;
+    --cm-card-2: #eef1eb;
+    --cm-border: #d4dbd1;
+    --cm-ink: #18211c;
+    --cm-muted: #5b675f;
+    --primary-color: #779556;
+    --primary-color-text: #102116;
+    --text-color: #18211c;
+    --text-color-secondary: #5b675f;
+    --surface-card: #f4f6f2;
+    --surface-ground: #e7ece3;
+    --surface-border: #d4dbd1;
+    --surface-hover: color-mix(in srgb, #18211c 6%, transparent);
+}
+
+html[data-theme="dark"] {
+    --cm-shell: #101914;
+    --cm-card: #1a221e;
+    --cm-card-2: #212924;
+    --cm-border: #2c352f;
+    --cm-ink: #e9eee8;
+    --cm-muted: #9aa59c;
+    --primary-color: #779556;
+    --primary-color-text: #102116;
+    --text-color: #e9eee8;
+    --text-color-secondary: #9aa59c;
+    --surface-card: #1a221e;
+    --surface-ground: #101914;
+    --surface-border: #2c352f;
+    --surface-hover: color-mix(in srgb, #e9eee8 6%, transparent);
+}
+
+html:not([data-theme]) {
+    --cm-shell: #101914;
+    --cm-card: #1a221e;
+    --cm-card-2: #212924;
+    --cm-border: #2c352f;
+    --cm-ink: #e9eee8;
+    --cm-muted: #9aa59c;
+    --primary-color: #779556;
+    --primary-color-text: #102116;
+    --text-color: #e9eee8;
+    --text-color-secondary: #9aa59c;
+    --surface-card: #1a221e;
+    --surface-ground: #101914;
+    --surface-border: #2c352f;
+    --surface-hover: color-mix(in srgb, #e9eee8 6%, transparent);
+}
+
+@media (prefers-color-scheme: light) {
+    html:not([data-theme]) {
+        --cm-shell: #e7ece3;
+        --cm-card: #f4f6f2;
+        --cm-card-2: #eef1eb;
+        --cm-border: #d4dbd1;
+        --cm-ink: #18211c;
+        --cm-muted: #5b675f;
+        --text-color: #18211c;
+        --text-color-secondary: #5b675f;
+        --surface-card: #f4f6f2;
+        --surface-ground: #e7ece3;
+        --surface-border: #d4dbd1;
+        --surface-hover: color-mix(in srgb, #18211c 6%, transparent);
+    }
+}

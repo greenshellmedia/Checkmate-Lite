@@ -1,113 +1,616 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>CheckmateMore | Personalised Chess Coaching From Your Own Games</title>
-  <meta name="description" content="Analyse your chess games, uncover recurring mistakes, get weekly coaching objectives, and practise the positions that matter with CheckmateMore Pro.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CheckmateMore | Online Chess Analysis and Personalised Coaching</title>
+  <meta name="description" content="Online chess analysis of Chess.com and Lichess games. Review a game in the browser with Lite, or create a free account for a library, starter coaching, and a chess improvement plan from your own mistakes and opening patterns.">
   <link rel="canonical" href="https://checkmatemore.com/">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta property="og:type" content="website"><meta property="og:site_name" content="CheckmateMore">
-  <meta property="og:title" content="CheckmateMore | Personalised Chess Coaching From Your Own Games">
-  <meta property="og:description" content="Analyse your games, uncover recurring mistakes, get weekly coaching objectives, and practise the positions that matter.">
-  <meta property="og:url" content="https://checkmatemore.com/"><meta property="og:image" content="https://checkmatemore.com/assets/social-card.svg">
-  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="CheckmateMore | Personalised Chess Coaching">
-  <meta name="twitter:description" content="Chess analysis that remembers how you play."><meta name="twitter:image" content="https://checkmatemore.com/assets/social-card.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png"><link rel="shortcut icon" href="favicon.ico"><link rel="manifest" href="site.webmanifest"><meta name="theme-color" content="#3f51b5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CheckmateMore">
+  <meta property="og:title" content="CheckmateMore | Online Chess Analysis and Personalised Coaching">
+  <meta property="og:description" content="Analyse Chess.com and Lichess games, review mistakes and patterns, and turn them into a chess improvement plan. Start in Lite or create a free account.">
+  <meta property="og:url" content="https://checkmatemore.com/">
+  <meta property="og:image" content="https://checkmatemore.com/assets/social-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CheckmateMore | Chess Game Review and Personalised Coaching">
+  <meta name="twitter:description" content="Chess analysis that shows what keeps happening in your games, and what to practise next.">
+  <meta name="twitter:image" content="https://checkmatemore.com/assets/social-card.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#101914">
   <meta name="color-scheme" content="light dark">
-  <script>(function(){var b='https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/themes/',l=document.createElement('link'),m=matchMedia('(prefers-color-scheme: dark)');l.rel='stylesheet';l.id='pf-theme';function a(d){l.href=b+(d?'md-dark-indigo':'md-light-indigo')+'/theme.css';document.documentElement.dataset.theme=d?'dark':'light';document.documentElement.style.colorScheme=d?'dark':'light'}a(m.matches);document.head.appendChild(l);m.addEventListener&&m.addEventListener('change',function(e){a(e.matches)})})();</script>
+  <script src="js/site-theme.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/primeng.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
-  <link rel="stylesheet" href="chess-landing.css?v=20260824b"><link rel="stylesheet" href="brand.css?v=20260825a"><script src="js/clean-url.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://checkmatemore.com/#organization","name":"CheckmateMore","url":"https://checkmatemore.com/","logo":"https://checkmatemore.com/assets/android-chrome-512x512.png"},{"@type":"WebSite","@id":"https://checkmatemore.com/#website","url":"https://checkmatemore.com/","name":"CheckmateMore","publisher":{"@id":"https://checkmatemore.com/#organization"}},{"@type":"SoftwareApplication","name":"CheckmateMore Pro","applicationCategory":"GameApplication","operatingSystem":"Web","description":"Personalised chess coaching based on a player's own analysed games.","url":"https://app.checkmatemore.com/","offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"GBP"},{"@type":"Offer","name":"Pro monthly","price":"1","priceCurrency":"GBP"},{"@type":"Offer","name":"Unlimited monthly","price":"5","priceCurrency":"GBP"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does CheckmateMore help you improve at chess?","acceptedAnswer":{"@type":"Answer","text":"CheckmateMore analyses a player's own games, explains critical moments, identifies mistakes that keep coming back, creates one to three weekly objectives, and turns suitable positions into personal practice."}},{"@type":"Question","name":"Can CheckmateMore analyse Chess.com games?","acceptedAnswer":{"@type":"Answer","text":"Yes. Players can link a Chess.com profile and initiate eligible game imports from their browser."}},{"@type":"Question","name":"Is a single-game performance estimate my real rating?","acceptedAnswer":{"@type":"Answer","text":"No. It is an estimate about rated decisions in one game, shown separately from the source rating with sample confidence."}},{"@type":"Question","name":"Is CheckmateMore free?","acceptedAnswer":{"@type":"Answer","text":"CheckmateMore has a Free account plan. Pro and Unlimited are paid beta plans with more detailed coaching, review, training and preparation tools."}}]}]}</script>
+  <link rel="stylesheet" href="chess-landing.css?v=20260829d">
+  <link rel="stylesheet" href="brand.css?v=20260829d">
+  <script src="js/clean-url.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://checkmatemore.com/#organization",
+        "name": "CheckmateMore",
+        "url": "https://checkmatemore.com/",
+        "logo": "https://checkmatemore.com/assets/android-chrome-512x512.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://checkmatemore.com/#website",
+        "url": "https://checkmatemore.com/",
+        "name": "CheckmateMore",
+        "publisher": { "@id": "https://checkmatemore.com/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://checkmatemore.com/#webpage",
+        "url": "https://checkmatemore.com/",
+        "name": "CheckmateMore | Online Chess Analysis and Personalised Coaching",
+        "isPartOf": { "@id": "https://checkmatemore.com/#website" },
+        "about": { "@id": "https://checkmatemore.com/#organization" },
+        "description": "Analyse Chess.com and Lichess games, review recurring chess mistakes, and build a personalised chess improvement plan."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "CheckmateMore Lite",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+        "description": "Free in-browser Stockfish chess game review. No account required.",
+        "url": "https://checkmatemore.com/chess/app/"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "CheckmateMore",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web",
+        "description": "Personalised chess coaching from a player's own analysed Chess.com and Lichess games.",
+        "url": "https://app.checkmatemore.com/",
+        "offers": [
+          { "@type": "Offer", "name": "Free account", "price": "0", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Pro monthly", "price": "1", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Pro annual", "price": "10", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Unlimited monthly", "price": "5", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Unlimited annual", "price": "50", "priceCurrency": "GBP" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between CheckmateMore Lite and a free account?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lite is a free, no-account chess game review that runs Stockfish in your browser. A free CheckmateMore account stores analysed games, connects Chess.com and Lichess, and adds a game library, public profiles, starter coaching, puzzles, and entry-level bots."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can CheckmateMore analyse Chess.com and Lichess games?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Lite can review an individual Chess.com game in the browser. A free account connects Chess.com and Lichess so eligible games can be stored and used for longer-term analysis."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does CheckmateMore help you improve at chess?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It reviews your own games, explains critical moments, looks for chess mistakes and patterns that keep appearing, then turns suitable positions into a chess improvement plan with practice. It does not guarantee a rating outcome."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Lite store my games or account history?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Lite reviews the game in front of you in the browser and does not create an account history. Create a free account if you want analysed games stored for a library and later coaching."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What do CheckmateMore Pro and Unlimited add?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pro adds weekly coaching from your own games, one to three evidence-backed objectives, progress tracking, opening, middlegame and endgame trends, personal practice, playing-style analysis, play-yourself bots, and deeper public-profile analysis. Unlimited adds private profile-derived bots and opponent preparation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is a single-game performance estimate my real rating?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is an estimate about rated decisions in one chess game review, shown separately from the source rating with sample confidence."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is CheckmateMore a replacement for a human chess coach?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It organises engine-backed evidence and clear objectives from your games. A human coach can still add judgement, accountability, and broader teaching context."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="cm-landing">
-<header class="cm-top"><div class="cm-wrap cm-nav-wrap">
-  <a class="cm-logo" href="./" aria-label="CheckmateMore home"><span class="cm-logo-assets"><img class="cm-logo-light" src="assets/checkmatemore-logo-black.svg" alt="CheckmateMore"><img class="cm-logo-dark" src="assets/checkmatemore-logo-white.svg" alt="CheckmateMore"></span></a>
-  <nav class="cm-nav" aria-label="Primary navigation"><a href="how-it-works/">How it works</a><a href="guides/">Guides</a><a href="pricing/">Pricing</a><a href="https://app.checkmatemore.com/featured" class="cm-featured-nav"><i class="pi pi-star-fill" aria-hidden="true"></i> Featured</a><a href="chess/app/">Use Lite</a><a href="https://app.checkmatemore.com/" class="p-button p-component p-button-sm"><span class="p-button-label">Open CheckmateMore</span></a></nav>
-</div></header>
+  <a class="cm-skip" href="#main">Skip to content</a>
+  <header class="cm-top">
+    <div class="cm-wrap cm-nav-wrap">
+      <a class="cm-logo" href="./" aria-label="CheckmateMore home">
+        <span class="cm-logo-assets">
+          <img class="cm-logo-light" src="assets/checkmatemore-logo-black.svg" alt="CheckmateMore">
+          <img class="cm-logo-dark" src="assets/checkmatemore-logo-white.svg" alt="CheckmateMore">
+        </span>
+      </a>
+      <nav class="cm-nav" aria-label="Primary navigation">
+        <a href="how-it-works/">How it works</a>
+        <a href="guides/">Guides</a>
+        <a href="pricing/">Pricing</a>
+        <a href="https://app.checkmatemore.com/featured" class="cm-featured-nav"><i class="pi pi-star-fill" aria-hidden="true"></i> Featured</a>
+        <a href="chess/app/" class="p-button p-component p-button-sm cm-btn">Use Lite</a>
+        <a href="https://app.checkmatemore.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Create free account</span></a>
+      </nav>
+      <div class="cm-nav-compact">
+        <a href="chess/app/" class="p-button p-component p-button-sm cm-btn">Use Lite</a>
+        <a href="https://app.checkmatemore.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Free account</span></a>
+        <details class="cm-nav-menu">
+          <summary aria-label="Open menu"><i class="pi pi-bars" aria-hidden="true"></i></summary>
+          <div class="cm-nav-drawer">
+            <a href="chess/app/">Use Lite without an account</a>
+            <a href="how-it-works/">How it works</a>
+            <a href="guides/">Guides</a>
+            <a href="pricing/">Pricing</a>
+            <a href="https://app.checkmatemore.com/featured">Featured players</a>
+            <a href="chess-game-analysis/">Game analysis</a>
+            <a href="weekly-chess-coaching/">Weekly coaching</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
 
-<main>
-<section class="cm-hero" aria-labelledby="hero-title"><div class="cm-wrap cm-hero-grid">
-  <div class="cm-hero-copy"><p class="cm-eyebrow">♞ Personalised online chess coaching from your own games</p><h1 id="hero-title">Chess analysis that <span>remembers how you play.</span></h1>
-    <p class="cm-lede">Go beyond a one-game blunder review. CheckmateMore Pro turns your Chess.com games into clear explanations, notes on mistakes that keep coming back, weekly coaching objectives, and positions to practise.</p>
-    <div class="cm-cta"><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Open CheckmateMore</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a><a href="chess/app/" class="p-button p-component p-button-outlined"><span class="p-button-label">Review a game in Lite</span></a></div>
-    <p class="cm-beta"><span></span><strong>Now in beta</strong>. explore the full game review and coaching tools and help shape what comes next.</p>
-  </div>
-  <div class="cm-visual" aria-hidden="true"><div class="cm-board"><b>♚</b><em>♞</em></div><div class="cm-coach"><small>WEEKLY FOCUS</small><strong>Convert the advantage</strong><p>You reach strong middlegames. Next, choose the simplest winning plan.</p><div><span></span></div><small>3 evidence positions ready</small></div><div class="cm-stat"><small>PATTERN</small><strong>+8.4%</strong><span>Endgame accuracy</span></div></div>
-</div></section>
+  <main id="main">
+    <section class="cm-hero" aria-labelledby="hero-title">
+      <div class="cm-wrap cm-hero-grid">
+        <div class="cm-hero-copy">
+          <p class="cm-eyebrow">Online chess analysis from the games you already play</p>
+          <h1 id="hero-title">See what keeps happening in your games, then practise what comes next.</h1>
+          <p class="cm-lede">A chess game review can show the engine swing. CheckmateMore also shows the mistakes and patterns that repeat, the opening choices that keep costing you, and a chess improvement plan you can actually use.</p>
+          <div class="cm-cta">
+            <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+            <a href="chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Use Lite without an account</span></a>
+          </div>
+          <p class="cm-split-note"><strong>Lite</strong> reviews one game in your browser. No account, no history. A <strong>free account</strong> stores analysed Chess.com and Lichess games so later reviews have something to remember.</p>
+        </div>
 
-<div class="cm-strip"><div class="cm-wrap"><span>♟</span><p>Your games. Your patterns. <strong>A plan for what to improve next.</strong></p></div></div>
+        <figure class="cm-preview">
+          <div class="cm-preview-shell">
+            <div class="cm-preview-chrome">
+              <span class="cm-preview-dots" aria-hidden="true"></span>
+              <span class="cm-preview-title">Game review</span>
+              <span class="cm-preview-tabs">
+                <span>Coaching</span>
+                <span class="is-on">Moves</span>
+                <span>Stats</span>
+              </span>
+            </div>
+            <div class="cm-preview-body">
+              <div class="cm-preview-main">
+                <p class="cm-preview-matchup">You <span>1520</span> vs Opponent <span>1498</span> · Rapid 10+5</p>
+                <div class="cm-move-card">
+                  <span class="opening-tag">Sicilian Defence, Najdorf</span>
+                  <div class="cm-move-card-row">
+                    <strong>23…Qd6</strong>
+                    <span class="move-label cls-blunder">Blunder</span>
+                  </div>
+                  <p>The queen steps onto a square White’s knight already attacks. Evaluation drops from +0.4 to −2.4.</p>
+                  <p class="cm-move-alt">Better: 23…Qc7, keeping the queen off the hanging square.</p>
+                </div>
+                <div class="cm-mini-board" role="img" aria-label="Illustrative chess game review board after 23...Qd6, with Black’s queen on d6 hanging to White’s knight on b5.">
+                  <i><img src="https://lichess1.org/assets/piece/cburnett/bR.svg" alt=""></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/bB.svg" alt=""></i><i></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/bR.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/bK.svg" alt=""></i><i></i>
+                  <i><img src="https://lichess1.org/assets/piece/cburnett/bP.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/bP.svg" alt=""></i><i></i><i></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/bP.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/bP.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/bP.svg" alt=""></i>
+                  <i></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/bN.svg" alt=""></i><i class="is-key"><img src="https://lichess1.org/assets/piece/cburnett/bQ.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/bP.svg" alt=""></i><i></i><i></i><i></i>
+                  <i></i><i></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/bP.svg" alt=""></i><i></i><i></i><i></i><i></i>
+                  <i></i><i class="is-from"><img src="https://lichess1.org/assets/piece/cburnett/wN.svg" alt=""></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/wP.svg" alt=""></i><i></i><i></i><i></i><i></i>
+                  <i></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/wB.svg" alt=""></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/wN.svg" alt=""></i><i></i><i></i>
+                  <i><img src="https://lichess1.org/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/wP.svg" alt=""></i><i></i><i></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/wP.svg" alt=""></i>
+                  <i><img src="https://lichess1.org/assets/piece/cburnett/wR.svg" alt=""></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/wB.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/wQ.svg" alt=""></i><i></i><i><img src="https://lichess1.org/assets/piece/cburnett/wR.svg" alt=""></i><i><img src="https://lichess1.org/assets/piece/cburnett/wK.svg" alt=""></i><i></i>
+                </div>
+                <div class="eval-bar-container player-white" aria-hidden="true">
+                  <div class="eval-bar-fill" style="width:28%"></div>
+                  <div class="eval-text">−2.4</div>
+                </div>
+              </div>
+              <aside class="cm-preview-side">
+                <div class="cm-phase-card">
+                  <p class="cm-kicker">Phase ratings</p>
+                  <div class="phase-row"><span>Opening</span><strong class="tone-opening">4.2</strong></div>
+                  <div class="phase-row"><span>Middlegame</span><strong class="tone-middle">2.8</strong></div>
+                  <div class="phase-row"><span>Endgame</span><strong class="tone-end">n/a</strong></div>
+                  <p class="cm-preview-elo">Estimated game performance <b>1410</b> <small>Moderate confidence</small></p>
+                </div>
+                <div class="cm-move-list">
+                  <div class="move-row"><span>21. Be2</span><span class="move-label cls-good">Good</span></div>
+                  <div class="move-row"><span>21…a6</span><span class="move-label cls-okay">Okay</span></div>
+                  <div class="move-row"><span>22. Nb5</span><span class="move-label cls-great">Great</span></div>
+                  <div class="move-row is-active"><span>23…Qd6</span><span class="move-label cls-blunder">Blunder</span></div>
+                  <div class="move-row"><span>24. Nxd6</span><span class="move-label cls-best">Best</span></div>
+                </div>
+                <div class="cm-coach-mini">
+                  <small>Improve next</small>
+                  <strong>23…Qd6 · Blunder</strong>
+                  <p>Check forcing captures before moving the queen.</p>
+                </div>
+              </aside>
+            </div>
+          </div>
+          <figcaption>Illustrative CheckmateMore review: move classifications, evaluation, phase ratings and a lightweight coaching note on a single chess game.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-<section class="cm-section cm-featured" aria-labelledby="featured-title"><div class="cm-wrap cm-featured-layout">
-  <div class="cm-featured-copy"><p class="cm-kicker">See CheckmateMore in action</p><h2 id="featured-title">View featured chess profiles.</h2><p>Browse public profiles from content creators, professional players, and other notable chess fans. See how CheckmateMore turns real games into engine analysis, playing patterns, and coaching notes.</p><div class="cm-featured-tags" aria-label="Featured profile groups"><span>Content creators</span><span>Pros</span><span>Other notable players</span></div><a href="https://app.checkmatemore.com/featured" class="p-button p-component"><span class="p-button-label">View featured profiles</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a><small><i class="pi pi-lock-open" aria-hidden="true"></i> Public to browse. no account required.</small></div>
-  <div class="cm-featured-preview" aria-hidden="true">
-    <article class="cm-profile-card cm-profile-creator"><span class="cm-profile-piece">♞</span><div><small>CONTENT CREATOR</small><strong>Playing style</strong><p>Attacking patterns · key games · coaching themes</p></div><i class="pi pi-arrow-up-right"></i></article>
-    <article class="cm-profile-card cm-profile-pro"><span class="cm-profile-piece">♛</span><div><small>PRO PLAYER</small><strong>Engine precision</strong><p>Phase scores · opening choices · critical moments</p></div><i class="pi pi-arrow-up-right"></i></article>
-    <article class="cm-profile-card cm-profile-other"><span class="cm-profile-piece">♜</span><div><small>NOTABLE PLAYER</small><strong>Game notes</strong><p>Strengths · tendencies · coaching opportunities</p></div><i class="pi pi-arrow-up-right"></i></article>
-  </div>
-</div></section>
+    <section class="cm-section" id="compare" aria-labelledby="compare-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Lite, Free account, Pro</p>
+        <h2 id="compare-title">Three ways to use CheckmateMore.</h2>
+        <p class="cm-intro">Start with a single-game review, keep a library when you want memory, then add weekly coaching when you want a plan across many games.</p>
+        <div class="cm-comparison">
+          <article class="cm-card cm-plan" data-tone="opening">
+            <div class="cm-plan-head">
+              <i class="pi pi-desktop" aria-hidden="true"></i>
+              <div>
+                <h3>CheckmateMore Lite</h3>
+                <p>Free · no account required</p>
+              </div>
+            </div>
+            <p class="cm-plan-intro">Runs Stockfish in the browser and reviews the individual game in front of you. Nothing is stored as account history.</p>
+            <ul class="cm-checks">
+              <li>Move classifications and evaluation</li>
+              <li>Phase ratings and estimated game performance</li>
+              <li>Opening context and lightweight coaching</li>
+              <li>Opening study, famous games and simple local practice</li>
+            </ul>
+            <p class="cm-closing">Use it after a game, then close the tab.</p>
+            <a href="chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Use Lite without an account</span></a>
+          </article>
+          <article class="cm-card cm-plan is-focus" data-tone="accuracy">
+            <div class="cm-plan-head">
+              <i class="pi pi-user" aria-hidden="true"></i>
+              <div>
+                <h3>Free account</h3>
+                <p>Free · Chess.com and Lichess</p>
+              </div>
+            </div>
+            <p class="cm-plan-intro">Stores analysed games and connects your chess accounts. That library is the foundation for longer-term analysis.</p>
+            <ul class="cm-checks">
+              <li>Game library and public profiles</li>
+              <li>Starter coaching, puzzles and entry-level bots</li>
+              <li>Analyse Chess.com games and Lichess games from one place</li>
+              <li>Keep reviews so later weeks have evidence to compare</li>
+            </ul>
+            <p class="cm-closing">Create this if you want CheckmateMore to remember how you play.</p>
+            <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span></a>
+          </article>
+          <article class="cm-card cm-plan" data-tone="endgame">
+            <div class="cm-plan-head">
+              <i class="pi pi-compass" aria-hidden="true"></i>
+              <div>
+                <h3>Pro and Unlimited</h3>
+                <p>Paid plans for coaching depth</p>
+              </div>
+            </div>
+            <p class="cm-plan-intro">Weekly coaching from your own games, with one to three evidence-backed objectives and the practice to go with them.</p>
+            <ul class="cm-checks">
+              <li>Progress tracking and historical comparisons</li>
+              <li>Opening, middlegame and endgame trends</li>
+              <li>Personal practice, puzzles and play-yourself bots</li>
+              <li>Human-tendency and playing-style analysis</li>
+              <li>Deeper public-profile analysis; private profile-derived bots and opponent preparation on Unlimited</li>
+            </ul>
+            <p class="cm-closing">Add Pro once the free library is doing useful work.</p>
+            <a href="pricing/" class="p-button p-component cm-btn"><span class="p-button-label">See Pro pricing</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section class="cm-section cm-journey" id="how-it-works" aria-labelledby="journey-title"><div class="cm-wrap">
-  <p class="cm-kicker">How personalised chess coaching works</p><h2 id="journey-title">From your latest games to a plan you can use.</h2><p class="cm-intro">CheckmateMore connects analysis, explanation, coaching, and practice. Each step uses your analysed games rather than a generic list of chess advice.</p>
-  <ol class="cm-journey-grid"><li><span>01</span><div><h3>Bring in games</h3><p>Link a Chess.com profile and import your games from your browser.</p></div></li><li><span>02</span><div><h3>Explain critical moments</h3><p>Review classifications, evaluation changes, plans, tactics, and playable alternatives.</p></div></li><li><span>03</span><div><h3>Spot mistakes that keep coming back</h3><p>Weekly coaching compares analysed games and selects one to three evidence-based objectives.</p></div></li><li><span>04</span><div><h3>Practise what matters</h3><p>Suitable positions from your own mistakes return through personal tactical practice.</p></div></li></ol>
-  <a href="how-it-works/" class="cm-text-link">See exactly how CheckmateMore works <i class="pi pi-arrow-right" aria-hidden="true"></i></a>
-</div></section>
+    <section class="cm-section cm-tinted" id="how-it-works" aria-labelledby="journey-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">How it works</p>
+        <h2 id="journey-title">From a chess game review to a plan you can use.</h2>
+        <p class="cm-intro">Each step uses your analysed games rather than a generic list of chess advice.</p>
+        <ol class="cm-journey-grid">
+          <li class="cm-card" data-tone="opening">
+            <span>01</span>
+            <div>
+              <h3>Bring in a game</h3>
+              <p>Review one game in Lite, or connect Chess.com and Lichess so eligible games can be stored in your library.</p>
+            </div>
+          </li>
+          <li class="cm-card" data-tone="rating">
+            <span>02</span>
+            <div>
+              <h3>Explain critical moments</h3>
+              <p>See classifications, evaluation changes, phase ratings, opening context, and playable alternatives.</p>
+            </div>
+          </li>
+          <li class="cm-card" data-tone="mistake">
+            <span>03</span>
+            <div>
+              <h3>Spot what keeps happening</h3>
+              <p>Stored games reveal chess mistakes and patterns that repeat, not only the last blunder.</p>
+            </div>
+          </li>
+          <li class="cm-card" data-tone="accuracy">
+            <span>04</span>
+            <div>
+              <h3>Practise what matters</h3>
+              <p>Suitable positions return as personal practice, puzzles, or a weekly objective with a clear success condition.</p>
+            </div>
+          </li>
+        </ol>
+        <a href="how-it-works/" class="cm-text-link">See exactly how CheckmateMore works <i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </section>
 
-<section class="cm-section" id="compare" aria-labelledby="compare-title"><div class="cm-wrap">
-  <p class="cm-kicker">Choose your experience</p><h2 id="compare-title">Start free. Use Pro when you want more context.</h2><p class="cm-intro">Lite gives you a focused review right now. Pro connects those reviews into a coaching history that becomes more useful over time.</p>
-  <div class="cm-comparison">
-    <article class="cm-plan"><div class="cm-plan-head"><span>♙</span><div><h3>CheckmateMore Lite</h3><p>Free, instant, no account needed.</p></div></div><p class="cm-plan-intro">Analyse an individual game in your browser and get a quick, clear review.</p>
-      <ul class="cm-checks"><li>Analyse a game without creating an account</li><li>Move classifications and evaluation changes</li><li>Opening, middlegame, and endgame summaries</li><li>Lightweight coaching notes for a single game</li><li>Interactive board review and move playback</li><li>Opening explorer and theory learning tools</li><li>Play simple local practice bots</li><li>Your analysis stays focused on the game in front of you</li></ul>
-      <p class="cm-closing">Perfect for a quick review after a game.</p><a href="chess/app/" class="p-button p-component p-button-outlined"><span class="p-button-label">Use Lite for free</span></a>
-    </article>
-    <article class="cm-plan cm-pro"><b class="cm-badge">BETA</b><div class="cm-plan-head"><span>♛</span><div><h3>CheckmateMore app</h3><p>Start with a free account, then choose Pro for more detailed reviews.</p></div></div><p class="cm-plan-intro">Connect your chess account and turn analysed games into a coaching system that becomes more useful over time.</p>
-      <div class="cm-free-tier"><i class="pi pi-check-circle" aria-hidden="true"></i><div><strong>Free account tier</strong><span>Keep cached game history and get starter coaching and a connected profile view without a paid subscription.</span></div></div>
-      <div class="cm-summary"><span><i class="pi pi-folder-open"></i> Connected library</span><span><i class="pi pi-compass"></i> Personal coaching</span><span><i class="pi pi-chart-line"></i> Progress trends</span><span><i class="pi pi-bolt"></i> Guided practice</span></div>
-      <p class="cm-closing">Built for players who want more than a verdict. they want to know what to work on next.</p><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Create a free account</span></a><p class="cm-paid">A free account includes game caching and starter coaching. More detailed Pro features are available through a low-cost subscription. Beta access and available features may evolve as we improve the platform.</p>
-    </article>
-  </div>
-</div></section>
+    <section class="cm-section" id="loop" aria-labelledby="loop-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Review, then coach, then practise</p>
+        <h2 id="loop-title">One game becomes next week’s work.</h2>
+        <p class="cm-intro">A useful chess improvement plan is short. CheckmateMore turns a classified moment into an objective, then into a position you can replay.</p>
+        <div class="cm-loop">
+          <article class="cm-card" data-tone="mistake">
+            <p class="cm-kicker">Game review</p>
+            <h3>23…Qd6 is labelled a blunder</h3>
+            <p>The review pairs the move classification with the evaluation drop, the hanging-piece theme, and the safer queen retreat.</p>
+            <ul>
+              <li>Classification: Blunder</li>
+              <li>Eval: +0.4 → −2.4</li>
+              <li>Opening context: Sicilian, Najdorf</li>
+            </ul>
+          </article>
+          <article class="cm-card is-focus" data-tone="warning">
+            <p class="cm-kicker">Weekly coaching</p>
+            <h3>Check forcing captures before moving the queen</h3>
+            <p>Two eligible games show the same loose-piece habit. The objective is one sentence, with evidence positions and a success condition.</p>
+            <ul>
+              <li>1 of 3 weekly objectives</li>
+              <li>Evidence from your own games</li>
+              <li>Success: no repeat queen hang in the next five-game sample</li>
+            </ul>
+          </article>
+          <article class="cm-card" data-tone="accuracy">
+            <p class="cm-kicker">Practice position</p>
+            <h3>White to play and take the hanging queen</h3>
+            <p>The same board returns as a personal puzzle. You make the capture, then see the model line from the review.</p>
+            <ul>
+              <li>Built from your analysed game</li>
+              <li>Spaced repetition if you miss it</li>
+              <li>Ready for a play-yourself bot at the same structure</li>
+            </ul>
+          </article>
+        </div>
+        <p class="cm-caption">Illustrative loop, not a claim about a specific player. <a href="weekly-chess-coaching/">Weekly coaching</a> and <a href="chess-tactics-practice-from-your-games/">personal tactics practice</a> explain the real workflow.</p>
+      </div>
+    </section>
 
-<section class="cm-section cm-engine-compare" aria-labelledby="engine-compare-title"><div class="cm-wrap cm-engine-layout">
-  <div><p class="cm-kicker">Not just an engine score</p><h2 id="engine-compare-title">Evaluation tells you what changed. Coaching helps you decide what to do next.</h2><p>A raw engine number is useful evidence, but it does not remember your previous games. CheckmateMore combines engine-backed game review with explanations, recurring-pattern tracking, weekly objectives, and practice positions.</p></div>
-  <div class="cm-engine-cards"><article><span>RAW REVIEW</span><strong>−2.4 after 23…Qd6?</strong><p>The evaluation moved against you. The engine prefers a different continuation.</p></article><article class="is-coaching"><span>PERSONALISED COACHING</span><strong>Check the loose defender before moving your queen.</strong><p>This theme appeared in two eligible games. Review the evidence positions, then practise the same decision trigger.</p></article></div>
-</div></section>
+    <section class="cm-section cm-featured" aria-labelledby="featured-title">
+      <div class="cm-wrap cm-featured-layout">
+        <div class="cm-featured-copy">
+          <p class="cm-kicker">Public profiles</p>
+          <h2 id="featured-title">See CheckmateMore on real featured players.</h2>
+          <p>Browse the public profile directory for content creators, professional players, and other notable chess fans. You can inspect available analysed games, opening tendencies, and selected coaching notes without creating an account.</p>
+          <div class="cm-featured-tags" aria-label="Featured profile groups">
+            <span>Content creators</span>
+            <span>Professionals</span>
+            <span>Other notable players</span>
+          </div>
+          <a href="https://app.checkmatemore.com/featured" class="p-button p-component cm-btn"><span class="p-button-label">View featured profiles</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+          <small><i class="pi pi-lock-open" aria-hidden="true"></i> Public to browse. Findings use the processed game corpus, not a complete career record.</small>
+        </div>
+        <div class="cm-featured-preview">
+          <a class="cm-card cm-profile-card" data-tone="opening" href="https://app.checkmatemore.com/featured">
+            <i class="pi pi-video" aria-hidden="true"></i>
+            <div>
+              <small>Content creator</small>
+              <strong>Playing style on public games</strong>
+              <p>Attacking patterns, key games, coaching themes</p>
+            </div>
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cm-card cm-profile-card" data-tone="rating" href="https://app.checkmatemore.com/featured">
+            <i class="pi pi-star" aria-hidden="true"></i>
+            <div>
+              <small>Professional player</small>
+              <strong>Engine-backed game review</strong>
+              <p>Phase scores, chess opening analysis, critical moments</p>
+            </div>
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cm-card cm-profile-card" data-tone="endgame" href="https://app.checkmatemore.com/featured">
+            <i class="pi pi-globe" aria-hidden="true"></i>
+            <div>
+              <small>Notable player</small>
+              <strong>Public-profile notes</strong>
+              <p>Strengths, tendencies, coaching opportunities</p>
+            </div>
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
 
-<section class="cm-section cm-tinted" id="features" aria-labelledby="features-title"><div class="cm-wrap">
-  <p class="cm-kicker">The Pro experience</p><h2 id="features-title">Coaching based on the games you actually play.</h2><p class="cm-intro">Bring your games together, find the ideas that recur, and choose what to work on in the week ahead.</p>
-  <div class="cm-features">
-    <article><b>01</b><i class="pi pi-folder-open"></i><h3>Connected game library</h3><ul><li>Import and organise your analysed games</li><li>Search, filter, sort, save filters, and revisit key games</li><li>Track accuracy, estimated game strength, blunders, openings, and results over time</li><li>Review opening-book context, theory alternatives, and leave-book moments</li></ul></article>
-    <article class="accent"><b>02</b><i class="pi pi-compass"></i><h3>Personal coaching</h3><ul><li>Weekly coaching reviews built from your own games</li><li>One to three clear objectives with evidence positions</li><li>Model answers, best lines, and measurable success conditions</li><li>See recurring habits, emerging issues, and improvements that have held over enough games</li><li>Tactical, strategic, opening, endgame, and time-management themes</li></ul></article>
-    <article><b>03</b><i class="pi pi-search"></i><h3>More detailed game reviews</h3><ul><li>Multi-depth engine analysis and richer move context</li><li>Game plans, strategies, attacks, defences, tendencies, and human explanations</li><li>Endgame notes including king activity, passed pawns, rook activity, opposition, pawn majorities, and conversion technique</li><li>Clock notes when the source game provides timing information</li><li>Save annotations, bookmarks, critical positions, arrows, and highlights</li></ul></article>
-    <article><b>04</b><i class="pi pi-chart-line"></i><h3>Progress and profile trends</h3><ul><li>Weekly rating, accuracy, and phase-score trends</li><li>Opening, middlegame, and endgame performance over time</li><li>Opening and variation strengths and weaknesses based on how you actually play</li><li>Coaching dossiers and more detailed profile analysis where available</li><li>Public and external-player profile exploration</li></ul></article>
-    <article><b>05</b><i class="pi pi-bolt"></i><h3>Practice and bots</h3><ul><li>Play against preset bots</li><li>Coach mode with suggested moves and explanations</li><li>Play critical positions again to practise a better continuation</li><li>Your personal playing-style bot as the product develops</li></ul></article>
-  </div>
-</div></section>
+    <section class="cm-section cm-tinted" id="features" aria-labelledby="features-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">What you can work on</p>
+        <h2 id="features-title">Coaching based on the games you actually play.</h2>
+        <p class="cm-intro">The same card system as the CheckmateMore application: a short colour cue, a clear title, and the evidence underneath.</p>
+        <div class="cm-features">
+          <article class="cm-card" data-tone="accuracy">
+            <i class="pi pi-percentage" aria-hidden="true"></i>
+            <h3>Accuracy and game review</h3>
+            <p>Classifications, evaluation graphs, and estimated game performance for the decisions in that game, not a substitute for your Chess.com or Lichess rating.</p>
+          </article>
+          <article class="cm-card" data-tone="opening">
+            <i class="pi pi-book" aria-hidden="true"></i>
+            <h3>Chess opening analysis</h3>
+            <p>Book and theory context, leave-book moments, and the openings that actually appear in your library rather than a generic repertoire list.</p>
+          </article>
+          <article class="cm-card" data-tone="middlegame">
+            <i class="pi pi-sitemap" aria-hidden="true"></i>
+            <h3>Middlegame plans</h3>
+            <p>Plans, tactics, attacks and defences from your own critical moments, with playable alternatives when the engine line is useful.</p>
+          </article>
+          <article class="cm-card" data-tone="endgame">
+            <i class="pi pi-flag" aria-hidden="true"></i>
+            <h3>Endgame trends</h3>
+            <p>Conversion technique, king activity, passed pawns and rook endings, tracked across games once you have a stored sample.</p>
+          </article>
+          <article class="cm-card" data-tone="warning">
+            <i class="pi pi-compass" aria-hidden="true"></i>
+            <h3>Personalised chess coaching</h3>
+            <p>Weekly reviews pick one to three evidence-backed objectives. Progress tracking compares this week with the games you already analysed.</p>
+          </article>
+          <article class="cm-card" data-tone="rating">
+            <i class="pi pi-bolt" aria-hidden="true"></i>
+            <h3>Practice, puzzles and bots</h3>
+            <p>Personal practice positions, puzzles, entry-level bots on Free, play-yourself bots on Pro, and private profile-derived bots on Unlimited.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section class="cm-section cm-audience" aria-labelledby="audience-title"><div class="cm-wrap">
-  <p class="cm-kicker">Who CheckmateMore is for</p><h2 id="audience-title">Useful feedback for different kinds of player.</h2>
-  <div class="cm-audience-grid"><article><i class="pi pi-star-fill" aria-hidden="true"></i><h3>Beginner and improving players</h3><p>Understand obvious mistakes without condescension, build a short weekly plan, and practise the tactical positions that caught you out.</p></article><article><i class="pi pi-chart-line" aria-hidden="true"></i><h3>Club and tournament players</h3><p>Study opening tendencies, phase performance, time-management evidence, and patterns across a useful run of games.</p></article><article><i class="pi pi-video" aria-hidden="true"></i><h3>Creators and communities</h3><p>View featured profiles, distinctive game breakdowns, community bots, and audience-friendly chess challenges.</p></article></div>
-</div></section>
+    <section class="cm-section cm-pricing-home" aria-labelledby="pricing-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Pricing preview</p>
+        <h2 id="pricing-title">Start free. Add Pro when the library is worth coaching.</h2>
+        <p class="cm-intro">Annual Pro and Unlimited prices equal ten monthly payments, so you get two months free compared with paying month by month.</p>
+        <div class="cm-price-grid">
+          <article class="cm-card" data-tone="opening">
+            <span>Free account</span>
+            <strong>£0</strong>
+            <p>Profiles, openings, basic analysis and coaching, stored games, puzzles, and entry-level bot play.</p>
+          </article>
+          <article class="cm-card is-featured" data-tone="accuracy">
+            <span>Pro</span>
+            <strong>£1<small>/month</small></strong>
+            <p>Weekly coaching, deeper game and profile analysis, personal training, and broader bot access.</p>
+            <em>£10/year · save £2 versus 12 × £1</em>
+          </article>
+          <article class="cm-card" data-tone="endgame">
+            <span>Unlimited</span>
+            <strong>£5<small>/month</small></strong>
+            <p>Advanced opponent preparation, private profile-derived bots, and evolving bot-creation features.</p>
+            <em>£50/year · save £10 versus 12 × £5</em>
+          </article>
+        </div>
+        <div class="cm-pricing-actions">
+          <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span></a>
+          <a href="pricing/" class="p-button p-component cm-btn"><span class="p-button-label">Compare plans</span></a>
+        </div>
+        <p class="cm-beta-note"><strong>Pro and Unlimited are in beta.</strong> Features and availability may evolve. The authenticated app shows current entitlements before you upgrade.</p>
+      </div>
+    </section>
 
-<section class="cm-section cm-pricing-home" aria-labelledby="pricing-title"><div class="cm-wrap">
-  <p class="cm-kicker">Simple beta pricing</p><h2 id="pricing-title">Start free. Add Pro when you want coaching across more games.</h2><p class="cm-intro">No guaranteed-rating claims and no hidden feature maze. Choose the plan that matches the depth of analysis, coaching, and preparation you want.</p>
-  <div class="cm-price-grid"><article><span>FREE</span><strong>£0</strong><p>Profiles, openings, basic analysis and coaching, game caching, and entry-level bot play.</p></article><article class="is-featured"><span>PRO</span><strong>£1<small>/month</small></strong><p>Weekly coaching, deeper game and profile analysis, personal training, and broader bot access.</p><em>£10/year · two months free</em></article><article><span>UNLIMITED</span><strong>£5<small>/month</small></strong><p>Advanced opponent preparation, private profile-derived bots, and evolving bot-creation features.</p><em>£50/year · two months free</em></article></div>
-  <div class="cm-pricing-actions"><a href="pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Compare plans</span></a><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Open CheckmateMore</span></a></div><p class="cm-paid">Beta features and availability may evolve. The authenticated app shows current entitlements before upgrade.</p>
-</div></section>
+    <section class="cm-section cm-home-faq" aria-labelledby="faq-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Questions, answered plainly</p>
+        <h2 id="faq-title">CheckmateMore FAQ</h2>
+        <div class="cm-faq-list">
+          <details>
+            <summary>What is the difference between CheckmateMore Lite and a free account?</summary>
+            <p>Lite is a free chess game review that runs Stockfish in your browser. No account is required, and Lite does not store personal data as account history. A free account stores analysed games, connects Chess.com and Lichess, and adds a game library, public profiles, starter coaching, puzzles, and entry-level bots.</p>
+          </details>
+          <details>
+            <summary>Can CheckmateMore analyse Chess.com and Lichess games?</summary>
+            <p>Yes. Lite can review an individual Chess.com game in the browser. Create a free account to connect Chess.com and Lichess and keep eligible games for later analysis, opening study, and coaching.</p>
+          </details>
+          <details>
+            <summary>How does CheckmateMore help you improve at chess?</summary>
+            <p>It analyses your own games, explains critical moments, looks for chess mistakes and patterns that keep coming back, then turns suitable positions into personal practice or a short weekly plan. It supports an improvement process but does not guarantee a rating outcome.</p>
+          </details>
+          <details>
+            <summary>Does Lite store my games or account history?</summary>
+            <p>No. Lite reviews the game in front of you. If you want a library and later comparisons, create a free CheckmateMore account.</p>
+          </details>
+          <details>
+            <summary>What do Pro and Unlimited add?</summary>
+            <p>Pro adds weekly coaching, one to three evidence-backed objectives, progress tracking, opening, middlegame and endgame trends, personal practice, playing-style analysis, play-yourself bots, and deeper public-profile analysis. Unlimited adds private profile-derived bots and opponent preparation.</p>
+          </details>
+          <details>
+            <summary>Is a single-game performance estimate my real rating?</summary>
+            <p>No. It is an estimate based on the rated decisions in one game, shown separately from the source rating with Low, Moderate, or Strong sample confidence. It is not your Chess.com, Lichess, FIDE, or over-the-board rating.</p>
+          </details>
+          <details>
+            <summary>Is CheckmateMore a replacement for a human chess coach?</summary>
+            <p>No. It organises engine-backed evidence and clear objectives from your games. A human coach can still add judgement, accountability, and broader teaching context.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
-<section class="cm-section cm-why" aria-labelledby="why-title"><div class="cm-wrap">
-  <div><p class="cm-kicker">More than a verdict</p><h2 id="why-title">Why Pro instead of a one-off engine review?</h2><p>A single review can tell you where a move went wrong. CheckmateMore Pro looks for the patterns behind it: the openings that repeatedly cause trouble, the plans you execute well, the habits you are correcting, and the positions worth practising again.</p></div>
-  <div class="cm-benefits"><article><span>♜</span><div><h3>See the pattern</h3><p>Spot repeat mistakes and strengths across games, not just one position.</p></div></article><article><span>♝</span><div><h3>Understand the why</h3><p>Turn engine lines into clear coaching explanations and clear objectives.</p></div></article><article><span>♟</span><div><h3>Measure progress</h3><p>Use weekly reviews and trend charts to see whether your work is paying off.</p></div></article></div>
-</div></section>
+    <section class="cm-final" aria-labelledby="final-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Your next move</p>
+        <h2 id="final-title">Review a game now, or keep the ones that matter.</h2>
+        <p>Use Lite for a one-off chess game review in the browser, or create a free account to analyse Chess.com and Lichess games and build a longer-term plan.</p>
+        <div class="cm-cta">
+          <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+          <a href="chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Use Lite without an account</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<section class="cm-section cm-home-faq" aria-labelledby="faq-title"><div class="cm-wrap">
-  <p class="cm-kicker">Questions, answered plainly</p><h2 id="faq-title">CheckmateMore FAQ</h2>
-  <div class="cm-faq-list"><details><summary>How does CheckmateMore help you improve at chess?</summary><p>It analyses your own games, explains critical moments, looks for mistakes that keep coming back, creates one to three weekly objectives, and turns suitable positions into personal practice. It supports an improvement process but does not guarantee a rating outcome.</p></details><details><summary>Can CheckmateMore analyse Chess.com games?</summary><p>Yes. Link a Chess.com profile and initiate eligible game imports from your browser. Normal user imports are not described as automatic server-side polling.</p></details><details><summary>What is a single-game performance estimate?</summary><p>It is an estimate based on the rated decisions in one game, shown separately from the game’s source rating with Low, Moderate, or Strong sample confidence. It is not your Chess.com, FIDE, or over-the-board rating.</p></details><details><summary>How are personal practice positions chosen?</summary><p>Suitable positions come from analysed critical moments in your own games. Repeated themes can be prioritised, and spaced repetition brings missed positions back sooner.</p></details><details><summary>Is CheckmateMore free?</summary><p>There is a Free account plan for profiles, openings, basic analysis and coaching, game caching, and entry-level bot play. Pro and Unlimited are paid beta plans for more detailed coaching, game history, training and preparation.</p></details><details><summary>Is CheckmateMore a replacement for a human chess coach?</summary><p>No. It organises engine-backed evidence and clear objectives from your games. A human coach can still add judgement, accountability, and broader teaching context.</p></details></div>
-</div></section>
-
-<section class="cm-final" aria-labelledby="final-title"><div class="cm-wrap"><p class="cm-kicker">Your next move</p><h2 id="final-title">Ready to turn your games into a plan?</h2><p>Create a free account for cached games and starter coaching, or try the Pro beta for more detail across your saved games.</p><div class="cm-cta"><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">View Pro plans</span><i class="pi pi-arrow-right"></i></a><a href="chess/app/" class="p-button p-component p-button-outlined"><span class="p-button-label">Use Lite for free</span></a></div><small><i class="pi pi-info-circle"></i> The app has a free account tier. Pro is a paid product currently in beta; features and availability may evolve.</small></div></section>
-</main>
-
-<footer class="cm-footer"><div class="cm-wrap"><a class="cm-logo" href="./" aria-label="CheckmateMore home"><span class="cm-logo-assets"><img class="cm-logo-light" src="assets/checkmatemore-logo-black.svg" alt="CheckmateMore"><img class="cm-logo-dark" src="assets/checkmatemore-logo-white.svg" alt="CheckmateMore"></span></a><p>Chess analysis that remembers how you play.</p><nav><a href="guides/">Guides</a><a href="research/">Research</a><a href="https://app.checkmatemore.com/featured">Featured</a><a href="privacy/">Privacy</a><a href="terms/">Terms</a><a href="contact/">Contact</a><a href="https://app.checkmatemore.com/">Pro beta</a></nav></div></footer>
-</body></html>
+  <footer class="cm-footer">
+    <div class="cm-wrap cm-footer-grid">
+      <div>
+        <a class="cm-logo" href="./" aria-label="CheckmateMore home">
+          <span class="cm-logo-assets">
+            <img class="cm-logo-light" src="assets/checkmatemore-logo-black.svg" alt="CheckmateMore">
+            <img class="cm-logo-dark" src="assets/checkmatemore-logo-white.svg" alt="CheckmateMore">
+          </span>
+        </a>
+        <p>Chess analysis that remembers how you play.</p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <a href="how-it-works/">How it works</a>
+        <a href="chess-game-analysis/">Game analysis</a>
+        <a href="weekly-chess-coaching/">Weekly coaching</a>
+        <a href="pricing/">Pricing</a>
+        <a href="chess/app/">CheckmateMore Lite</a>
+      </div>
+      <div>
+        <h3>Learn</h3>
+        <a href="guides/">Chess guides</a>
+        <a href="research/">Research notes</a>
+        <a href="compare/chess-com-analysis/">Compare approaches</a>
+        <a href="https://app.checkmatemore.com/featured">Featured players</a>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <a href="contact/">Contact</a>
+        <a href="privacy/">Privacy</a>
+        <a href="terms/">Terms</a>
+        <a href="https://app.checkmatemore.com/">Create a free account</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,453 @@
+/* Lite visual layer — Pro-family cards, buttons, tabs and empty states. */
+
+html, body {
+    background: var(--cm-shell, var(--surface-ground));
+    color: var(--cm-ink, var(--text-color));
+}
+
+.cm-skip {
+    position: absolute;
+    left: 1rem;
+    top: -3.5rem;
+    z-index: 40;
+    padding: 0.5rem 0.8rem;
+    background: var(--cm-card, var(--surface-card));
+    color: var(--cm-ink, var(--text-color));
+    text-decoration: none;
+    border-radius: 8px;
+}
+.cm-skip:focus,
+.cm-skip:focus-visible { top: 0.75rem; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+.p-button:focus-visible,
+.p-tabview-nav-link:focus-visible,
+.app-topnav-link:focus-visible,
+.app-float-item:focus-visible,
+.cm-start-card:focus-visible {
+    outline: 2px solid var(--cm-green, #6fbf73);
+    outline-offset: 3px;
+}
+.p-button:focus-visible { overflow: visible; }
+
+.app-shell {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1rem 1.25rem;
+}
+
+.app-brand-tier {
+    opacity: 0.78;
+    font-size: 0.58rem;
+}
+
+/* Cards: charcoal surface, restrained shadow, 3px accent bar */
+.p-card,
+.cm-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--cm-border, var(--surface-border)) !important;
+    border-radius: var(--radius, 12px) !important;
+    background: var(--cm-card, var(--surface-card)) !important;
+    box-shadow: var(--cm-shadow);
+    color: var(--cm-ink, var(--text-color));
+}
+.p-card::before,
+.cm-card::before {
+    content: "";
+    display: block;
+    height: 3px;
+    background: var(--cm-green);
+}
+.cm-card[data-tone="accuracy"]::before,
+.p-card[data-tone="accuracy"]::before { background: var(--cm-accuracy); }
+.cm-card[data-tone="rating"]::before,
+.p-card[data-tone="rating"]::before { background: var(--cm-rating); }
+.cm-card[data-tone="opening"]::before,
+.p-card[data-tone="opening"]::before { background: var(--cm-opening); }
+.cm-card[data-tone="middlegame"]::before { background: var(--cm-middle); }
+.cm-card[data-tone="endgame"]::before { background: var(--cm-end); }
+.cm-card[data-tone="warning"]::before { background: var(--cm-warning); }
+.cm-card[data-tone="mistake"]::before,
+.p-card.game-story.loss::before { background: var(--cm-blunder); }
+.p-card.game-story.win::before { background: var(--cm-accuracy); }
+.p-card.game-story.draw::before { background: var(--cm-warning); }
+.p-card-body { padding: 1rem 1.1rem 1.15rem; }
+
+/* Buttons: surface + green border; filled green only for primary / selected */
+body.cm-lite .p-button {
+    min-height: 2.5rem;
+    color: var(--cm-ink);
+    background: var(--cm-card);
+    border: 1px solid var(--cm-green);
+    box-shadow: none;
+}
+body.cm-lite .p-button:enabled:hover {
+    background: color-mix(in srgb, var(--cm-green) 12%, var(--cm-card));
+    color: var(--cm-ink);
+    border-color: var(--cm-green);
+}
+body.cm-lite .p-button.cm-primary,
+body.cm-lite .p-button.p-highlight,
+body.cm-lite .learn-subtab:not(.p-button-outlined) {
+    background: var(--cm-green);
+    color: var(--cm-green-ink);
+    border-color: var(--cm-green);
+}
+body.cm-lite .p-button.cm-primary:enabled:hover {
+    background: color-mix(in srgb, var(--cm-green) 82%, var(--board-white));
+    color: var(--cm-green-ink);
+}
+body.cm-lite .p-button-secondary,
+body.cm-lite .p-button-outlined,
+body.cm-lite .learn-subtab.p-button-outlined {
+    background: var(--cm-card);
+    color: var(--cm-ink);
+    border: 1px solid var(--cm-green);
+}
+body.cm-lite .p-button-text {
+    background: transparent;
+    border-color: transparent;
+    color: var(--cm-muted);
+}
+body.cm-lite .p-button:disabled {
+    opacity: 0.72;
+}
+body.cm-lite .p-button-danger {
+    background: var(--cm-card);
+    color: var(--cm-blunder);
+    border-color: var(--cm-blunder);
+}
+
+/* Intro */
+.lite-intro { margin-bottom: 1rem; }
+.lite-intro-lede {
+    margin: 0 0 1rem;
+    max-width: 42rem;
+    color: var(--cm-muted);
+    font-size: 0.98rem;
+}
+.lite-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+}
+.lite-field label {
+    font: 700 0.72rem var(--font-data);
+    font-variation-settings: "wght" 700, "wdth" 82;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cm-muted);
+}
+.lite-privacy {
+    margin: 0.85rem 0 0;
+    color: var(--cm-muted);
+    font-size: 0.8rem;
+}
+.lite-privacy i { margin-right: 0.3rem; color: var(--cm-green); }
+
+/* Dash tabs: wrap instead of scrolling when they fit */
+#dash-tabs .p-tabview-nav-content {
+    overflow-x: visible;
+    overflow-y: visible;
+}
+#dash-tabs .p-tabview-nav {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    border: 0;
+}
+#dash-tabs .p-tabview-nav > li { flex: 0 1 auto; }
+#dash-tabs .p-tabview-nav-link {
+    gap: 0.4rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--cm-green);
+    border-radius: 999px;
+    background: var(--cm-card);
+    color: var(--cm-muted);
+}
+#dash-tabs .p-tabview-nav > li.p-highlight .p-tabview-nav-link {
+    background: var(--cm-green);
+    color: var(--cm-green-ink) !important;
+    border-color: var(--cm-green);
+}
+#dash-tabs .p-tabview-nav-link i { font-size: 0.85rem; }
+#dash-tabs .p-tabview-panels { padding: 1rem 0 0; background: transparent; }
+
+.review-side .p-tabview-nav {
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 0.3rem;
+}
+.review-side .p-tabview-nav-link {
+    gap: 0.35rem;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--cm-green);
+    border-radius: 999px;
+    background: var(--cm-card);
+    color: var(--cm-muted);
+}
+.review-side .p-tabview-nav > li.p-highlight .p-tabview-nav-link {
+    background: var(--cm-green);
+    color: var(--cm-green-ink) !important;
+    border-color: var(--cm-green);
+}
+
+.app-topnav-link.is-active {
+    color: var(--cm-green-ink);
+    background: var(--cm-green);
+}
+
+/* Empty states */
+.tab-empty-state {
+    border: 1px solid var(--cm-border);
+    border-radius: var(--radius);
+    background: var(--cm-card);
+    box-shadow: var(--cm-shadow);
+    text-align: left;
+    padding: 0 0 1.2rem;
+}
+.tab-empty-state::before {
+    content: "";
+    display: block;
+    height: 3px;
+    background: var(--cm-green);
+    margin-bottom: 1rem;
+}
+.tab-empty-state.is-hint {
+    text-align: center;
+    box-shadow: none;
+}
+.cm-start-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    padding: 0 1.1rem;
+}
+.cm-start-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    padding: 0.9rem 0.95rem;
+    border: 1px solid var(--cm-border);
+    border-radius: 10px;
+    background: var(--cm-card-2);
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.cm-start-card:hover { border-color: var(--cm-green); }
+.cm-start-icon {
+    display: grid;
+    width: 2.4rem;
+    height: 2.4rem;
+    place-items: center;
+    border-radius: 9px;
+    background: color-mix(in srgb, var(--cm-green) 14%, transparent);
+    color: var(--cm-green);
+}
+.cm-start-card strong { display: block; font-family: var(--font-display); }
+.cm-start-card p { margin: 0.2rem 0 0; color: var(--cm-muted); font-size: 0.82rem; }
+.tab-empty-title { padding: 0 1.1rem; }
+.tab-empty-body { margin: 0.35rem 1.1rem 0.9rem; }
+
+/* Result / metric / game cards */
+.cm-result-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    font: 700 0.68rem var(--font-data);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+.cm-result-badge.is-win { background: var(--cls-best); color: var(--cls-ink-dark); }
+.cm-result-badge.is-draw { background: var(--cm-warning); color: #422006; }
+.cm-result-badge.is-loss { background: var(--cm-blunder); color: #450a0a; }
+
+.cm-game-card { cursor: pointer; }
+.cm-game-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+    margin-top: 0.45rem;
+    color: var(--cm-muted);
+    font-size: 0.8rem;
+}
+.cm-game-phases {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 1rem;
+    margin-top: 0.7rem;
+}
+.cm-game-phase { font-size: 0.78rem; }
+.cm-game-phase span { color: var(--cm-muted); margin-right: 0.3rem; }
+.cm-game-elo {
+    margin-top: 0.55rem;
+    font-size: 0.78rem;
+    color: var(--cm-muted);
+}
+.cm-game-elo b { color: var(--cm-rating); font-family: var(--font-data); }
+
+.app-upgrade-card {
+    border: 1px solid var(--cm-border);
+    border-radius: var(--radius);
+    background: var(--cm-card);
+    box-shadow: var(--cm-shadow);
+}
+.app-upgrade-card::before {
+    content: "";
+    display: none;
+}
+.app-upgrade-kicker { color: var(--cm-green); }
+
+/* Floating workspace menu (mobile) */
+.app-float-nav {
+    display: none;
+}
+body.cm-lite.is-review .app-float-nav,
+body.cm-lite.is-about .app-float-nav { display: none !important; }
+
+@media (max-width: 760px) {
+    .app-shell { padding-bottom: 5.75rem; }
+    .cm-start-grid { grid-template-columns: 1fr; }
+    #dash-tabs .p-tabview-nav-container { display: none; }
+    .app-float-nav {
+        position: fixed;
+        left: 0.65rem;
+        right: 0.65rem;
+        bottom: 0.65rem;
+        z-index: 50;
+        display: flex;
+        justify-content: space-between;
+        gap: 0.25rem;
+        padding: 0.4rem;
+        border: 1px solid var(--cm-border);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--cm-card) 92%, transparent);
+        box-shadow: var(--cm-shadow);
+        backdrop-filter: blur(12px);
+    }
+    .app-float-item {
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.15rem;
+        padding: 0.4rem 0.15rem;
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        color: var(--cm-muted);
+        font-size: 0.62rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    .app-float-item i { font-size: 1rem; }
+    .app-float-item.is-active {
+        background: var(--cm-green);
+        color: var(--cm-green-ink);
+    }
+}
+
+@media (max-width: 600px) {
+    .app-topnav { padding: 0.35rem 0 0.7rem; }
+    .app-brand-logo { width: 8.5rem; }
+}
+
+#profile-header[hidden] { display: none !important; }
+
+.p-card-title,
+.lite-intro .p-card-title,
+.about-title,
+.game-matchup-title,
+.game-story-headline {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+}
+
+.tab-empty-state.is-visible { display: block; }
+.tab-empty-state.is-hint {
+    padding: 0.35rem 0.15rem 0.85rem;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+}
+.tab-empty-state.is-hint::before { display: none; }
+.tab-empty-hint {
+    margin: 0;
+    color: var(--cm-muted);
+    font-size: 0.92rem;
+}
+
+.cm-stat-note {
+    margin: 0.45rem 0 0;
+    color: var(--cm-muted);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
+body.cm-lite .mini-game-row {
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+}
+
+.game-elo-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--cm-border) !important;
+    border-radius: var(--radius);
+    background: var(--cm-card-2) !important;
+    padding-top: 0;
+}
+.game-elo-card::before {
+    content: "";
+    display: block;
+    height: 3px;
+    background: var(--cm-rating);
+    margin: 0 -0.9rem 0.75rem;
+}
+
+.review-side .p-tabview-nav-content,
+#dash-tabs .p-tabview-nav-container {
+    overflow: visible;
+}
+
+body.cm-lite.is-review .app-shell,
+body.cm-lite.is-about .app-shell {
+    padding-bottom: 1.25rem;
+}
+
+.cls-okay {
+    background: color-mix(in srgb, var(--cm-middle, #60a5fa) 55%, var(--cm-card));
+    color: var(--cm-ink);
+}
+
+a.p-button { text-decoration: none; }
+
+.lite-review-actions { align-items: flex-end; }
+
+.cm-card-kicker,
+.cm-metric-kicker {
+    font: 700 0.68rem var(--font-data);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cm-muted);
+    margin-bottom: 0.2rem;
+}
+.cm-metric-card {
+    padding: 0.85rem 0.95rem 1rem;
+    border: 1px solid var(--cm-border);
+    border-radius: var(--radius);
+    background: var(--cm-card-2);
+}
+.cm-metric-value {
+    font-family: var(--font-data);
+    font-size: 1.55rem;
+    font-weight: 800;
+}
+.cm-metric-label { font-size: 0.82rem; }
+.cm-metric-meta { margin-top: 0.25rem; font-size: 0.75rem; color: var(--cm-muted); }
