@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CheckmateMore Lite</title>
-    <meta name="description" content="CheckmateMore Lite — load your Chess.com profile or game for a customised, fully client-side engine review. No account required.">
+    <meta name="description" content="CheckmateMore Lite. load your Chess.com profile or game for a clear Stockfish review in your browser. No account required.">
     <meta name="color-scheme" content="light dark">
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
@@ -50,7 +50,7 @@
             <span class="app-brand-tier">Lite</span>
         </a>
         <nav class="app-topnav-links" aria-label="Primary">
-            <button type="button" class="app-topnav-link is-active" data-view="analyze" onclick="switchAppView('analyze')">Analyze</button>
+            <button type="button" class="app-topnav-link is-active" data-view="analyze" onclick="switchAppView('analyze')">Analyse</button>
             <button type="button" class="app-topnav-link" data-view="about" onclick="switchAppView('about')">About</button>
         </nav>
     </header>
@@ -71,7 +71,7 @@
                     </select>
                     <button id="btnScan" type="button" class="p-button p-component" onclick="startSelectedAnalysis()" disabled>
                         <span class="p-button-icon-left pi pi-spin pi-spinner"></span>
-                        <span class="p-button-label">Initializing…</span>
+                        <span class="p-button-label">Starting engine…</span>
                     </button>
                     <button id="btnStop" type="button" class="p-button p-component p-button-danger" onclick="stopAnalysis()">
                         <span class="p-button-icon-left pi pi-stop"></span>
@@ -87,10 +87,10 @@
             <div class="p-card-body">
                 <div class="lite-promo-icon" aria-hidden="true"><i class="pi pi-star-fill"></i></div>
                 <div id="lite-promo-title" class="p-card-title mb-2">Keep your chess progress connected</div>
-                <p class="text-color-secondary mt-0">You’ve used Lite more than once. A free CheckmateMore account adds game caching and starter coaching across your games; Pro unlocks deeper analysis, longer-term patterns, and richer coaching.</p>
+                <p class="text-color-secondary mt-0">You’ve used Lite more than once. A free CheckmateMore account adds game caching and starter coaching across your games; Pro adds more thorough reviews, longer-term trends and fuller coaching.</p>
                 <div class="lite-promo-points">
                     <span><i class="pi pi-check"></i> Free account with cached game history</span>
-                    <span><i class="pi pi-check"></i> Starter coaching and profile insights</span>
+                    <span><i class="pi pi-check"></i> Starter coaching and profile trends</span>
                     <span><i class="pi pi-star"></i> Pro depth, trends, and coaching plans</span>
                 </div>
                 <div class="flex flex-wrap justify-content-end gap-2 mt-4">
@@ -174,14 +174,14 @@
                     <img id="profile-avatar" class="profile-avatar" alt="avatar" src="">
                     <div class="flex-1">
                         <div id="profile-display-name" class="text-2xl font-bold mb-1">CheckmateMore Lite</div>
-                        <div id="profile-header-sub" class="text-color-secondary text-sm mb-3">Lite app — load your Chess.com profile or game for a customised, fully client-side engine review. Insights across recent games, openings, and learnable theory — open About for how labels work.</div>
+                        <div id="profile-header-sub" class="text-color-secondary text-sm mb-3">Lite reviews Chess.com games in your browser. Open About to see how the labels work.</div>
                         <div class="flex flex-wrap gap-2" id="profile-stat-row"></div>
                     </div>
                 </div>
             </div>
         </div>
         <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Connected profile analysis">
-            <div class="app-upgrade-copy"><span class="app-upgrade-kicker">Free with an account</span><strong>Turn these games into a connected profile.</strong><p>Keep cached game history, starter coaching, and better profile analysis across visits. Upgrade to Pro when you want deeper trends and coaching plans.</p></div>
+            <div class="app-upgrade-copy"><span class="app-upgrade-kicker">Free with an account</span><strong>Build a profile from these games.</strong><p>Keep cached game history, starter coaching, and better profile analysis across visits. Upgrade to Pro when you want longer-term trends and coaching plans.</p></div>
             <div class="app-upgrade-actions"><a href="https://app.checkmatemore.com/" class="p-button p-component p-button-outlined"><span class="p-button-label">Create free account</span></a><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">View Pro features</span></a></div>
         </aside>
 
@@ -246,14 +246,14 @@
                         <div class="p-card full">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Accuracy form</div>
-                                <div class="text-color-secondary text-sm mb-3">Average move accuracy across analyzed games · click a point to open that game</div>
+                                <div class="text-color-secondary text-sm mb-3">Average move accuracy across analysed games. Select a point to open that game.</div>
                                 <div id="overview-accuracy" class="overview-accuracy"></div>
                             </div>
                         </div>
                         <div class="p-card full">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Chess.com ELO &amp; Game ELO</div>
-                                <div class="text-color-secondary text-sm mb-3">Stable Chess.com rating vs volatile estimated Game ELO from each game’s move accuracy — stems show the gap · click a point to open that game</div>
+                                <div class="text-color-secondary text-sm mb-3">Chess.com rating compared with the estimated performance in each game. Select a point to open that game.</div>
                                 <div id="overview-elo-chart" class="overview-elo-chart"></div>
                             </div>
                         </div>
@@ -323,14 +323,14 @@
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Coach notes</div>
-                                <div class="text-color-secondary text-sm mb-3">Overview plus opening / middlegame / endgame reads — built from openings, phases, tactics, material events, and move quality.</div>
+                                <div class="text-color-secondary text-sm mb-3">A game-by-game view of your opening, middlegame and endgame play.</div>
                                 <div id="analysis-coach"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Theme frequency</div>
-                                <div class="text-color-secondary text-sm mb-3">How often each tactical or positional theme shows up across your games — click evidence to jump to the move.</div>
+                                <div class="text-color-secondary text-sm mb-3">See how often each tactical or positional theme appears. Select an example to jump to the move.</div>
                                 <div id="analysis-themes"></div>
                             </div>
                         </div>
@@ -423,9 +423,9 @@
                     <span class="p-button-icon-left pi pi-arrow-left"></span>
                     <span class="p-button-label">Back to profile</span>
                 </button>
-                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenCurrentReview()" title="Re-analyze this game at higher engine depth">
+                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenCurrentReview()" title="Run this game review again with a fuller engine search">
                     <span class="p-button-icon-left pi pi-bolt"></span>
-                    <span class="p-button-label">Deepen analysis</span>
+                    <span class="p-button-label">Run a fuller review</span>
                 </button>
                 <span id="review-depth-badge" class="review-depth-badge"></span>
                 <span id="review-deepen-status" class="text-color-secondary text-sm"></span>
@@ -434,7 +434,7 @@
             <div id="review-matchup" class="review-matchup mb-3"></div>
 
             <aside class="app-upgrade-card review-app-promo mb-3" aria-label="CheckmateMore account analysis">
-                <div class="app-upgrade-copy"><span class="app-upgrade-kicker">Continue in CheckmateMore</span><strong>Save this review and analyse it with more context.</strong><p>The free account tier includes game caching and starter coaching. The full app adds:</p><ul class="app-upgrade-features"><li>Deeper, multi-pass engine analysis</li><li>Connected profile trends and recurring patterns</li><li>Critical-position practice, annotations, and richer coaching explanations</li></ul></div>
+                <div class="app-upgrade-copy"><span class="app-upgrade-kicker">Continue in CheckmateMore</span><strong>Save this review and compare it with your other games.</strong><p>The free account tier includes game caching and starter coaching. The full app adds:</p><ul class="app-upgrade-features"><li>A more thorough, multi-pass engine review</li><li>Trends across your saved games</li><li>Critical-position practice, annotations, and clearer coaching explanations</li></ul></div>
                 <div class="app-upgrade-actions"><a href="https://app.checkmatemore.com/" class="p-button p-component p-button-outlined"><span class="p-button-label">Use free account</span></a><a href="https://app.checkmatemore.com/" class="p-button p-component"><span class="p-button-label">Explore Pro analysis</span></a></div>
             </aside>
 
@@ -454,7 +454,7 @@
                         <div id="move-title" class="text-xl font-bold">Select a move</div>
                         <div id="move-badge"></div>
                     </div>
-                    <div id="move-desc" class="text-color-secondary text-sm mt-2">Detailed analysis results appear here.</div>
+                    <div id="move-desc" class="text-color-secondary text-sm mt-2">Choose a move to see the review.</div>
                     <div id="move-alt" class="move-alt text-color-secondary text-sm mt-2" style="display:none"></div>
                 </div>
             </div>
@@ -540,7 +540,7 @@
         <div class="p-card">
             <div class="p-card-body">
                 <h2 class="about-title mb-1">About CheckmateMore Lite</h2>
-                <p class="faq-def mb-3">Everything runs in your browser — Stockfish, cache, coaching, and stats. No account required.</p>
+                <p class="faq-def mb-3">Everything runs in your browser. Stockfish, cache, coaching, and stats. No account required.</p>
                 <div class="p-tabview p-component about-tabs">
                     <div class="p-tabview-nav-container">
                         <div class="p-tabview-nav-content">
@@ -577,7 +577,7 @@
                 </div>
                 <details class="about-debug mt-4">
                     <summary class="about-debug-summary">Debug log</summary>
-                    <div id="debug-log" class="mt-3">System initializing...</div>
+                    <div id="debug-log" class="mt-3">Starting Lite...</div>
                 </details>
             </div>
         </div>

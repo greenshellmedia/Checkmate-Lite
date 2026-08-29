@@ -1,4 +1,4 @@
-/* chess/cache.js — Analyze Chess */
+/* chess/cache.js. Analyse Chess */
 
 function getGameKey(game) {
     if (game.url) return String(game.url);
@@ -13,11 +13,11 @@ function cacheDepthTag() {
 }
 
 function cacheStorageKey(username, gameKey, version = CACHE_VERSION) {
-    return `chessAnalyzed:v${version}:${cacheDepthTag()}:${username.toLowerCase()}:${gameKey}`;
+    return `chessAnalysed:v${version}:${cacheDepthTag()}:${username.toLowerCase()}:${gameKey}`;
 }
 
 function cacheIndexKey(username, version = CACHE_VERSION) {
-    return `chessAnalyzed:v${version}:${cacheDepthTag()}:index:${username.toLowerCase()}`;
+    return `chessAnalysed:v${version}:${cacheDepthTag()}:index:${username.toLowerCase()}`;
 }
 
 function readCacheIndex(username) {
@@ -76,7 +76,7 @@ function hydrateCachedAnalysis(analysis, pgn) {
 }
 
 function listCachedGameKeys(username) {
-    const prefix = `chessAnalyzed:v${CACHE_VERSION}:${cacheDepthTag()}:${username.toLowerCase()}:`;
+    const prefix = `chessAnalysed:v${CACHE_VERSION}:${cacheDepthTag()}:${username.toLowerCase()}:`;
     const indexPrefix = cacheIndexKey(username);
     const keys = [];
     for (let i = 0; i < localStorage.length; i++) {
@@ -103,19 +103,19 @@ function pruneOldestCacheEntry(username) {
     return false;
 }
 
-function pruneAnyAnalyzedCache() {
-    // Last resort: drop any chessAnalyzed entry (prefer older versions / non-index)
+function pruneAnyAnalysedCache() {
+    // Last resort: drop any chessAnalysed entry (prefer older versions / non-index)
     const victims = [];
     for (let i = 0; i < localStorage.length; i++) {
         const k = localStorage.key(i);
-        if (!k || !k.startsWith('chessAnalyzed:')) continue;
+        if (!k || !k.startsWith('chessAnalysed:')) continue;
         if (k.includes(':index:')) continue;
         victims.push(k);
     }
     // Prefer older cache versions
     victims.sort((a, b) => {
-        const va = Number((a.match(/^chessAnalyzed:v(\d+):/) || [])[1] || 99);
-        const vb = Number((b.match(/^chessAnalyzed:v(\d+):/) || [])[1] || 99);
+        const va = Number((a.match(/^chessAnalysed:v(\d+):/) || [])[1] || 99);
+        const vb = Number((b.match(/^chessAnalysed:v(\d+):/) || [])[1] || 99);
         return va - vb;
     });
     if (!victims.length) return false;
@@ -124,7 +124,7 @@ function pruneAnyAnalyzedCache() {
 }
 
 function loadCachedAnalysis(username, gameKey) {
-    // Same CACHE_VERSION only — version bumps intentionally force re-analysis
+    // Same CACHE_VERSION only. version bumps intentionally force re-analysis
     try {
         const raw = localStorage.getItem(cacheStorageKey(username, gameKey));
         if (!raw) return null;
@@ -147,7 +147,7 @@ function hasCachedAnalysis(username, gameKey) {
 }
 
 function rebuildCacheIndexFromStorage(username) {
-    const prefix = `chessAnalyzed:v${CACHE_VERSION}:${cacheDepthTag()}:${username.toLowerCase()}:`;
+    const prefix = `chessAnalysed:v${CACHE_VERSION}:${cacheDepthTag()}:${username.toLowerCase()}:`;
     const indexKey = cacheIndexKey(username);
     const index = [];
     for (let i = 0; i < localStorage.length; i++) {
@@ -206,16 +206,16 @@ function saveCachedAnalysis(username, gameKey, analysis) {
             let index = readCacheIndex(username).filter(e => e.gameKey !== gameKey);
             index.push({ gameKey, endTime: analysis.endTime || 0 });
             index.sort((a, b) => (b.endTime || 0) - (a.endTime || 0));
-            // Grow freely — only prune when quota forces it (below)
+            // Grow freely. only prune when quota forces it (below)
             writeCacheIndex(username, index);
             return true;
         } catch (e) {
-            const pruned = pruneOldestCacheEntry(username) || pruneAnyAnalyzedCache();
+            const pruned = pruneOldestCacheEntry(username) || pruneAnyAnalysedCache();
             if (!pruned) {
                 log(`Cache save failed (${e.message}). Continuing without cache.`, true);
                 return false;
             }
-            if (attempt === 0) log('LocalStorage full — pruning older cached games…');
+            if (attempt === 0) log('LocalStorage full. pruning older cached games…');
         }
     }
     log('Cache save failed after pruning. Continuing without cache.', true);

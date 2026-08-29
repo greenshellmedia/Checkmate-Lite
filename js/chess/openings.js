@@ -1,4 +1,4 @@
-/* chess/openings.js — Analyze Chess */
+/* chess/openings.js. Analyse Chess */
 
 function setOpeningBook(book) {
     ACTIVE_OPENING_BOOK = Array.isArray(book) ? book : INTERNAL_BOOK;
@@ -57,7 +57,7 @@ function identifyOpeningByMoves(historySans) {
 }
 
 function identifyOpening(historySans, fensAfterMoves) {
-    // Continuous prefix from the start only — leaving book ends the match
+    // Continuous prefix from the start only. leaving book ends the match
     let fenMatch = { name: 'Custom Game', count: 0 };
     if (OPENING_FEN_MAP && Array.isArray(fensAfterMoves)) {
         for (let i = 0; i < fensAfterMoves.length; i++) {

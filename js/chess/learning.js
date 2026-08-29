@@ -1,4 +1,4 @@
-/* chess/learning.js — interactive opening / theory lessons */
+/* chess/learning.js. interactive opening / theory lessons */
 
 const OPENING_FAMILY_INTROS = {
     "Indian Defense": "The Indian Defence is a family of chess openings for Black that begins with 1.d4 Nf6. Instead of staking an immediate symmetrical claim in the center with 1...d5, Black adopts a hypermodern approach: let White occupy the center with pawns, then counter-attack it dynamically from the flanks.",
@@ -60,7 +60,7 @@ function reconstructMovesToFen(targetFen, maxDepth = 16) {
     const startFen = new Chess().fen();
     if (!target || target === boardFen(startFen)) return [];
 
-    // Prefer paths that stay inside the opening book — yields natural move orders
+    // Prefer paths that stay inside the opening book. yields natural move orders
     if (OPENING_FEN_MAP && OPENING_FEN_MAP.size) {
         const q = [{ fen: startFen, moves: [] }];
         const seen = new Set([boardFen(startFen)]);
@@ -154,7 +154,7 @@ function explainOpeningMove({ family, fullName, san, ply, isWhiteMove, verbose, 
 
     // Castling
     if (move.startsWith('O-O-O') || move === '0-0-0') {
-        return `${who} castles queenside, tucking the king away and bringing a rook toward the centre files — often a signal that the game will become sharp.`;
+        return `${who} castles queenside, tucking the king away and bringing a rook toward the centre files. often a signal that the game will become sharp.`;
     }
     if (move.startsWith('O-O') || move === '0-0') {
         return `${who} castles kingside. King safety first: now the rook can join the fight and the middlegame plans can begin in earnest.`;
@@ -162,7 +162,7 @@ function explainOpeningMove({ family, fullName, san, ply, isWhiteMove, verbose, 
 
     // Family-flavoured early moves
     if (move === 'd4' && ply === 0) {
-        return `${who} occupies the centre with the d-pawn — a classical claim on e5/c5 and the foundation of many queen's-pawn openings.`;
+        return `${who} occupies the centre with the d-pawn. a classical claim on e5/c5 and the foundation of many queen's-pawn openings.`;
     }
     if (move === 'e4' && ply === 0) {
         return `${who} takes central space with the e-pawn, opening lines for the queen and bishop and asking Black how to contest e5.`;
@@ -171,7 +171,7 @@ function explainOpeningMove({ family, fullName, san, ply, isWhiteMove, verbose, 
         return `${who} starts on the flank with the English idea: control d5 without committing a central pawn yet.`;
     }
     if (move === 'Nf3' && ply === 0) {
-        return `${who} develops a knight flexibly. This keeps options open — it can steer into Réti, English, or classical d4 systems.`;
+        return `${who} develops a knight flexibly. This keeps options open. it can steer into Réti, English, or classical d4 systems.`;
     }
 
     if (move === 'd5' && ply <= 2 && !isWhiteMove) {
@@ -197,7 +197,7 @@ function explainOpeningMove({ family, fullName, san, ply, isWhiteMove, verbose, 
             return `French Defence structure: ...e6 prepares ...d5. Black accepts a temporarily hemmed bishop for a rock-solid centre.`;
         }
         if (fam.includes('indian') || fam.includes('nimzo') || fam.includes('queen\'s indian')) {
-            return `...e6 is a flexible Indian move — it opens the dark-squared bishop and keeps ...d5 or ...Bb4 ideas available.`;
+            return `...e6 is a flexible Indian move. it opens the dark-squared bishop and keeps ...d5 or ...Bb4 ideas available.`;
         }
         return `...e6 bolsters the centre and frees the dark-squared bishop.`;
     }
@@ -206,7 +206,7 @@ function explainOpeningMove({ family, fullName, san, ply, isWhiteMove, verbose, 
         if (!isWhiteMove && (fam.includes('indian') || fam.includes('nimzo') || fam.includes('grünfeld') || fam.includes('grunfeld') || fam.includes('king\'s indian') || fam.includes('pirc') || fam.includes('alekhine'))) {
             return `The Indian idea in action: Black's knight comes to f6, controlling e4 and d5 while staying ready to counter-attack White's centre instead of occupying it immediately with ...d5.`;
         }
-        return `${who} develops the knight to f6 — natural development that eyes the centre and prepares castling.`;
+        return `${who} develops the knight to f6. natural development that eyes the centre and prepares castling.`;
     }
 
     if (move === 'Nc6' && ply <= 4) {
@@ -215,7 +215,7 @@ function explainOpeningMove({ family, fullName, san, ply, isWhiteMove, verbose, 
 
     if (move === 'c4' && ply >= 1 && ply <= 5 && isWhiteMove) {
         if (fam.includes('indian') || fam.includes('gambit') || fam.includes('catalan') || fam.includes('english')) {
-            return `White gains queenside space with c4 — a Queen's Gambit-style clamp on d5 that asks Black how they will contest the centre.`;
+            return `White gains queenside space with c4. a Queen's Gambit-style clamp on d5 that asks Black how they will contest the centre.`;
         }
         return `White expands with c4, fighting for d5 and opening a path for the queen toward the queenside.`;
     }
@@ -223,7 +223,7 @@ function explainOpeningMove({ family, fullName, san, ply, isWhiteMove, verbose, 
     if ((move === 'g6' || move === 'g3') && ply <= 8) {
         const fianchettoSide = move === 'g6' ? 'Black' : 'White';
         if (fam.includes('king\'s indian') || fam.includes('modern') || fam.includes('pirc') || fam.includes('catalan') || fam.includes('rét') || fam.includes('reti') || fam.includes('hungarian') || fam.includes('indian')) {
-            return `${fianchettoSide} prepares a kingside fianchetto. The bishop will sit on the long diagonal, pressuring the centre from a distance — classic hypermodern play, especially while no immediate attack is crashing through.`;
+            return `${fianchettoSide} prepares a kingside fianchetto. The bishop will sit on the long diagonal, pressuring the centre from a distance. classic hypermodern play, especially while no immediate attack is crashing through.`;
         }
         return `${fianchettoSide} prepares to fianchetto. The bishop will influence the long diagonal and help shelter the king.`;
     }
@@ -248,7 +248,7 @@ function explainOpeningMove({ family, fullName, san, ply, isWhiteMove, verbose, 
         return `${who} develops the bishop with a pin/pressure idea, restricting an enemy knight and steering the game toward a concrete fight.`;
     }
     if (move === 'Bc4' || move === 'Bc5') {
-        return `${who} develops the bishop onto an active diagonal aimed at the vulnerable f2/f7 point — a hallmark of Italian-style play.`;
+        return `${who} develops the bishop onto an active diagonal aimed at the vulnerable f2/f7 point. a hallmark of Italian-style play.`;
     }
     if (move === 'Bf4' || move === 'Bf5') {
         return `${who} develops the bishop outside the pawn chain early (London/Slav-style thinking), keeping it active before locking the structure.`;
@@ -277,7 +277,7 @@ function explainOpeningMove({ family, fullName, san, ply, isWhiteMove, verbose, 
         return `${who} develops the ${piece} to ${dest}. In this ${family} setup, getting pieces to active squares quickly matters as much as the pawn centre itself.`;
     }
     if (piece === 'queen' && ply < 12) {
-        return `${who} brings the queen out early to ${dest}. Useful if it creates a concrete threat — risky if it becomes a target for tempo-gaining developing moves.`;
+        return `${who} brings the queen out early to ${dest}. Useful if it creates a concrete threat. risky if it becomes a target for tempo-gaining developing moves.`;
     }
     if (piece === 'rook') {
         return `${who} improves a rook toward ${dest}, connecting pieces and eyeing open or semi-open files.`;

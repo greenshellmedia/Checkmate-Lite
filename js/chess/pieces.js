@@ -1,4 +1,4 @@
-/* chess/pieces.js — piece identity, survival, and mate delivery */
+/* chess/pieces.js. piece identity, survival, and mate delivery */
 
 /** Starting roster with queen/king-side names (same labels for both colours). */
 const STARTING_PIECE_DEFS = [
@@ -285,7 +285,7 @@ function renderPieceSurvivalPanel(profile, survivalData) {
     const hasWhite = data.white.some(r => r.games > 0);
     const hasBlack = data.black.some(r => r.games > 0);
     if (!hasWhite && !hasBlack) {
-        el.innerHTML = '<div class="insight-empty">Piece survival will appear after games with PGNs are analyzed.</div>';
+        el.innerHTML = '<div class="insight-empty">Piece survival will appear after games with PGNs are analysed.</div>';
         return;
     }
 
@@ -332,7 +332,7 @@ function renderCheckmateWithPanel(profile, matesData) {
     if (!el) return;
     const { total, rows } = matesData || aggregateCheckmatePieces(profile);
     if (!total) {
-        el.innerHTML = '<div class="insight-empty">No checkmate wins in this sample yet — wins by resignation/timeout won’t appear here.</div>';
+        el.innerHTML = '<div class="insight-empty">No checkmate wins in this sample yet. Wins by resignation or timeout aren’t included here.</div>';
         return;
     }
     el.innerHTML = `

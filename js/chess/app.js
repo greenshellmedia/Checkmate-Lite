@@ -1,4 +1,4 @@
-/* chess/app.js — Checkmate More Lite */
+/* chess/app.js. Checkmate More Lite */
 
 function setScanButtonsReady() {
     const btn = document.getElementById('btnScan');
@@ -75,7 +75,7 @@ async function initApp() {
     document.getElementById('dashboard').style.display = 'block';
     document.getElementById('profile-display-name').innerText = 'CheckmateMore Lite';
     document.getElementById('profile-header-sub').innerText =
-        "Load your Chess.com profile or game for a customised, fully client-side engine review. Insights across recent games, openings, and learnable theory — open About in the top menu for how labels work.";
+        "Load your Chess.com profile or game for a customised, fully client-side engine review. Insights across recent games, openings, and learnable theory. open About in the top menu for how labels work.";
     refreshDashboard();
 
         log(`Initializing up to ${PARALLEL_GAMES} engines (preset ${typeof getActiveAnalysisPreset === 'function' ? getActiveAnalysisPreset().name : '?'} · depth ${typeof getScanEngineDepth === 'function' ? getScanEngineDepth() : ENGINE_DEPTH})...`);
@@ -156,7 +156,7 @@ function applyAnalysisToUi(game, analysis, gameKey, stats, opts = {}) {
     enrichAnalysisMeta(analysis);
     ingestAnalysis(profileState, analysis, gameKey);
     if (profileState?.analyzedGames?.length > SCAN_NEW_LIMIT) {
-        sortAnalyzedGames(profileState);
+        sortAnalysedGames(profileState);
         profileState.analyzedGames = profileState.analyzedGames.slice(0, SCAN_NEW_LIMIT);
         rebuildProfileAggregates(profileState);
     }
@@ -335,7 +335,7 @@ async function selectSingleGame(index) {
         enrichAnalysisMeta(analysis);
         ingestAnalysis(profileState, analysis, item.gameKey);
         if (profileState.analyzedGames.length > SCAN_NEW_LIMIT) {
-            sortAnalyzedGames(profileState);
+            sortAnalysedGames(profileState);
             profileState.analyzedGames = profileState.analyzedGames.slice(0, SCAN_NEW_LIMIT);
             rebuildProfileAggregates(profileState);
         }
@@ -361,7 +361,7 @@ async function selectSingleGame(index) {
     }
 }
 
-async function fetchNewGamesToAnalyze(username, cachedKeys, limit = SCAN_NEW_LIMIT) {
+async function fetchNewGamesToAnalyse(username, cachedKeys, limit = SCAN_NEW_LIMIT) {
     // Deliberately inspect only the latest `limit` games. Lite must never walk older
     // archives looking for extra uncached games; connected history belongs in the app.
     const latestGames = await fetchRecentGames(username, limit);
@@ -417,18 +417,18 @@ async function startAnalysis() {
             .slice(0, SCAN_NEW_LIMIT);
         const cachedKeys = new Set(cachedAnalyses.map(a => a.gameKey).filter(Boolean));
         profileState.analyzedGames = cachedAnalyses;
-        sortAnalyzedGames(profileState);
+        sortAnalysedGames(profileState);
         rebuildProfileAggregates(profileState);
         refreshDashboard();
         log(`Restored ${cachedAnalyses.length} cached game${cachedAnalyses.length === 1 ? '' : 's'} (v${CACHE_VERSION}).`);
         // Precompute Analysis-tab meta off the paint path (yield so UI stays responsive)
-        log('Preparing analysis insights…');
+        log('Preparing your review…');
         await enrichAllAnalysesYielding(profileState);
         rebuildAnalysisSnapshot(profileState);
         refreshDashboard();
-        log('Analysis insights ready.');
+        log('Your review is ready.');
 
-        const { newGames, scanned, skippedCached } = await fetchNewGamesToAnalyze(user, cachedKeys, SCAN_NEW_LIMIT);
+        const { newGames, scanned, skippedCached } = await fetchNewGamesToAnalyse(user, cachedKeys, SCAN_NEW_LIMIT);
         const pending = newGames.map((item, i) => ({ ...item, index: i }));
         const stats = { blunders: 0, great: 0, book: 0 };
         let cacheSaves = 0;
@@ -442,9 +442,9 @@ async function startAnalysis() {
         if (!pending.length) {
             if (!profileState.games) throw new Error("No games found");
             profileState.finished = true;
-            sortAnalyzedGames(profileState);
+            sortAnalysedGames(profileState);
             renderProfileOverview(profileState);
-            log('Nothing new to analyze — using cached games only.');
+            log('There are no new games to analyse, so Lite will use the saved reviews.');
             recordLiteRunCompletion();
             stopAnalysis();
             return;
@@ -489,14 +489,14 @@ async function startAnalysis() {
         await Promise.all(engines.map(engine => worker(engine)));
         if (profileState) {
             profileState.finished = true;
-            sortAnalyzedGames(profileState);
+            sortAnalysedGames(profileState);
             rebuildAnalysisSnapshot(profileState);
             renderProfileOverview(profileState);
             refreshDashboard();
         }
         const completedNormally = isScanning;
         log(completedNormally
-            ? `Done. Analyzed ${completed} new game${completed === 1 ? '' : 's'} · ${cacheSaves} saved · profile now ${profileState.games} total.`
+            ? `Done. Analysed ${completed} new game${completed === 1 ? '' : 's'} · ${cacheSaves} saved · profile now ${profileState.games} total.`
             : `Stopped after ${completed} / ${totalNew} new games · profile has ${profileState.games} total.`);
         if (completedNormally && profileState?.games) recordLiteRunCompletion();
     } catch (e) { log(`Analysis Error: ${e.message}`, true); }
@@ -611,7 +611,7 @@ async function deepenCurrentReview() {
     } finally {
         isDeepening = false;
         if (btn) {
-            btn.innerHTML = '<span class="p-button-icon-left pi pi-bolt"></span><span class="p-button-label">Deepen analysis</span>';
+            btn.innerHTML = '<span class="p-button-icon-left pi pi-bolt"></span><span class="p-button-label">Run a fuller review</span>';
         }
         if (currentReviewGame) updateReviewDepthBadge(currentReviewGame);
     }

@@ -14,13 +14,13 @@
     function phaseExplanation(segment) {
         if (!segment || !segment.reached) return 'This phase was not reached, so it is excluded.';
         const n = segment.ratedN || segment.total || 0;
-        if (!n) return 'Too few meaningful moves to rate this phase.';
+        if (!n) return 'Too few rated moves to rate this phase.';
         const bad = (segment.counts?.Blunder || 0) + (segment.counts?.Mistake || 0) + (segment.counts?.Miss || 0);
         const good = (segment.counts?.Great || 0) + (segment.counts?.Best || 0) +
             (segment.counts?.Excellent || 0) + (segment.counts?.Good || 0);
-        if (bad) return `${bad} costly decision${bad === 1 ? '' : 's'} held this phase back across ${n} meaningful moves.`;
-        if (good >= Math.max(2, Math.ceil(n * 0.65))) return `Mostly sound choices across ${n} meaningful moves, with no major error detected.`;
-        return `A mixed but stable phase across ${n} meaningful moves; shallow engine margins may move this score.`;
+        if (bad) return `${bad} costly decision${bad === 1 ? '' : 's'} held this phase back across ${n} rated moves.`;
+        if (good >= Math.max(2, Math.ceil(n * 0.65))) return `Mostly sound choices across ${n} rated moves, with no major error detected.`;
+        return `A mixed but stable phase across ${n} rated moves; shallow engine margins may move this score.`;
     }
 
     function overallStars(segments) {
@@ -63,7 +63,7 @@
         return {
             value,
             confidence,
-            explanation: `${caveat}: ${n} meaningful moves, ${accuracy.toFixed(1)}% estimated accuracy and ${Math.round(cpl)} average CPL. This is a game-level signal, not a player rating.`
+            explanation: `${caveat}: ${n} rated moves, ${accuracy.toFixed(1)}% estimated accuracy and ${Math.round(cpl)} average CPL. This estimates how this game was played. It isn’t your real rating.`
         };
     }
 
@@ -80,7 +80,7 @@
             overall: {
                 stars,
                 explanation: stars == null
-                    ? 'Not enough meaningful play to calculate an overall phase rating.'
+                    ? 'Not enough rated play to calculate an overall phase rating.'
                     : 'Weighted from reached phases only; longer phases count more.'
             },
             level: estimateLevel(stats, phases, context)

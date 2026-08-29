@@ -1,4 +1,4 @@
-/* chess/constants.js — Checkmate More Lite */
+/* chess/constants.js. Checkmate More Lite */
 
 // --- config & shared state ---
 
@@ -10,7 +10,7 @@ const APP_BUILD = '2026-08-23a';
 const CACHE_VERSION = 14;
 /** Soft ceiling for estimated Game ELO (IM territory). */
 const GAME_ELO_IM = 2400;
-/** Hard cap for estimated Game ELO (GM territory) — high accuracy asymptotes here. */
+/** Hard cap for estimated Game ELO (GM territory). high accuracy asymptotes here. */
 const GAME_ELO_GM = 2500;
 // Relative to the app page URL so this works on a server and when opened locally
 const EXTERNAL_BOOK_URL = APP_ASSET_ROOT + 'openings.json';
@@ -19,8 +19,8 @@ const FAMOUS_GAMES_URL = APP_ASSET_ROOT + 'famous-games.json';
 const ENGINE_DEPTH = 5;
 const ENGINE_DEPTH_MIN = 3;
 const ENGINE_DEPTH_MAX = 12;
-const SETTINGS_STORAGE_KEY = 'chessAnalyze:settings:v2';
-const SETTINGS_STORAGE_KEY_LEGACY = 'chessAnalyze:settings:v1';
+const SETTINGS_STORAGE_KEY = 'chessAnalyse:settings:v2';
+const SETTINGS_STORAGE_KEY_LEGACY = 'chessAnalyse:settings:v1';
 /** Extra depth for sharp first-pass moments only (mates / large CPL). */
 const CRITICAL_ENGINE_DEPTH_OFFSET = 2;
 const CRITICAL_ENGINE_DEPTH_CAP = 12;
@@ -96,7 +96,7 @@ const ANALYSIS_PRESETS = {
         criticalCap: 12,
         noiseFloor: 100,
         badge: 'Suggested',
-        blurb: 'Depth 5 with deeper re-search on sharp moments. Slightly harsher than Familiar — our house default.'
+        blurb: 'Depth 5 with fuller re-search on sharp moments. Slightly harsher than Familiar. our house default.'
     },
     deep: {
         id: 'deep',
@@ -116,7 +116,7 @@ const ANALYSIS_PRESETS = {
         criticalOffset: 0,
         criticalCap: 15,
         noiseFloor: 75,
-        blurb: 'Depth 12 on every move. Title-level thoroughness — expect long waits per game.'
+        blurb: 'Depth 12 on every move. Title-level thoroughness. expect long waits per game.'
     }
 };
 const DEFAULT_ANALYSIS_PRESET = 'recommended';
@@ -376,12 +376,12 @@ const THEME_CATALOG = {
     doubled_pawns: {
         polarity: 'bad',
         text: (pct) => `You create doubled pawns in ${pct}% of your games`,
-        detail: 'Two pawns on the same file — usually less mobile and a long-term target.'
+        detail: 'Two pawns on the same file. usually less mobile and a long-term target.'
     },
     isolated_pawn: {
         polarity: 'bad',
         text: (pct) => `You create an isolated pawn in ${pct}% of your games`,
-        detail: 'A pawn with no friendly neighbours on adjacent files — often an endgame weakness.'
+        detail: 'A pawn with no friendly neighbours on adjacent files. often an endgame weakness.'
     },
     bad_bishop: {
         polarity: 'bad',
@@ -496,7 +496,7 @@ function loadUserSettings() {
             let chosen = parsed.analysisPresetChosen === true;
             if (!presetId && parsed.engineDepth != null) {
                 presetId = presetIdFromDepth(parsed.engineDepth);
-                // Returning users who already picked a numeric depth — don't force the modal
+                // Returning users who already picked a numeric depth. don't force the modal
                 chosen = true;
             }
             if (!ANALYSIS_PRESETS[presetId]) presetId = DEFAULT_ANALYSIS_PRESET;

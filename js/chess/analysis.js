@@ -1,7 +1,7 @@
-/* chess/analysis.js — Analyze Chess */
+/* chess/analysis.js. Analyse Chess */
 
 async function resolveStockfishWorkerUrl() {
-    // Prefer same-origin script — most reliable for Workers on GitHub Pages
+    // Prefer same-origin script. most reliable for Workers on GitHub Pages
     try {
         const local = await fetch(STOCKFISH_LOCAL, { method: 'HEAD', cache: 'no-cache' });
         if (local.ok) {
@@ -58,7 +58,7 @@ function createEngine(workerUrl, timeoutMs = 60000) {
                 lines.push(msg.slice(0, 80));
                 if (lines.length > 20) lines.shift();
             }
-            // Ready as soon as UCI handshake completes — do not wait for readyok
+            // Ready as soon as UCI handshake completes. do not wait for readyok
             if (msg === 'uciok' || /(^|\s)uciok(\s|$)/.test(msg)) finishOk();
         };
         worker.onerror = (err) => {
@@ -179,7 +179,7 @@ function computeEvalDelta(bestBefore, actualAfter, opts = {}) {
 }
 
 function isCriticalMoment(chessBefore, move, best, rawCpl) {
-    // Keep this narrow — every capture/check used to force a depth+4 MultiPV re-search
+    // Keep this narrow. every capture/check used to force a depth+4 MultiPV re-search
     // and roughly doubled scan time. Only re-search when the first pass already looks sharp.
     if (best?.isMate) return true;
     const cpl = rawCpl || 0;
@@ -320,8 +320,8 @@ function classifyMove({
             label: 'Book',
             class: 'cls-book',
             desc: stem(
-                openingName ? `Opening book — ${openingName}.` : 'Standard opening book move.',
-                openingName ? `Opponent book move — ${openingName}.` : 'Opponent opening book move.'
+                openingName ? `Opening book. ${openingName}.` : 'Standard opening book move.',
+                openingName ? `Opponent book move. ${openingName}.` : 'Opponent opening book move.'
             )
         };
     }
@@ -357,15 +357,15 @@ function classifyMove({
             return {
                 label: 'Good',
                 class: 'cls-good',
-                desc: stem('Strong, practical move.', 'Strong, practical opponent move.')
+                desc: stem('Strong, playable move.', 'Strong, playable move from your opponent.')
             };
         }
         return {
             label: 'Inaccuracy',
             class: 'cls-inaccuracy',
             desc: stem(
-                'Uncertain engine sample — treated as a small concession.',
-                'Uncertain engine sample — opponent move treated as a small concession.'
+                'The engine sample is uncertain, so this is treated as a small slip.',
+                'The engine sample is uncertain, so this is treated as a small slip by your opponent.'
             )
         };
     }
@@ -374,7 +374,7 @@ function classifyMove({
         return {
             label: 'Excellent',
             class: 'cls-excellent',
-            desc: stem('Nearly best — tiny expected-points dip.', 'Nearly best for the opponent.')
+            desc: stem('Nearly best. The move barely changed your winning chances.', 'Nearly best for your opponent.')
         };
     }
     if (ep <= goodCap) {
@@ -388,20 +388,20 @@ function classifyMove({
         return {
             label: 'Inaccuracy',
             class: 'cls-inaccuracy',
-            desc: stem('Small slip — clearly better was available.', 'Opponent inaccuracy — small slip.')
+            desc: stem('Small slip. A clearly better move was available.', 'A small inaccuracy from your opponent.')
         };
     }
     if (ep <= mistakeCap) {
         return {
             label: 'Mistake',
             class: 'cls-mistake',
-            desc: stem('Real damage to winning chances.', 'Opponent mistake — real damage to their chances.')
+            desc: stem('A mistake that seriously hurt your chances.', 'Your opponent made a mistake that seriously hurt their chances.')
         };
     }
     return {
         label: 'Blunder',
         class: 'cls-blunder',
-        desc: stem('Heavy expected-points collapse.', 'Opponent blunder — heavy expected-points collapse.')
+        desc: stem('A blunder that changed the game.', 'Your opponent made a blunder that changed the game.')
     };
 }
 
@@ -421,13 +421,13 @@ function maybeUpgradeToGreat(cls, { playedBest, engineGapCp, isPv1, winBefore } 
     return {
         label: 'Great',
         class: 'cls-great',
-        desc: 'Critical only-move — much better than the alternatives.'
+        desc: 'A critical move. The alternatives were much worse.'
     };
 }
 
 /**
  * Chess.com-style Miss: missed hanging capture, or failed to punish opp Blunder/Mistake.
- * Familiar is looser — club Game Review tags many missed conversions as Miss.
+ * Familiar is looser. club Game Review tags many missed conversions as Miss.
  */
 function maybeUpgradeToMiss(cls, {
     prevOppLabel,
@@ -447,7 +447,7 @@ function maybeUpgradeToMiss(cls, {
     const familiar = typeof getActiveAnalysisPreset === 'function'
         && getActiveAnalysisPreset()?.id === 'familiar';
 
-    // Missed hanging piece — Chess.com often labels these Miss even from Good/Inaccuracy
+    // Missed hanging piece. Chess.com often labels these Miss even from Good/Inaccuracy
     if (materialEvent?.kind === 'missed_capture'
         && ['Good', 'Inaccuracy', 'Mistake', 'Blunder'].includes(cls.label)) {
         return {
@@ -491,7 +491,7 @@ function maybeSoftDemoteBlunder(cls, { materialEvent, best, winLoss } = {}) {
         class: to === 'Mistake' ? 'cls-mistake' : 'cls-inaccuracy',
         desc: to === 'Mistake'
             ? 'Real damage to winning chances.'
-            : 'Small slip — clearly better was available.'
+            : 'Small slip. A clearly better move was available.'
     };
 }
 
@@ -506,7 +506,7 @@ function maybeSoftDemoteMistake(cls, { materialEvent, winLoss } = {}) {
     return {
         label: 'Inaccuracy',
         class: 'cls-inaccuracy',
-        desc: 'Small slip — clearly better was available.'
+        desc: 'Small slip. A clearly better move was available.'
     };
 }
 
@@ -539,12 +539,12 @@ function enrichClassificationDesc(cls, { themes = [], materialEvent = null, narr
 
     if (hard && phrase) {
         cls.desc = isPlayer
-            ? `${label} — ${phrase}.`
-            : `Opponent ${label.toLowerCase()} — ${phrase}.`;
+            ? `${label}. ${phrase}.`
+            : `Opponent ${label.toLowerCase()}. ${phrase}.`;
     } else if (narrative) {
         cls.desc = narrative;
     } else if (phrase && isPlayer) {
-        cls.desc = `What you did here: ${phrase.charAt(0).toUpperCase()}${phrase.slice(1)}.`;
+        cls.desc = `Why this move matters: ${phrase.charAt(0).toUpperCase()}${phrase.slice(1)}.`;
     }
     return cls;
 }
@@ -644,7 +644,7 @@ async function analyzeGame(game, user, engine, onMove, opts = {}) {
             const critDepth = typeof getCriticalEngineDepth === 'function'
                 ? getCriticalEngineDepth()
                 : (depth + 4);
-            // Deeper re-search only on sharp first-pass moments (MultiPV 1 during scans for speed)
+            // Fuller re-search only on sharp first-pass moments (MultiPV 1 during scans for speed)
             if (critical && depth < critDepth && analysisStillRunning()) {
                 const deepTimeout = typeof CRITICAL_ENGINE_TIMEOUT_MS === 'number'
                     ? CRITICAL_ENGINE_TIMEOUT_MS
@@ -1012,7 +1012,7 @@ function explainGameOutcome(analysis) {
             themes: m.moveThemes || [],
             materialEvent: m.materialEvent || null,
             label: m.classification.label,
-            narrative: (m.classification.desc || '').replace(/^What you did here:\s*/i, '')
+            narrative: (m.classification.desc || '').replace(/^Why this move matters:\s*/i, '')
         });
     }
 
@@ -1092,18 +1092,18 @@ function explainGameOutcome(analysis) {
                 ? pieceLabel(earlyMaterialWin.materialEvent.captured)
                 : 'material';
             headline = `You won the ${gained} early and converted with clean trades`;
-            detail = `${formatMoveRef(earlyMaterialWin.move)} gave you the first lasting edge; you simplified while keeping the advantage into the endgame.`;
+            detail = `${formatMoveRef(earlyMaterialWin.move)} gave you the first lasting edge. You simplified without giving it away.`;
         } else if (firstAdv && firstAdv.cause) {
             key = firstAdv.cause;
             headline = 'You created a lasting advantage and converted it';
-            detail = `From ${formatMoveRef(firstAdv.cause.move)} the eval stayed in your favor. ${firstAdv.cause.narrative || 'Pressure and accurate follow-up finished the job.'}`;
+            detail = `From ${formatMoveRef(firstAdv.cause.move)}, the evaluation stayed in your favour. ${firstAdv.cause.narrative || 'Pressure and accurate follow-up finished the job.'}`;
         } else if (bestUp.swing > 80) {
             key = bestUp;
             headline = `The game swung your way around ${formatMoveRef(bestUp.move)}`;
-            detail = bestUp.narrative || 'That was the biggest positive shift in your favor.';
+            detail = bestUp.narrative || 'That was the biggest swing in your favour.';
         } else {
             headline = 'You outplayed the position without a single obvious blow';
-            detail = 'Small edges added up — practical moves and fewer serious errors than your opponent.';
+            detail = 'Small edges added up. You found sound moves and made fewer serious errors than your opponent.';
             key = bestUp;
         }
     } else if (lost) {
@@ -1131,7 +1131,7 @@ function explainGameOutcome(analysis) {
             detail = worstDown.narrative || 'That was the biggest swing against you.';
         } else {
             headline = 'You were gradually outplayed';
-            detail = 'No single collapse — small concessions accumulated until the position was lost.';
+            detail = 'There was no single collapse. Small concessions added up until the position was lost.';
             key = worstDelta;
         }
     } else {

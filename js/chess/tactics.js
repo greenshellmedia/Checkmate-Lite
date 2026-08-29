@@ -1,4 +1,4 @@
-/* chess/tactics.js — Analyze Chess */
+/* chess/tactics.js. Analyse Chess */
 
 function sqCoords(sq) {
     return { c: sq.charCodeAt(0) - 97, r: 8 - parseInt(sq[1], 10) };
@@ -154,7 +154,7 @@ function hasBackRankRisk(chess, color) {
     const luft = escapes.some(sq => !chess.get(sq));
     if (luft) return false;
     const opp = color === 'w' ? 'b' : 'w';
-    // Enemy heavy piece on back rank or able to land there next conceptually — check if back rank squares attacked
+    // Enemy heavy piece on back rank or able to land there next conceptually. check if back rank squares attacked
     const backSquares = [];
     for (let c = 0; c < 8; c++) backSquares.push(coordsSq(color === 'w' ? 7 : 0, c));
     return backSquares.some(sq => getAttackers(chess, sq, opp).some(a => a.type === 'r' || a.type === 'q'));
@@ -216,7 +216,7 @@ function describePlayerMove(opts) {
 
     if (move.piece === 'p' && 'de'.includes(move.to[0]) && !move.captured) {
         themes.push('claimed_center');
-        bits.push('Claimed space in the center');
+        bits.push('Claimed space in the centre');
     }
 
     if ((move.piece === 'n' || move.piece === 'b') && !move.captured) {
@@ -325,7 +325,7 @@ function describePlayerMove(opts) {
         );
     } else if (primaryHang && (hangTaken || (isNegative && offeredValue >= 3))) {
         // Hang: require the piece was taken in the continuation, or a real piece hung on a bad move.
-        // Skip uncompensated hanging pawns with no take — too many false positives.
+        // Skip uncompensated hanging pawns with no take. too many false positives.
         themes.push('hung_piece');
         materialEvent = {
             kind: 'hang',
@@ -450,7 +450,7 @@ function describePlayerMove(opts) {
         const fullmove = parseInt(after.fen().split(' ')[5], 10) || 0;
         if (fullmove >= 10 && isNegative) {
             themes.push('king_in_center');
-            bits.push('King still stuck in the center');
+            bits.push('King still stuck in the centre');
         }
     }
 
@@ -460,8 +460,8 @@ function describePlayerMove(opts) {
     });
 
     if (!bits.length) {
-        if (clsLabel === 'Best') bits.push('Precise — matched the engine idea');
-        else if (clsLabel === 'Excellent') bits.push('Nearly best — tiny expected-points dip');
+        if (clsLabel === 'Best') bits.push('Precise. It matched the engine’s choice');
+        else if (clsLabel === 'Excellent') bits.push('Nearly best. It barely changed your chances');
         else if (clsLabel === 'Good') bits.push('Solid improving move');
         else if (clsLabel === 'Inaccuracy' || clsLabel === 'Okay') bits.push('Quiet move that keeps the position playable');
         else if (clsLabel === 'Miss') bits.push('Missed a chance to convert the opponent’s error');
@@ -474,7 +474,7 @@ function describePlayerMove(opts) {
     const uniqueThemes = [...new Set(themes)].filter(t => THEME_CATALOG[t]);
     return {
         themes: uniqueThemes,
-        narrative: `What you did here: ${bits[0]}${bits[1] ? ` — ${bits[1]}` : ''}.`,
+        narrative: `Why this move matters: ${bits[0]}${bits[1] ? `. ${bits[1]}` : ''}.`,
         materialEvent
     };
 }
@@ -622,18 +622,18 @@ function refineMaterialWithEval(analysis) {
             m.moveThemes = [...new Set([...(m.moveThemes || []).filter(t => t !== 'hung_piece' && t !== 'queen_trap'), 'great_sacrifice'])];
             const offered = pieceLabel(ev.offered);
             const regained = (ev.regained || []).map(pieceLabel).join('/');
-            m.classification.desc = `What you did here: Sacrificed the ${offered}${regained ? ` to win ${regained}` : ' for a better outcome'}.`;
+            m.classification.desc = `Why this move matters: Sacrificed the ${offered}${regained ? ` to win ${regained}` : ' for a better outcome'}.`;
         } else if (ev.kind === 'sacrifice' && swing <= -150 && (m.evalDelta || 0) >= 2) {
             // Called a sac but eval collapsed → true hang/blunder
             ev.kind = 'hang';
             ev.confirmedByEval = true;
             m.moveThemes = [...new Set([...(m.moveThemes || []).filter(t => t !== 'great_sacrifice'), 'hung_piece'])];
             if (ev.offered === 'q') m.moveThemes.push('queen_trap');
-            m.classification.desc = `What you did here: Hung the ${pieceLabel(ev.offered)} without getting enough back.`;
+            m.classification.desc = `Why this move matters: Hung the ${pieceLabel(ev.offered)} without getting enough back.`;
         } else if (ev.kind === 'capture' && ev.captured) {
             // Keep piece name prominent in narrative if missing
             if (!/pawn|knight|bishop|rook|queen/i.test(m.classification.desc || '')) {
-                m.classification.desc = `What you did here: Won the ${pieceLabel(ev.captured)}.`;
+                m.classification.desc = `Why this move matters: Won the ${pieceLabel(ev.captured)}.`;
             }
         }
     }

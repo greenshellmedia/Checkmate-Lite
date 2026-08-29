@@ -1,4 +1,4 @@
-/* chess/insights.js — Coach Notes V2: evidence-backed, player-specific coaching */
+/* chess/insights.js. Coach Notes V2: evidence-backed, player-specific coaching */
 
 function sideMaterialFromFen(fen) {
     const board = String(fen || '').split(' ')[0] || '';
@@ -403,7 +403,7 @@ function themeCardFromStore(corpus, polarity, games) {
         body: softBody(conf, `${best.cat.detail} (${best.hits}× in this sample).`),
         advice: polarity === 'bad'
             ? 'Before you commit, slow-check the unprotected unit or tactic that keeps biting you.'
-            : 'Lean into this — force positions where this idea shows up.',
+            : 'Lean into this. force positions where this idea shows up.',
         evidence: evidenceFromHits(best.examples)
     });
 }
@@ -433,7 +433,7 @@ function phaseAccuracyCard(phase, corpus) {
             ? `About ${blPct}% of your ${phase} moves are Blunders (${bestPct}% Best/Excellent among rated tries).`
             : `About ${bestPct}% Best/Excellent among rated ${phase} moves, with blunders near ${blPct}%.`),
         advice: isBad
-            ? `Spend training time on ${phase} calculation — review the cited slips before the next session.`
+            ? `Spend training time on ${phase} calculation. review the cited slips before the next session.`
             : `Keep converting calm ${phase} positions the same way.`,
         evidence
     });
@@ -488,7 +488,7 @@ function buildOverviewInsights(profile, corpus) {
             confidence: 'low',
             title: 'Waiting on sample size',
             body: 'Analyse a handful of games and this overview will fill with patterns from your play.',
-            advice: 'Review a profile or a few single games to unlock coaching.'
+            advice: 'Review a profile or a few games to start building coaching notes.'
         })];
     }
 
@@ -498,7 +498,7 @@ function buildOverviewInsights(profile, corpus) {
             priority: 20,
             confidence: 'low',
             title: 'Small sample',
-            body: `Only ${games} analyzed game${games === 1 ? '' : 's'} so far — reads will sharpen after ~8–10.`,
+            body: `Only ${games} analysed game${games === 1 ? '' : 's'} so far. The picture will become clearer after about eight to ten games.`,
             advice: 'Keep scanning; avoid overreacting to one result.'
         }));
     }
@@ -511,12 +511,12 @@ function buildOverviewInsights(profile, corpus) {
         priority: 25,
         confidence: confidenceFromRated(profile.playerMoves || 0),
         title: 'Scoreline',
-        body: `Across ${games} analyzed game${games === 1 ? '' : 's'} you’re scoring ${wr}% wins` +
+        body: `Across ${games} analysed game${games === 1 ? '' : 's'} you’re scoring ${wr}% wins` +
             (whiteWr != null && blackWr != null ? ` (${whiteWr}% as White · ${blackWr}% as Black).` : '.'),
         advice: whiteWr != null && blackWr != null && Math.abs(whiteWr - blackWr) >= 15
             ? (whiteWr < blackWr
-                ? 'Prioritize White repertoire and early plans — the colour gap is real in this sample.'
-                : 'Prioritize Black defences — you’re underperforming with that colour.')
+                ? 'Prioritise your White repertoire and early plans. The colour gap is clear in this sample.'
+                : 'Prioritise your Black defences. Your results are weaker with that colour.')
             : 'Use the focus card below as your single training target this week.'
     }));
 
@@ -544,7 +544,7 @@ function buildOverviewInsights(profile, corpus) {
             confidence: conf,
             title: `Losses cluster in the ${topLossPhase}`,
             body: softBody(conf, `When you lose, the key moment is most often: ${lossParts.join(', ')}.`),
-            advice: `Drill ${topLossPhase} decisions — start with the cited key moments.`,
+            advice: `Work through the cited ${topLossPhase} positions first.`,
             evidence: evidenceFromHits(corpus.keyLosses[topLossPhase] || [])
         }));
     }
@@ -558,7 +558,7 @@ function buildOverviewInsights(profile, corpus) {
             confidence: conf,
             title: 'Endgames start from a deficit',
             body: softBody(conf,
-                `You reach an endgame in ${corpus.endgameEntered} games, but enter it down on material ${pctDown}% of the time — many losses are decided before the last phase.`),
+                `You reach an endgame in ${corpus.endgameEntered} games, but enter it down on material ${pctDown}% of the time. many losses are decided before the last phase.`),
             advice: 'Fight for a better middlegame trade balance; don’t “hope” in bad endings.',
             evidence: (corpus.endgameDownLosses || []).slice(0, 3).map(g => {
                 const idx = g.gameStory?.keyMoveIndex ?? Math.max(0, (g.moves || []).length - 1);
@@ -585,7 +585,7 @@ function buildOpeningInsights(profile, corpus) {
             ? `you rarely steer it deeper than about ${Math.max(2, Math.round(avgFullMoves))} moves before leaving comfort book`
             : avgFullMoves <= 6
                 ? `you typically stay in known waters for around ${avgFullMoves} moves`
-                : `you’re happy to go deep — averaging about ${avgFullMoves} moves of book/theory`;
+                : `you’re happy to go deep. averaging about ${avgFullMoves} moves of book/theory`;
         const sideKey = fav.side === 'White' ? 'white' : 'black';
         const fam = corpus.openingFamilies[sideKey]?.[fav.entry.name];
         const evidence = [];
@@ -625,7 +625,7 @@ function buildOpeningInsights(profile, corpus) {
                 confidence: conf,
                 title: oppPct >= 58 ? 'Opponents break book first' : 'You leave book first',
                 body: softBody(conf, oppPct >= 58
-                    ? `Opponents leave book/theory before you in about ${oppPct}% of games — you’re often reacting.`
+                    ? `Opponents leave book/theory before you in about ${oppPct}% of games. you’re often reacting.`
                     : `You’re usually the one to leave book first (${100 - oppPct}% of the time), so middlegame plans start on your terms.`),
                 advice: oppPct >= 58
                     ? 'Prepare a sharp “what if they deviate?” plan in your main lines.'
@@ -646,7 +646,7 @@ function buildOpeningInsights(profile, corpus) {
             title: 'Early bishop adventures',
             body: softBody(conf,
                 `When you develop a bishop early (moves 2–4), it turns into a sacrifice or hang in ${n} spot${n === 1 ? '' : 's'}` +
-                (badNet >= Math.ceil(n * 0.5) ? ' — often without clear material back.' : '.')
+                (badNet >= Math.ceil(n * 0.5) ? '. often without clear material back.' : '.')
             ),
             advice: 'Only sac the bishop when you can name the concrete follow-up before you play it.',
             evidence: evidenceFromHits(corpus.earlyBishopSacs.slice(0, 3))
@@ -662,8 +662,8 @@ function buildOpeningInsights(profile, corpus) {
             priority: 10,
             confidence: 'low',
             title: 'Opening read forming',
-            body: 'Not enough opening samples yet for a first read — keep analysing games.',
-            advice: 'A few more games in your main lines will unlock family-specific notes.'
+            body: 'There aren’t enough opening samples yet. Analyse a few more games first.',
+            advice: 'Analyse a few more games in your main lines to see opening-family notes.'
         }));
     }
     return rankAndCap(cards, 4);
@@ -696,7 +696,7 @@ function buildMiddlegameInsights(profile, corpus, heatData) {
             priority: Math.min(100, 45 + hung * 5) * confidenceFactor(conf),
             confidence: conf,
             title: 'Loose pieces in the middlegame',
-            body: softBody(conf, `Hung-piece moments showed up ${hung}× — unprotected units are a recurring theme.`),
+            body: softBody(conf, `You left a piece hanging ${hung} time${hung === 1 ? '' : 's'}. Loose pieces are costing you.`),
             advice: 'Before every commit, ask: is anything unprotected?',
             evidence: evidenceFromHits(row?.examples || [])
         }));
@@ -742,7 +742,7 @@ function buildMiddlegameInsights(profile, corpus, heatData) {
             confidence: confidenceFromRated(won * 2),
             title: 'You convert tactics',
             body: `When tactics land, you convert material (${won}× won-material themes).`,
-            advice: 'Keep forcing those concrete wins — it’s a real strength.',
+            advice: 'Keep looking for forcing moves. This is a genuine strength.',
             evidence: evidenceFromHits(row?.examples || [])
         }));
     }
@@ -759,7 +759,7 @@ function buildMiddlegameInsights(profile, corpus, heatData) {
                 confidence: conf,
                 title: 'Knights are “one and done”',
                 body: softBody(conf,
-                    `You develop knights actively, but about ${tradePct}% of those moves are tied to an immediate exchange — they rarely stay to dominate a square.`),
+                    `You develop knights actively, but about ${tradePct}% of those moves are tied to an immediate exchange. they rarely stay to dominate a square.`),
                 advice: 'Ask whether the knight can sit on an outpost for two more moves before you trade.',
                 evidence: evidenceFromHits(corpus.knightExchanges.slice(0, 3))
             }));
@@ -787,7 +787,7 @@ function buildMiddlegameInsights(profile, corpus, heatData) {
                     priority: 28 + Math.min(20, hotN),
                     confidence: confidenceFromRated(b.total),
                     title: `Habit square as ${color === 'white' ? 'White' : 'Black'}`,
-                    body: `Your middlegame pieces keep landing on ${hotSq.toUpperCase()} (${hotN}×) — check whether it’s a strong outpost or a trade magnet.`,
+                    body: `Your middlegame pieces keep landing on ${hotSq.toUpperCase()} (${hotN}×). Check whether it’s a strong outpost or simply gets traded.`,
                     advice: `Review two games where you occupied ${hotSq.toUpperCase()} and note if the piece was stable.`
                 }));
                 break;
@@ -846,7 +846,7 @@ function buildEndgameInsights(profile, corpus) {
                 body: softBody(conf,
                     `You often enter the endgame already down on material (${downPct}% of those games)` +
                     (corpus.endgameLossesEnteredDown >= 2
-                        ? ' — and that deficit shows up again in your losses.'
+                        ? '. and that deficit shows up again in your losses.'
                         : '.')
                 ),
                 advice: 'Defend or complicate earlier; don’t bank on swindles from −2.',
@@ -861,7 +861,7 @@ function buildEndgameInsights(profile, corpus) {
                 priority: 30 * confidenceFactor(conf),
                 confidence: conf,
                 title: 'Healthy endgame entries',
-                body: softBody(conf, `You usually arrive level or ahead (only ${downPct}% start down) — a good platform to convert.`),
+                body: softBody(conf, `You usually reach the endgame level or ahead. Only ${downPct}% begin with you behind.`),
                 advice: 'Practice clean technique so those advantages don’t evaporate.'
             }));
         }
@@ -880,8 +880,8 @@ function buildEndgameInsights(profile, corpus) {
             confidence: conf,
             title: 'Pawn endings',
             body: softBody(conf, badPct <= 5
-                ? 'With just pawns (and kings) left you’re at your best — serious errors almost disappear.'
-                : `Even in pawn endings you’re not fully safe — ${badPct}% of those moves are still Mistakes/Blunders.`),
+                ? 'You handle pure pawn endings well. Serious errors almost disappear.'
+                : `Even in pawn endings you’re not fully safe. ${badPct}% of those moves are still Mistakes/Blunders.`),
             advice: badPct <= 5
                 ? 'Steer toward pawn endings when you’re ahead.'
                 : 'Drill king-and-pawn fundamentals (opposition, key squares).'
@@ -1011,13 +1011,13 @@ function buildByPieceInsights(profile, survivalData, corpus) {
         if (bestPct >= 45) {
             good.push(`Clean mover: ${bestPct}% of rated ${label.toLowerCase()} moves are Best/Excellent/Good.`);
         } else if (bestPct >= 32) {
-            good.push(`Respectable accuracy — ${bestPct}% Best/Excellent/Good on rated ${label.toLowerCase()} moves.`);
+            good.push(`Respectable accuracy. ${bestPct}% Best/Excellent/Good on rated ${label.toLowerCase()} moves.`);
         }
         if (b.captures >= 3) {
             good.push(`Picks up material often with this piece (${b.captures} winning captures in the sample).`);
         }
         if (type === 'k' && b.castles >= 3) {
-            good.push(`Castles regularly (${b.castles}×) — king safety is part of your routine.`);
+            good.push(`Castles regularly (${b.castles}×). king safety is part of your routine.`);
         }
         if (b.checks >= 4 && (type === 'q' || type === 'r' || type === 'n')) {
             good.push(`Creates pressure: ${b.checks} checks delivered with the ${label.toLowerCase()}.`);
@@ -1038,7 +1038,7 @@ function buildByPieceInsights(profile, survivalData, corpus) {
             bad.push(`Blunder-prone with the ${label.toLowerCase()}: ${blPct}% of rated moves are Blunders.` +
                 (evBad ? ` Example: ${formatMoveRef(evBad.m)}.` : ''));
         } else if (badPct >= 18) {
-            bad.push(`Mistakes add up — ${badPct}% of rated ${label.toLowerCase()} moves are Mistake/Blunder.`);
+            bad.push(`Mistakes add up. ${badPct}% of rated ${label.toLowerCase()} moves are Mistake/Blunder.`);
         }
         if (b.hangsOffered >= 3) {
             bad.push(`This piece gets hung or left loose too often (${b.hangsOffered}×).`);
@@ -1049,21 +1049,21 @@ function buildByPieceInsights(profile, survivalData, corpus) {
         if (b.exchanges >= 4 && (type === 'n' || type === 'b')) {
             const tradePct = Math.round((b.exchanges / b.total) * 100);
             if (tradePct >= 20) {
-                bad.push(`Often “one and done” — about ${tradePct}% of these moves are immediate exchanges.`);
+                bad.push(`Often “one and done”. about ${tradePct}% of these moves are immediate exchanges.`);
             }
         }
         if (type === 'q' && blunders >= 2) {
-            bad.push('Queen raids are risky in this sample — double-check retreat squares before committing her.');
+            bad.push('Queen raids are risky in this sample. double-check retreat squares before committing her.');
         }
         if (type === 'k' && (b.themes.king_in_center || 0) >= 2) {
-            bad.push('The king gets caught in the centre more than once — castle or close the middle sooner.');
+            bad.push('The king gets caught in the centre more than once. castle or close the middle sooner.');
         }
         if (type === 'r' && (b.themes.back_rank || 0) >= 2) {
-            bad.push('Back-rank themes show up around your rook play — make luft before the heavy pieces invade.');
+            bad.push('Back-rank trouble appears around your rook play. Make luft before the heavy pieces come in.');
         }
         const death = survivalDeathRate(type);
         if (death != null && death >= 70 && type !== 'p' && type !== 'k') {
-            bad.push(`Starting ${label.toLowerCase()}s leave the board in ~${death}% of games — they don’t last long.`);
+            bad.push(`Starting ${label.toLowerCase()}s leave the board in ~${death}% of games. they don’t last long.`);
         } else if (death != null && death <= 35 && type !== 'p' && type !== 'k' && type !== 'q') {
             good.push(`Your starting ${label.toLowerCase()}s tend to survive (${death}% capture rate across games).`);
         }
@@ -1074,7 +1074,7 @@ function buildByPieceInsights(profile, survivalData, corpus) {
             bad.push(THEME_CATALOG[topBad[0]].detail);
         }
 
-        if (!good.length) good.push('No standout strength yet — mostly mixed results with this piece.');
+        if (!good.length) good.push('No standout strength yet. mostly mixed results with this piece.');
         if (!bad.length) bad.push('No loud weakness flagged for this piece in the current sample.');
 
         return {
@@ -1208,13 +1208,13 @@ function byPieceCoachHtml(pieces) {
                         <div>
                             <div class="game-coach-side-label good">Pros</div>
                             <ul class="game-coach-list">
-                                ${(p.good || []).map(t => `<li class="game-coach-good">${escInsightHtml(t)}</li>`).join('') || '<li class="game-coach-muted">—</li>'}
+                                ${(p.good || []).map(t => `<li class="game-coach-good">${escInsightHtml(t)}</li>`).join('') || '<li class="game-coach-muted">-</li>'}
                             </ul>
                         </div>
                         <div>
                             <div class="game-coach-side-label bad">Cons</div>
                             <ul class="game-coach-list">
-                                ${(p.bad || []).map(t => `<li class="game-coach-bad">${escInsightHtml(t)}</li>`).join('') || '<li class="game-coach-muted">—</li>'}
+                                ${(p.bad || []).map(t => `<li class="game-coach-bad">${escInsightHtml(t)}</li>`).join('') || '<li class="game-coach-muted">-</li>'}
                             </ul>
                         </div>
                     </div>
@@ -1304,7 +1304,7 @@ function wldMiniHtml(row, title) {
         <div class="split-stat-card">
             <div class="split-stat-title">${escInsightHtml(title)}</div>
             <div class="split-stat-line">${row.games} games · ${row.wins}/${row.losses}/${row.draws}${row.wr != null ? ` · ${row.wr}% W` : ''}</div>
-            <div class="split-stat-line text-color-secondary">${row.avgAccuracy != null ? `${row.avgAccuracy}% acc` : '—'}${row.avgCpl != null ? ` · ${row.avgCpl} CPL` : ''}</div>
+            <div class="split-stat-line text-color-secondary">${row.avgAccuracy != null ? `${row.avgAccuracy}% acc` : '-'}${row.avgCpl != null ? ` · ${row.avgCpl} CPL` : ''}</div>
         </div>
     `;
 }
@@ -1316,7 +1316,7 @@ function renderProfileFormPanel(profile, analyticsData) {
         ? computeProfileAnalytics(profile)
         : null);
     if (!a || !a.gameCount) {
-        root.innerHTML = '<div class="insight-empty">Form stats appear once games are analyzed.</div>';
+        root.innerHTML = '<div class="insight-empty">Form stats appear once games are analysed.</div>';
         return;
     }
 
@@ -1350,25 +1350,25 @@ function renderProfileFormPanel(profile, analyticsData) {
     root.innerHTML = `
         <div class="form-metrics">
             <div class="form-metric">
-                <div class="form-metric-value">${a.avgAccuracy != null ? `${a.avgAccuracy}%` : '—'}</div>
+                <div class="form-metric-value">${a.avgAccuracy != null ? `${a.avgAccuracy}%` : '-'}</div>
                 <div class="form-metric-label">Avg accuracy</div>
             </div>
             <div class="form-metric">
                 <div class="form-metric-value">${a.avgGameElo != null
                     ? (typeof formatGameEloLabel === 'function' ? formatGameEloLabel(a.avgGameElo) : a.avgGameElo)
-                    : '—'}</div>
+                    : '-'}</div>
                 <div class="form-metric-label">Avg Game ELO</div>
             </div>
             <div class="form-metric">
-                <div class="form-metric-value">${a.avgCpl != null ? a.avgCpl : '—'}</div>
+                <div class="form-metric-value">${a.avgCpl != null ? a.avgCpl : '-'}</div>
                 <div class="form-metric-label">Avg CPL</div>
             </div>
             <div class="form-metric">
-                <div class="form-metric-value">${a.avgGameCpl != null ? a.avgGameCpl : '—'}</div>
+                <div class="form-metric-value">${a.avgGameCpl != null ? a.avgGameCpl : '-'}</div>
                 <div class="form-metric-label">CPL / game</div>
             </div>
             <div class="form-metric">
-                <div class="form-metric-value">${a.avgSwingCp != null ? a.avgSwingCp : '—'}</div>
+                <div class="form-metric-value">${a.avgSwingCp != null ? a.avgSwingCp : '-'}</div>
                 <div class="form-metric-label">Avg max swing</div>
             </div>
             <div class="form-metric">
@@ -1376,19 +1376,19 @@ function renderProfileFormPanel(profile, analyticsData) {
                 <div class="form-metric-label">Collapses / comebacks</div>
             </div>
             <div class="form-metric">
-                <div class="form-metric-value">${a.avgOppAccuracy != null ? `${a.avgOppAccuracy}%` : '—'}</div>
+                <div class="form-metric-value">${a.avgOppAccuracy != null ? `${a.avgOppAccuracy}%` : '-'}</div>
                 <div class="form-metric-label">Opp accuracy</div>
             </div>
             <div class="form-metric">
-                <div class="form-metric-value">${gap == null ? '—' : (gap >= 0 ? `+${gap}` : String(gap))}</div>
+                <div class="form-metric-value">${gap == null ? '-' : (gap >= 0 ? `+${gap}` : String(gap))}</div>
                 <div class="form-metric-label">Rating gap</div>
             </div>
         </div>
         <div class="profile-kicker mb-2">CPL by phase</div>
         <div class="phase-cpl-row mb-3">
-            <span>Opening <strong>${pc.opening != null ? pc.opening : '—'}</strong></span>
-            <span>Middlegame <strong>${pc.middlegame != null ? pc.middlegame : '—'}</strong></span>
-            <span>Endgame <strong>${pc.endgame != null ? pc.endgame : '—'}</strong></span>
+            <span>Opening <strong>${pc.opening != null ? pc.opening : '-'}</strong></span>
+            <span>Middlegame <strong>${pc.middlegame != null ? pc.middlegame : '-'}</strong></span>
+            <span>Endgame <strong>${pc.endgame != null ? pc.endgame : '-'}</strong></span>
         </div>
         ${resignNote}
         <div class="finish-grid mb-3">
@@ -1417,7 +1417,7 @@ function renderTacticsEnginePanel(profile, analyticsData) {
         ? computeProfileAnalytics(profile)
         : null);
     if (!a || !a.gameCount) {
-        root.innerHTML = '<div class="insight-empty">Tactics stats appear once games are analyzed.</div>';
+        root.innerHTML = '<div class="insight-empty">Tactics stats appear once games are analysed.</div>';
         return;
     }
 
@@ -1453,21 +1453,21 @@ function renderTacticsEnginePanel(profile, analyticsData) {
 
     const altHtml = alt.games
         ? `<div class="split-stat-card">
-                <div class="split-stat-title">MultiPV / deepen</div>
+                <div class="split-stat-title">Top engine choices</div>
                 <div class="split-stat-line">${alt.games} deepened game${alt.games === 1 ? '' : 's'}</div>
-                <div class="split-stat-line text-color-secondary">When missing #1, played a top-2 line ${alt.top2Rate != null ? `${alt.top2Rate}%` : '—'} of the time (${alt.top2Hits}/${alt.chances})</div>
+                <div class="split-stat-line text-color-secondary">When missing #1, played a top-2 line ${alt.top2Rate != null ? `${alt.top2Rate}%` : '-'} of the time (${alt.top2Hits}/${alt.chances})</div>
            </div>`
-        : `<div class="split-stat-card"><div class="split-stat-title">MultiPV / deepen</div><div class="split-stat-line text-color-secondary">Deepen a review to track top-2 engine hits.</div></div>`;
+        : `<div class="split-stat-card"><div class="split-stat-title">Top engine choices</div><div class="split-stat-line text-color-secondary">Run a fuller review to compare the engine’s top two moves.</div></div>`;
 
     const oppHtml = `
         <div class="split-stat-card">
             <div class="split-stat-title">You punish mistakes</div>
-            <div class="split-stat-line">${od.punishRate != null ? `${od.punishRate}%` : '—'} after opp Mistake/Blunder (${od.punishedOpp || 0}/${od.oppBlunders || 0})</div>
+            <div class="split-stat-line">${od.punishRate != null ? `${od.punishRate}%` : '-'} after opp Mistake/Blunder (${od.punishedOpp || 0}/${od.oppBlunders || 0})</div>
             ${od.punishEvidence ? `<div class="coach-evidence">${evidenceBtnHtml(od.punishEvidence)}</div>` : ''}
         </div>
         <div class="split-stat-card">
             <div class="split-stat-title">Opponents punish you</div>
-            <div class="split-stat-line">${od.outplayRate != null ? `${od.outplayRate}%` : '—'} after your Mistake/Blunder (${od.oppPunishedYou || 0}/${od.yourBlunders || 0})</div>
+            <div class="split-stat-line">${od.outplayRate != null ? `${od.outplayRate}%` : '-'} after your Mistake/Blunder (${od.oppPunishedYou || 0}/${od.yourBlunders || 0})</div>
             ${od.outplayEvidence ? `<div class="coach-evidence">${evidenceBtnHtml(od.outplayEvidence)}</div>` : ''}
         </div>
     `;
@@ -1508,7 +1508,7 @@ function renderThemeFrequencyPanel(profile, analyticsData) {
     }
 
     const habits = cards.filter(c => c.skipped && c.polarity === 'good').slice(0, 4);
-    // King-safety themes are featured in the tactics panel — keep theme list focused elsewhere
+    // King-safety themes are featured in the tactics panel. keep theme list focused elsewhere
     const focus = cards.filter(c => !c.skipped && !c.kingSafety).slice(0, 10);
 
     const cardHtml = (c) => {
@@ -1574,7 +1574,7 @@ function renderCoachInsights(profile, insightsData) {
         </div>
         <div class="coach-block">
             <div class="coach-kicker">By piece</div>
-            <div class="text-color-secondary text-sm mb-2">Pros and cons of how you handle each piece type — with an example move when we have one.</div>
+            <div class="text-color-secondary text-sm mb-2">What went well and what went wrong with each piece type, with an example move where available.</div>
             ${byPieceCoachHtml(insights.byPiece)}
         </div>
     `;
@@ -1641,13 +1641,13 @@ function generateGameCoachNotes(analysis) {
             if (ev) {
                 const ref = formatMoveRef(m);
                 if (ev.kind === 'sacrifice' && (ev.net || 0) <= 0) {
-                    materialNotes.push({ bad: true, text: `Loose sac on ${ref} didn’t pay back clearly — revisit that moment.` });
+                    materialNotes.push({ bad: true, text: `Loose sac on ${ref} didn’t pay back clearly. revisit that moment.` });
                 } else if (ev.kind === 'hang') {
-                    materialNotes.push({ bad: true, text: `Hung material on ${ref} — check unprotected units next time.` });
+                    materialNotes.push({ bad: true, text: `Hung material on ${ref}. check unprotected units next time.` });
                 } else if (ev.kind === 'capture' || (ev.kind === 'sacrifice' && (ev.net || 0) > 0)) {
                     materialNotes.push({ bad: false, text: `Won / forced material around ${ref}.` });
                 } else if (ev.kind === 'missed_capture') {
-                    materialNotes.push({ bad: true, text: `Missed a hanging piece near ${ref} — scan for free takes.` });
+                    materialNotes.push({ bad: true, text: `Missed a hanging piece near ${ref}. scan for free takes.` });
                 }
             }
         }
@@ -1684,7 +1684,7 @@ function generateGameCoachNotes(analysis) {
             pushUnique(bucket.bad,
                 `${blunders} blunder${blunders === 1 ? '' : 's'} in this phase` +
                 (ex ? ` (e.g. ${formatMoveRef(ex.m)})` : '') +
-                ' — the biggest accuracy leak.');
+                '. the biggest accuracy leak.');
         }
         if (mistakes) {
             const ex = badMoveRefs.find(x => x.label === 'Mistake');
@@ -1693,7 +1693,7 @@ function generateGameCoachNotes(analysis) {
                 (ex ? ` (e.g. ${formatMoveRef(ex.m)})` : '') + '.');
         }
         if (misses && !blunders) {
-            pushUnique(bucket.bad, `${misses} miss${misses === 1 ? '' : 'es'} — failed to convert after an opponent error.`);
+            pushUnique(bucket.bad, `${misses} miss${misses === 1 ? '' : 'es'}. You failed to punish an opponent’s error.`);
         }
         const topBadTheme = Object.entries(themeBad).sort((a, b) => b[1] - a[1])[0];
         if (topBadTheme && THEME_CATALOG[topBadTheme[0]]) {
@@ -1714,7 +1714,7 @@ function generateGameCoachNotes(analysis) {
             }
         }
 
-        if (!bucket.good.length) pushUnique(bucket.good, 'Nothing strongly positive stood out — mostly quiet or mixed moves.');
+        if (!bucket.good.length) pushUnique(bucket.good, 'Nothing clearly positive stood out. Most moves were quiet or mixed.');
         if (!bucket.bad.length) pushUnique(bucket.bad, 'No major red flags in this phase from the labels we tracked.');
     }
 
@@ -1752,11 +1752,11 @@ function gameCoachPhaseHtml(title, bucket) {
             <div class="game-coach-cols">
                 <div>
                     <div class="game-coach-side-label good">What went well</div>
-                    <ul class="game-coach-list">${good || '<li class="game-coach-muted">—</li>'}</ul>
+                    <ul class="game-coach-list">${good || '<li class="game-coach-muted">-</li>'}</ul>
                 </div>
                 <div>
                     <div class="game-coach-side-label bad">What hurt</div>
-                    <ul class="game-coach-list">${bad || '<li class="game-coach-muted">—</li>'}</ul>
+                    <ul class="game-coach-list">${bad || '<li class="game-coach-muted">-</li>'}</ul>
                 </div>
             </div>
         </div>
