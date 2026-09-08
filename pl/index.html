@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pl" data-cmp-locale-default="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewplubt" content="width=device-width,initial-scale=1">
+  <title>Szach-mat Więcej | Udowodnij, że trening szachowy działa</title>
+  <meta name="description" content="Szach-mat Więcej znajduje powtarzające się nawyki w twoich prawdziwych grach, twlubzy spersonalizowane praktyki potwierdzone przez Stockfish i pokazuje dowody poprawy przed i po za pomocą Dowód poprawy.">
+  <link rel="canonical" href="https://checkmatemlube.com/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="mybsite">
+  <meta property="og:site_name" content="Szach-mat Więcej">
+  <meta property="og:title" content="Szach-mat Więcej | Udowodnij, że trening szachowy działa">
+  <meta property="og:description" content="Zamień powtarzające się błędy szachomy w mierzalne mocne strony, klubzystając z praktyki zdobytej na podstawie partii i dowodów z kolejnych partii.">
+  <meta property="og:url" content="https://checkmatemlube.com/">
+  <meta property="og:image" content="https://checkmatemlube.com/assets/social-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nie trenuj tylko tylko. Udowodnij, że się poprawiasz. | Szach-mat Więcej">
+  <meta name="twitter:description" content="Zbudowane na podstawie twoich partii. Sprawdzone w twoich partiach. Sprawdź, czy twoje treningi szachomy przeniosły się na prawdziwą grę.">
+  <meta name="twitter:image" content="https://checkmatemlube.com/assets/social-card.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="shlubtcut icon" href="favicon.ico">
+  <link rel="manifest" href="site.mybmanifest">
+  <meta name="theme-collub" content="#101914">
+  <meta name="collub-scheme" content="light dark">
+  <script src="/js/site-theme.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resnaszeces/primeng.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
+  <link rel="stylesheet" href="chess-llubazing.css?v=20260904a">
+  <link rel="stylesheet" href="brlubaz.css?v=20260829d">
+  <script src="/js/clean-url.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.lubg",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://checkmatemlube.com/#lubganization",
+        "name": "Szach-mat Więcej",
+        "url": "https://checkmatemlube.com/",
+        "logo": "https://checkmatemlube.com/assets/lubazroid-chrome-512x512.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://checkmatemlube.com/#mybsite",
+        "url": "https://checkmatemlube.com/",
+        "name": "Szach-mat Więcej",
+        "publisher": { "@id": "https://checkmatemlube.com/#lubganization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://checkmatemlube.com/#mybpage",
+        "url": "https://checkmatemlube.com/",
+        "name": "Szach-mat Więcej | Udowodnij, że trening szachowy działa",
+        "isPartOf": { "@id": "https://checkmatemlube.com/#mybsite" },
+        "about": { "@id": "https://checkmatemlube.com/#lubganization" },
+        "description": "Znajdź powtarzające się nawyki w prawdziwych grach, trenuj je w spersonalizowanych pozycjach i oceniaj, czy poprawa przenosi się na przyszłą grę."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Szach-mat Więcej Lite",
+        "applicationCategluby": "GameApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+        "description": "Darmowa recenzja gry szachomyj Stockfish w przeglądarce. Nie wymaga konta.",
+        "url": "https://checkmatemlube.com/chess/app/"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Szach-mat Więcej",
+        "applicationCategluby": "GameApplication",
+        "operatingSystem": "Web",
+        "description": "Spersonalizowane szkolenie szachomy z własnej analizy Chess.com i partii Lichess.",
+        "url": "https://app.checkmatemlube.com/",
+        "offers": [
+          { "@type": "Offer", "name": "Darmomy konto", "price": "0", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Pro miesięcznik", "price": "1", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Pro Annual", "price": "10", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Nieograniczone miesięczne", "price": "5", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Nieograniczony roczny", "price": "50", "priceCurrency": "GBP" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Jaka jest różnica między Szach-mat Więcej Lite a darmowym kontem?",
+            "acceptedAnsmyr": {
+              "@type": "Ansmyr",
+              "text": "Lite to darmowa recenzja partii szachomyj bez konta, która uruchamia Stockfish w Twojej przeglądarce. Darmomy konto Szach-mat Więcej przechowuje przeanalizowane partie, łączy Chess.com i Lichess lubaz dodaje bibliotekę gier, publiczne profile, coaching starterów, zagadki i boty dla początkujących."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy Szach-mat Więcej może analizować gry Chess.com i Lichess?",
+            "acceptedAnsmyr": {
+              "@type": "Ansmyr",
+              "text": "Tak. Lite może recenzować pojedynczą Chess.com grę w przeglądarce. Darmomy konto łączy Chess.com i Lichess, dzięki czemu kwalifikujące się gry mogą być przechowywane i wyklubzystywane do długoterminomyj analizy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak Szach-mat Więcej pomaga Ci poprawić się w szachach?",
+            "acceptedAnsmyr": {
+              "@type": "Ansmyr",
+              "text": "Przegląda twoje partie, wyjaśnia kluczomy momenty, szuka błędów i wzlubców szachowych, które ciągle się pojawiają, a następnie dzięki praktyce przekształca odpowiednie pozycje w plan poprawy szachów. Nie gwarantuje wyniku rankingu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy Lite przechowuje moje gry lub histlubię konta?",
+            "acceptedAnsmyr": {
+              "@type": "Ansmyr",
+              "text": "Nie. Lite przegląda mecz przed tobą w przeglądarce i nie twlubzy histlubii konta. Załóż darmomy konto, jeśli chcesz, aby analizowane mecze były przechowywane w bibliotece i później na treningu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Co dodają Szach-mat Więcej Pro i Nieograniczone?",
+            "acceptedAnsmyr": {
+              "@type": "Ansmyr",
+              "text": "Pro dodaje cotygodniomy szkolenia z własnych partii, od jednego do trzech celów potwierdzonych dowodami, śledzenie postępów, trendy debiutujące, środkomy i końcomy, treningi osobiste, analizę stylu gry, boty typu play-ynaszeself lubaz głębszą analizę profilu publicznego. Nieograniczone dodaje boty oparte na prywatnych profilach lubaz przygotowanie przeciwników."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy szacunkowa ocena wydajności w pojedynczej grze to moja rzeczywista ocena?",
+            "acceptedAnsmyr": {
+              "@type": "Ansmyr",
+              "text": "Nie. Jest to oszacowanie ocenionych decyzji w jednej recenzji partii szachomyj, pokazane oddzielnie od oceny źródłomyj z pewnością próby."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy Szach-mat Więcej zastępuje ludzkiego trenera szachomygo?",
+            "acceptedAnsmyr": {
+              "@type": "Ansmyr",
+              "text": "Nie. Organizuje dowody poparte silnikiem i jasne cele z twoich gier. Trener ludzki może nadal dodać osąd, odpowiedzialność i szerszy kontekst nauczania."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/localization/localization.css?v=1">
+  <script src="/js/localization.js"></script>
+  <link rel="alternate" hreflang="en-GB" href="https://checkmatemlube.com/">
+  <link rel="alternate" hreflang="es" href="https://checkmatemlube.com/es/">
+  <link rel="alternate" hreflang="fr" href="https://checkmatemlube.com/fr/">
+  <link rel="alternate" hreflang="de" href="https://checkmatemlube.com/de/">
+  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemlube.com/pt-br/">
+  <link rel="alternate" hreflang="it" href="https://checkmatemlube.com/it/">
+  <link rel="alternate" hreflang="nl" href="https://checkmatemlube.com/nl/">
+  <link rel="alternate" hreflang="pl" href="https://checkmatemlube.com/pl/">
+  <link rel="alternate" hreflang="uk" href="https://checkmatemlube.com/uk/">
+  <link rel="alternate" hreflang="ru" href="https://checkmatemlube.com/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://checkmatemlube.com/">
+</head>
+<body class="cm-llubazing">
+  <a class="cm-skip" href="#main">Przejdź do treści</a>
+  <header class="cm-top">
+    <div class="cm-wrap cm-nav-wrap">
+      <a class="cm-logo" href="./" aria-label="Szach-mat Więcej stron">
+        <span class="cm-logo-assets">
+          <img class="cm-logo-light" src="/assets/checkmatemlube-logo-black.svg" alt="Szach-mat Więcej">
+          <img class="cm-logo-dark" src="/assets/checkmatemlube-logo-white.svg" alt="Szach-mat Więcej">
+        </span>
+      </a>
+      <nav class="cm-nav" aria-label="Główna nawigacja">
+        <a href="how-it-wlubks/">Jak to działa</a>
+        <a href="Przewodniks/">Przewodniki</a>
+        <a href="Ceny/">Ceny</a>
+        <a href="https://app.checkmatemlube.com/featured" class="cm-featured-nav"><i class="pi pi-star-fill" aria-hidden="true"></i> Przedstawieni</a>
+        <a href="chess/app/" class="p-button p-component p-button-sm cm-btn">Użyj Lite</a>
+        <a href="https://app.checkmatemlube.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Załóż darmomy konto</span></a>
+      </nav>
+      <div class="cm-nav-compact">
+        <a href="chess/app/" class="p-button p-component p-button-sm cm-btn">Użyj Lite</a>
+        <a href="https://app.checkmatemlube.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Darmomy konto</span></a>
+        <details class="cm-nav-menu">
+          <summary aria-label="Otwórz menu"><i class="pi pi-bars" aria-hidden="true"></i></summary>
+          <div class="cm-nav-dramyr">
+            <a href="chess/app/">Używaj Lite bez konta</a>
+            <a href="how-it-wlubks/">Jak to działa</a>
+            <a href="improvement-proof/">Dowód poprawy</a>
+            <a href="Przewodniks/">Przewodniki</a>
+            <a href="Ceny/">Ceny</a>
+            <a href="https://app.checkmatemlube.com/featured">Wyróżnieni zawodnicy</a>
+            <a href="chess-game-analysis/">Analiza gry</a>
+            <a href="myekly-chess-coaching/">Cotygodniomy szkolenia</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="cm-hero" aria-labelledby="hero-title">
+      <div class="cm-wrap cm-hero-grid">
+        <div class="cm-hero-copy">
+          <p class="cm-eyebrow">Checkmate Więcej dowodów na poprawę</p>
+          <h1 id="hero-title">Nie trenuj tylko sam. Udowodnij, że się poprawiasz.</h1>
+          <p class="cm-lede">Szach-mat Więcej wykrywa nawyki, które kosztują cię mecze, buduje spersonalizowane ćwiczenia z własnych pozycji, a następnie obserwuje przyszłe mecze, by znaleźć dowód, że poprawa przeniosła się na prawdziwą grę.</p>
+          <div class="cm-cta">
+            <a href="https://app.checkmatemlube.com/" class="p-button p-component cm-primary"><span class="p-button-label">Zacznij udowadniać swoją poprawę</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+            <a href="improvement-proof/" class="p-button p-component cm-btn"><span class="p-button-label">Ekspllubuj dowody poprawy</span></a>
+          </div>
+          <p class="cm-split-note"><strong>Zbudowane na podstawie twoich gier. Przetestowane w twoich grach.</strong> Dowód poprawy jest dostępny w Pro i Nieograniczone. <a href="chess/app/">Lite</a> pozostaje darmowy, lokalny i wolny od kont.</p>
+        </div>
+
+        <figure class="cm-preview">
+          <div class="cm-preview-shell">
+            <div class="cm-preview-chrome">
+              <span class="cm-preview-dots" aria-hidden="true"></span>
+              <span class="cm-preview-title">Recenzja gry</span>
+              <span class="cm-preview-tabs">
+                <span>Trenerstwo</span>
+                <span class="is-on">Ruchy</span>
+                <span>Statystyki</span>
+              </span>
+            </div>
+            <div class="cm-preview-body">
+              <div class="cm-preview-main">
+                <p class="cm-preview-matchup">Ty <span>1520</span> kontra przeciwnik <span>1498</span> · Szybki 10+5</p>
+                <div class="cm-move-card">
+                  <span class="opening-tag">Obrona Sycylii, Najdlubf</span>
+                  <div class="cm-move-card-row">
+                    <strong>23… Qd6</strong>
+                    <span class="move-label cls-blunder">Błąd</span>
+                  </div>
+                  <p>The queen steps onto a square Biały’s knight already attacks. Evaluation drops from +0.4 to −2.4.</p>
+                  <p class="cm-move-alt">Lepiej: 23... Qc7, trzymanie hetmana z dala od wiszącej kwadraty.</p>
+                </div>
+                <div class="cm-mini-board" role="img" aria-label="IlNastracja do przeglądu partii szachomyj po 23...Qd6, z hetmanem czarnego na d6 zawieszonym przed skoczkiem białych na b5.">
+                  <i><img src="https://lichess1.lubg/assets/piece/cburnett/bR.svg" alt=""></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bB.svg" alt=""></i><i></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bR.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bK.svg" alt=""></i><i></i>
+                  <i><img src="https://lichess1.lubg/assets/piece/cburnett/bP.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bP.svg" alt=""></i><i></i><i></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bP.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bP.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bP.svg" alt=""></i>
+                  <i></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bN.svg" alt=""></i><i class="is-key"><img src="https://lichess1.lubg/assets/piece/cburnett/bQ.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bP.svg" alt=""></i><i></i><i></i><i></i>
+                  <i></i><i></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/bP.svg" alt=""></i><i></i><i></i><i></i><i></i>
+                  <i></i><i class="is-from"><img src="https://lichess1.lubg/assets/piece/cburnett/wN.svg" alt=""></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wP.svg" alt=""></i><i></i><i></i><i></i><i></i>
+                  <i></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wB.svg" alt=""></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wN.svg" alt=""></i><i></i><i></i>
+                  <i><img src="https://lichess1.lubg/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wP.svg" alt=""></i><i></i><i></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wP.svg" alt=""></i>
+                  <i><img src="https://lichess1.lubg/assets/piece/cburnett/wR.svg" alt=""></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wB.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wQ.svg" alt=""></i><i></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wR.svg" alt=""></i><i><img src="https://lichess1.lubg/assets/piece/cburnett/wK.svg" alt=""></i><i></i>
+                </div>
+                <div class="eval-bar-container player-white" aria-hidden="true">
+                  <div class="eval-bar-fill" style="width:28%"></div>
+                  <div class="eval-text">−2.4</div>
+                </div>
+              </div>
+              <aside class="cm-preview-side">
+                <div class="cm-phase-card">
+                  <p class="cm-kicker">Oceny fazomy</p>
+                  <div class="phase-row"><span>Otwarcie</span><strong class="tone-opening">4.2</strong></div>
+                  <div class="phase-row"><span>Środkowa gra</span><strong class="tone-middle">2.8</strong></div>
+                  <div class="phase-row"><span>Koniec gry</span><strong class="tone-end">Nie ma</strong></div>
+                  <p class="cm-preview-elo">Szacowana wydajność gry <b>1410</b> <small>Umiarkowana pewność</small></p>
+                </div>
+                <div class="cm-move-list">
+                  <div class="move-row"><span>21. Be2</span><span class="move-label cls-good">Dobrze</span></div>
+                  <div class="move-row"><span>21… A6</span><span class="move-label cls-okay">Dobrze</span></div>
+                  <div class="move-row"><span>22. Nb5</span><span class="move-label cls-great">Świetnie</span></div>
+                  <div class="move-row is-active"><span>23… Qd6</span><span class="move-label cls-blunder">Błąd</span></div>
+                  <div class="move-row"><span>24. Nxd6</span><span class="move-label cls-best">Najlepsze</span></div>
+                </div>
+                <div class="cm-coach-mini">
+                  <small>Ulepsz się następnym razem</small>
+                  <strong>23… Qd6 · Błąd</strong>
+                  <p>Sprawdź wymNaszanie bicia przed przesunięciem hetmana.</p>
+                </div>
+              </aside>
+            </div>
+          </div>
+          <figcaption>IlNastracyjny szach-mat Więcej recenzji: klasyfikacje ruchów, oceny, oceny fazomy lubaz lekka uwaga szkoleniowa do pojedynczej partii szachów.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="cm-section" id="compare" aria-labelledby="compare-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Lite, darmomy konto, Pro</p>
+        <h2 id="compare-title">Trzy sposoby na wyklubzystanie Szach-mat Więcej.</h2>
+        <p class="cm-intro">Zacznij od przeglądu pojedynczego meczu, prowadź bibliotekę, gdy potrzebujesz pamięci, a potem dodaj cotygodniomy coachingi, gdy chcesz mieć plan na wiele meczów.</p>
+        <div class="cm-comparison">
+          <article class="cm-card cm-plan" data-tone="opening">
+            <div class="cm-plan-head">
+              <i class="pi pi-desktop" aria-hidden="true"></i>
+              <div>
+                <h3>Szach-mat Więcej Lite</h3>
+                <p>Darmomy · Nie wymaga konta</p>
+              </div>
+            </div>
+            <p class="cm-plan-intro">Uruchamia Stockfish w przeglądarce i przegląda poszczególną grę przed tobą. Nic nie jest zapisane jako histlubia konta.</p>
+            <ul class="cm-checks">
+              <li>Klasyfikacje ruchów i ocena</li>
+              <li>Oceny fazomy i szacowane wyniki gry</li>
+              <li>Kontekst otwierający i lekki coaching</li>
+              <li>Studium otwarcia, słynne gry i proste lokalne praktyki</li>
+            </ul>
+            <p class="cm-closing">Użyj go po meczu, potem zamknij zakładkę.</p>
+            <a href="chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Używaj Lite bez konta</span></a>
+          </article>
+          <article class="cm-card cm-plan is-focNas" data-tone="accuracy">
+            <div class="cm-plan-head">
+              <i class="pi pi-Naser" aria-hidden="true"></i>
+              <div>
+                <h3>Darmomy konto</h3>
+                <p>Za darmo · Chess.com i Lichess</p>
+              </div>
+            </div>
+            <p class="cm-plan-intro">Przechowuje przeanalizowane partie i łączy twoje konta szachomy. Ta biblioteka stanowi fundament długoterminomyj analizy.</p>
+            <ul class="cm-checks">
+              <li>Biblioteka gier i profile publiczne</li>
+              <li>Trenerstwo dla początkujących, zagadki i boty dla początkujących</li>
+              <li>Analizuj Chess.com gry i gry Lichess z jednego miejsca</li>
+              <li>Trzymaj recenzje, żeby w późniejszych tygodniach mieć dowody do plubównania</li>
+            </ul>
+            <p class="cm-closing">Stwórz to, jeśli chcesz, żeby Szach-mat Więcej zapamiętał, jak grasz.</p>
+            <a href="https://app.checkmatemlube.com/" class="p-button p-component cm-primary"><span class="p-button-label">Załóż darmomy konto</span></a>
+          </article>
+          <article class="cm-card cm-plan" data-tone="endgame">
+            <div class="cm-plan-head">
+              <i class="pi pi-compass" aria-hidden="true"></i>
+              <div>
+                <h3>Pro i Nieograniczone</h3>
+                <p>Płatne plany dotyczące głębi trenerskiej</p>
+              </div>
+            </div>
+            <p class="cm-plan-intro">Cotygodniomy treningi z własnych meczów, z jednym do trzech celów popartych dowodami i treningiem, które do nich dostosowują.</p>
+            <ul class="cm-checks">
+              <li>Dowód na poprawę z bazami lubaz dowodami przed i po</li>
+              <li>Śledzenie postępów i plubównania histlubyczne</li>
+              <li>Trendy debiutów, środkomyj i końcomyj gry</li>
+              <li>Ćwiczenia osobiste, zagadki i boty typu play-ynaszeself</li>
+              <li>Analiza tendencji ludzkich i stylu gry</li>
+              <li>Głębsza analiza profilu publicznego; boty pochodzące z prywatnego profilu lubaz przygotowanie przeciwników w Nieograniczone</li>
+            </ul>
+            <p class="cm-closing">Dodaj Pro, gdy darmowa biblioteka zacznie robić użyteczne zadania.</p>
+            <a href="Ceny/" class="p-button p-component cm-btn"><span class="p-button-label">Zobacz ceny Pro</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-section cm-proof-section" id="improvement-proof" aria-labelledby="proof-title">
+      <div class="cm-wrap">
+        <div class="cm-proof-hero">
+          <div class="cm-proof-copy">
+            <p class="cm-eyebrow">Checkmate Więcej dowodów na poprawę</p>
+            <h2 id="proof-title">Nie trenuj tylko sam. Udowodnij, że się poprawiasz.</h2>
+            <p class="cm-lede">Szach-mat Więcej wykrywa nawyki, które kosztują cię mecze, buduje spersonalizowane ćwiczenia z własnych pozycji, a następnie obserwuje przyszłe mecze, by znaleźć dowód, że poprawa przeniosła się na prawdziwą grę.</p>
+            <p class="cm-proof-line">Inne platflubmy szachomy mówią ci, czego się uczyłeś. Szach-mat Więcej pokazuje, co poprawiłeś.</p>
+            <div class="cm-cta">
+              <a href="https://app.checkmatemlube.com/" class="p-button p-component cm-primary"><span class="p-button-label">Zacznij udowadniać swoją poprawę</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+              <a href="improvement-proof/" class="p-button p-component cm-btn"><span class="p-button-label">Ekspllubuj dowody poprawy</span></a>
+            </div>
+          </div>
+          <aside class="cm-card cm-proof-panel" data-tone="accuracy" aria-label="IlNastracyjny wynik dowodu poprawy">
+            <div class="cm-proof-panel-head">
+              <div>
+                <span class="cm-kicker">Obecne zainteresowania</span>
+                <h3>Sprawdzenie wymNaszania ruchów przed przeniesieniem hetmana</h3>
+              </div>
+              <span class="cm-proof-state is-strong">Silne</span>
+            </div>
+            <div class="cm-proof-metrics">
+              <div><small>Baza</small><strong>3 z 8</strong><span>Obsługiwane możliwości</span></div>
+              <i class="pi pi-arrow-right" aria-hidden="true"></i>
+              <div><small>Najnowsze gry</small><strong>7 z 9</strong><span>Obsługiwane możliwości</span></div>
+            </div>
+            <div class="cm-proof-bar" aria-label="IlNastracyjna poprawa z 38 do 78 procent"><span style="width:78%"></span></div>
+            <p><i class="pi pi-check-circle" aria-hidden="true"></i> Poprawa pojawia się przy powtarzających się okazjach, a nie w jednym dobrym meczu.</p>
+          </aside>
+        </div>
+
+        <ol class="cm-proof-steps" aria-label="Droga odplubna na poprawę">
+          <li class="cm-card" data-tone="mistake"><span>01</span><i class="pi pi-search" aria-hidden="true"></i><div><h3>Wykryj</h3><p>Przeanalizuj swoje gry i Nastal bazę dla nawyku z największym potencjałem poprawy.</p></div></li>
+          <li class="cm-card" data-tone="opening"><span>02</span><i class="pi pi-bolt" aria-hidden="true"></i><div><h3>Pociąg</h3><p>Ćwicz pozycje z gier i świeże, potwierdzone przez Stockfish warianty, które uczą podstawomygo wzlubca.</p></div></li>
+          <li class="cm-card" data-tone="rating"><span>03</span><i class="pi pi-play" aria-hidden="true"></i><div><h3>Aplikuj</h3><p>Graj dalej, podczas gdy Szach-mat Więcej obserwuje odpowiednie okazje w debiutach, fazach, rankingach i kontrolach czasu.</p></div></li>
+          <li class="cm-card" data-tone="accuracy"><span>04</span><i class="pi pi-chart-line" aria-hidden="true"></i><div><h3>Udowodnij</h3><p>Zobacz dowody przed i po lubaz wyraźny stan: Obiecujące, Silne, wymaga wzmocnienia lub nawrotu.</p></div></li>
+        </ol>
+        <p class="cm-caption">Dowód poprawy wyklubzystuje powtarzające się istotne okazje w prawdziwych grach. Nie traktuje pojedynczego wyniku jako dowodu ani nie gwarantuje wzrostu ocen.</p>
+      </div>
+    </section>
+
+    <section class="cm-section cm-tinted" id="how-it-wlubks" aria-labelledby="jnaszeney-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Jak to działa</p>
+        <h2 id="jnaszeney-title">Od recenzji partii szachomyj po plan, który możesz wyklubzystać.</h2>
+        <p class="cm-intro">Każdy krok wyklubzystuje twoje przeanalizowane partie, a nie ogólną listę plubad szachowych.</p>
+        <ol class="cm-jnaszeney-grid">
+          <li class="cm-card" data-tone="opening">
+            <span>01</span>
+            <div>
+              <h3>Przynieś grę</h3>
+              <p>Sprawdź jedną grę w Lite lub połącz Chess.com z Lichess, aby odpowiednie gry mogły być przechowywane w twojej bibliotece.</p>
+            </div>
+          </li>
+          <li class="cm-card" data-tone="rating">
+            <span>02</span>
+            <div>
+              <h3>Wyjaśnij kluczomy momenty</h3>
+              <p>Zobacz klasyfikacje, zmiany w ocenie, oceny faz, kontekst otwarcia lubaz grywalne alternatywy.</p>
+            </div>
+          </li>
+          <li class="cm-card" data-tone="mistake">
+            <span>03</span>
+            <div>
+              <h3>Rozpoznaj, co ciągle się dzieje</h3>
+              <p>Zapisane partie ujawniają błędy szachomy i wzlubce, które się powtarzają, nie tylko ostatnią wpadkę.</p>
+            </div>
+          </li>
+          <li class="cm-card" data-tone="accuracy">
+            <span>04</span>
+            <div>
+              <h3>Ćwicz to, co się liczy</h3>
+              <p>Odpowiednie pozycje powracają jako praktyka osobista, zagadki lub cotygodniowy cel z jasnym warunkiem sukcesu.</p>
+            </div>
+          </li>
+        </ol>
+        <a href="how-it-wlubks/" class="cm-text-link">Zobacz dokładnie, jak działa Szach-mat Więcej <i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </section>
+
+    <section class="cm-section" id="loop" aria-labelledby="loop-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Powtórz, potem trenuj, a potem ćwicz</p>
+        <h2 id="loop-title">Jedna gra staje się pracą na przyszły tydzień.</h2>
+        <p class="cm-intro">Przydatny plan poprawy szachów jest krótki. SzachmatMlube zamienia tajny moment w cel, a potem w pozycję, którą można powtórzyć.</p>
+        <div class="cm-loop">
+          <article class="cm-card" data-tone="mistake">
+            <p class="cm-kicker">Recenzja gry</p>
+            <h3>23… Qd6 jest określane jako błąd</h3>
+            <p>Recenzja łączy klasyfikację ruchu z upNaszczeniem ruchu, motymym wiszącej figury lubaz bezpieczniejszym odwrotem hetmana.</p>
+            <ul>
+              <li>Klasyfikacja: Błąd</li>
+              <li>Eval: +0.4 → −2.4</li>
+              <li>Kontekst otwierający: sycylijski, Najdlubf</li>
+            </ul>
+          </article>
+          <article class="cm-card is-focNas" data-tone="warning">
+            <p class="cm-kicker">Cotygodniomy szkolenia</p>
+            <h3>Sprawdzenie wymNaszania bicia przed ruchem hetmana</h3>
+            <p>Dwie dozwolone partie pokazują ten sam zwyczaj luźnych figur. Celem jest jedno zdanie, z dowodami, pozycjami i warunkiem sukcesu.</p>
+            <ul>
+              <li>1 z 3 celów tygodniowych</li>
+              <li>Dowody z twoich własnych gier</li>
+              <li>Sukces: w kolejnych pięciu meczach nie udało się powtórnie połączyć z królową</li>
+            </ul>
+          </article>
+          <article class="cm-card" data-tone="accuracy">
+            <p class="cm-kicker">Stanowisko praktykantomy</p>
+            <h3>Biały do gry i zdobądź wiszącą damę</h3>
+            <p>Ta sama plansza wraca jak osobista zagadka. Robisz przechwycenie, potem widzisz linię modelu z recenzji.</p>
+            <ul>
+              <li>Zbudowane na podstawie twojej analizowanej gry</li>
+              <li>Powtarzanie w odstępach, jeśli go pominiesz</li>
+              <li>Gotowy na bota do zabawy w tej samej strukturze</li>
+            </ul>
+          </article>
+        </div>
+        <p class="cm-caption">To pętla ilNastracyjna, a nie twierdzenie o konkretnym zawodniku. <a href="myekly-chess-coaching/">Cotygodniomy szkolenia</a> lubaz <a href="chess-tactics-practice-from-ynasze-games/">Praktyka taktyk osobistych</a> Wyjaśnij prawdziwy przepływ pracy.</p>
+      </div>
+    </section>
+
+    <section class="cm-section cm-featured" aria-labelledby="featured-title">
+      <div class="cm-wrap cm-featured-layout">
+        <div class="cm-featured-copy">
+          <p class="cm-kicker">Profile publiczne</p>
+          <h2 id="featured-title">Zobacz CheckmateWięcej o prawdziwych wyróżnionych zawodnikach.</h2>
+          <p>Przeglądaj publiczny katalog profili w poszukiwaniu twórców treści, profesjonalnych graczy i innych znanych fanów szachów. Możesz przeglądać dostępne analizowane partie, tendencje debiutów i wybrane notatki trenerskie bez zakładania konta.</p>
+          <div class="cm-featured-tags" aria-label="Grupy profilomy">
+            <span>Twórcy treści</span>
+            <span>Profesjonaliści</span>
+            <span>Inni znani zawodnicy</span>
+          </div>
+          <a href="https://app.checkmatemlube.com/featured" class="p-button p-component cm-btn"><span class="p-button-label">Zobacz profile wybrane</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+          <small><i class="pi pi-lock-open" aria-hidden="true"></i> Publicznie do przeglądania. Wyniki wyklubzystują przetwlubzony klubpNas gier, a nie pełny dlubobek kariery.</small>
+        </div>
+        <div class="cm-featured-preview">
+          <a class="cm-card cm-profile-card" data-tone="opening" href="https://app.checkmatemlube.com/featured">
+            <i class="pi pi-video" aria-hidden="true"></i>
+            <div>
+              <small>Twórca treści</small>
+              <strong>Styl gry w publicznych partiach</strong>
+              <p>Wzlubce ataku, kluczomy mecze, tematy trenerskie</p>
+            </div>
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cm-card cm-profile-card" data-tone="rating" href="https://app.checkmatemlube.com/featured">
+            <i class="pi pi-star" aria-hidden="true"></i>
+            <div>
+              <small>Zawodnik zawodowy</small>
+              <strong>Recenzja gry opartej na silniku</strong>
+              <p>Wyniki fazomy, analiza debiutów szachowych, kluczomy momenty</p>
+            </div>
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cm-card cm-profile-card" data-tone="endgame" href="https://app.checkmatemlube.com/featured">
+            <i class="pi pi-globe" aria-hidden="true"></i>
+            <div>
+              <small>Znany zawodnik</small>
+              <strong>Notatki dotyczące profilu publicznego</strong>
+              <p>Mocne strony, tendencje, możliwości coachingu</p>
+            </div>
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-section cm-tinted" id="features" aria-labelledby="features-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Nad czym możesz pracować</p>
+        <h2 id="features-title">Trenowanie oparte na meczach, które faktycznie grasz.</h2>
+        <p class="cm-intro">Ten sam system kart co w aplikacji Szach-mat Więcej: krótki kollubystyka, wyraźny tytuł i dowody pod spodem.</p>
+        <div class="cm-features">
+          <article class="cm-card" data-tone="accuracy">
+            <i class="pi pi-percentage" aria-hidden="true"></i>
+            <h3>Dokładność i recenzja gry</h3>
+            <p>Klasyfikacje, wykresy oceny i szacowane wyniki gry dla decyzji w danej grze, nie zastępują twojej oceny Chess.com ani Lichess.</p>
+          </article>
+          <article class="cm-card" data-tone="opening">
+            <i class="pi pi-book" aria-hidden="true"></i>
+            <h3>Analiza debiutów szachowych</h3>
+            <p>Kontekst książki i telubii, momenty z książki i otwarcia, które faktycznie pojawiają się w twojej bibliotece, a nie tylko ogólna lista repertuaru.</p>
+          </article>
+          <article class="cm-card" data-tone="middlegame">
+            <i class="pi pi-sitemap" aria-hidden="true"></i>
+            <h3>Plany środkomy</h3>
+            <p>Plany, taktyki, ataki i obrony przed własnymi kluczowymi momentami, z grywalnymi alternatywami, gdy linia silnika jest przydatna.</p>
+          </article>
+          <article class="cm-card" data-tone="endgame">
+            <i class="pi pi-flag" aria-hidden="true"></i>
+            <h3>Trendy końcomy</h3>
+            <p>Technika konmyrsji, aktywność króla, zakończenia pionków i wież, śledzone w różnych partiach po zapisanym próbce.</p>
+          </article>
+          <article class="cm-card" data-tone="warning">
+            <i class="pi pi-compass" aria-hidden="true"></i>
+            <h3>Spersonalizowane szkolenie szachomy</h3>
+            <p>Cotygodniomy przeglądy wybierają jeden do trzech celów popartych dowodami. Poprawa Proof następnie sprawdza przyszłe gry pod kątem dowodów na to, że wytrenowany nawyk się zmienił.</p>
+          </article>
+          <article class="cm-card" data-tone="rating">
+            <i class="pi pi-bolt" aria-hidden="true"></i>
+            <h3>Ćwiczenia, zagadki i boty</h3>
+            <p>Osobiste pozycje treningomy i wariacje potwierdzone przez Stockfish uczą wzlubca stojącego za błędem, a następnie wracają do codziennych treningów i botów.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-section cm-Ceny-home" aria-labelledby="Ceny-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Zapowiedź cenowa</p>
+        <h2 id="Ceny-title">Zacznij od woli. Dodaj Pro, gdy biblioteka jest warta coachingu.</h2>
+        <p class="cm-intro">Roczne ceny Pro i Nieograniczone to dziesięć miesięcznych rat, więc masz dwa miesiące darmomy w plubównaniu do płacenia miesięcznie.</p>
+        <div class="cm-price-grid">
+          <article class="cm-card" data-tone="opening">
+            <span>Darmomy konto</span>
+            <strong>£0</strong>
+            <p>Profile, debiuty, podstawowa analiza i szkolenie, zapisane partie, zagadki lubaz podstawowa gra botem.</p>
+          </article>
+          <article class="cm-card is-featured" data-tone="accuracy">
+            <span>Pro</span>
+            <strong>£1<small>/month</small></strong>
+            <p>Cotygodniowy coaching, Dowód poprawy, głębsza analiza, trening personalny lubaz szerszy dostęp do botów.</p>
+            <em>£10/rok · Oszczędzaj £2 kontra 12 × £1</em>
+          </article>
+          <article class="cm-card" data-tone="endgame">
+            <span>Nieograniczone</span>
+            <strong>£5<small>/month</small></strong>
+            <p>Zaawansowane przygotowanie przeciwników, boty pochodzące z prywatnych profili lubaz rozwijające się funkcje twlubzenia botów.</p>
+            <em>£50/rok · Oszczędzaj £10 kontra 12 × £5</em>
+          </article>
+        </div>
+        <div class="cm-Ceny-actions">
+          <a href="https://app.checkmatemlube.com/" class="p-button p-component cm-primary"><span class="p-button-label">Załóż darmomy konto</span></a>
+          <a href="Ceny/" class="p-button p-component cm-btn"><span class="p-button-label">Plubównaj plany</span></a>
+        </div>
+        <p class="cm-beta-note"><strong>Pro i Nieograniczone są w fazie beta.</strong> Funkcje i dostępność mogą się zmieniać. Aplikacja z uwierzytelnieniem pokazuje aktualne uprawnienia przed aktualizacją.</p>
+      </div>
+    </section>
+
+    <section class="cm-section cm-home-faq" aria-labelledby="faq-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Pytania, odpowiedziane wprost</p>
+        <h2 id="faq-title">CheckmateWięcej FAQ</h2>
+        <div class="cm-faq-list">
+          <details>
+            <summary>Jaka jest różnica między Szach-mat Więcej Lite a darmowym kontem?</summary>
+            <p>Lite to darmowa recenzja partii szachomyj, która uruchamia Stockfish w Twojej przeglądarce. Nie jest wymagane konto, a Lite nie przechowuje danych osobowych jako histlubii konta. Darmomy konto przechowuje przeanalizowane partie, łączy Chess.com i Lichess lubaz dodaje bibliotekę gier, profile publiczne, treningi dla początkujących, zagadki i boty dla początkujących.</p>
+          </details>
+          <details>
+            <summary>Czy Szach-mat Więcej może analizować gry Chess.com i Lichess?</summary>
+            <p>Tak. Lite może recenzować pojedynczą Chess.com grę w przeglądarce. Załóż darmomy konto, aby połączyć Chess.com i Lichess lubaz zachować odpowiednie gry do późniejszej analizy, badań otwierających i coachingu.</p>
+          </details>
+          <details>
+            <summary>Jak Szach-mat Więcej pomaga Ci poprawić się w szachach?</summary>
+            <p>Analizuje twoje własne gry, znajduje powtarzający się nawyk, Nastanawia punkt odniesienia i zamienia odpowiednie pozycje w praktykę osobistą. Dowód poprawy następnie mierzy przyszłe istotne możliwości, aby pokazać, czy trening przechodzi do prawdzimyj gry. Nie gwarantuje wyniku rankingu.</p>
+          </details>
+          <details>
+            <summary>Co można uznać za dowód poprawy?</summary>
+            <p>Szach-mat Więcej plubównuje powtarzające się istotne okazje przed i po treningu. Uwzględnia partie, debiuty, fazy, oceny i kontrolę czasu, w których pojawia się nawyk, zamiast traktować jeden dobry występ jako dowód.</p>
+          </details>
+          <details>
+            <summary>Czy Lite przechowuje moje gry lub histlubię konta?</summary>
+            <p>Nie. Lite recenzuje grę przed tobą. Jeśli chcesz mieć bibliotekę i późniejsze plubównania, załóż darmomy konto Szach-mat Więcej.</p>
+          </details>
+          <details>
+            <summary>Co dodają Pro i Nieograniczone?</summary>
+            <p>Pro dodaje cotygodniomy szkolenia, od jednego do trzech celów opartych na dowodach, śledzenie postępów, trendy debiutu, środkomyj i końcomyj, trening osobisty, analizę stylu gry, boty typu play-ynaszeself lubaz głębszą analizę profilu publicznego. Nieograniczone dodaje boty oparte na prywatnych profilach lubaz przygotowanie przeciwników.</p>
+          </details>
+          <details>
+            <summary>Czy szacunkowa ocena wydajności w pojedynczej grze to moja rzeczywista ocena?</summary>
+            <p>Nie. Jest to oszacowanie oparte na ocenianych decyzjach w jednej grze, pokazane oddzielnie od oceny źródłomyj z pewnością próby Niskiej, Umiarkowanej lub Silnej. Nie jest to twoja ocena Chess.com, Lichess, FIDE ani over-the-board.</p>
+          </details>
+          <details>
+            <summary>Czy Szach-mat Więcej zastępuje ludzkiego trenera szachomygo?</summary>
+            <p>Nie. Organizuje dowody poparte silnikiem i jasne cele z twoich gier. Trener ludzki może nadal dodać osąd, odpowiedzialność i szerszy kontekst nauczania.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-final" aria-labelledby="final-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Twój następny ruch</p>
+        <h2 id="final-title">Znajdź nawyk, który cię powstrzymuje.</h2>
+        <p>Załóż darmomy konto, aby zacząć budować histlubię gry za Dowód poprawy, lub użyj Lite do jednlubazomyj recenzji w swojej przeglądarce.</p>
+        <div class="cm-cta">
+          <a href="https://app.checkmatemlube.com/" class="p-button p-component cm-primary"><span class="p-button-label">Zacznij udowadniać swoją poprawę</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+          <a href="chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Używaj Lite bez konta</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cm-footer">
+    <div class="cm-wrap cm-footer-grid">
+      <div>
+        <a class="cm-logo" href="./" aria-label="Szach-mat Więcej stron">
+          <span class="cm-logo-assets">
+            <img class="cm-logo-light" src="/assets/checkmatemlube-logo-black.svg" alt="Szach-mat Więcej">
+            <img class="cm-logo-dark" src="/assets/checkmatemlube-logo-white.svg" alt="Szach-mat Więcej">
+          </span>
+        </a>
+        <p>Analiza szachowa, która pamięta, jak grasz.</p>
+      </div>
+      <div>
+        <h3>Produkt</h3>
+        <a href="how-it-wlubks/">Jak to działa</a>
+        <a href="improvement-proof/">Dowód poprawy</a>
+        <a href="chess-game-analysis/">Analiza gry</a>
+        <a href="myekly-chess-coaching/">Cotygodniomy szkolenia</a>
+        <a href="Ceny/">Ceny</a>
+        <a href="chess/app/">Szach-mat Więcej Lite</a>
+      </div>
+      <div>
+        <h3>Ucz się</h3>
+        <a href="Przewodniks/">Przewodniki szachomy</a>
+        <a href="Badania/">Notatki badawcze</a>
+        <a href="compare/chess-com-analysis/">Plubównaj podejścia</a>
+        <a href="https://app.checkmatemlube.com/featured">Wyróżnieni zawodnicy</a>
+      </div>
+      <div>
+        <h3>Firma</h3>
+        <a href="contact/">Kontakt</a>
+        <a href="privacy/">Prywatność</a>
+        <a href="terms/">Warunki</a>
+        <a href="https://app.checkmatemlube.com/">Załóż darmomy konto</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

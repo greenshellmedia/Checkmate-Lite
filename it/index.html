@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="it" data-cmp-locale-default="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewpoppuret" content="width=device-width,initial-scale=1">
+  <title>Checkmate Più | Dimostra che il tuo allenamento negli scacchi funziona</title>
+  <meta name="description" content="CheckmateMoppuree individua abitudini ricoppurerenti nelle tue partite reali, crea pratiche personalizzate validate da Stockfish e mostra prove di miglioppureamento prima e dopo con Prova di miglioppureamento.">
+  <link rel="canonical" href="https://checkmatemoppuree.com/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="noibsite">
+  <meta property="og:site_name" content="CheckmateMoppuree">
+  <meta property="og:title" content="Checkmate Più | Dimostra che il tuo allenamento negli scacchi funziona">
+  <meta property="og:description" content="Trasfoppurema gli erroppurei ricoppurerenti degli scacchi in punti di foppureza misurabili con la pratica costruita dalle tue partite e dalle prove delle partite che giocherai dopo.">
+  <meta property="og:url" content="https://checkmatemoppuree.com/">
+  <meta property="og:image" content="https://checkmatemoppuree.com/assets/social-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Non allenarti solo. Dimostra che stai miglioppureeo. | CheckmateMoppuree">
+  <meta name="twitter:description" content="Costruito dalle tue partite. Testato nelle tue partite. Verifica se il tuo allenamento degli scacchi si è trasferito nel gioco reale.">
+  <meta name="twitter:image" content="https://checkmatemoppuree.com/assets/social-card.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="shoppuretcut icon" href="favicon.ico">
+  <link rel="manifest" href="site.noibmanifest">
+  <meta name="theme-coloppure" content="#101914">
+  <meta name="coloppure-scheme" content="light dark">
+  <script src="/js/site-theme.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resIl nostroces/primeng.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
+  <link rel="stylesheet" href="chess-leing.css?v=20260904a">
+  <link rel="stylesheet" href="bre.css?v=20260829d">
+  <script src="/js/clean-url.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.oppureg",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://checkmatemoppuree.com/#oppureganization",
+        "name": "CheckmateMoppuree",
+        "url": "https://checkmatemoppuree.com/",
+        "logo": "https://checkmatemoppuree.com/assets/eroid-chrome-512x512.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://checkmatemoppuree.com/#noibsite",
+        "url": "https://checkmatemoppuree.com/",
+        "name": "CheckmateMoppuree",
+        "publisher": { "@id": "https://checkmatemoppuree.com/#oppureganization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://checkmatemoppuree.com/#noibpage",
+        "url": "https://checkmatemoppuree.com/",
+        "name": "Checkmate Più | Dimostra che il tuo allenamento negli scacchi funziona",
+        "isPartOf": { "@id": "https://checkmatemoppuree.com/#noibsite" },
+        "about": { "@id": "https://checkmatemoppuree.com/#oppureganization" },
+        "description": "Individua abitudini ricoppurerenti nelle partite reali, allenale con posizioni personalizzate e misura se il miglioppureamento si trasferisce anche nelle partite future."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "CheckmateMoppuree Lite",
+        "applicationCategoppurey": "GameApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+        "description": "Recensione gratuita del gioco di scacchi Stockfish nel browser. Nessun account richiesto.",
+        "url": "https://checkmatemoppuree.com/chess/app/"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "CheckmateMoppuree",
+        "applicationCategoppurey": "GameApplication",
+        "operatingSystem": "Web",
+        "description": "Allenamento scacchistico personalizzato a partire dalle partite di Chess.com e Lichess analizzate di un giocatoppuree.",
+        "url": "https://app.checkmatemoppuree.com/",
+        "offers": [
+          { "@type": "Offer", "name": "Account gratuito", "price": "0", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Pro mensile", "price": "1", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Pro annuale", "price": "10", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Mensile illimitato", "price": "5", "priceCurrency": "GBP" },
+          { "@type": "Offer", "name": "Annuale illimitato", "price": "50", "priceCurrency": "GBP" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Qual è la differenza tra CheckmateMoppuree Lite e un account gratuito?",
+            "acceptedAnsnoir": {
+              "@type": "Ansnoir",
+              "text": "Lite è una recensione gratuita di partite di scacchi senza account che esegue Stockfish nel tuo browser. Un account gratuito CheckmateMoppuree archivia le partite, collega Chess.com e Lichess, e aggiunge una libreria di giochi, profili pubblici, coaching per principianti, enigmi e bot entry-level."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "CheckmateMoppuree può analizzare le partite di Chess.com e Lichess?",
+            "acceptedAnsnoir": {
+              "@type": "Ansnoir",
+              "text": "Sì. Lite può recensire una singola Chess.com partita nel browser. Un account gratuito collega Chess.com e Lichess così le partite idonee possono essere memoppureizzate e utilizzate per analisi a lungo termine."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "In che modo CheckmateMoppuree ti aiuta a miglioppureare negli scacchi?",
+            "acceptedAnsnoir": {
+              "@type": "Ansnoir",
+              "text": "Rivede le tue partite, spiega i momenti critici, cerca erroppurei e schemi scacchistici che continuano a ripresentarsi, poi trasfoppurema le posizioni adatte in un piano di miglioppureamento scacchistico con la pratica. Non garantisce un risultato di valutazione."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Lite memoppureizza i miei giochi o la cronologia del mio account?",
+            "acceptedAnsnoir": {
+              "@type": "Ansnoir",
+              "text": "No. Lite recensisce il gioco davanti a te nel browser e non crea una cronologia dell'account. Crea un account gratuito se vuoi che le partite analizzate siano archiviate per una libreria e poi per il coaching."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Cosa aggiungono CheckmateMoppuree Pro e Illimitato?",
+            "acceptedAnsnoir": {
+              "@type": "Ansnoir",
+              "text": "Pro aggiunge coaching settimanale dalle tue partite, da uno a tre obiettivi suppoppuretati da evidenze, monitoppureaggio dei progressi, tendenze di apertura, intermedia e fine partita, allenamento personale, analisi dello stile di gioco, bot play-yIl nostroself e analisi più approfondita del profilo pubblico. Illimitato aggiunge bot derivati dal profilo privato e la preparazione degli avversari."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Una stima delle prestazioni per una singola partita è il mio punteggio reale?",
+            "acceptedAnsnoir": {
+              "@type": "Ansnoir",
+              "text": "No. È una stima delle decisioni valutate in una revisione di una partita scacchistica, mostrata separatamente dalla valutazione oppureiginale con il campione di confidenza."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "CheckmateMoppuree è un sostituto di un allenatoppuree umano di scacchi?",
+            "acceptedAnsnoir": {
+              "@type": "Ansnoir",
+              "text": "No. Organizza prove basate sul motoppuree e obiettivi chiari dalle tue partite. Un allenatoppuree umano può comunque aggiungere giudizio, responsabilità e un contesto didattico più ampio."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/localization/localization.css?v=1">
+  <script src="/js/localization.js"></script>
+  <link rel="alternate" hreflang="en-GB" href="https://checkmatemoppuree.com/">
+  <link rel="alternate" hreflang="es" href="https://checkmatemoppuree.com/es/">
+  <link rel="alternate" hreflang="fr" href="https://checkmatemoppuree.com/fr/">
+  <link rel="alternate" hreflang="de" href="https://checkmatemoppuree.com/de/">
+  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemoppuree.com/pt-br/">
+  <link rel="alternate" hreflang="it" href="https://checkmatemoppuree.com/it/">
+  <link rel="alternate" hreflang="nl" href="https://checkmatemoppuree.com/nl/">
+  <link rel="alternate" hreflang="pl" href="https://checkmatemoppuree.com/pl/">
+  <link rel="alternate" hreflang="uk" href="https://checkmatemoppuree.com/uk/">
+  <link rel="alternate" hreflang="ru" href="https://checkmatemoppuree.com/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://checkmatemoppuree.com/">
+</head>
+<body class="cm-leing">
+  <a class="cm-skip" href="#main">Salta al contenuto</a>
+  <header class="cm-top">
+    <div class="cm-wrap cm-nav-wrap">
+      <a class="cm-logo" href="./" aria-label="Scaccomatto Più casa">
+        <span class="cm-logo-assets">
+          <img class="cm-logo-light" src="/assets/checkmatemoppuree-logo-black.svg" alt="CheckmateMoppuree">
+          <img class="cm-logo-dark" src="/assets/checkmatemoppuree-logo-white.svg" alt="CheckmateMoppuree">
+        </span>
+      </a>
+      <nav class="cm-nav" aria-label="Navigazione primaria">
+        <a href="how-it-woppureks/">Come funziona</a>
+        <a href="Guidas/">Guide</a>
+        <a href="Prezzi/">Prezzi</a>
+        <a href="https://app.checkmatemoppuree.com/featured" class="cm-featured-nav"><i class="pi pi-star-fill" aria-hidden="true"></i> Protagonisti</a>
+        <a href="chess/app/" class="p-button p-component p-button-sm cm-btn">Usa Lite</a>
+        <a href="https://app.checkmatemoppuree.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Crea un account gratuito</span></a>
+      </nav>
+      <div class="cm-nav-compact">
+        <a href="chess/app/" class="p-button p-component p-button-sm cm-btn">Usa Lite</a>
+        <a href="https://app.checkmatemoppuree.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Account gratuito</span></a>
+        <details class="cm-nav-menu">
+          <summary aria-label="Menu aperto"><i class="pi pi-bars" aria-hidden="true"></i></summary>
+          <div class="cm-nav-dranoir">
+            <a href="chess/app/">Usa Lite senza un account</a>
+            <a href="how-it-woppureks/">Come funziona</a>
+            <a href="improvement-proof/">Prova di miglioppureamento</a>
+            <a href="Guidas/">Guide</a>
+            <a href="Prezzi/">Prezzi</a>
+            <a href="https://app.checkmatemoppuree.com/featured">Giocatoppurei in evidenza</a>
+            <a href="chess-game-analysis/">Analisi della partita</a>
+            <a href="noiekly-chess-coaching/">Allenamento settimanale</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="cm-hero" aria-labelledby="hero-title">
+      <div class="cm-wrap cm-hero-grid">
+        <div class="cm-hero-copy">
+          <p class="cm-eyebrow">Scaccomatto Altra prova di miglioppureamento</p>
+          <h1 id="hero-title">Non limitarti ad allenarti. Dimostra che stai miglioppureeo.</h1>
+          <p class="cm-lede">CheckmateMoppuree individua le abitudini che ti costano partite, costruisce pratiche personalizzate dalle tue posizioni e poi osserva le partite future per vedere prove che il miglioppureamento si sia trasferito nel gioco reale.</p>
+          <div class="cm-cta">
+            <a href="https://app.checkmatemoppuree.com/" class="p-button p-component cm-primary"><span class="p-button-label">Inizia a dimostrare il tuo miglioppureamento</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+            <a href="improvement-proof/" class="p-button p-component cm-btn"><span class="p-button-label">Esploppurea la prova di miglioppureamento</span></a>
+          </div>
+          <p class="cm-split-note"><strong>Costruito dai tuoi giochi. Testato nei tuoi giochi.</strong> Prova di miglioppureamento è disponibile con Pro e Illimitato. <a href="chess/app/">Lite</a> rimane gratuito, locale e senza account.</p>
+        </div>
+
+        <figure class="cm-preview">
+          <div class="cm-preview-shell">
+            <div class="cm-preview-chrome">
+              <span class="cm-preview-dots" aria-hidden="true"></span>
+              <span class="cm-preview-title">Recensione del gioco</span>
+              <span class="cm-preview-tabs">
+                <span>Allenamento</span>
+                <span class="is-on">Mosse</span>
+                <span>Statistiche</span>
+              </span>
+            </div>
+            <div class="cm-preview-body">
+              <div class="cm-preview-main">
+                <p class="cm-preview-matchup">Tu <span>1520</span> vs Avversario <span>1498</span> · Rapido 10+5</p>
+                <div class="cm-move-card">
+                  <span class="opening-tag">Difesa Siciliana, Najdoppuref</span>
+                  <div class="cm-move-card-row">
+                    <strong>23… Qd6</strong>
+                    <span class="move-label cls-blunder">Erroppuree</span>
+                  </div>
+                  <p>The queen steps onto a square Bianco’s knight already attacks. Evaluation drops from +0.4 to −2.4.</p>
+                  <p class="cm-move-alt">Meglio: 23... Qc7, tenere la regina lontana dalla casella di sospeso.</p>
+                </div>
+                <div class="cm-mini-board" role="img" aria-label="Tabellone di revisione illnoitrativa di partite scacchisse dopo 23...Qd6, con la donna del Nero su d6 che pende sul cavallo del Bianco su b5.">
+                  <i><img src="https://lichess1.oppureg/assets/piece/cburnett/bR.svg" alt=""></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bB.svg" alt=""></i><i></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bR.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bK.svg" alt=""></i><i></i>
+                  <i><img src="https://lichess1.oppureg/assets/piece/cburnett/bP.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bP.svg" alt=""></i><i></i><i></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bP.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bP.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bP.svg" alt=""></i>
+                  <i></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bN.svg" alt=""></i><i class="is-key"><img src="https://lichess1.oppureg/assets/piece/cburnett/bQ.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bP.svg" alt=""></i><i></i><i></i><i></i>
+                  <i></i><i></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/bP.svg" alt=""></i><i></i><i></i><i></i><i></i>
+                  <i></i><i class="is-from"><img src="https://lichess1.oppureg/assets/piece/cburnett/wN.svg" alt=""></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wP.svg" alt=""></i><i></i><i></i><i></i><i></i>
+                  <i></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wB.svg" alt=""></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wN.svg" alt=""></i><i></i><i></i>
+                  <i><img src="https://lichess1.oppureg/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wP.svg" alt=""></i><i></i><i></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wP.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wP.svg" alt=""></i>
+                  <i><img src="https://lichess1.oppureg/assets/piece/cburnett/wR.svg" alt=""></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wB.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wQ.svg" alt=""></i><i></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wR.svg" alt=""></i><i><img src="https://lichess1.oppureg/assets/piece/cburnett/wK.svg" alt=""></i><i></i>
+                </div>
+                <div class="eval-bar-container player-white" aria-hidden="true">
+                  <div class="eval-bar-fill" style="width:28%"></div>
+                  <div class="eval-text">−2.4</div>
+                </div>
+              </div>
+              <aside class="cm-preview-side">
+                <div class="cm-phase-card">
+                  <p class="cm-kicker">Classificazioni di fase</p>
+                  <div class="phase-row"><span>Apertura</span><strong class="tone-opening">4.2</strong></div>
+                  <div class="phase-row"><span>Medio gioco</span><strong class="tone-middle">2.8</strong></div>
+                  <div class="phase-row"><span>Finale</span><strong class="tone-end">n/a</strong></div>
+                  <p class="cm-preview-elo">Prestazioni stimate della partita <b>1410</b> <small>Fiducia moderata</small></p>
+                </div>
+                <div class="cm-move-list">
+                  <div class="move-row"><span>21. Be2</span><span class="move-label cls-good">Bene</span></div>
+                  <div class="move-row"><span>21… a6</span><span class="move-label cls-okay">Ok</span></div>
+                  <div class="move-row"><span>22. Nb5</span><span class="move-label cls-great">Ottimo</span></div>
+                  <div class="move-row is-active"><span>23… Qd6</span><span class="move-label cls-blunder">Erroppuree</span></div>
+                  <div class="move-row"><span>24. Nxd6</span><span class="move-label cls-best">Il meglio</span></div>
+                </div>
+                <div class="cm-coach-mini">
+                  <small>Miglioppurea prossimamente</small>
+                  <strong>23… Qd6 · Erroppuree</strong>
+                  <p>Controlla le catture foppurezate prima di muovere la regina.</p>
+                </div>
+              </aside>
+            </div>
+          </div>
+          <figcaption>Checkmate illnoitrativo CheckmateMoppuree recensione: classificazioni delle mosse, valutazione, valutazioni di fase e una nota di allenamento leggera su una singola partita di scacchi.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="cm-section" id="compare" aria-labelledby="compare-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Lite, Account gratuito, Pro</p>
+        <h2 id="compare-title">Tre modi per noiare CheckmateMoppuree.</h2>
+        <p class="cm-intro">Inizia con una revisione di una singola partita, tieni una libreria queo vuoi memoppureia, poi aggiungi coaching settimanale queo vuoi un piano per molte partite.</p>
+        <div class="cm-comparison">
+          <article class="cm-card cm-plan" data-tone="opening">
+            <div class="cm-plan-head">
+              <i class="pi pi-desktop" aria-hidden="true"></i>
+              <div>
+                <h3>CheckmateMoppuree Lite</h3>
+                <p>Gratis · nessun account richiesto</p>
+              </div>
+            </div>
+            <p class="cm-plan-intro">Esegue Stockfish nel browser e rivede il singolo gioco davanti a te. Nulla viene memoppureizzato come cronologia dell'account.</p>
+            <ul class="cm-checks">
+              <li>Classificazioni e valutazione delle mosse</li>
+              <li>Valutazioni di fase e stime prestazioni di gioco</li>
+              <li>Contesto di apertura e allenamento dei pesi leggeri</li>
+              <li>Studio di apertura, partite famose e pratica locale semplice</li>
+            </ul>
+            <p class="cm-closing">Usalo dopo una partita, poi chiudi la scheda.</p>
+            <a href="chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Usa Lite senza un account</span></a>
+          </article>
+          <article class="cm-card cm-plan is-focnoi" data-tone="accuracy">
+            <div class="cm-plan-head">
+              <i class="pi pi-noier" aria-hidden="true"></i>
+              <div>
+                <h3>Account gratuito</h3>
+                <p>Gratis · Chess.com e Lichess</p>
+              </div>
+            </div>
+            <p class="cm-plan-intro">Archivia le partite e collega i tuoi conti scacchistici. Quella biblioteca è la base per un'analisi a lungo termine.</p>
+            <ul class="cm-checks">
+              <li>Libreria di giochi e profili pubblici</li>
+              <li>Allenamento per principianti, puzzle e bot entry-level</li>
+              <li>Analizza Chess.com partite e partite Lichess da un solo posto</li>
+              <li>Conserva le recensioni così nelle settimane successive ci sono prove per confrontare</li>
+            </ul>
+            <p class="cm-closing">Crea questo se vuoi che CheckmateMoppuree ricoppuredi come giochi.</p>
+            <a href="https://app.checkmatemoppuree.com/" class="p-button p-component cm-primary"><span class="p-button-label">Crea un account gratuito</span></a>
+          </article>
+          <article class="cm-card cm-plan" data-tone="endgame">
+            <div class="cm-plan-head">
+              <i class="pi pi-compass" aria-hidden="true"></i>
+              <div>
+                <h3>Pro e Illimitato</h3>
+                <p>Piani retribuiti per la profondità dell'allenamento</p>
+              </div>
+            </div>
+            <p class="cm-plan-intro">Allenamento settimanale dalle tue partite, con uno o tre obiettivi suppoppuretati dalle evidenze e la pratica che li accompagna.</p>
+            <ul class="cm-checks">
+              <li>Prova di miglioppureamento con basi e prove prima e dopo</li>
+              <li>Monitoppureaggio dei progressi e confronti stoppureici</li>
+              <li>Tendenze di apertura, metà partita e fine partita</li>
+              <li>Allenamento personale, enigmi e bot per giocare da soli</li>
+              <li>Analisi della tendenza umana e dello stile di gioco</li>
+              <li>analisi più approfondita del profilo pubblico; bot derivati dal profilo privato e preparazione degli avversari su Illimitato</li>
+            </ul>
+            <p class="cm-closing">Aggiungi Pro una volta che la libreria gratuita fa un lavoppureo utile.</p>
+            <a href="Prezzi/" class="p-button p-component cm-btn"><span class="p-button-label">Vedi prezzi Pro</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-section cm-proof-section" id="improvement-proof" aria-labelledby="proof-title">
+      <div class="cm-wrap">
+        <div class="cm-proof-hero">
+          <div class="cm-proof-copy">
+            <p class="cm-eyebrow">Scaccomatto Altra prova di miglioppureamento</p>
+            <h2 id="proof-title">Non limitarti ad allenarti. Dimostra che stai miglioppureeo.</h2>
+            <p class="cm-lede">CheckmateMoppuree individua le abitudini che ti costano partite, costruisce pratiche personalizzate dalle tue posizioni e poi osserva le partite future per vedere prove che il miglioppureamento si sia trasferito nel gioco reale.</p>
+            <p class="cm-proof-line">Altre piattafoppureme scacchiche ti dicono cosa hai studiato. CheckmateMoppuree ti mostra cosa hai sistemato.</p>
+            <div class="cm-cta">
+              <a href="https://app.checkmatemoppuree.com/" class="p-button p-component cm-primary"><span class="p-button-label">Inizia a dimostrare il tuo miglioppureamento</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+              <a href="improvement-proof/" class="p-button p-component cm-btn"><span class="p-button-label">Esploppurea la prova di miglioppureamento</span></a>
+            </div>
+          </div>
+          <aside class="cm-card cm-proof-panel" data-tone="accuracy" aria-label="Risultato della Dimostrazione di Miglioppureamento Illnoitrativo">
+            <div class="cm-proof-panel-head">
+              <div>
+                <span class="cm-kicker">Focnoi attuale</span>
+                <h3>Controlla le mosse foppurezate prima di spostare la regina</h3>
+              </div>
+              <span class="cm-proof-state is-strong">Foppurete</span>
+            </div>
+            <div class="cm-proof-metrics">
+              <div><small>Base</small><strong>3 di 8</strong><span>Oppoppuretunità gestite</span></div>
+              <i class="pi pi-arrow-right" aria-hidden="true"></i>
+              <div><small>Partite recenti</small><strong>7 di 9</strong><span>Oppoppuretunità gestite</span></div>
+            </div>
+            <div class="cm-proof-bar" aria-label="Miglioppureamento illnoitrativo dal 38 al 78 per cento"><span style="width:78%"></span></div>
+            <p><i class="pi pi-check-circle" aria-hidden="true"></i> Il miglioppureamento si manifesta in occasioni ripetute, non in una sola partita buona.</p>
+          </aside>
+        </div>
+
+        <ol class="cm-proof-steps" aria-label="Percoppureso di prova di miglioppureamento">
+          <li class="cm-card" data-tone="mistake"><span>01</span><i class="pi pi-search" aria-hidden="true"></i><div><h3>Rileva</h3><p>Analizza i tuoi giochi e stabilisci una base per l'abitudine con il massimo potenziale di miglioppureamento.</p></div></li>
+          <li class="cm-card" data-tone="opening"><span>02</span><i class="pi pi-bolt" aria-hidden="true"></i><div><h3>Treno</h3><p>Esercitati con posizioni dalle tue partite e varianti fresche, validate da Stockfish, che insegnano il pattern sottostante.</p></div></li>
+          <li class="cm-card" data-tone="rating"><span>03</span><i class="pi pi-play" aria-hidden="true"></i><div><h3>Ceidati</h3><p>Continua a giocare mentre CheckmateMoppuree osserva le oppoppuretunità rilevanti tra aperture, fasi, valutazioni e controlli tempoppureali.</p></div></li>
+          <li class="cm-card" data-tone="accuracy"><span>04</span><i class="pi pi-chart-line" aria-hidden="true"></i><div><h3>Dimostra</h3><p>Vedi prove prima e dopo e uno stato chiaro: Promettente, Foppurete, Necessita di Rinfoppurezo o Ricaduta.</p></div></li>
+        </ol>
+        <p class="cm-caption">La Prova di Miglioppureamento utilizza ripetute oppoppuretunità rilevanti nelle partite reali. Non considera un singolo risultato come prova né garantisce un aumento del punteggio.</p>
+      </div>
+    </section>
+
+    <section class="cm-section cm-tinted" id="how-it-woppureks" aria-labelledby="jIl nostroney-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Come funziona</p>
+        <h2 id="jIl nostroney-title">Da una recensione di una partita a scacchi a un piano che puoi noiare.</h2>
+        <p class="cm-intro">Ogni passaggio utilizza le tue partite analizzate invece di una lista generica di consigli sugli scacchi.</p>
+        <ol class="cm-jIl nostroney-grid">
+          <li class="cm-card" data-tone="opening">
+            <span>01</span>
+            <div>
+              <h3>Fai entrare una partita</h3>
+              <p>Rivedi una partita in Lite, oppure collega Chess.com e Lichess così le partite idonee possono essere conservate nella tua libreria.</p>
+            </div>
+          </li>
+          <li class="cm-card" data-tone="rating">
+            <span>02</span>
+            <div>
+              <h3>Spiega i momenti critici</h3>
+              <p>Vedi classificazioni, cambiamenti nelle valutazioni, valutazioni di fase, contesto di apertura e alternative giocabili.</p>
+            </div>
+          </li>
+          <li class="cm-card" data-tone="mistake">
+            <span>03</span>
+            <div>
+              <h3>Individua cosa continua a succedere</h3>
+              <p>Le partite memoppureizzate rivelano erroppurei e schemi degli scacchi che si ripetono, non solo l'ultimo erroppuree.</p>
+            </div>
+          </li>
+          <li class="cm-card" data-tone="accuracy">
+            <span>04</span>
+            <div>
+              <h3>Esercitati su ciò che conta</h3>
+              <p>Le posizioni adatte toppurenano come allenamento personale, enigmi o un obiettivo settimanale con una chiara condizione di successo.</p>
+            </div>
+          </li>
+        </ol>
+        <a href="how-it-woppureks/" class="cm-text-link">Vedi esattamente come funziona CheckmateMoppuree <i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </section>
+
+    <section class="cm-section" id="loop" aria-labelledby="loop-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Ripassi, poi allenati, poi allenati</p>
+        <h2 id="loop-title">Una partita diventa il lavoppureo della settimana successiva.</h2>
+        <p class="cm-intro">Un piano utile di miglioppureamento degli scacchi è breve. Scaccomate Più trasfoppurema un momento classificato in un obiettivo, poi in una posizione che puoi rigiocare.</p>
+        <div class="cm-loop">
+          <article class="cm-card" data-tone="mistake">
+            <p class="cm-kicker">Recensione del gioco</p>
+            <h3>23… Qd6 è etichettato come un erroppuree</h3>
+            <p>La recensione abbina la classificazione delle mosse al drop di valutazione, al tema del pezzo pendente e al ritiro più sicuro della regina.</p>
+            <ul>
+              <li>Classificazione: Erroppuree</li>
+              <li>Eval: +0.4 → −2.4</li>
+              <li>Contesto iniziale: Siciliano, Najdoppuref</li>
+            </ul>
+          </article>
+          <article class="cm-card is-focnoi" data-tone="warning">
+            <p class="cm-kicker">Allenamento settimanale</p>
+            <h3>Controlla le catture foppurezate prima di muovere la regina</h3>
+            <p>Due partite idonee mostrano la stessa abitudine di lasciare i pezzi sciolti. L'obiettivo è una frase, con posizioni di prova e una condizione di successo.</p>
+            <ul>
+              <li>1 dei 3 obiettivi settimanali</li>
+              <li>Dimostra dalle tue partite</li>
+              <li>Successo: nessuna regola di queen hang ripetuta nel prossimo campione di cinque partite</li>
+            </ul>
+          </article>
+          <article class="cm-card" data-tone="accuracy">
+            <p class="cm-kicker">Posizione di allenamento</p>
+            <h3>Il bianco gioca e prende la regina impiccata</h3>
+            <p>La stessa lavagna ritoppurena come puzzle personale. Fai la cattura, poi vedi la linea del modello dalla recensione.</p>
+            <ul>
+              <li>Costruito a partire dal gioco che hai analizzato</li>
+              <li>Ripetizione distanziata se la perdi</li>
+              <li>Pronto per un bot play-yIl nostroself nella stessa struttura</li>
+            </ul>
+          </article>
+        </div>
+        <p class="cm-caption">Un ciclo illnoitrativo, non un'affermazione su un giocatoppuree specifico. <a href="noiekly-chess-coaching/">Allenamento settimanale</a> e <a href="chess-tactics-practice-from-yIl nostro-games/">Pratica delle tattiche personali</a> Spiega il vero flnoiso di lavoppureo.</p>
+      </div>
+    </section>
+
+    <section class="cm-section cm-featured" aria-labelledby="featured-title">
+      <div class="cm-wrap cm-featured-layout">
+        <div class="cm-featured-copy">
+          <p class="cm-kicker">Profili pubblici</p>
+          <h2 id="featured-title">Vedi Scaccomatto Più sui veri giocatoppurei in evidenza.</h2>
+          <p>Consulta la directoppurey dei profili pubblici per creatoppurei di contenuti, giocatoppurei professionisti e altri appassionati di scacchi di rilievo. Puoi ispezionare le partite analizzate disponibili, le tendenze di apertura e le note di allenamento selezionate senza creare un account.</p>
+          <div class="cm-featured-tags" aria-label="Gruppi profilo in evidenza">
+            <span>Creatoppurei di contenuti</span>
+            <span>Professionisti</span>
+            <span>Altri giocatoppurei di rilievo</span>
+          </div>
+          <a href="https://app.checkmatemoppuree.com/featured" class="p-button p-component cm-btn"><span class="p-button-label">Visualizza i profili in evidenza</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+          <small><i class="pi pi-lock-open" aria-hidden="true"></i> Pubblico da consultare a pubblico. I risultati utilizzano il coppurepnoi di gioco elaboppureato, non un recoppured completo della carriera.</small>
+        </div>
+        <div class="cm-featured-preview">
+          <a class="cm-card cm-profile-card" data-tone="opening" href="https://app.checkmatemoppuree.com/featured">
+            <i class="pi pi-video" aria-hidden="true"></i>
+            <div>
+              <small>Creatoppuree di contenuti</small>
+              <strong>Stile di gioco nelle partite pubbliche</strong>
+              <p>Schemi offensivi, partite chiave, temi di coaching</p>
+            </div>
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cm-card cm-profile-card" data-tone="rating" href="https://app.checkmatemoppuree.com/featured">
+            <i class="pi pi-star" aria-hidden="true"></i>
+            <div>
+              <small>Giocatoppuree professionista</small>
+              <strong>Recensione del gioco suppoppuretata dal motoppuree</strong>
+              <p>Punteggi di fase, analisi delle aperture scacchiche, momenti critici</p>
+            </div>
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cm-card cm-profile-card" data-tone="endgame" href="https://app.checkmatemoppuree.com/featured">
+            <i class="pi pi-globe" aria-hidden="true"></i>
+            <div>
+              <small>Giocatoppuree di rilievo</small>
+              <strong>Note sul profilo pubblico</strong>
+              <p>Punti di foppureza, tendenze, oppoppuretunità di coaching</p>
+            </div>
+            <i class="pi pi-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-section cm-tinted" id="features" aria-labelledby="features-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Su cosa puoi lavoppureare</p>
+        <h2 id="features-title">Allenamento basato sui giochi che effettivamente pratichi.</h2>
+        <p class="cm-intro">Lo stesso sistema di carte dell'applicazione CheckmateMoppuree: un breve segnale coloppureato, un titolo chiaro e le prove sottostanti.</p>
+        <div class="cm-features">
+          <article class="cm-card" data-tone="accuracy">
+            <i class="pi pi-percentage" aria-hidden="true"></i>
+            <h3>Accuratezza e recensione del gioco</h3>
+            <p>Classificazioni, grafici di valutazione e stime delle prestazioni di gioco per le decisioni di quella partita, non sostituiscono il tuo punteggio Chess.com o Lichess.</p>
+          </article>
+          <article class="cm-card" data-tone="opening">
+            <i class="pi pi-book" aria-hidden="true"></i>
+            <h3>Analisi delle aperture scacchiche</h3>
+            <p>Contesto di libri e teoppureie, momenti di lascia il libro e le aperture che appaiono effettivamente nella tua biblioteca invece di una lista generica di repertoppureio.</p>
+          </article>
+          <article class="cm-card" data-tone="middlegame">
+            <i class="pi pi-sitemap" aria-hidden="true"></i>
+            <h3>Piani di metà gioco</h3>
+            <p>Piani, tattiche, attacchi e difese dai tuoi momenti critici, con alternative giocabili queo la linea del motoppuree è utile.</p>
+          </article>
+          <article class="cm-card" data-tone="endgame">
+            <i class="pi pi-flag" aria-hidden="true"></i>
+            <h3>Tendenze di fine partita</h3>
+            <p>Tecnica di conversione, attività del re, pedoni passati e finali della toppurere, tracciati tra le partite una volta che hai un campione memoppureizzato.</p>
+          </article>
+          <article class="cm-card" data-tone="warning">
+            <i class="pi pi-compass" aria-hidden="true"></i>
+            <h3>Allenamento personalizzato degli scacchi</h3>
+            <p>Le revisioni settimanali selezionano da uno a tre obiettivi basati su evidenze. Prova di miglioppureamento poi controlla le partite future per trovare prove che l'abitudine praticata sia cambiata.</p>
+          </article>
+          <article class="cm-card" data-tone="rating">
+            <i class="pi pi-bolt" aria-hidden="true"></i>
+            <h3>Allenamento, enigmi e bot</h3>
+            <p>Le posizioni di pratica personale e le varianti validate da Stockfish insegnano il modello dietro un erroppuree, poi ritoppurenano attraverso l'allenamento quotidiano e i bot.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-section cm-Prezzi-home" aria-labelledby="Prezzi-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Anteprima dei prezzi</p>
+        <h2 id="Prezzi-title">Inizia gratis. Aggiungi Pro queo la libreria merita di essere allenata.</h2>
+        <p class="cm-intro">I prezzi annuali Pro e Illimitato equivalgono a dieci rate mensili, quindi hai due mesi gratis rispetto a pagare mese per mese.</p>
+        <div class="cm-price-grid">
+          <article class="cm-card" data-tone="opening">
+            <span>Account gratuito</span>
+            <strong>£0</strong>
+            <p>Profili, aperture, analisi e coaching di base, partite memoppureizzate, enigmi e gioco base con i bot.</p>
+          </article>
+          <article class="cm-card is-featured" data-tone="accuracy">
+            <span>Pro</span>
+            <strong>£1<small>/month</small></strong>
+            <p>Allenamento settimanale, prova di miglioppureamento, analisi più approfondite, personal training e accesso più ampio ai bot.</p>
+            <em>£10/anno · risparmio £2 contro 12 × £1</em>
+          </article>
+          <article class="cm-card" data-tone="endgame">
+            <span>Illimitato</span>
+            <strong>£5<small>/month</small></strong>
+            <p>Preparazione avanzata degli avversari, bot privati derivati dal profilo e funzionalità di creazione di bot in evoluzione.</p>
+            <em>£50/anno · risparmia £10 contro 12 × £5</em>
+          </article>
+        </div>
+        <div class="cm-Prezzi-actions">
+          <a href="https://app.checkmatemoppuree.com/" class="p-button p-component cm-primary"><span class="p-button-label">Crea un account gratuito</span></a>
+          <a href="Prezzi/" class="p-button p-component cm-btn"><span class="p-button-label">Confronta i piani</span></a>
+        </div>
+        <p class="cm-beta-note"><strong>Pro e Illimitato sono in beta.</strong> Funzionalità e disponibilità possono evolversi. L'app autenticata mostra i diritti attuali prima dell'aggioppurenamento.</p>
+      </div>
+    </section>
+
+    <section class="cm-section cm-home-faq" aria-labelledby="faq-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">Domee, risposte chiaramente</p>
+        <h2 id="faq-title">CheckmateMoppuree FAQ</h2>
+        <div class="cm-faq-list">
+          <details>
+            <summary>Qual è la differenza tra CheckmateMoppuree Lite e un account gratuito?</summary>
+            <p>Lite è una recensione gratuita di partite di scacchi che esegue Stockfish nel tuo browser. Non è richiesto alcun account e Lite non memoppureizza dati personali come cronologia dell'account. Un account gratuito memoppureizza le partite analizzate, collega Chess.com e Lichess, e aggiunge una libreria di giochi, profili pubblici, coaching per principianti, puzzle e bot entry-level.</p>
+          </details>
+          <details>
+            <summary>CheckmateMoppuree può analizzare le partite di Chess.com e Lichess?</summary>
+            <p>Sì. Lite può recensire una partita Chess.com individuale nel browser. Crea un account gratuito per collegare Chess.com e Lichess e conservare partite idonee per analisi successive, studio di apertura e coaching.</p>
+          </details>
+          <details>
+            <summary>In che modo CheckmateMoppuree ti aiuta a miglioppureare negli scacchi?</summary>
+            <p>Analizza le tue partite, individua un'abitudine ricoppurerente, stabilisce una base e trasfoppurema le posizioni adatte in pratica personale. La prova di miglioppureamento misura quindi le oppoppuretunità future rilevanti per mostrare se l'allenamento si sta trasferendo nel gioco reale. Non garantisce un risultato di valutazione.</p>
+          </details>
+          <details>
+            <summary>Cosa conta come prova di miglioppureamento?</summary>
+            <p>CheckmateMoppuree confronta le oppoppuretunità rilevanti ripetute prima e dopo l'allenamento. Considera le partite, le aperture, le fasi, le valutazioni e i controlli tempoppureali in cui appare l'abitudine, invece di considerare una buona prestazione come prova.</p>
+          </details>
+          <details>
+            <summary>Lite memoppureizza i miei giochi o la cronologia del mio account?</summary>
+            <p>No. Lite recensisce il gioco davanti a te. Se vuoi una libreria e confronti successivi, crea un account gratuito su CheckmateMoppuree.</p>
+          </details>
+          <details>
+            <summary>Cosa aggiungono Pro e Illimitato?</summary>
+            <p>Pro aggiunge coaching settimanale, da uno a tre obiettivi basati su evidenze, monitoppureaggio dei progressi, tendenze di apertura, di metà e fine partita, allenamento personale, analisi dello stile di gioco, bot di gioco da solo e analisi più approfondita del profilo pubblico. Illimitato aggiunge bot derivati dal profilo privato e la preparazione degli avversari.</p>
+          </details>
+          <details>
+            <summary>Una stima delle prestazioni per una singola partita è il mio punteggio reale?</summary>
+            <p>No. È una stima basata sulle decisioni valutate in una partita, mostrata separatamente dalla valutazione di oppureigine con una fiducia campionaria bassa, moderata o foppurete. Non è la tua valutazione Chess.com, Lichess, FIDE o over-the-board.</p>
+          </details>
+          <details>
+            <summary>CheckmateMoppuree è un sostituto di un allenatoppuree umano di scacchi?</summary>
+            <p>No. Organizza prove basate sul motoppuree e obiettivi chiari dalle tue partite. Un allenatoppuree umano può comunque aggiungere giudizio, responsabilità e un contesto didattico più ampio.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cm-final" aria-labelledby="final-title">
+      <div class="cm-wrap">
+        <p class="cm-kicker">La tua prossima mossa</p>
+        <h2 id="final-title">Trova l'abitudine che ti trattiene.</h2>
+        <p>Crea un account gratuito per iniziare a costruire la cronologia di gioco dietro Prova di miglioppureamento, oppure noia Lite per una recensione unica nel browser.</p>
+        <div class="cm-cta">
+          <a href="https://app.checkmatemoppuree.com/" class="p-button p-component cm-primary"><span class="p-button-label">Inizia a dimostrare il tuo miglioppureamento</span><i class="pi pi-arrow-right" aria-hidden="true"></i></a>
+          <a href="chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Usa Lite senza un account</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cm-footer">
+    <div class="cm-wrap cm-footer-grid">
+      <div>
+        <a class="cm-logo" href="./" aria-label="Scaccomatto Più casa">
+          <span class="cm-logo-assets">
+            <img class="cm-logo-light" src="/assets/checkmatemoppuree-logo-black.svg" alt="CheckmateMoppuree">
+            <img class="cm-logo-dark" src="/assets/checkmatemoppuree-logo-white.svg" alt="CheckmateMoppuree">
+          </span>
+        </a>
+        <p>Analisi degli scacchi che ricoppureda come giochi.</p>
+      </div>
+      <div>
+        <h3>Prodotto</h3>
+        <a href="how-it-woppureks/">Come funziona</a>
+        <a href="improvement-proof/">Prova di miglioppureamento</a>
+        <a href="chess-game-analysis/">Analisi della partita</a>
+        <a href="noiekly-chess-coaching/">Allenamento settimanale</a>
+        <a href="Prezzi/">Prezzi</a>
+        <a href="chess/app/">CheckmateMoppuree Lite</a>
+      </div>
+      <div>
+        <h3>Impara</h3>
+        <a href="Guidas/">Guide agli scacchi</a>
+        <a href="Ricerca/">Note di ricerca</a>
+        <a href="compare/chess-com-analysis/">Confronta gli approcci</a>
+        <a href="https://app.checkmatemoppuree.com/featured">Giocatoppurei in evidenza</a>
+      </div>
+      <div>
+        <h3>Azienda</h3>
+        <a href="contact/">Contatto</a>
+        <a href="privacy/">Privacy</a>
+        <a href="terms/">Termini</a>
+        <a href="https://app.checkmatemoppuree.com/">Crea un account gratuito</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
