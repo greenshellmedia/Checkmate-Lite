@@ -1,0 +1,40 @@
+{
+  "id": "familiar-vs-chesscom-lowELO-black-win",
+  "description": "Chess.com Game Review groupings for Familiar preset calibration",
+  "source": "Chess.com Game Review (user-provided 2026-08-11)",
+  "preset": "familiar",
+  "moves": "1. e4 Nf6 2. f3 g6 3. b3 Bg7 4. Bb2 d6 5. d3 O-O 6. Nd2 Nc6 7. a3 e5 8. Rb1 d5 9. exd5 Nxd5 10. Qe2 Qg5 11. c4 Nf4 12. Qf2 Re8 13. h4 Qf6 14. Ne2 Bh6 15. Nxf4 exf4+ 16. Kd1 Qd6 17. Ne4 Qe6 18. Nf6+ Kf8 19. Nxe8 Qxe8 20. b4 Bf5 21. g4 Be6 22. g5 Bg7 23. Bxg7+ Kxg7 24. Bh3 Rd8 25. Ke1 Bxh3+ 26. Kd2 Bf5 27. Rbe1 Rxd3+ 28. Kc2 Qd7 29. Rd1 Rxf3+ 30. Kc1 Rc3+ 31. Kb2 Rc2+ 32. Kb1 Rxf2+ 33. Kc1 Rc2+ 34. Kb1 Rd2+ 35. Kc1 Rxd1+ 36. Rxd1 Qe6 37. Kd2 Qxc4 38. Ke1 Qc3+ 39. Ke2 Nd4+ 40. Kf1 Bd3+ 41. Kf2 Qc2+ 42. Ke1 Qe2#",
+  "result": "0-1",
+  "expected": [
+    {
+      "colour": "white",
+      "groupingcount": [
+        { "name": "Brilliant", "count": 0 },
+        { "name": "Great", "count": 1 },
+        { "name": "Best", "count": 10 },
+        { "name": "Excellent", "count": 5 },
+        { "name": "Good", "count": 8 },
+        { "name": "Book", "count": 1 },
+        { "name": "Inaccuracy", "count": 9 },
+        { "name": "Mistake", "count": 3 },
+        { "name": "Miss", "count": 1 },
+        { "name": "Blunder", "count": 4 }
+      ]
+    },
+    {
+      "colour": "black",
+      "groupingcount": [
+        { "name": "Brilliant", "count": 0 },
+        { "name": "Great", "count": 2 },
+        { "name": "Best", "count": 14 },
+        { "name": "Excellent", "count": 6 },
+        { "name": "Good", "count": 3 },
+        { "name": "Book", "count": 1 },
+        { "name": "Inaccuracy", "count": 6 },
+        { "name": "Mistake", "count": 2 },
+        { "name": "Miss", "count": 6 },
+        { "name": "Blunder", "count": 2 }
+      ]
+    }
+  ]
+}

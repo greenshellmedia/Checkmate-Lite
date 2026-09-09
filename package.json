@@ -1,0 +1,39 @@
+{
+  "name": "checkmate-lite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "stockfish.js",
+  "scripts": {
+    "test": "node chess/tests/run-lite-assessment.mjs",
+    "test:lite": "node chess/tests/run-lite-assessment.mjs",
+    "test:familiar": "node chess/tests/run-familiar-compare.mjs",
+    "test:familiar:strict": "node chess/tests/run-familiar-compare.mjs --strict-specials",
+    "translations:install": "node scripts/install-localization.mjs",
+    "translations:extract": "node scripts/extract-translations.mjs",
+    "translations:prune": "node scripts/generate-translations.mjs --prune --prune-only",
+    "translations:dry-run": "node scripts/generate-translations.mjs --dry-run",
+    "translations:generate": "node scripts/generate-translations.mjs --prune",
+    "translations:validate": "node scripts/validate-translations.mjs",
+    "translations:validate:structure": "node scripts/validate-translations.mjs --strict",
+    "translations:build-pages": "node scripts/build-localized-pages.mjs",
+    "translations:test": "node --test localization/tests/*.test.mjs",
+    "test:attribution": "node --test scripts/tests/affiliate-attribution.test.cjs",
+    "build:public": "node scripts/build-public-pages.mjs && node scripts/install-localization.mjs && node scripts/extract-translations.mjs",
+    "start": "npx --yes serve -l 3000 ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greenshellmedia/Checkmate-Lite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/greenshellmedia/Checkmate-Lite/issues"
+  },
+  "homepage": "https://github.com/greenshellmedia/Checkmate-Lite#readme",
+  "devDependencies": {
+    "chess.js": "^0.10.3"
+  }
+}

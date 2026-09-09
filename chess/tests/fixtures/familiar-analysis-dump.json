@@ -1,0 +1,1865 @@
+{
+  "fixture": "familiar-vs-chesscom-lowELO-black-win",
+  "rows": [
+    {
+      "moveNum": 1,
+      "turn": "w",
+      "san": "e4",
+      "label": "Book",
+      "winLoss": null,
+      "winBefore": null,
+      "evalDeltaCp": null,
+      "engineGapCp": null,
+      "playedBest": null,
+      "bestEngineMove": "",
+      "altEngineMoves": [],
+      "materialEvent": null,
+      "isBook": true
+    },
+    {
+      "moveNum": 1,
+      "turn": "b",
+      "san": "Nf6",
+      "label": "Book",
+      "winLoss": null,
+      "winBefore": null,
+      "evalDeltaCp": null,
+      "engineGapCp": null,
+      "playedBest": null,
+      "bestEngineMove": "",
+      "altEngineMoves": [],
+      "materialEvent": null,
+      "isBook": true
+    },
+    {
+      "moveNum": 2,
+      "turn": "w",
+      "san": "f3",
+      "label": "Mistake",
+      "winLoss": 0.23884041795105881,
+      "winBefore": 0.7011122672337217,
+      "evalDeltaCp": 184,
+      "engineGapCp": 133,
+      "playedBest": false,
+      "bestEngineMove": "e4e5",
+      "altEngineMoves": [
+        {
+          "move": "d2d4",
+          "scoreCp": 70,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 2,
+      "turn": "b",
+      "san": "g6",
+      "label": "Miss",
+      "winLoss": 0.49539399330729167,
+      "winBefore": 0.6524894621927444,
+      "evalDeltaCp": 495,
+      "engineGapCp": 160,
+      "playedBest": false,
+      "bestEngineMove": "e7e5",
+      "altEngineMoves": [
+        {
+          "move": "d7d6",
+          "scoreCp": -10,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 3,
+      "turn": "w",
+      "san": "b3",
+      "label": "Blunder",
+      "winLoss": 0.31054496781153806,
+      "winBefore": 0.8136949261376997,
+      "evalDeltaCp": 303,
+      "engineGapCp": 202,
+      "playedBest": false,
+      "bestEngineMove": "e4e5",
+      "altEngineMoves": [
+        {
+          "move": "d2d4",
+          "scoreCp": 149,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 3,
+      "turn": "b",
+      "san": "Bg7",
+      "label": "Miss",
+      "winLoss": 0.33107673940376203,
+      "winBefore": 0.5698894191199034,
+      "evalDeltaCp": 288,
+      "engineGapCp": 70,
+      "playedBest": false,
+      "bestEngineMove": "d7d6",
+      "altEngineMoves": [
+        {
+          "move": "e7e5",
+          "scoreCp": -3,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 4,
+      "turn": "w",
+      "san": "Bb2",
+      "label": "Blunder",
+      "winLoss": 0.39146307855164997,
+      "winBefore": 0.7611873202838586,
+      "evalDeltaCp": 358,
+      "engineGapCp": 249,
+      "playedBest": false,
+      "bestEngineMove": "e4e5",
+      "altEngineMoves": [
+        {
+          "move": "b1c3",
+          "scoreCp": 27,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 4,
+      "turn": "b",
+      "san": "d6",
+      "label": "Miss",
+      "winLoss": 0.08003920328960534,
+      "winBefore": 0.5842391045083933,
+      "evalDeltaCp": 7,
+      "engineGapCp": 45,
+      "playedBest": false,
+      "bestEngineMove": "e8g8",
+      "altEngineMoves": [
+        {
+          "move": "d7d6",
+          "scoreCp": 36,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 5,
+      "turn": "w",
+      "san": "d3",
+      "label": "Inaccuracy",
+      "winLoss": 0.07269115846848911,
+      "winBefore": 0.4884520539600957,
+      "evalDeltaCp": 0,
+      "engineGapCp": 20,
+      "playedBest": false,
+      "bestEngineMove": "g1e2",
+      "altEngineMoves": [
+        {
+          "move": "c2c4",
+          "scoreCp": -31,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 5,
+      "turn": "b",
+      "san": "O-O",
+      "label": "Inaccuracy",
+      "winLoss": 0.08017762660877137,
+      "winBefore": 0.6084972849157563,
+      "evalDeltaCp": 8,
+      "engineGapCp": 24,
+      "playedBest": false,
+      "bestEngineMove": "b8d7",
+      "altEngineMoves": [
+        {
+          "move": "e8g8",
+          "scoreCp": 81,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 6,
+      "turn": "w",
+      "san": "Nd2",
+      "label": "Inaccuracy",
+      "winLoss": 0.086732113179259,
+      "winBefore": 0.4476920904256748,
+      "evalDeltaCp": 16,
+      "engineGapCp": 32,
+      "playedBest": false,
+      "bestEngineMove": "f3f4",
+      "altEngineMoves": [
+        {
+          "move": "b1a3",
+          "scoreCp": -82,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 6,
+      "turn": "b",
+      "san": "Nc6",
+      "label": "Inaccuracy",
+      "winLoss": 0.11503119590463062,
+      "winBefore": 0.6034832498647263,
+      "evalDeltaCp": 41,
+      "engineGapCp": 26,
+      "playedBest": false,
+      "bestEngineMove": "e7e5",
+      "altEngineMoves": [
+        {
+          "move": "g7h6",
+          "scoreCp": 74,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 7,
+      "turn": "w",
+      "san": "a3",
+      "label": "Mistake",
+      "winLoss": 0.19457716809743436,
+      "winBefore": 0.5781052328843092,
+      "evalDeltaCp": 118,
+      "engineGapCp": 117,
+      "playedBest": false,
+      "bestEngineMove": "d3d4",
+      "altEngineMoves": [
+        {
+          "move": "f3f4",
+          "scoreCp": -42,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 7,
+      "turn": "b",
+      "san": "e5",
+      "label": "Best",
+      "winLoss": 0.057349336433181075,
+      "winBefore": 0.6292965053484504,
+      "evalDeltaCp": 0,
+      "engineGapCp": 3,
+      "playedBest": true,
+      "bestEngineMove": "f6d7",
+      "altEngineMoves": [
+        {
+          "move": "e7e5",
+          "scoreCp": 123,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 8,
+      "turn": "w",
+      "san": "Rb1",
+      "label": "Inaccuracy",
+      "winLoss": 0.06649208133909629,
+      "winBefore": 0.38055339757105594,
+      "evalDeltaCp": 0,
+      "engineGapCp": 10,
+      "playedBest": false,
+      "bestEngineMove": "h2h3",
+      "altEngineMoves": [
+        {
+          "move": "g1e2",
+          "scoreCp": -126,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 8,
+      "turn": "b",
+      "san": "d5",
+      "label": "Best",
+      "winLoss": 0.10845474495355512,
+      "winBefore": 0.7542483097239633,
+      "evalDeltaCp": 54,
+      "engineGapCp": 65,
+      "playedBest": true,
+      "bestEngineMove": "d6d5",
+      "altEngineMoves": [
+        {
+          "move": "f6d7",
+          "scoreCp": 202,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 9,
+      "turn": "w",
+      "san": "exd5",
+      "label": "Mistake",
+      "winLoss": 0.19261034157816562,
+      "winBefore": 0.3542064352295919,
+      "evalDeltaCp": 194,
+      "engineGapCp": 13,
+      "playedBest": false,
+      "bestEngineMove": "b3b4",
+      "altEngineMoves": [
+        {
+          "move": "c2c4",
+          "scoreCp": -156,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "hang",
+        "offered": "p",
+        "captured": "p",
+        "taken": true,
+        "net": 0
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 9,
+      "turn": "b",
+      "san": "Nxd5",
+      "label": "Best",
+      "winLoss": 0.027429796053085265,
+      "winBefore": 0.9072575439962413,
+      "evalDeltaCp": 24,
+      "engineGapCp": 371,
+      "playedBest": true,
+      "bestEngineMove": "f6d5",
+      "altEngineMoves": [
+        {
+          "move": "d8d5",
+          "scoreCp": 172,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "capture",
+        "offered": null,
+        "captured": "p",
+        "net": 1
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 10,
+      "turn": "w",
+      "san": "Qe2",
+      "label": "Inaccuracy",
+      "winLoss": 0.0755721800329232,
+      "winBefore": 0.14472347314533857,
+      "evalDeltaCp": 126,
+      "engineGapCp": 33,
+      "playedBest": false,
+      "bestEngineMove": "d1c1",
+      "altEngineMoves": [
+        {
+          "move": "d2c4",
+          "scoreCp": -456,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 10,
+      "turn": "b",
+      "san": "Qg5",
+      "label": "Mistake",
+      "winLoss": 0.1489441335713737,
+      "winBefore": 0.9308487068875847,
+      "evalDeltaCp": 260,
+      "engineGapCp": 149,
+      "playedBest": false,
+      "bestEngineMove": "c6d4",
+      "altEngineMoves": [
+        {
+          "move": "d8g5",
+          "scoreCp": 470,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 11,
+      "turn": "w",
+      "san": "c4",
+      "label": "Mistake",
+      "winLoss": 0.16261647402609195,
+      "winBefore": 0.31860284562136826,
+      "evalDeltaCp": 166,
+      "engineGapCp": 55,
+      "playedBest": false,
+      "bestEngineMove": "h2h4",
+      "altEngineMoves": [
+        {
+          "move": "d2e4",
+          "scoreCp": -236,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 11,
+      "turn": "b",
+      "san": "Nf4",
+      "label": "Miss",
+      "winLoss": 0.21756709513964323,
+      "winBefore": 0.9631516487747941,
+      "evalDeltaCp": 476,
+      "engineGapCp": 354,
+      "playedBest": false,
+      "bestEngineMove": "d5e3",
+      "altEngineMoves": [
+        {
+          "move": "d5f4",
+          "scoreCp": 423,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 12,
+      "turn": "w",
+      "san": "Qf2",
+      "label": "Best",
+      "winLoss": 0.08793005601581677,
+      "winBefore": 0.2600324313290248,
+      "evalDeltaCp": 55,
+      "engineGapCp": 7,
+      "playedBest": true,
+      "bestEngineMove": "h2h4",
+      "altEngineMoves": [
+        {
+          "move": "e2f2",
+          "scoreCp": -256,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 12,
+      "turn": "b",
+      "san": "Re8",
+      "label": "Mistake",
+      "winLoss": 0.1917690792321416,
+      "winBefore": 0.8278976246867921,
+      "evalDeltaCp": 186,
+      "engineGapCp": 30,
+      "playedBest": false,
+      "bestEngineMove": "g5d8",
+      "altEngineMoves": [
+        {
+          "move": "c6d4",
+          "scoreCp": 344,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 13,
+      "turn": "w",
+      "san": "h4",
+      "label": "Mistake",
+      "winLoss": 0.1887562982908057,
+      "winBefore": 0.3638714545453496,
+      "evalDeltaCp": 191,
+      "engineGapCp": 218,
+      "playedBest": false,
+      "bestEngineMove": "g2g3",
+      "altEngineMoves": [
+        {
+          "move": "b1c1",
+          "scoreCp": -351,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 13,
+      "turn": "b",
+      "san": "Qf6",
+      "label": "Miss",
+      "winLoss": 0.18875629829080565,
+      "winBefore": 0.8248848437454561,
+      "evalDeltaCp": 181,
+      "engineGapCp": 61,
+      "playedBest": false,
+      "bestEngineMove": "g5d8",
+      "altEngineMoves": [
+        {
+          "move": "g5f5",
+          "scoreCp": 308,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 14,
+      "turn": "w",
+      "san": "Ne2",
+      "label": "Blunder",
+      "winLoss": 0.357439346078431,
+      "winBefore": 0.3638714545453496,
+      "evalDeltaCp": 1312,
+      "engineGapCp": 124,
+      "playedBest": false,
+      "bestEngineMove": "g2g3",
+      "altEngineMoves": [
+        {
+          "move": "b3b4",
+          "scoreCp": -257,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 14,
+      "turn": "b",
+      "san": "Bh6",
+      "label": "Miss",
+      "winLoss": 0.43400210812727313,
+      "winBefore": 0.9935678915330812,
+      "evalDeltaCp": 1398,
+      "engineGapCp": 995,
+      "playedBest": false,
+      "bestEngineMove": "f4d3",
+      "altEngineMoves": [
+        {
+          "move": "c6d4",
+          "scoreCp": 505,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "missed_capture",
+        "captured": "p",
+        "offered": null,
+        "net": 0
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 15,
+      "turn": "w",
+      "san": "Nxf4",
+      "label": "Best",
+      "winLoss": 0.19233954326003125,
+      "winBefore": 0.4404342165941919,
+      "evalDeltaCp": 162,
+      "engineGapCp": 189,
+      "playedBest": true,
+      "bestEngineMove": "e2f4",
+      "altEngineMoves": [
+        {
+          "move": "e2c3",
+          "scoreCp": -246,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "sacrifice",
+        "offered": "n",
+        "captured": "n",
+        "regained": [],
+        "net": 0
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 15,
+      "turn": "b",
+      "san": "exf4+",
+      "label": "Blunder",
+      "winLoss": 0.7198069805251592,
+      "winBefore": 0.7847559031978911,
+      "evalDeltaCp": 888,
+      "engineGapCp": 138,
+      "playedBest": false,
+      "bestEngineMove": "h6f4",
+      "altEngineMoves": [
+        {
+          "move": "f6f4",
+          "scoreCp": 170,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "hang",
+        "offered": "q",
+        "captured": "n",
+        "taken": false,
+        "net": 3
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 16,
+      "turn": "w",
+      "san": "Kd1",
+      "label": "Best",
+      "winLoss": 0.41720865667886853,
+      "winBefore": 0.9350510773272682,
+      "evalDeltaCp": 573,
+      "engineGapCp": 411,
+      "playedBest": true,
+      "bestEngineMove": "e1d1",
+      "altEngineMoves": [
+        {
+          "move": "f1e2",
+          "scoreCp": 224,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 16,
+      "turn": "b",
+      "san": "Qd6",
+      "label": "Inaccuracy",
+      "winLoss": 0.10949239338507732,
+      "winBefore": 0.48215757935160025,
+      "evalDeltaCp": 37,
+      "engineGapCp": 54,
+      "playedBest": false,
+      "bestEngineMove": "c6e5",
+      "altEngineMoves": [
+        {
+          "move": "e8e5",
+          "scoreCp": -71,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 17,
+      "turn": "w",
+      "san": "Ne4",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.6543916889205361,
+      "evalDeltaCp": 0,
+      "engineGapCp": 28,
+      "playedBest": true,
+      "bestEngineMove": "d2e4",
+      "altEngineMoves": [
+        {
+          "move": "d1c2",
+          "scoreCp": 124,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 17,
+      "turn": "b",
+      "san": "Qe6",
+      "label": "Blunder",
+      "winLoss": 0.37054927759044737,
+      "winBefore": 0.3965167501352737,
+      "evalDeltaCp": 708,
+      "engineGapCp": 130,
+      "playedBest": false,
+      "bestEngineMove": "e8e4",
+      "altEngineMoves": [
+        {
+          "move": "d6e7",
+          "scoreCp": -230,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 18,
+      "turn": "w",
+      "san": "Nf6+",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.8802711097107354,
+      "evalDeltaCp": 0,
+      "engineGapCp": 138,
+      "playedBest": true,
+      "bestEngineMove": "e4f6",
+      "altEngineMoves": [
+        {
+          "move": "h4h5",
+          "scoreCp": 337,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 18,
+      "turn": "b",
+      "san": "Kf8",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.09133852092509437,
+      "evalDeltaCp": 0,
+      "engineGapCp": 286,
+      "playedBest": true,
+      "bestEngineMove": "g8f8",
+      "altEngineMoves": [
+        {
+          "move": "e6f6",
+          "scoreCp": -833,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 19,
+      "turn": "w",
+      "san": "Nxe8",
+      "label": "Inaccuracy",
+      "winLoss": 0.10837654107507622,
+      "winBefore": 0.8888452723453738,
+      "evalDeltaCp": 138,
+      "engineGapCp": 33,
+      "playedBest": false,
+      "bestEngineMove": "f6g4",
+      "altEngineMoves": [
+        {
+          "move": "f6e8",
+          "scoreCp": 462,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "hang",
+        "offered": "n",
+        "captured": "r",
+        "taken": true,
+        "net": 2
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 19,
+      "turn": "b",
+      "san": "Qxe8",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.14524411934391374,
+      "evalDeltaCp": 0,
+      "engineGapCp": 353,
+      "playedBest": true,
+      "bestEngineMove": "e6e8",
+      "altEngineMoves": [
+        {
+          "move": "f8e8",
+          "scoreCp": -775,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "capture",
+        "offered": null,
+        "captured": "n",
+        "net": 3
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 20,
+      "turn": "w",
+      "san": "b4",
+      "label": "Mistake",
+      "winLoss": 0.15984069188861239,
+      "winBefore": 0.8547558806560863,
+      "evalDeltaCp": 171,
+      "engineGapCp": 119,
+      "playedBest": false,
+      "bestEngineMove": "h4h5",
+      "altEngineMoves": [
+        {
+          "move": "d1c2",
+          "scoreCp": 303,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 20,
+      "turn": "b",
+      "san": "Bf5",
+      "label": "Inaccuracy",
+      "winLoss": 0.12319560092428286,
+      "winBefore": 0.3050848112325261,
+      "evalDeltaCp": 92,
+      "engineGapCp": 67,
+      "playedBest": false,
+      "bestEngineMove": "h6g7",
+      "altEngineMoves": [
+        {
+          "move": "b7b6",
+          "scoreCp": -263,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 21,
+      "turn": "w",
+      "san": "g4",
+      "label": "Blunder",
+      "winLoss": 0.5638811789386049,
+      "winBefore": 0.872539342900751,
+      "evalDeltaCp": 595,
+      "engineGapCp": 126,
+      "playedBest": false,
+      "bestEngineMove": "h4h5",
+      "altEngineMoves": [
+        {
+          "move": "d1c2",
+          "scoreCp": 332,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 21,
+      "turn": "b",
+      "san": "Be6",
+      "label": "Miss",
+      "winLoss": 0.6202739433836139,
+      "winBefore": 0.6913418360378539,
+      "evalDeltaCp": 759,
+      "engineGapCp": 665,
+      "playedBest": false,
+      "bestEngineMove": "f4g3",
+      "altEngineMoves": [
+        {
+          "move": "f5e6",
+          "scoreCp": -473,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 22,
+      "turn": "w",
+      "san": "g5",
+      "label": "Good",
+      "winLoss": 0.0479196683244798,
+      "winBefore": 0.9204590112252308,
+      "evalDeltaCp": 80,
+      "engineGapCp": 201,
+      "playedBest": false,
+      "bestEngineMove": "b4b5",
+      "altEngineMoves": [
+        {
+          "move": "h4h5",
+          "scoreCp": 382,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 22,
+      "turn": "b",
+      "san": "Bg7",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.12746065709924898,
+      "evalDeltaCp": 0,
+      "engineGapCp": 203,
+      "playedBest": true,
+      "bestEngineMove": "h6g7",
+      "altEngineMoves": [
+        {
+          "move": "e6f5",
+          "scoreCp": -661,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "sacrifice",
+        "offered": "b",
+        "captured": null,
+        "regained": [
+          "b",
+          "b"
+        ],
+        "net": 3
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 23,
+      "turn": "w",
+      "san": "Bxg7+",
+      "label": "Inaccuracy",
+      "winLoss": 0.09685850650587458,
+      "winBefore": 0.8663425267277409,
+      "evalDeltaCp": 103,
+      "engineGapCp": 158,
+      "playedBest": false,
+      "bestEngineMove": "h4h5",
+      "altEngineMoves": [
+        {
+          "move": "b2g7",
+          "scoreCp": 287,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "hang",
+        "offered": "b",
+        "captured": "b",
+        "taken": true,
+        "net": -3
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 23,
+      "turn": "b",
+      "san": "Kxg7",
+      "label": "Best",
+      "winLoss": 0.009542087557945833,
+      "winBefore": 0.23051597977813365,
+      "evalDeltaCp": 0,
+      "engineGapCp": 519,
+      "playedBest": true,
+      "bestEngineMove": "f8g7",
+      "altEngineMoves": [
+        {
+          "move": "f8g8",
+          "scoreCp": -806,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "capture",
+        "offered": null,
+        "captured": "b",
+        "net": 6
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 24,
+      "turn": "w",
+      "san": "Bh3",
+      "label": "Blunder",
+      "winLoss": 0.2653083180196567,
+      "winBefore": 0.8124181671936413,
+      "evalDeltaCp": 249,
+      "engineGapCp": 23,
+      "playedBest": false,
+      "bestEngineMove": "f2b2",
+      "altEngineMoves": [
+        {
+          "move": "d1c2",
+          "scoreCp": 326,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 24,
+      "turn": "b",
+      "san": "Rd8",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.5104984567722248,
+      "evalDeltaCp": 0,
+      "engineGapCp": 55,
+      "playedBest": false,
+      "bestEngineMove": "c6e5",
+      "altEngineMoves": [
+        {
+          "move": "a8d8",
+          "scoreCp": -45,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 25,
+      "turn": "w",
+      "san": "Ke1",
+      "label": "Blunder",
+      "winLoss": 0.3594842764670776,
+      "winBefore": 0.5062996666251706,
+      "evalDeltaCp": 370,
+      "engineGapCp": 17,
+      "playedBest": false,
+      "bestEngineMove": "d1c2",
+      "altEngineMoves": [
+        {
+          "move": "f2b2",
+          "scoreCp": -11,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 25,
+      "turn": "b",
+      "san": "Bxh3+",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.88246676672294,
+      "evalDeltaCp": 0,
+      "engineGapCp": 296,
+      "playedBest": true,
+      "bestEngineMove": "e6h3",
+      "altEngineMoves": [
+        {
+          "move": "c6e5",
+          "scoreCp": 184,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "sacrifice",
+        "offered": "b",
+        "captured": "b",
+        "regained": [
+          "p"
+        ],
+        "net": 4
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 26,
+      "turn": "w",
+      "san": "Kd2",
+      "label": "Best",
+      "winLoss": 0.05750303450926578,
+      "winBefore": 0.11753323327706003,
+      "evalDeltaCp": 120,
+      "engineGapCp": 19,
+      "playedBest": true,
+      "bestEngineMove": "f2e2",
+      "altEngineMoves": [
+        {
+          "move": "e1d2",
+          "scoreCp": -499,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 26,
+      "turn": "b",
+      "san": "Bf5",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.9449765159754866,
+      "evalDeltaCp": 0,
+      "engineGapCp": 22,
+      "playedBest": true,
+      "bestEngineMove": "h3e6",
+      "altEngineMoves": [
+        {
+          "move": "h3f5",
+          "scoreCp": 655,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 27,
+      "turn": "w",
+      "san": "Rbe1",
+      "label": "Good",
+      "winLoss": 0.05562780600633015,
+      "winBefore": 0.07592831347847638,
+      "evalDeltaCp": 283,
+      "engineGapCp": 224,
+      "playedBest": false,
+      "bestEngineMove": "b1b3",
+      "altEngineMoves": [
+        {
+          "move": "d2c1",
+          "scoreCp": -819,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 27,
+      "turn": "b",
+      "san": "Rxd3+",
+      "label": "Good",
+      "winLoss": 0.04600964004000929,
+      "winBefore": 0.9451944910620933,
+      "evalDeltaCp": 102,
+      "engineGapCp": 3,
+      "playedBest": false,
+      "bestEngineMove": "e8d7",
+      "altEngineMoves": [
+        {
+          "move": "c6e5",
+          "scoreCp": 675,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "capture",
+        "offered": null,
+        "captured": "p",
+        "net": 2
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 28,
+      "turn": "w",
+      "san": "Kc2",
+      "label": "Inaccuracy",
+      "winLoss": 0.09438304051099743,
+      "winBefore": 0.10081514897791606,
+      "evalDeltaCp": 725,
+      "engineGapCp": 391,
+      "playedBest": false,
+      "bestEngineMove": "d2c1",
+      "altEngineMoves": [
+        {
+          "move": "d2c2",
+          "scoreCp": -912,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 28,
+      "turn": "b",
+      "san": "Qd7",
+      "label": "Excellent",
+      "winLoss": 0.003365219008527376,
+      "winBefore": 0.9935678915330812,
+      "evalDeltaCp": 147,
+      "engineGapCp": 393,
+      "playedBest": false,
+      "bestEngineMove": "c6d4",
+      "altEngineMoves": [
+        {
+          "move": "c6e5",
+          "scoreCp": 898,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 29,
+      "turn": "w",
+      "san": "Rd1",
+      "label": "Excellent",
+      "winLoss": 0.0033652190085274054,
+      "winBefore": 0.00979732747544604,
+      "evalDeltaCp": 346,
+      "engineGapCp": 15,
+      "playedBest": false,
+      "bestEngineMove": "e1e7",
+      "altEngineMoves": [
+        {
+          "move": "c4c5",
+          "scoreCp": -1114,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 29,
+      "turn": "b",
+      "san": "Rxf3+",
+      "label": "Excellent",
+      "winLoss": 0.0028881588115741152,
+      "winBefore": 0.9935678915330812,
+      "evalDeltaCp": 344,
+      "engineGapCp": 343,
+      "playedBest": false,
+      "bestEngineMove": "d3d1",
+      "altEngineMoves": [
+        {
+          "move": "c6e5",
+          "scoreCp": 1157,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "sacrifice",
+        "offered": "q",
+        "captured": "p",
+        "regained": [
+          "q"
+        ],
+        "net": 10
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 30,
+      "turn": "w",
+      "san": "Kc1",
+      "label": "Best",
+      "winLoss": 0.0019696994734069648,
+      "winBefore": 0.009320267278492847,
+      "evalDeltaCp": 12,
+      "engineGapCp": 799,
+      "playedBest": true,
+      "bestEngineMove": "c2c1",
+      "altEngineMoves": [
+        {
+          "move": "c2b2",
+          "scoreCp": -1910,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 30,
+      "turn": "b",
+      "san": "Rc3+",
+      "label": "Inaccuracy",
+      "winLoss": 0.08191788672084199,
+      "winBefore": 0.9926494321949141,
+      "evalDeltaCp": 560,
+      "engineGapCp": 0,
+      "playedBest": false,
+      "bestEngineMove": "d7d1",
+      "altEngineMoves": [
+        {
+          "move": "f3f2",
+          "scoreCp": 1168,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 31,
+      "turn": "w",
+      "san": "Kb2",
+      "label": "Best",
+      "winLoss": 0.005637082282265143,
+      "winBefore": 0.08926845452592788,
+      "evalDeltaCp": 0,
+      "engineGapCp": 1845,
+      "playedBest": true,
+      "bestEngineMove": "c1b2",
+      "altEngineMoves": [
+        {
+          "move": "f2c2",
+          "scoreCp": -2398,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 31,
+      "turn": "b",
+      "san": "Rc2+",
+      "label": "Blunder",
+      "winLoss": 0.5315246149244519,
+      "winBefore": 0.9160461882683919,
+      "evalDeltaCp": 636,
+      "engineGapCp": 487,
+      "playedBest": false,
+      "bestEngineMove": "c3d3",
+      "altEngineMoves": [
+        {
+          "move": "d7d1",
+          "scoreCp": 82,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "hang",
+        "offered": "r",
+        "captured": null,
+        "taken": false,
+        "net": 9
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 32,
+      "turn": "w",
+      "san": "Kb1",
+      "label": "Miss",
+      "winLoss": 0.4516663975191251,
+      "winBefore": 0.4580985059860437,
+      "evalDeltaCp": 1415,
+      "engineGapCp": 1081,
+      "playedBest": false,
+      "bestEngineMove": "f2c2",
+      "altEngineMoves": [
+        {
+          "move": "b2b3",
+          "scoreCp": -1121,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "missed_capture",
+        "captured": "r",
+        "offered": null,
+        "net": 0
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 32,
+      "turn": "b",
+      "san": "Rxf2+",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.9935678915330812,
+      "evalDeltaCp": 0,
+      "engineGapCp": 370,
+      "playedBest": true,
+      "bestEngineMove": "c2f2",
+      "altEngineMoves": [
+        {
+          "move": "c2e2",
+          "scoreCp": 1130,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "capture",
+        "offered": null,
+        "captured": "q",
+        "net": 14
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 33,
+      "turn": "w",
+      "san": "Kc1",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.006432108466918635,
+      "evalDeltaCp": 0,
+      "engineGapCp": 1189,
+      "playedBest": false,
+      "bestEngineMove": "b1a1",
+      "altEngineMoves": [
+        {
+          "move": "b1c1",
+          "scoreCp": -2689,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 33,
+      "turn": "b",
+      "san": "Rc2+",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.91309306697374,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": false,
+      "bestEngineMove": "d7e6",
+      "altEngineMoves": [
+        {
+          "move": "f2c2",
+          "scoreCp": 2470,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 34,
+      "turn": "w",
+      "san": "Kb1",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.006432108466918635,
+      "evalDeltaCp": 0,
+      "engineGapCp": null,
+      "playedBest": true,
+      "bestEngineMove": "c1b1",
+      "altEngineMoves": [],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 34,
+      "turn": "b",
+      "san": "Rd2+",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.9935678915330812,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": false,
+      "bestEngineMove": "c2f2",
+      "altEngineMoves": [
+        {
+          "move": "c2d2",
+          "scoreCp": 2470,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 35,
+      "turn": "w",
+      "san": "Kc1",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.006432108466918635,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": true,
+      "bestEngineMove": "b1c1",
+      "altEngineMoves": [
+        {
+          "move": "b1a1",
+          "scoreCp": -1,
+          "isMate": true
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 35,
+      "turn": "b",
+      "san": "Rxd1+",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.9935678915330812,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": false,
+      "bestEngineMove": "d2c2",
+      "altEngineMoves": [
+        {
+          "move": "d2d1",
+          "scoreCp": 1910,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "sacrifice",
+        "offered": "r",
+        "captured": "r",
+        "regained": [
+          "p"
+        ],
+        "net": 1
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 36,
+      "turn": "w",
+      "san": "Rxd1",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.006432108466918635,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": true,
+      "bestEngineMove": "h1d1",
+      "altEngineMoves": [
+        {
+          "move": "c1b2",
+          "scoreCp": -2,
+          "isMate": true
+        }
+      ],
+      "materialEvent": {
+        "kind": "capture",
+        "offered": null,
+        "captured": "r",
+        "net": 4
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 36,
+      "turn": "b",
+      "san": "Qe6",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.9935678915330812,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": true,
+      "bestEngineMove": "d7e6",
+      "altEngineMoves": [
+        {
+          "move": "d7e7",
+          "scoreCp": 2368,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 37,
+      "turn": "w",
+      "san": "Kd2",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.006432108466918635,
+      "evalDeltaCp": 0,
+      "engineGapCp": 1078,
+      "playedBest": false,
+      "bestEngineMove": "d1h1",
+      "altEngineMoves": [
+        {
+          "move": "d1g1",
+          "scoreCp": -2578,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 37,
+      "turn": "b",
+      "san": "Qxc4",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.9225850748270975,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": false,
+      "bestEngineMove": "e6e3",
+      "altEngineMoves": [
+        {
+          "move": "c6b4",
+          "scoreCp": 2049,
+          "isMate": false
+        }
+      ],
+      "materialEvent": {
+        "kind": "capture",
+        "offered": null,
+        "captured": "p",
+        "net": 1
+      },
+      "isBook": false
+    },
+    {
+      "moveNum": 38,
+      "turn": "w",
+      "san": "Ke1",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.006432108466918635,
+      "evalDeltaCp": 0,
+      "engineGapCp": 534,
+      "playedBest": true,
+      "bestEngineMove": "d2e1",
+      "altEngineMoves": [
+        {
+          "move": "h4h5",
+          "scoreCp": -2034,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 38,
+      "turn": "b",
+      "san": "Qc3+",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.9935678915330812,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": false,
+      "bestEngineMove": "c4e4",
+      "altEngineMoves": [
+        {
+          "move": "c4c3",
+          "scoreCp": 2084,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 39,
+      "turn": "w",
+      "san": "Ke2",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.006432108466918635,
+      "evalDeltaCp": 0,
+      "engineGapCp": 1070,
+      "playedBest": false,
+      "bestEngineMove": "d1d2",
+      "altEngineMoves": [
+        {
+          "move": "e1f1",
+          "scoreCp": -2570,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 39,
+      "turn": "b",
+      "san": "Nd4+",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.9195316111594145,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": false,
+      "bestEngineMove": "c3e3",
+      "altEngineMoves": [
+        {
+          "move": "f5g4",
+          "scoreCp": 2579,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 40,
+      "turn": "w",
+      "san": "Kf1",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.006432108466918635,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": false,
+      "bestEngineMove": "d1d4",
+      "altEngineMoves": [
+        {
+          "move": "e2f1",
+          "scoreCp": -3,
+          "isMate": true
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 40,
+      "turn": "b",
+      "san": "Bd3+",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.9163686277563373,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": false,
+      "bestEngineMove": "f5h3",
+      "altEngineMoves": [
+        {
+          "move": "c3f3",
+          "scoreCp": 2702,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 41,
+      "turn": "w",
+      "san": "Kf2",
+      "label": "Excellent",
+      "winLoss": 0,
+      "winBefore": 0.006432108466918635,
+      "evalDeltaCp": 0,
+      "engineGapCp": 732,
+      "playedBest": false,
+      "bestEngineMove": "f1g1",
+      "altEngineMoves": [
+        {
+          "move": "d1d3",
+          "scoreCp": -2232,
+          "isMate": false
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 41,
+      "turn": "b",
+      "san": "Qc2+",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.91309306697374,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": true,
+      "bestEngineMove": "c3b2",
+      "altEngineMoves": [
+        {
+          "move": "c3c2",
+          "scoreCp": 4,
+          "isMate": true
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 42,
+      "turn": "w",
+      "san": "Ke1",
+      "label": "Excellent",
+      "winLoss": 0.006216447070760356,
+      "winBefore": 0.08363137224366274,
+      "evalDeltaCp": 0,
+      "engineGapCp": 10,
+      "playedBest": false,
+      "bestEngineMove": "d1d2",
+      "altEngineMoves": [
+        {
+          "move": "f2g1",
+          "scoreCp": -2,
+          "isMate": true
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    },
+    {
+      "moveNum": 42,
+      "turn": "b",
+      "san": "Qe2#",
+      "label": "Best",
+      "winLoss": 0,
+      "winBefore": 0.9225850748270975,
+      "evalDeltaCp": 0,
+      "engineGapCp": 0,
+      "playedBest": true,
+      "bestEngineMove": "d4f3",
+      "altEngineMoves": [
+        {
+          "move": "c2e2",
+          "scoreCp": 1,
+          "isMate": true
+        }
+      ],
+      "materialEvent": null,
+      "isBook": false
+    }
+  ]
+}
