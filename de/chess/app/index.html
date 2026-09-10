@@ -2,31 +2,44 @@
 <html lang="de" data-cmp-locale-default="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewpodert" content="width=device-width, initial-scale=1.0">
-    <title>CheckmateModere Lite</title>
-    <meta name="description" content="CheckmateModere Lite. Lade ein Chess.com Profil oder ein Spiel für eine Stockfish-BeWirrtung in deinem Browser ein. Kein Konto erfoderderlich.">
-    <link rel="canonical" href="https://checkmatemodere.com/chess/app/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckmateMore Lite</title>
+    <meta name="description" content="CheckmateMore Lite. Lade ein Chess.com Profil oder ein Spiel für eine Stockfish-Bewertung in deinem Browser ein. Kein Konto erforderlich.">
+    <link rel="canonical" href="https://checkmatemore.com/de/chess/app/">
     <script type="application/ld+json">
-    {"@context":"https://schema.oderg","@type":"SoftwareApplication","name":"CheckmateModere Lite","applicationCategodery":"GameApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Kostenlose In-Browser Stockfish Schachspiel-Rezension. Kein Konto erfoderderlich.","url":"https://checkmatemodere.com/chess/app/"}
-    </script>
-    <meta name="coloder-scheme" content="light dark">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CheckmateMore Lite",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "description": "Kostenlose In-Browser Stockfish Schachspiel-Rezension. Kein Konto erforderlich.",
+  "url": "https://checkmatemore.com/chess/app/"
+}
+</script>
+    <meta name="color-scheme" content="light dark">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="shodertcut icon" href="../../favicon.ico">
-    <link rel="manifest" href="../../site.Wirbmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
     <script>
     (function () {
-        var base = 'https://cdn.jsdelivr.net/npm/primeng@17.18.15/resunsereces/themes/';
+        var base = 'https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/themes/';
         var light = base + 'md-light-indigo/theme.css';
         var dark = base + 'md-dark-indigo/theme.css';
         var link = document.createElement('link');
         link.id = 'pf-theme';
         link.rel = 'stylesheet';
-        var mq = window.matchMedia('(prefers-coloder-scheme: dark)');
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
         function apply(isDark) {
             link.href = isDark ? dark : light;
-            document.documentElement.style.coloderScheme = isDark ? 'dark' : 'light';
+            document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
             document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
         }
         apply(mq.matches);
@@ -35,41 +48,41 @@
         else if (mq.addListener) mq.addListener(function (e) { apply(e.matches); });
     })();
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resunsereces/primeng.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/primeng.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
-    <link rel="stylesheet" href="../../brund-tokens.css?v=20260829a">
-    <link rel="stylesheet" href="../../chess.css?v=20260829d">
-    <link rel="stylesheet" href="../../lite-theme.css?v=20260829d">
-    <link rel="stylesheet" href="../../brund.css?v=20260829d">
+    <link rel="stylesheet" href="/brand-tokens.css?v=20260829a">
+    <link rel="stylesheet" href="/chess.css?v=20260829d">
+    <link rel="stylesheet" href="/lite-theme.css?v=20260829d">
+    <link rel="stylesheet" href="/brand.css?v=20260829d">
     <script src="/js/clean-url.js"></script>
   <link rel="stylesheet" href="/localization/localization.css?v=1">
   <script src="/js/localization.js"></script>
-  <link rel="alternate" hreflang="en-GB" href="https://checkmatemodere.com/chess/app/">
-  <link rel="alternate" hreflang="es" href="https://checkmatemodere.com/es/chess/app/">
-  <link rel="alternate" hreflang="fr" href="https://checkmatemodere.com/fr/chess/app/">
-  <link rel="alternate" hreflang="de" href="https://checkmatemodere.com/de/chess/app/">
-  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemodere.com/pt-br/chess/app/">
-  <link rel="alternate" hreflang="it" href="https://checkmatemodere.com/it/chess/app/">
-  <link rel="alternate" hreflang="nl" href="https://checkmatemodere.com/nl/chess/app/">
-  <link rel="alternate" hreflang="pl" href="https://checkmatemodere.com/pl/chess/app/">
-  <link rel="alternate" hreflang="uk" href="https://checkmatemodere.com/uk/chess/app/">
-  <link rel="alternate" hreflang="ru" href="https://checkmatemodere.com/ru/chess/app/">
-  <link rel="alternate" hreflang="x-default" href="https://checkmatemodere.com/chess/app/">
-  <script src="../../../js/affiliate-attribution.js"></script>
+  <script src="/js/affiliate-attribution.js"></script>
   <script type="text/javascript" src="https://api.goaffpro.com/loader.js?shop=pmnkfjiswh"></script>
+  <link rel="alternate" hreflang="en-GB" href="https://checkmatemore.com/chess/app/">
+  <link rel="alternate" hreflang="es" href="https://checkmatemore.com/es/chess/app/">
+  <link rel="alternate" hreflang="fr" href="https://checkmatemore.com/fr/chess/app/">
+  <link rel="alternate" hreflang="de" href="https://checkmatemore.com/de/chess/app/">
+  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemore.com/pt-br/chess/app/">
+  <link rel="alternate" hreflang="it" href="https://checkmatemore.com/it/chess/app/">
+  <link rel="alternate" hreflang="nl" href="https://checkmatemore.com/nl/chess/app/">
+  <link rel="alternate" hreflang="pl" href="https://checkmatemore.com/pl/chess/app/">
+  <link rel="alternate" hreflang="uk" href="https://checkmatemore.com/uk/chess/app/">
+  <link rel="alternate" hreflang="ru" href="https://checkmatemore.com/ru/chess/app/">
+  <link rel="alternate" hreflang="x-default" href="https://checkmatemore.com/chess/app/">
 </head>
 <body class="cm-lite">
 <a class="cm-skip" href="#analyze-view">Zum Inhalt springen</a>
 <div class="app-shell">
     <header class="app-topnav" role="banner">
-        <a href="../../" class="app-brund" title="CheckmateModere Lite" aria-label="CheckmateModere Lite Startseite">
-            <span class="app-brund-logo">
-                <img class="app-brund-logo-light" src="/assets/checkmatemodere-logo-black.svg" alt="CheckmateModere">
-                <img class="app-brund-logo-dark" src="/assets/checkmatemodere-logo-white.svg" alt="CheckmateModere">
+        <a href="/de/" class="app-brand" title="CheckmateMore Lite" aria-label="CheckmateMore Lite Startseite">
+            <span class="app-brand-logo">
+                <img class="app-brand-logo-light" src="/assets/checkmatemore-logo-black.svg" alt="CheckmateMore">
+                <img class="app-brand-logo-dark" src="/assets/checkmatemore-logo-white.svg" alt="CheckmateMore">
             </span>
-            <span class="app-brund-tier">Lite</span>
+            <span class="app-brand-tier">Lite</span>
         </a>
         <nav class="app-topnav-links" aria-label="Grundschule">
             <button type="button" class="app-topnav-link is-active" data-view="analyze" onclick="switchAppView('analyze')">Analyse</button>
@@ -81,18 +94,18 @@
     <section class="p-card lite-intro mb-3" data-tone="accuracy" aria-labelledby="lite-intro-title">
         <div class="p-card-body">
             <h1 id="lite-intro-title" class="p-card-title mb-2">Überprüfe Chess.com Spiele in deinem Browser</h1>
-            <p class="lite-intro-lede">Lite-BeWirrtungen Chess.com Spiele lokal in diesem Browser mit Stockfish. Es ist kostenlos, benötigt kein Konto und führt keine Zugerhistoderie zwischen den Besuchen.</p>
+            <p class="lite-intro-lede">Lite-Bewertungen Chess.com Spiele lokal in diesem Browser mit Stockfish. Es ist kostenlos, benötigt kein Konto und führt keine Trainerhistorie zwischen den Besuchen.</p>
             <div class="flex flex-column md:flex-row gap-3 align-items-stretch md:align-items-end">
                 <div class="lite-field flex-1 w-full">
-                    <label foder="Wirername">Chess.com Benutzername</label>
+                    <label for="username">Chess.com Benutzername</label>
                     <span class="p-input-icon-left w-full">
-                        <i class="pi pi-Wirer"></i>
-                        <input type="text" id="Wirername" class="p-inputtext p-component w-full" placeholder="z. B. Hikaru" autocomplete="Wirername">
+                        <i class="pi pi-user"></i>
+                        <input type="text" id="username" class="p-inputtext p-component w-full" placeholder="z. B. Hikaru" autocomplete="username">
                     </span>
                 </div>
                 <div class="lite-review-actions">
                     <div class="lite-field" id="review-mode-field">
-                        <label foder="review-mode">Review-ModWir</label>
+                        <label for="review-mode">Review-Modus</label>
                         <select id="review-mode" class="p-inputtext p-component lite-review-select" onchange="updateReviewModeButton()">
                             <option value="single" selected>Rezensiere eines meiner neuesten Spiele</option>
                             <option value="profile">Vergleiche meine neuesten Spiele</option>
@@ -100,15 +113,15 @@
                     </div>
                     <button id="btnScan" type="button" class="p-button p-component cm-primary" onclick="startSelectedAnalysis()" disabled>
                         <span class="p-button-icon-left pi pi-spin pi-spinner"></span>
-                        <span class="p-button-label">Motoder startet...</span>
+                        <span class="p-button-label">Motor startet...</span>
                     </button>
-                    <button id="btnStopp" type="button" class="p-button p-component p-button-danger" onclick="stopAnalysis()">
+                    <button id="btnStop" type="button" class="p-button p-component p-button-danger" onclick="stopAnalysis()">
                         <span class="p-button-icon-left pi pi-stop"></span>
                         <span class="p-button-label">Stopp</span>
                     </button>
                 </div>
             </div>
-            <p class="lite-privacy"><i class="pi pi-lock" aria-hidden="true"></i>Deine SpielbeWirrtung läuft in diesem Browser. Du brauchst kein Konto.</p>
+            <p class="lite-privacy"><i class="pi pi-lock" aria-hidden="true"></i>Deine Spielbewertung läuft in diesem Browser. Du brauchst kein Konto.</p>
         </div>
     </section>
 
@@ -116,17 +129,17 @@
         <div class="p-card single-game-dialog lite-promo-dialog" role="dialog" aria-modal="true" aria-labelledby="lite-promo-title">
             <div class="p-card-body">
                 <div class="lite-promo-icon" aria-hidden="true"><i class="pi pi-star-fill"></i></div>
-                <div id="lite-promo-title" class="p-card-title mb-2">Halte deinen Schachfodertschritt verbunden</div>
-                <p class="text-coloder-secondary mt-0">Ein kostenloses CheckmateModere-Konto analysierte Spiele und verknüpfte sie zu einem langfristigen Bild. Pro ergänzte wöchentliches Zugerkarriere, Trendverfolgung und persönliches Zuging.</p>
+                <div id="lite-promo-title" class="p-card-title mb-2">Halte deinen Schachfortschritt verbunden</div>
+                <p class="text-color-secondary mt-0">Ein kostenloses CheckmateMore-Konto analysierte Spiele und verknüpfte sie zu einem langfristigen Bild. Pro ergänzte wöchentliches Coaching, Trendverfolgung und persönliches Training.</p>
                 <div class="lite-promo-points">
-                    <span><i class="pi pi-check"></i> Kostenloses Konto mit gespeicherter Spielhistoderie</span>
+                    <span><i class="pi pi-check"></i> Kostenloses Konto mit gespeicherter Spielhistorie</span>
                     <span><i class="pi pi-check"></i> Spiele zu einem Bild verbunden</span>
-                    <span><i class="pi pi-star"></i> Pro Weekly Zugerkarriere, Trends und Zuging</span>
+                    <span><i class="pi pi-star"></i> Pro Weekly Coaching, Trends und Training</span>
                 </div>
-                <div class="flex flex-wrap jWirtify-content-end gap-2 mt-4">
-                    <button type="button" class="p-button p-component p-button-text" onclick="closeLitePromo()"><span class="p-button-label">Benutze Wiriterhin Lite</span></button>
-                    <a href="https://app.checkmatemodere.com/" class="p-button p-component cm-primary"><span class="p-button-label">Erstelle ein kostenloses Konto</span></a>
-                    <a href="../../Preisgestaltung/" class="p-button p-component p-button-outlined"><span class="p-button-label">Pro entdecken</span></a>
+                <div class="flex flex-wrap justify-content-end gap-2 mt-4">
+                    <button type="button" class="p-button p-component p-button-text" onclick="closeLitePromo()"><span class="p-button-label">Benutze weiterhin Lite</span></button>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Erstelle ein kostenloses Konto</span></a>
+                    <a href="/de/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Pro entdecken</span></a>
                 </div>
             </div>
         </div>
@@ -135,16 +148,16 @@
     <div id="single-game-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeSingleGamePicker()">
         <div class="p-card single-game-dialog" role="dialog" aria-modal="true" aria-labelledby="single-game-title">
             <div class="p-card-body">
-                <div class="flex jWirtify-content-betWiren align-items-center mb-3">
+                <div class="flex justify-content-between align-items-center mb-3">
                     <div>
-                        <div id="single-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem">Such dir ein Spiel aWir</div>
-                        <div id="single-game-sub" class="text-coloder-secondary text-sm">Letzte 10 Spiele · Zuletzt Erstes</div>
+                        <div id="single-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem">Such dir ein Spiel aus</div>
+                        <div id="single-game-sub" class="text-color-secondary text-sm">Letzte 10 Spiele · Zuletzt Erstes</div>
                     </div>
                     <button type="button" class="p-button p-component p-button-text p-button-rounded" onclick="closeSingleGamePicker()" title="Schließen">
                         <span class="p-button-icon pi pi-times"></span>
                     </button>
                 </div>
-                <div id="single-game-statWir" class="text-coloder-secondary text-sm mb-3">Lädt...</div>
+                <div id="single-game-status" class="text-color-secondary text-sm mb-3">Lädt...</div>
                 <div id="single-game-list" class="single-game-list"></div>
             </div>
         </div>
@@ -155,12 +168,12 @@
             <div class="p-card-body">
                 <div class="mb-3">
                     <div id="analysis-preset-title" class="p-card-title mb-1">Wähle die Analysetiefe</div>
-                    <div class="text-coloder-secondary text-sm">Wählen Sie aWir, wie gründlich Stockfish Ihre Spiele überprüfen soll. Sie können dies jederzeit in "Über → Einstellungen ändern.</div>
+                    <div class="text-color-secondary text-sm">Wählen Sie aus, wie gründlich Stockfish Ihre Spiele überprüfen soll. Sie können dies jederzeit in "Über → Einstellungen ändern.</div>
                 </div>
                 <div id="analysis-preset-list" class="preset-grid preset-grid-modal mb-3"></div>
-                <div class="flex jWirtify-content-end">
+                <div class="flex justify-content-end">
                     <button type="button" class="p-button p-component" onclick="confirmAnalysisPresetModal()">
-                        <span class="p-button-label">Mach mit diesem Preset Wiriter</span>
+                        <span class="p-button-label">Mach mit diesem Preset weiter</span>
                     </button>
                 </div>
             </div>
@@ -172,21 +185,21 @@
     <div id="chart-game-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeChartGameDialog()">
         <div class="p-card single-game-dialog chart-game-dialog" role="dialog" aria-modal="true" aria-labelledby="chart-game-title">
             <div class="p-card-body">
-                <div class="flex jWirtify-content-betWiren align-items-start mb-3">
+                <div class="flex justify-content-between align-items-start mb-3">
                     <div>
                         <div id="chart-game-result" class="chart-game-result mb-1"></div>
                         <div id="chart-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem"></div>
-                        <div id="chart-game-sub" class="text-coloder-secondary text-sm"></div>
+                        <div id="chart-game-sub" class="text-color-secondary text-sm"></div>
                     </div>
                     <button type="button" class="p-button p-component p-button-text p-button-rounded" onclick="closeChartGameDialog()" title="Schließen">
                         <span class="p-button-icon pi pi-times"></span>
                     </button>
                 </div>
                 <div id="chart-game-stats" class="chart-game-stats mb-3"></div>
-                <div id="chart-game-detail" class="text-coloder-secondary text-sm mb-3"></div>
-                <div class="flex jWirtify-content-end gap-2">
+                <div id="chart-game-detail" class="text-color-secondary text-sm mb-3"></div>
+                <div class="flex justify-content-end gap-2">
                     <button type="button" class="p-button p-component p-button-text" onclick="closeChartGameDialog()">
-                        <span class="p-button-label">Stodernieren</span>
+                        <span class="p-button-label">Stornieren</span>
                     </button>
                     <button type="button" class="p-button p-component" id="chart-game-open-btn" onclick="confirmChartGameDialog()">
                         <span class="p-button-icon-left pi pi-eye"></span>
@@ -201,24 +214,24 @@
         <div class="p-card mb-3" id="profile-header" hidden>
             <div class="p-card-body">
                 <div class="flex gap-3 align-items-center">
-                    <img id="profile-Avatar" class="profile-Avatar" alt="Avatar" src="">
+                    <img id="profile-avatar" class="profile-avatar" alt="Avatar" src="">
                     <div class="flex-1">
-                        <div id="profile-display-name" class="text-2xl font-bold mb-1">CheckmateModere Lite</div>
-                        <div id="profile-header-sub" class="text-coloder-secondary text-sm mb-3">Lite-BeWirrtungen Chess.com Spiele in deinem Browser. Öffne Über uns, um zu sehen, wie die Labels funktionieren.</div>
+                        <div id="profile-display-name" class="text-2xl font-bold mb-1">CheckmateMore Lite</div>
+                        <div id="profile-header-sub" class="text-color-secondary text-sm mb-3">Lite-Bewertungen Chess.com Spiele in deinem Browser. Öffne About, um zu sehen, wie die Labels funktionieren.</div>
                         <div class="flex flex-wrap gap-2" id="profile-stat-row"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Erstelle ein CheckmateModere-Konto">
+        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Erstelle ein CheckmateMore-Konto">
             <div class="app-upgrade-copy">
                 <span class="app-upgrade-kicker">Nach dieser Rezension</span>
                 <strong>Halte deine Spiele verbunden.</strong>
-                <p>Ein kostenloses CheckmateModere-Konto analysierte Spiele und verknüpfte sie zu einem langfristigen Bild. Pro ergänzte wöchentliches Zugerkarriere, Trendverfolgung und persönliches Zuging.</p>
+                <p>Ein kostenloses CheckmateMore-Konto analysierte Spiele und verknüpfte sie zu einem langfristigen Bild. Pro ergänzte wöchentliches Coaching, Trendverfolgung und persönliches Training.</p>
             </div>
             <div class="app-upgrade-actions">
-                <a href="https://app.checkmatemodere.com/" class="p-button p-component cm-primary"><span class="p-button-label">Erstelle ein kostenloses Konto</span></a>
-                <a href="../../Preisgestaltung/" class="p-button p-component p-button-outlined"><span class="p-button-label">Pro entdecken</span></a>
+                <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Erstelle ein kostenloses Konto</span></a>
+                <a href="/de/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Pro entdecken</span></a>
             </div>
         </aside>
 
@@ -241,7 +254,7 @@
                         <li role="presentation">
                             <a href="#" class="p-tabview-nav-link" data-tab="coaching" onclick="switchDashTab('coaching', this); return false;" role="tab">
                                 <i class="pi pi-comments" aria-hidden="true"></i>
-                                <span class="p-tabview-title">Zugerkarriere</span>
+                                <span class="p-tabview-title">Trainerkarriere</span>
                             </a>
                         </li>
                         <li role="presentation">
@@ -263,7 +276,7 @@
                 <div id="tab-overview" class="p-tabview-panel dash-panel active">
                     <div id="progress-box" class="p-card mb-3">
                         <div class="p-card-body">
-                            <div id="progress-text" class="font-bold">Voderbereitung...</div>
+                            <div id="progress-text" class="font-bold">Vorbereitung...</div>
                             <div class="progress-details">
                                 <div class="p-card">
                                     <div class="p-card-body py-2">
@@ -273,7 +286,7 @@
                                 </div>
                                 <div class="p-card">
                                     <div class="p-card-body py-2">
-                                        <div class="prog-label">Züge (Aktuell)</div>
+                                        <div class="prog-label">Moves (Current)</div>
                                         <div id="prog-val-moves" class="prog-val">0 / 0</div>
                                     </div>
                                 </div>
@@ -287,35 +300,35 @@
                     <div id="overview-content" class="overview-grid">
                         <div class="p-card full">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Genauigkeitsfodermular</div>
-                                <div class="text-coloder-secondary text-sm mb-3">Durchschnittliche Zuggenauigkeit über analysierte Spiele hinWirg. Wähle einen Punkt aWir, um dieses Spiel zu eröffnen. Die Genauigkeit wird aWir dieser Rezension geschätzt, nicht aWir Chess.com eigener SpielbeWirrtung.</div>
+                                <div class="p-card-title mb-1">Genauigkeitsformular</div>
+                                <div class="text-color-secondary text-sm mb-3">Durchschnittliche Zuggenauigkeit über analysierte Spiele hinweg. Wähle einen Punkt aus, um dieses Spiel zu eröffnen. Die Genauigkeit wird aus dieser Rezension geschätzt, nicht aus Chess.com eigener Spielbewertung.</div>
                                 <div id="overview-accuracy" class="overview-accuracy"></div>
                             </div>
                         </div>
                         <div class="p-card full">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Chess.com BeWirrtung vs. geschätzte Spielleistung</div>
-                                <div class="text-coloder-secondary text-sm mb-3">Deine Chess.com BeWirrtung nach jedem Spiel, verglichen mit einer lokalen Stockfish-Schätzung, wie dieses Spiel gespielt wurde. Die Schätzung ist keine offizielle BeWirrtung.</div>
+                                <div class="p-card-title mb-1">Chess.com Bewertung vs. geschätzte Spielleistung</div>
+                                <div class="text-color-secondary text-sm mb-3">Deine Chess.com Bewertung nach jedem Spiel, verglichen mit einer lokalen Stockfish-Schätzung, wie dieses Spiel gespielt wurde. Die Schätzung ist keine offizielle Bewertung.</div>
                                 <div id="overview-elo-chart" class="overview-elo-chart"></div>
                             </div>
                         </div>
                         <div class="p-card">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-3">BeWirgungsqualität</div>
+                                <div class="p-card-title mb-3">Bewegungsqualität</div>
                                 <div id="overview-quality"></div>
                             </div>
                         </div>
                         <div class="p-card">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Qualitätsfoderm</div>
-                                <div class="text-coloder-secondary text-sm mb-3">Verteilung der SpielqualitätsWirrte und deine aktuelle Serie.</div>
-                                <div id="overview-foderm"></div>
+                                <div class="p-card-title mb-1">Qualitätsform</div>
+                                <div class="text-color-secondary text-sm mb-3">Verteilung der Spielqualitätswerte und deine aktuelle Serie.</div>
+                                <div id="overview-form"></div>
                             </div>
                         </div>
                         <div class="p-card">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-3">Bestes &amp; woderst</div>
-                                <div class="best-woderst-grid" id="overview-best-woderst"></div>
+                                <div class="p-card-title mb-3">Best &amp; worst</div>
+                                <div class="best-worst-grid" id="overview-best-worst"></div>
                             </div>
                         </div>
                         <div class="p-card full">
@@ -331,18 +344,18 @@
                     <div id="matches-empty" class="tab-empty-state"></div>
                     <div id="matches-content">
                         <div class="flex flex-wrap gap-2 mb-3 align-items-center">
-                            <select id="filter-coloder" class="p-inputtext p-component" onchange="renderSpieleTab()">
+                            <select id="filter-color" class="p-inputtext p-component" onchange="renderMatchesTab()">
                                 <option value="all">Alle Farben</option>
                                 <option value="white">Weiß</option>
                                 <option value="black">Schwarz</option>
                             </select>
-                            <select id="filter-result" class="p-inputtext p-component" onchange="renderSpieleTab()">
+                            <select id="filter-result" class="p-inputtext p-component" onchange="renderMatchesTab()">
                                 <option value="all">Alle Ergebnisse</option>
                                 <option value="WIN">Siege</option>
-                                <option value="LOSS">VerlWirte</option>
+                                <option value="LOSS">Verluste</option>
                                 <option value="DRAW">Unentschieden</option>
                             </select>
-                            <select id="filter-time" class="p-inputtext p-component" onchange="renderSpieleTab()">
+                            <select id="filter-time" class="p-inputtext p-component" onchange="renderMatchesTab()">
                                 <option value="all">Alle Zeit-Kontrollen</option>
                                 <option value="bullet">Bullet</option>
                                 <option value="blitz">Blitz</option>
@@ -350,9 +363,9 @@
                                 <option value="classical">Klassisch</option>
                                 <option value="daily">Täglich</option>
                             </select>
-                            <div id="match-sodert-chip" class="match-sodert-chip p-tag p-component">
-                                <span id="match-sodert-label">Sodertiert nach bestem %</span>
-                                <button type="button" class="p-button p-button-text p-button-sm p-component" onclick="clearSpieleSodert()">Frei</button>
+                            <div id="match-sort-chip" class="match-sort-chip p-tag p-component">
+                                <span id="match-sort-label">Sortiert nach bestem %</span>
+                                <button type="button" class="p-button p-button-text p-button-sm p-component" onclick="clearMatchesSort()">Frei</button>
                             </div>
                         </div>
                         <div id="game-list-view"></div>
@@ -364,15 +377,15 @@
                     <div id="coaching-content">
                         <div class="p-card mb-3">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Anmerkungen zum Zuger</div>
-                                <div class="text-coloder-secondary text-sm mb-3">Notizen zu den Spielen, die Lite in diesem Browser überprüft hat. Dies ist kein wöchentliches Account Zugerkarriere.</div>
+                                <div class="p-card-title mb-1">Anmerkungen zum Trainer</div>
+                                <div class="text-color-secondary text-sm mb-3">Notizen zu den Spielen, die Lite in diesem Browser überprüft hat. Dies ist kein wöchentliches Account Coaching.</div>
                                 <div id="analysis-coach"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Themenfrequenz</div>
-                                <div class="text-coloder-secondary text-sm mb-3">Sieh dir an, wie oft jedes taktische oder positionsbezogene Thema voderkommt. Wähle ein Beispiel aWir, um zum Zug zu springen.</div>
+                                <div class="text-color-secondary text-sm mb-3">Sieh dir an, wie oft jedes taktische oder positionsbezogene Thema vorkommt. Wähle ein Beispiel aus, um zum Zug zu springen.</div>
                                 <div id="analysis-themes"></div>
                             </div>
                         </div>
@@ -384,27 +397,27 @@
                     <div id="stats-content">
                         <div class="p-card mb-3">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Foderm &amp; finishes</div>
-                                <div class="text-coloder-secondary text-sm mb-3">Genauigkeit, CPL nach Phase, AWirWirrtungsschwünge, Abschlüsse, Rating-Gap-Bänder und Zeitkontroll-Splits.</div>
-                                <div id="analysis-foderm"></div>
+                                <div class="p-card-title mb-1">Form &amp; finishes</div>
+                                <div class="text-color-secondary text-sm mb-3">Genauigkeit, CPL nach Phase, Auswertungsschwünge, Abschlüsse, Rating-Gap-Bänder und Zeitkontroll-Splits.</div>
+                                <div id="analysis-form"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Tactics, engine &amp; opponents</div>
-                                <div class="text-coloder-secondary text-sm mb-3">Material-Event-Raten, verpasste Engine-Captures/Checks, MultiPV-Top-2-Treffer und ob du gegnerische Slips bestrafst.</div>
+                                <div class="text-color-secondary text-sm mb-3">Material-Event-Raten, verpasste Engine-Captures/Checks, MultiPV-Top-2-Treffer und ob du gegnerische Slips bestrafst.</div>
                                 <div id="analysis-tactics"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Spielertendenzen</div>
-                                <div class="text-coloder-secondary text-sm mb-3">Lieblingsöffnungen und wo deine Figuren am häufigsten lunden.</div>
+                                <div class="text-color-secondary text-sm mb-3">Lieblingsöffnungen und wo deine Figuren am häufigsten landen.</div>
                                 <div class="profile-kicker mb-2">Lieblingseröffnungen</div>
                                 <div class="grid mb-3">
                                     <div class="col-12 md:col-6">
                                         <div class="tendency-subcard">
-                                            <div class="profile-kicker">Als Wiriß</div>
+                                            <div class="profile-kicker">Als weiß</div>
                                             <div class="opening-rank-list" id="profile-white-openings"></div>
                                         </div>
                                     </div>
@@ -416,7 +429,7 @@
                                     </div>
                                 </div>
                                 <div class="profile-kicker mb-2">Move-Heatmaps</div>
-                                <div class="heatmap-note mb-2">Dein Zielfeld ist als Weiß und Schwarz aufgeteilt, aufgeteilt nach Eröffnungs-/Mittelspiel/Endespiel. Die Bretter Wirrden von deiner Seite gezeigt.</div>
+                                <div class="heatmap-note mb-2">Dein Zielfeld ist als Weiß und Schwarz aufgeteilt, aufgeteilt nach Eröffnungs-/Mittelspiel/Endspiel. Die Bretter werden von deiner Seite gezeigt.</div>
                                 <div id="player-move-heatmap" class="heatmap-matrix-wrap"></div>
                             </div>
                         </div>
@@ -424,14 +437,14 @@
                             <div class="p-card">
                                 <div class="p-card-body">
                                     <div class="p-card-title mb-1">Wie lange jedes Stück überlebt</div>
-                                    <div class="text-coloder-secondary text-sm mb-3">Das durchschnittliche Leben (in Zügen) jeder Startfigur als Weiß und Schwarz.</div>
+                                    <div class="text-color-secondary text-sm mb-3">Das durchschnittliche Leben (in Zügen) jeder Startfigur als Weiß und Schwarz.</div>
                                     <div id="analysis-piece-survival"></div>
                                 </div>
                             </div>
                             <div class="p-card">
                                 <div class="p-card-body">
                                     <div class="p-card-title mb-1">Schachmatt mit</div>
-                                    <div class="text-coloder-secondary text-sm mb-3">Welche Figur dein Schachmatt geliefert hat, gewinnt prozentual.</div>
+                                    <div class="text-color-secondary text-sm mb-3">Welche Figur dein Schachmatt geliefert hat, gewinnt prozentual.</div>
                                     <div id="analysis-checkmates"></div>
                                 </div>
                             </div>
@@ -442,12 +455,12 @@
                 <div id="tab-learning" class="p-tabview-panel dash-panel">
                     <div id="learn-browse">
                         <div class="p-buttonset mb-3">
-                            <button type="button" class="p-button p-component learn-subtab" data-learn="openings" onclick="switchLernen SieSection('openings', this)">Eröffnungen</button>
-                            <button type="button" class="p-button p-component p-button-outlined learn-subtab" data-learn="famoWir" onclick="switchLernen SieSection('famoWir', this)">Berühmte Spiele</button>
+                            <button type="button" class="p-button p-component learn-subtab" data-learn="openings" onclick="switchLearnSection('openings', this)">Eröffnungen</button>
+                            <button type="button" class="p-button p-component p-button-outlined learn-subtab" data-learn="famous" onclick="switchLearnSection('famous', this)">Berühmte Spiele</button>
                         </div>
                         <span class="p-input-icon-left w-full mb-3 block">
                             <i class="pi pi-search"></i>
-                            <input type="search" id="learn-search" class="p-inputtext p-component w-full" placeholder="Suche nach Slots oder berühmten Spielen..." oninput="renderLernen SieingBrowse()">
+                            <input type="search" id="learn-search" class="p-inputtext p-component w-full" placeholder="Suche nach Slots oder berühmten Spielen..." oninput="renderLearningBrowse()">
                         </span>
                         <div id="learn-groups"></div>
                     </div>
@@ -465,34 +478,34 @@
                     <span class="p-button-icon-left pi pi-arrow-left"></span>
                     <span class="p-button-label">Zurück zum Profil</span>
                 </button>
-                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenAktuellReview()" title="Führe diese SpielbeWirrtung erneut mit einer umfassenderen Suchmaschinensuche durch">
+                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenCurrentReview()" title="Führe diese Spielbewertung erneut mit einer umfassenderen Suchmaschinensuche durch">
                     <span class="p-button-icon-left pi pi-bolt"></span>
-                    <span class="p-button-label">Führen Sie eine aWirführlichere Überprüfung durch</span>
+                    <span class="p-button-label">Führen Sie eine ausführlichere Überprüfung durch</span>
                 </button>
                 <span id="review-depth-badge" class="review-depth-badge"></span>
-                <span id="review-deepen-statWir" class="text-coloder-secondary text-sm"></span>
+                <span id="review-deepen-status" class="text-color-secondary text-sm"></span>
             </div>
 
             <div id="review-matchup" class="review-matchup mb-3"></div>
 
-            <div id="game-stodery-box" class="p-card game-stodery mb-3" style="display:none">
+            <div id="game-story-box" class="p-card game-story mb-3" style="display:none">
                 <div class="p-card-body">
-                    <div class="game-stodery-kicker" id="game-stodery-kicker">Warum du gewonnen hast</div>
-                    <div class="game-stodery-headline" id="game-stodery-headline"></div>
-                    <div class="game-stodery-detail" id="game-stodery-detail"></div>
-                    <div class="game-stodery-link" id="game-stodery-link" style="display:none">Springen Sie zum Schlüsselmoment →</div>
+                    <div class="game-story-kicker" id="game-story-kicker">Warum du gewonnen hast</div>
+                    <div class="game-story-headline" id="game-story-headline"></div>
+                    <div class="game-story-detail" id="game-story-detail"></div>
+                    <div class="game-story-link" id="game-story-link" style="display:none">Springen Sie zum Schlüsselmoment →</div>
                 </div>
             </div>
 
             <div id="current-move-info" class="p-card mb-3">
                 <div class="p-card-body">
                     <span id="move-opening" class="opening-tag"></span>
-                    <div class="flex jWirtify-content-betWiren align-items-center">
-                        <div id="move-title" class="text-xl font-bold">Wähle einen Zug aWir</div>
+                    <div class="flex justify-content-between align-items-center">
+                        <div id="move-title" class="text-xl font-bold">Wähle einen Zug aus</div>
                         <div id="move-badge"></div>
                     </div>
-                    <div id="move-desc" class="text-coloder-secondary text-sm mt-2">Wählen Sie einen Move, um die Rezension zu sehen.</div>
-                    <div id="move-alt" class="move-alt text-coloder-secondary text-sm mt-2" style="display:none"></div>
+                    <div id="move-desc" class="text-color-secondary text-sm mt-2">Wählen Sie einen Move, um die Rezension zu sehen.</div>
+                    <div id="move-alt" class="move-alt text-color-secondary text-sm mt-2" style="display:none"></div>
                 </div>
             </div>
 
@@ -501,13 +514,13 @@
                     <span class="p-button-icon-left pi pi-step-backward"></span>
                     <span class="p-button-label">Start</span>
                 </button>
-                <button type="button" id="btn-key-move" class="p-button p-component" onclick="goToLegendeMove()" title="Springen Sie zum Schlüsselmoment" disabled>
+                <button type="button" id="btn-key-move" class="p-button p-component" onclick="goToKeyMove()" title="Springen Sie zum Schlüsselmoment" disabled>
                     <span class="p-button-icon-left pi pi-star-fill"></span>
                     <span class="p-button-label">Legende</span>
                 </button>
-                <button type="button" class="p-button p-component p-button-secondary" onclick="goToEnde()" title="Spielende">
+                <button type="button" class="p-button p-component p-button-secondary" onclick="goToEnd()" title="Spielende">
                     <span class="p-button-label">Ende</span>
-                    <span class="p-button-icon-right pi pi-step-foderward"></span>
+                    <span class="p-button-icon-right pi pi-step-forward"></span>
                 </button>
             </div>
 
@@ -515,7 +528,7 @@
                 <div id="active-board" class="chess-board"></div>
                 <svg id="arrow-overlay" class="arrow-overlay" viewBox="0 0 100 100">
                     <defs>
-                        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" oderient="auto">
+                        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto">
                             <path d="M0,0 L4,2 L0,4 Z" fill="rgba(52, 211, 153, 0.9)" />
                         </marker>
                     </defs>
@@ -529,7 +542,7 @@
             </div>
 
             <div class="review-nav review-nav-step flex flex-wrap gap-2 mt-3">
-                <button type="button" class="p-button p-component p-button-secondary" onclick="stepMove(-1)" title="Voderheriger Umzug">
+                <button type="button" class="p-button p-component p-button-secondary" onclick="stepMove(-1)" title="Vorheriger Umzug">
                     <span class="p-button-icon-left pi pi-caret-left"></span>
                     <span class="p-button-label">Früher</span>
                 </button>
@@ -539,15 +552,15 @@
                 </button>
             </div>
 
-            <aside class="app-upgrade-card review-app-promo mt-4" aria-label="Erstelle ein CheckmateModere-Konto">
+            <aside class="app-upgrade-card review-app-promo mt-4" aria-label="Erstelle ein CheckmateMore-Konto">
                 <div class="app-upgrade-copy">
                     <span class="app-upgrade-kicker">Nach dieser Rezension</span>
                     <strong>Halte dieses Spiel langfristig.</strong>
-                    <p>Ein kostenloses CheckmateModere-Konto analysiert Spiele und verbindet sie im Laufe der Zeit. Pro bietet wöchentliches Zugerkarriere, Trendverfolgung und persönliches Zuging.</p>
+                    <p>Ein kostenloses CheckmateMore-Konto analysiert Spiele und verbindet sie im Laufe der Zeit. Pro bietet wöchentliches Coaching, Trendverfolgung und persönliches Training.</p>
                 </div>
                 <div class="app-upgrade-actions">
-                    <a href="https://app.checkmatemodere.com/" class="p-button p-component cm-primary"><span class="p-button-label">Erstelle ein kostenloses Konto</span></a>
-                    <a href="../../Preisgestaltung/" class="p-button p-component p-button-outlined"><span class="p-button-label">Pro entdecken</span></a>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Erstelle ein kostenloses Konto</span></a>
+                    <a href="/de/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Pro entdecken</span></a>
                 </div>
             </aside>
         </div>
@@ -560,7 +573,7 @@
                             <li class="p-highlight" role="presentation">
                                 <a href="#" class="p-tabview-nav-link" data-review-tab="coaching" onclick="switchTab('coaching', this); return false;" role="tab">
                                     <i class="pi pi-comments" aria-hidden="true"></i>
-                                    <span class="p-tabview-title">Zugerkarriere</span>
+                                    <span class="p-tabview-title">Trainerkarriere</span>
                                 </a>
                             </li>
                             <li role="presentation">
@@ -571,7 +584,7 @@
                             </li>
                             <li role="presentation">
                                 <a href="#" class="p-tabview-nav-link" data-review-tab="moves" onclick="switchTab('moves', this); return false;" role="tab">
-                                    <i class="pi pi-sodert-alt" aria-hidden="true"></i>
+                                    <i class="pi pi-sort-alt" aria-hidden="true"></i>
                                     <span class="p-tabview-title">Züge</span>
                                 </a>
                             </li>
@@ -604,7 +617,7 @@
             <i class="pi pi-list" aria-hidden="true"></i><span>Spiele</span>
         </button>
         <button type="button" class="app-float-item" data-tab="coaching" onclick="switchDashTab('coaching')">
-            <i class="pi pi-comments" aria-hidden="true"></i><span>Zuger</span>
+            <i class="pi pi-comments" aria-hidden="true"></i><span>Trainer</span>
         </button>
         <button type="button" class="app-float-item" data-tab="stats" onclick="switchDashTab('stats')">
             <i class="pi pi-chart-bar" aria-hidden="true"></i><span>Statistiken</span>
@@ -618,24 +631,24 @@
     <div id="about-view" class="about-view" style="display:none">
         <div class="p-card">
             <div class="p-card-body">
-                <h2 class="about-title mb-1">Über CheckmateModere Lite</h2>
-                <p class="faq-def mb-3">Alles läuft in deinem Browser. Stockfish, Cache, Zugerkarriere und Statistiken. Kein Konto erfoderderlich.</p>
+                <h2 class="about-title mb-1">Über CheckmateMore Lite</h2>
+                <p class="faq-def mb-3">Alles läuft in deinem Browser. Stockfish, Cache, Coaching und Statistiken. Kein Konto erforderlich.</p>
                 <div class="p-tabview p-component about-tabs">
                     <div class="p-tabview-nav-container">
                         <div class="p-tabview-nav-content">
                             <ul class="p-tabview-nav" role="tablist">
                                 <li class="p-highlight" role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="how" onclick="switchÜber unsTab('how', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="how" onclick="switchAboutTab('how', this); return false;" role="tab">
                                         <span class="p-tabview-title">Wie es funktioniert</span>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="features" onclick="switchÜber unsTab('features', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="features" onclick="switchAboutTab('features', this); return false;" role="tab">
                                         <span class="p-tabview-title">Funktionsumfang</span>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="settings" onclick="switchÜber unsTab('settings', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="settings" onclick="switchAboutTab('settings', this); return false;" role="tab">
                                         <span class="p-tabview-title">Einstellungen</span>
                                     </a>
                                 </li>
@@ -670,7 +683,7 @@
 <script src="/js/chess/cache.js?v=20260811h"></script>
 <script src="/js/chess/analysis.js?v=20260829a"></script>
 <script src="/js/chess/pieces.js?v=20260811h"></script>
-<script src="/js/chess/scodering.js?v=20260826a"></script>
+<script src="/js/chess/scoring.js?v=20260826a"></script>
 <script src="/js/chess/components.js?v=20260829d"></script>
 <script src="/js/chess/ui.js?v=20260829d"></script>
 <script src="/js/chess/insights.js?v=20260829a"></script>

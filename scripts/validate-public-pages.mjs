@@ -1,12 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { targetLocales, localeFolder } from '../localization/config.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const ignored = new Set(['chess/app/index.html']);
 const files = [];
+const localizedDirectories = new Set(targetLocales.map(localeFolder));
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (['node_modules', '.git', '.vs', '_tmp_chess'].includes(entry.name)) continue;
+    if (['node_modules', '.git', '.vs', '.verify', '_tmp_chess'].includes(entry.name) || (dir === root && localizedDirectories.has(entry.name))) continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(full);
     else if (entry.name === 'index.html') files.push(path.relative(root, full).replaceAll('\\', '/'));
@@ -45,7 +47,7 @@ for (const file of files) {
   for (const match of html.matchAll(/(?:href|src)="([^"#?]+)(?:[?#][^"]*)?"/g)) {
     const url = match[1];
     if (/^(?:https?:|mailto:|data:)/i.test(url)) continue;
-    let target = path.resolve(dir, url);
+    let target = url.startsWith('/') ? path.join(root, url.replace(/^\/+/, '')) : path.resolve(dir, url);
     if (url.endsWith('/') || !path.extname(target)) target = path.join(target, 'index.html');
     if (!fs.existsSync(target)) errors.push(`${file}: missing local target ${url}`);
   }
@@ -58,7 +60,11 @@ for (const file of files) {
 
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
-if (sitemapUrls.length !== files.filter(file => !ignored.has(file)).length) errors.push(`sitemap: ${sitemapUrls.length} URLs for ${files.filter(file => !ignored.has(file)).length} public HTML pages`);
+for (const file of files.filter(file => !ignored.has(file))) {
+  const html = fs.readFileSync(path.join(root, file), 'utf8');
+  const canonical = one(html, /<link rel="canonical" href="([^"]+)"/i);
+  if (!sitemapUrls.includes(canonical)) errors.push(`sitemap: missing source canonical ${canonical}`);
+}
 
 if (errors.length) {
   console.error(errors.join('\n'));

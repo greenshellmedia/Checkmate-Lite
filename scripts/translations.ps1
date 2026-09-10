@@ -14,7 +14,13 @@ try {
     'Generate' { node scripts/generate-translations.mjs --prune }
     'Validate' { node scripts/validate-translations.mjs }
     'ValidateStructure' { node scripts/validate-translations.mjs --strict }
-    'BuildPages' { node scripts/build-localized-pages.mjs }
+    'BuildPages' {
+      node scripts/repair-protected-translations.mjs
+      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      node scripts/build-localized-pages.mjs
+      if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      node scripts/validate-seo-localization.mjs
+    }
     'Test' { node --test localization/tests/*.test.mjs }
   }
   if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

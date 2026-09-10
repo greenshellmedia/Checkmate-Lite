@@ -8,7 +8,7 @@ export const samePlaceholders = (a, b) => JSON.stringify(placeholders(a)) === JS
 export function protectPlaceholders(value) {
   const saved = [];
   return {
-    text: String(value).replace(/\{\{[^{}]+\}\}|\{\d+\}|%[sdif]|\$\{[^{}]+\}/g, match => {
+    text: String(value).replace(/https?:\/\/[^\s<>"']+|CheckmateMore|Chess\.com|Lichess|Stockfish|\{\{[^{}]+\}\}|\{\d+\}|%[sdif]|\$\{[^{}]+\}/gi, match => {
       const token = `__CMP_PLACEHOLDER_${saved.length}__`;
       saved.push(match);
       return token;
@@ -18,3 +18,23 @@ export function protectPlaceholders(value) {
 }
 
 export function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+export function cleanEnvironmentValue(value) {
+  if (typeof value !== 'string') return '';
+  return value.trim();
+}
+
+export function azureTranslateEndpoint(value) {
+  const configured = cleanEnvironmentValue(value) || 'https://api.cognitive.microsofttranslator.com';
+  const endpoint = configured.replace(/\/+$/, '');
+  const url = new URL(endpoint);
+  const path = url.pathname.replace(/\/+$/, '');
+
+  if (/\/(?:translate|translator\/text\/v3\.0\/translate)$/i.test(path)) return url.toString().replace(/\/$/, '');
+  if (url.hostname.toLowerCase().endsWith('.cognitiveservices.azure.com')) {
+    url.pathname = `${path}/translator/text/v3.0/translate`.replace(/\/+/g, '/');
+  } else {
+    url.pathname = `${path}/translate`.replace(/\/+/g, '/');
+  }
+  return url.toString().replace(/\/$/, '');
+}

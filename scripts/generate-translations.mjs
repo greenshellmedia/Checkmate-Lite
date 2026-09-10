@@ -3,7 +3,7 @@ import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { targetLocales } from '../localization/config.mjs';
-import { hash, protectPlaceholders, sleep } from './localization-lib.mjs';
+import { azureTranslateEndpoint, cleanEnvironmentValue, hash, protectPlaceholders, sleep } from './localization-lib.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = new Set(process.argv.slice(2));
@@ -14,9 +14,9 @@ const source = JSON.parse(fs.readFileSync(path.join(root, 'localization/source-c
 const dir = path.join(root, 'localization/locales');
 const manifestPath = path.join(root, 'localization/translation-manifest.json');
 const manifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : { version: 1, entries: {} };
-const key = process.env.AZURE_TRANSLATOR_KEY;
-const region = process.env.AZURE_TRANSLATOR_REGION;
-const endpoint = (process.env.AZURE_TRANSLATOR_ENDPOINT || 'https://api.cognitive.microsofttranslator.com').replace(/\/$/, '');
+const key = cleanEnvironmentValue(process.env.AZURE_TRANSLATOR_KEY);
+const region = cleanEnvironmentValue(process.env.AZURE_TRANSLATOR_REGION);
+const endpoint = azureTranslateEndpoint(process.env.AZURE_TRANSLATOR_ENDPOINT);
 const batchSize = Math.max(1, Math.min(100, Number(process.env.TRANSLATION_BATCH_SIZE || 50)));
 const paceMs = Math.max(0, Number(process.env.TRANSLATION_PACE_MS || 250));
 const maximumBatchCharacters = Math.max(1000, Math.min(45000, Number(process.env.AZURE_TRANSLATOR_BATCH_CHARACTERS || 12000)));
@@ -25,7 +25,7 @@ const targetLanguage = locale => locale === 'pt-BR' ? 'pt' : locale;
 
 async function translateBatch(items, locale) {
   const protectedItems = items.map(({ value }) => protectPlaceholders(value));
-  const url = `${endpoint}/translate?api-version=3.0&from=en&to=${encodeURIComponent(targetLanguage(locale))}`;
+  const url = `${endpoint}?api-version=3.0&from=en&to=${encodeURIComponent(targetLanguage(locale))}`;
   let lastNetworkError;
   for (let attempt = 0; attempt < 9; attempt++) {
     let response;
@@ -46,6 +46,12 @@ async function translateBatch(items, locale) {
       return translated;
     }
     const body = await response.text();
+    if (response.status === 401) {
+      let azureCode = '';
+      try { azureCode = JSON.parse(body)?.error?.code || ''; } catch {}
+      const endpointKind = new URL(endpoint).hostname.endsWith('.cognitiveservices.azure.com') ? 'resource-specific' : 'global';
+      throw new Error(`Azure Translator rejected the credentials (${azureCode || 'HTTP 401'}). The key is present, the region is ${region ? 'present' : 'not set'}, and the ${endpointKind} endpoint is ${new URL(endpoint).origin}. Confirm that AZURE_TRANSLATOR_KEY, AZURE_TRANSLATOR_REGION and AZURE_TRANSLATOR_ENDPOINT all come from the same Azure resource. The region must exactly match the resource Location. No credential values were printed.`);
+    }
     if (response.status !== 429 && response.status < 500) throw new Error(`Azure Translator returned ${response.status}: ${body}`);
     if (attempt === 8) throw new Error(`Azure Translator returned ${response.status} after 9 attempts: ${body}`);
     const retryAfter = Number(response.headers.get('retry-after')) * 1000;
@@ -53,7 +59,7 @@ async function translateBatch(items, locale) {
     console.warn(`[${locale}] Azure returned ${response.status}. Saved progress is safe; retrying in ${Math.ceil(backoff / 1000)}s (attempt ${attempt + 2}/9).`);
     await sleep(backoff);
   }
-  if (lastNetworkError) throw new Error(`Could not connect to Azure Translator at ${endpoint} after 9 attempts (${lastNetworkError.cause?.code || lastNetworkError.code || lastNetworkError.message}). Check the endpoint, firewall/VPN and proxy settings. If this Azure resource uses a custom endpoint, set AZURE_TRANSLATOR_ENDPOINT to it.`, { cause: lastNetworkError });
+  if (lastNetworkError) throw new Error(`Could not connect to Azure Translator at ${new URL(endpoint).origin} after 9 attempts (${lastNetworkError.cause?.code || lastNetworkError.code || lastNetworkError.message}). Check the endpoint, firewall/VPN and proxy settings. If this Azure resource uses a custom endpoint, set AZURE_TRANSLATOR_ENDPOINT to it.`, { cause: lastNetworkError });
   throw new Error('Azure Translator did not recover after 9 attempts.');
 }
 
@@ -61,15 +67,19 @@ fs.mkdirSync(dir, { recursive: true });
 const pendingCharacters = targetLocales.reduce((sum, locale) => {
   const file = path.join(dir, `${locale}.json`);
   const existing = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {};
-  return sum + Object.entries(source).filter(([id, value]) => !existing[id] || manifest.entries[`${locale}:${id}`]?.sourceHash !== hash(value)).reduce((localeSum, [, value]) => localeSum + value.length, 0);
+  return sum + Object.entries(source).filter(([id, value]) => !existing[id] || manifest.entries[`${locale}:${id}`]?.sourceHash !== hash(value) || manifest.entries[`${locale}:${id}`]?.provider === 'english-fallback').reduce((localeSum, [, value]) => localeSum + value.length, 0);
 }, 0);
 console.log(`${Object.keys(source).length} strings; ${pendingCharacters.toLocaleString()} translated characters.`);
+if (!dryRun && !pruneOnly && pendingCharacters) {
+  const endpointKind = new URL(endpoint).hostname.endsWith('.cognitiveservices.azure.com') ? 'resource-specific' : 'global';
+  console.log(`Azure configuration: key ${key ? 'present' : 'missing'}, region ${region ? 'present' : 'not set'}, ${endpointKind} endpoint ${new URL(endpoint).origin}.`);
+}
 if (!dryRun && !pruneOnly && pendingCharacters > maximumCharacters) throw new Error(`Translation requires ${pendingCharacters.toLocaleString()} characters, above AZURE_TRANSLATOR_MAX_CHARACTERS (${maximumCharacters.toLocaleString()}).`);
 for (const locale of targetLocales) {
   const file = path.join(dir, `${locale}.json`);
   const existing = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {};
   const next = prune ? Object.fromEntries(Object.entries(existing).filter(([id]) => id in source)) : { ...existing };
-  const pending = Object.entries(source).filter(([id, value]) => !next[id] || manifest.entries[`${locale}:${id}`]?.sourceHash !== hash(value));
+  const pending = Object.entries(source).filter(([id, value]) => !next[id] || manifest.entries[`${locale}:${id}`]?.sourceHash !== hash(value) || manifest.entries[`${locale}:${id}`]?.provider === 'english-fallback');
   console.log(`${locale}: ${pending.length} pending, ${Object.keys(next).length} retained.`);
   if (!dryRun && !pruneOnly && pending.length && !key) throw new Error('AZURE_TRANSLATOR_KEY is required when translations are pending.');
   if (!dryRun && !pruneOnly) for (let start = 0; start < pending.length;) {

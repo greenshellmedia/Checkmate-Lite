@@ -2,31 +2,44 @@
 <html lang="pl" data-cmp-locale-default="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewplubt" content="width=device-width, initial-scale=1.0">
-    <title>Szach-mat Więcej Lite</title>
-    <meta name="description" content="Szach-mat Więcej Lite. Załaduj profil Chess.com lub grę, aby zobaczyć recenzję Stockfish w swojej przeglądarce. Konto nie jest wymagane.">
-    <link rel="canonical" href="https://checkmatemlube.com/chess/app/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckmateMore Lite</title>
+    <meta name="description" content="CheckmateMore Lite. Załaduj profil Chess.com lub grę, aby zobaczyć recenzję Stockfish w swojej przeglądarce. Konto nie jest wymagane.">
+    <link rel="canonical" href="https://checkmatemore.com/pl/chess/app/">
     <script type="application/ld+json">
-    {"@context":"https://schema.lubg","@type":"SoftwareApplication","name":"Szach-mat Więcej Lite","applicationCategluby":"GameApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Darmowa recenzja gry szachomyj Stockfish w przeglądarce. Nie wymaga konta.","url":"https://checkmatemlube.com/chess/app/"}
-    </script>
-    <meta name="collub-scheme" content="light dark">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CheckmateMore Lite",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "description": "Darmowa recenzja gry szachowej Stockfish w przeglądarce. Nie wymaga konta.",
+  "url": "https://checkmatemore.com/chess/app/"
+}
+</script>
+    <meta name="color-scheme" content="light dark">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="shlubtcut icon" href="../../favicon.ico">
-    <link rel="manifest" href="../../site.mybmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
     <script>
     (function () {
-        var base = 'https://cdn.jsdelivr.net/npm/primeng@17.18.15/resnaszeces/themes/';
+        var base = 'https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/themes/';
         var light = base + 'md-light-indigo/theme.css';
         var dark = base + 'md-dark-indigo/theme.css';
         var link = document.createElement('link');
         link.id = 'pf-theme';
         link.rel = 'stylesheet';
-        var mq = window.matchMedia('(prefers-collub-scheme: dark)');
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
         function apply(isDark) {
             link.href = isDark ? dark : light;
-            document.documentElement.style.collubScheme = isDark ? 'dark' : 'light';
+            document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
             document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
         }
         apply(mq.matches);
@@ -35,41 +48,41 @@
         else if (mq.addListener) mq.addListener(function (e) { apply(e.matches); });
     })();
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resnaszeces/primeng.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/primeng.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
-    <link rel="stylesheet" href="../../brlubaz-tokens.css?v=20260829a">
-    <link rel="stylesheet" href="../../chess.css?v=20260829d">
-    <link rel="stylesheet" href="../../lite-theme.css?v=20260829d">
-    <link rel="stylesheet" href="../../brlubaz.css?v=20260829d">
+    <link rel="stylesheet" href="/brand-tokens.css?v=20260829a">
+    <link rel="stylesheet" href="/chess.css?v=20260829d">
+    <link rel="stylesheet" href="/lite-theme.css?v=20260829d">
+    <link rel="stylesheet" href="/brand.css?v=20260829d">
     <script src="/js/clean-url.js"></script>
   <link rel="stylesheet" href="/localization/localization.css?v=1">
   <script src="/js/localization.js"></script>
-  <link rel="alternate" hreflang="en-GB" href="https://checkmatemlube.com/chess/app/">
-  <link rel="alternate" hreflang="es" href="https://checkmatemlube.com/es/chess/app/">
-  <link rel="alternate" hreflang="fr" href="https://checkmatemlube.com/fr/chess/app/">
-  <link rel="alternate" hreflang="de" href="https://checkmatemlube.com/de/chess/app/">
-  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemlube.com/pt-br/chess/app/">
-  <link rel="alternate" hreflang="it" href="https://checkmatemlube.com/it/chess/app/">
-  <link rel="alternate" hreflang="nl" href="https://checkmatemlube.com/nl/chess/app/">
-  <link rel="alternate" hreflang="pl" href="https://checkmatemlube.com/pl/chess/app/">
-  <link rel="alternate" hreflang="uk" href="https://checkmatemlube.com/uk/chess/app/">
-  <link rel="alternate" hreflang="ru" href="https://checkmatemlube.com/ru/chess/app/">
-  <link rel="alternate" hreflang="x-default" href="https://checkmatemlube.com/chess/app/">
-  <script src="../../../js/affiliate-attribution.js"></script>
+  <script src="/js/affiliate-attribution.js"></script>
   <script type="text/javascript" src="https://api.goaffpro.com/loader.js?shop=pmnkfjiswh"></script>
+  <link rel="alternate" hreflang="en-GB" href="https://checkmatemore.com/chess/app/">
+  <link rel="alternate" hreflang="es" href="https://checkmatemore.com/es/chess/app/">
+  <link rel="alternate" hreflang="fr" href="https://checkmatemore.com/fr/chess/app/">
+  <link rel="alternate" hreflang="de" href="https://checkmatemore.com/de/chess/app/">
+  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemore.com/pt-br/chess/app/">
+  <link rel="alternate" hreflang="it" href="https://checkmatemore.com/it/chess/app/">
+  <link rel="alternate" hreflang="nl" href="https://checkmatemore.com/nl/chess/app/">
+  <link rel="alternate" hreflang="pl" href="https://checkmatemore.com/pl/chess/app/">
+  <link rel="alternate" hreflang="uk" href="https://checkmatemore.com/uk/chess/app/">
+  <link rel="alternate" hreflang="ru" href="https://checkmatemore.com/ru/chess/app/">
+  <link rel="alternate" hreflang="x-default" href="https://checkmatemore.com/chess/app/">
 </head>
 <body class="cm-lite">
 <a class="cm-skip" href="#analyze-view">Przejdź do treści</a>
 <div class="app-shell">
     <header class="app-topnav" role="banner">
-        <a href="../../" class="app-brlubaz" title="Szach-mat Więcej Lite" aria-label="Szach-mat Więcej Lite Dom">
-            <span class="app-brlubaz-logo">
-                <img class="app-brlubaz-logo-light" src="/assets/checkmatemlube-logo-black.svg" alt="Szach-mat Więcej">
-                <img class="app-brlubaz-logo-dark" src="/assets/checkmatemlube-logo-white.svg" alt="Szach-mat Więcej">
+        <a href="/pl/" class="app-brand" title="CheckmateMore Lite" aria-label="CheckmateMore Lite Home">
+            <span class="app-brand-logo">
+                <img class="app-brand-logo-light" src="/assets/checkmatemore-logo-black.svg" alt="CheckmateMore">
+                <img class="app-brand-logo-dark" src="/assets/checkmatemore-logo-white.svg" alt="CheckmateMore">
             </span>
-            <span class="app-brlubaz-tier">Lite</span>
+            <span class="app-brand-tier">Lite</span>
         </a>
         <nav class="app-topnav-links" aria-label="Szkoła podstawowa">
             <button type="button" class="app-topnav-link is-active" data-view="analyze" onclick="switchAppView('analyze')">Analiza</button>
@@ -81,21 +94,21 @@
     <section class="p-card lite-intro mb-3" data-tone="accuracy" aria-labelledby="lite-intro-title">
         <div class="p-card-body">
             <h1 id="lite-intro-title" class="p-card-title mb-2">Przejrzyj Chess.com gier w swojej przeglądarce</h1>
-            <p class="lite-intro-lede">Lite recenzje Chess.com gier lokalnie w tej przeglądarce na Stockfish. Jest darmowa, nie wymaga konta i nie prowadzi histlubii coachingu między wizytami.</p>
+            <p class="lite-intro-lede">Lite recenzje Chess.com gier lokalnie w tej przeglądarce na Stockfish. Jest darmowa, nie wymaga konta i nie prowadzi historii coachingu między wizytami.</p>
             <div class="flex flex-column md:flex-row gap-3 align-items-stretch md:align-items-end">
                 <div class="lite-field flex-1 w-full">
-                    <label flub="Nasername">Chess.com nazwa użytkownika</label>
+                    <label for="username">Chess.com nazwa użytkownika</label>
                     <span class="p-input-icon-left w-full">
-                        <i class="pi pi-Naser"></i>
-                        <input type="text" id="Nasername" class="p-inputtext p-component w-full" placeholder="np. Hikaru" autocomplete="Nasername">
+                        <i class="pi pi-user"></i>
+                        <input type="text" id="username" class="p-inputtext p-component w-full" placeholder="np. Hikaru" autocomplete="username">
                     </span>
                 </div>
                 <div class="lite-review-actions">
                     <div class="lite-field" id="review-mode-field">
-                        <label flub="review-mode">Tryb recenzji</label>
+                        <label for="review-mode">Tryb recenzji</label>
                         <select id="review-mode" class="p-inputtext p-component lite-review-select" onchange="updateReviewModeButton()">
                             <option value="single" selected>Recenzja jednej z moich najnowszych gier</option>
-                            <option value="profile">Plubównaj moje najnowsze gry</option>
+                            <option value="profile">Porównaj moje najnowsze gry</option>
                         </select>
                     </div>
                     <button id="btnScan" type="button" class="p-button p-component cm-primary" onclick="startSelectedAnalysis()" disabled>
@@ -117,16 +130,16 @@
             <div class="p-card-body">
                 <div class="lite-promo-icon" aria-hidden="true"><i class="pi pi-star-fill"></i></div>
                 <div id="lite-promo-title" class="p-card-title mb-2">Utrzymuj postępy w szachach w stanie spójnym</div>
-                <p class="text-collub-secondary mt-0">Darmomy konto Szach-mat Więcej przechowuje przeanalizowane mecze i łączy je z długoterminowym obrazem. Pro dodaje cotygodniomy coachingi, śledzenie trendów lubaz praktyki osobiste.</p>
+                <p class="text-color-secondary mt-0">Darmowe konto CheckmateMore przechowuje przeanalizowane mecze i łączy je z długoterminowym obrazem. Pro dodaje cotygodniowe coachingi, śledzenie trendów oraz praktyki osobiste.</p>
                 <div class="lite-promo-points">
-                    <span><i class="pi pi-check"></i> Darmomy konto z zapisaną histlubią gry</span>
+                    <span><i class="pi pi-check"></i> Darmowe konto z zapisaną historią gry</span>
                     <span><i class="pi pi-check"></i> Gry połączone w jeden obraz</span>
-                    <span><i class="pi pi-star"></i> Tygodniomy coachingi zawodomy, trendy i treningi</span>
+                    <span><i class="pi pi-star"></i> Tygodniowe coachingi zawodowe, trendy i treningi</span>
                 </div>
-                <div class="flex flex-wrap jNastify-content-end gap-2 mt-4">
+                <div class="flex flex-wrap justify-content-end gap-2 mt-4">
                     <button type="button" class="p-button p-component p-button-text" onclick="closeLitePromo()"><span class="p-button-label">Kontynuuj używanie Lite</span></button>
-                    <a href="https://app.checkmatemlube.com/" class="p-button p-component cm-primary"><span class="p-button-label">Załóż darmomy konto</span></a>
-                    <a href="../../Ceny/" class="p-button p-component p-button-outlined"><span class="p-button-label">Expllube Pro</span></a>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Załóż darmowe konto</span></a>
+                    <a href="/pl/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore Pro</span></a>
                 </div>
             </div>
         </div>
@@ -135,16 +148,16 @@
     <div id="single-game-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeSingleGamePicker()">
         <div class="p-card single-game-dialog" role="dialog" aria-modal="true" aria-labelledby="single-game-title">
             <div class="p-card-body">
-                <div class="flex jNastify-content-betmyen align-items-center mb-3">
+                <div class="flex justify-content-between align-items-center mb-3">
                     <div>
                         <div id="single-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem">Wybierz grę</div>
-                        <div id="single-game-sub" class="text-collub-secondary text-sm">Ostatnie 10 meczów · Najnowsze pierwsze</div>
+                        <div id="single-game-sub" class="text-color-secondary text-sm">Ostatnie 10 meczów · Najnowsze pierwsze</div>
                     </div>
                     <button type="button" class="p-button p-component p-button-text p-button-rounded" onclick="closeSingleGamePicker()" title="Zamknij">
                         <span class="p-button-icon pi pi-times"></span>
                     </button>
                 </div>
-                <div id="single-game-statNas" class="text-collub-secondary text-sm mb-3">Ładowanie...</div>
+                <div id="single-game-status" class="text-color-secondary text-sm mb-3">Ładowanie...</div>
                 <div id="single-game-list" class="single-game-list"></div>
             </div>
         </div>
@@ -155,10 +168,10 @@
             <div class="p-card-body">
                 <div class="mb-3">
                     <div id="analysis-preset-title" class="p-card-title mb-1">Wybierz głębokość analizy</div>
-                    <div class="text-collub-secondary text-sm">Wybierz, jak dokładnie Stockfish powinien przeglądać twoje gry. Możesz to zmienić w dowolnym momencie w Około → Ustawieniach.</div>
+                    <div class="text-color-secondary text-sm">Wybierz, jak dokładnie Stockfish powinien przeglądać twoje gry. Możesz to zmienić w dowolnym momencie w Około → Ustawieniach.</div>
                 </div>
                 <div id="analysis-preset-list" class="preset-grid preset-grid-modal mb-3"></div>
-                <div class="flex jNastify-content-end">
+                <div class="flex justify-content-end">
                     <button type="button" class="p-button p-component" onclick="confirmAnalysisPresetModal()">
                         <span class="p-button-label">Kontynuuj z tym presetem</span>
                     </button>
@@ -172,19 +185,19 @@
     <div id="chart-game-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeChartGameDialog()">
         <div class="p-card single-game-dialog chart-game-dialog" role="dialog" aria-modal="true" aria-labelledby="chart-game-title">
             <div class="p-card-body">
-                <div class="flex jNastify-content-betmyen align-items-start mb-3">
+                <div class="flex justify-content-between align-items-start mb-3">
                     <div>
                         <div id="chart-game-result" class="chart-game-result mb-1"></div>
                         <div id="chart-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem"></div>
-                        <div id="chart-game-sub" class="text-collub-secondary text-sm"></div>
+                        <div id="chart-game-sub" class="text-color-secondary text-sm"></div>
                     </div>
                     <button type="button" class="p-button p-component p-button-text p-button-rounded" onclick="closeChartGameDialog()" title="Zamknij">
                         <span class="p-button-icon pi pi-times"></span>
                     </button>
                 </div>
                 <div id="chart-game-stats" class="chart-game-stats mb-3"></div>
-                <div id="chart-game-detail" class="text-collub-secondary text-sm mb-3"></div>
-                <div class="flex jNastify-content-end gap-2">
+                <div id="chart-game-detail" class="text-color-secondary text-sm mb-3"></div>
+                <div class="flex justify-content-end gap-2">
                     <button type="button" class="p-button p-component p-button-text" onclick="closeChartGameDialog()">
                         <span class="p-button-label">Anuluj</span>
                     </button>
@@ -201,24 +214,24 @@
         <div class="p-card mb-3" id="profile-header" hidden>
             <div class="p-card-body">
                 <div class="flex gap-3 align-items-center">
-                    <img id="profile-Avatar" class="profile-Avatar" alt="Avatar" src="">
+                    <img id="profile-avatar" class="profile-avatar" alt="Avatar" src="">
                     <div class="flex-1">
-                        <div id="profile-display-name" class="text-2xl font-bold mb-1">Szach-mat Więcej Lite</div>
-                        <div id="profile-header-sub" class="text-collub-secondary text-sm mb-3">Lite recenzje Chess.com gier w Twojej przeglądarce. Otwórz O mnie, aby zobaczyć, jak działają etykiety.</div>
+                        <div id="profile-display-name" class="text-2xl font-bold mb-1">CheckmateMore Lite</div>
+                        <div id="profile-header-sub" class="text-color-secondary text-sm mb-3">Lite recenzje Chess.com gier w Twojej przeglądarce. Otwórz O mnie, aby zobaczyć, jak działają etykiety.</div>
                         <div class="flex flex-wrap gap-2" id="profile-stat-row"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Załóż konto Szach-mat Więcej">
+        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Załóż konto CheckmateMore">
             <div class="app-upgrade-copy">
                 <span class="app-upgrade-kicker">Po tej recenzji</span>
                 <strong>Utrzymuj swoje gry połączone.</strong>
-                <p>Darmomy konto Szach-mat Więcej przechowuje przeanalizowane mecze i łączy je z długoterminowym obrazem. Pro dodaje cotygodniomy coachingi, śledzenie trendów lubaz praktyki osobiste.</p>
+                <p>Darmowe konto CheckmateMore przechowuje przeanalizowane mecze i łączy je z długoterminowym obrazem. Pro dodaje cotygodniowe coachingi, śledzenie trendów oraz praktyki osobiste.</p>
             </div>
             <div class="app-upgrade-actions">
-                <a href="https://app.checkmatemlube.com/" class="p-button p-component cm-primary"><span class="p-button-label">Załóż darmomy konto</span></a>
-                <a href="../../Ceny/" class="p-button p-component p-button-outlined"><span class="p-button-label">Expllube Pro</span></a>
+                <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Załóż darmowe konto</span></a>
+                <a href="/pl/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore Pro</span></a>
             </div>
         </aside>
 
@@ -287,15 +300,15 @@
                     <div id="overview-content" class="overview-grid">
                         <div class="p-card full">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Flubma dokładności</div>
-                                <div class="text-collub-secondary text-sm mb-3">Średnia dokładność ruchów w przeanalizowanych partiach. Wybierz punkt, aby rozpocząć tę grę. Dokładność jest szacowana na podstawie tej recenzji, a nie własnej recenzji gry Chess.com.</div>
+                                <div class="p-card-title mb-1">Forma dokładności</div>
+                                <div class="text-color-secondary text-sm mb-3">Średnia dokładność ruchów w przeanalizowanych partiach. Wybierz punkt, aby rozpocząć tę grę. Dokładność jest szacowana na podstawie tej recenzji, a nie własnej recenzji gry Chess.com.</div>
                                 <div id="overview-accuracy" class="overview-accuracy"></div>
                             </div>
                         </div>
                         <div class="p-card full">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Chess.com ocena vs szacowana wydajność w grze</div>
-                                <div class="text-collub-secondary text-sm mb-3">Twój Chess.com rating po każdej grze w plubównaniu z lokalnym szacunkiem Stockfish, jak dana gra była rozegrana. To nie jest oficjalna ocena.</div>
+                                <div class="text-color-secondary text-sm mb-3">Twój Chess.com rating po każdej grze w porównaniu z lokalnym szacunkiem Stockfish, jak dana gra była rozegrana. To nie jest oficjalna ocena.</div>
                                 <div id="overview-elo-chart" class="overview-elo-chart"></div>
                             </div>
                         </div>
@@ -307,15 +320,15 @@
                         </div>
                         <div class="p-card">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Flubma jakościowa</div>
-                                <div class="text-collub-secondary text-sm mb-3">Rozkład wyników jakości gry i twojej aktualnej serii.</div>
-                                <div id="overview-flubm"></div>
+                                <div class="p-card-title mb-1">Forma jakościowa</div>
+                                <div class="text-color-secondary text-sm mb-3">Rozkład wyników jakości gry i twojej aktualnej serii.</div>
+                                <div id="overview-form"></div>
                             </div>
                         </div>
                         <div class="p-card">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-3">Najlepsze &amp; wlubst</div>
-                                <div class="best-wlubst-grid" id="overview-best-wlubst"></div>
+                                <div class="p-card-title mb-3">Best &amp; worst</div>
+                                <div class="best-worst-grid" id="overview-best-worst"></div>
                             </div>
                         </div>
                         <div class="p-card full">
@@ -331,18 +344,18 @@
                     <div id="matches-empty" class="tab-empty-state"></div>
                     <div id="matches-content">
                         <div class="flex flex-wrap gap-2 mb-3 align-items-center">
-                            <select id="filter-collub" class="p-inputtext p-component" onchange="renderMeczeTab()">
-                                <option value="all">Wszystkie kolluby</option>
+                            <select id="filter-color" class="p-inputtext p-component" onchange="renderMatchesTab()">
+                                <option value="all">Wszystkie kolory</option>
                                 <option value="white">Biały</option>
                                 <option value="black">Czarne</option>
                             </select>
-                            <select id="filter-result" class="p-inputtext p-component" onchange="renderMeczeTab()">
+                            <select id="filter-result" class="p-inputtext p-component" onchange="renderMatchesTab()">
                                 <option value="all">Wszystkie wyniki</option>
                                 <option value="WIN">Zwycięstwa</option>
                                 <option value="LOSS">Straty</option>
                                 <option value="DRAW">Losowania</option>
                             </select>
-                            <select id="filter-time" class="p-inputtext p-component" onchange="renderMeczeTab()">
+                            <select id="filter-time" class="p-inputtext p-component" onchange="renderMatchesTab()">
                                 <option value="all">Kontrola wszystkich czasów</option>
                                 <option value="bullet">Pocisk</option>
                                 <option value="blitz">Blitz</option>
@@ -350,9 +363,9 @@
                                 <option value="classical">Klasyka</option>
                                 <option value="daily">Codziennie</option>
                             </select>
-                            <div id="match-slubt-chip" class="match-slubt-chip p-tag p-component">
-                                <span id="match-slubt-label">Poslubtowane mydług najlepszego procentu</span>
-                                <button type="button" class="p-button p-button-text p-button-sm p-component" onclick="clearMeczeSlubt()">Czyste</button>
+                            <div id="match-sort-chip" class="match-sort-chip p-tag p-component">
+                                <span id="match-sort-label">Posortowane według najlepszego procentu</span>
+                                <button type="button" class="p-button p-button-text p-button-sm p-component" onclick="clearMatchesSort()">Czyste</button>
                             </div>
                         </div>
                         <div id="game-list-view"></div>
@@ -365,14 +378,14 @@
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Notatki do wagonu</div>
-                                <div class="text-collub-secondary text-sm mb-3">Notatki z gier, które Lite recenzował w tej przeglądarce. To nie jest cotygodniomy coaching do konta.</div>
+                                <div class="text-color-secondary text-sm mb-3">Notatki z gier, które Lite recenzował w tej przeglądarce. To nie jest cotygodniowe coaching do konta.</div>
                                 <div id="analysis-coach"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Częstotliwość przewodniej</div>
-                                <div class="text-collub-secondary text-sm mb-3">Zobacz, jak często pojawia się każdy motyw taktyczny lub pozycyjny. Wybierz przykład, aby przejść do ruchu.</div>
+                                <div class="text-color-secondary text-sm mb-3">Zobacz, jak często pojawia się każdy motyw taktyczny lub pozycyjny. Wybierz przykład, aby przejść do ruchu.</div>
                                 <div id="analysis-themes"></div>
                             </div>
                         </div>
@@ -384,39 +397,39 @@
                     <div id="stats-content">
                         <div class="p-card mb-3">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Flubm &amp; finishes</div>
-                                <div class="text-collub-secondary text-sm mb-3">Dokładność, CPL mydług fazy, wahania ocen, finisze, pasma różnic ratingowych lubaz podziały kontroli czasu.</div>
-                                <div id="analysis-flubm"></div>
+                                <div class="p-card-title mb-1">Form &amp; finishes</div>
+                                <div class="text-color-secondary text-sm mb-3">Dokładność, CPL według fazy, wahania ocen, finisze, pasma różnic ratingowych oraz podziały kontroli czasu.</div>
+                                <div id="analysis-form"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Tactics, engine &amp; opponents</div>
-                                <div class="text-collub-secondary text-sm mb-3">Wskaźniki eventów materialnych, nieudane przechwyty/checki silnika, top-2 hity MultiPV lubaz to, czy karzesz poślizgnięcia przeciwnika.</div>
+                                <div class="text-color-secondary text-sm mb-3">Wskaźniki eventów materialnych, nieudane przechwyty/checki silnika, top-2 hity MultiPV oraz to, czy karzesz poślizgnięcia przeciwnika.</div>
                                 <div id="analysis-tactics"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Tendencje zawodników</div>
-                                <div class="text-collub-secondary text-sm mb-3">Ulubione debiuty i miejsce, gdzie najczęściej lądują twoje figury.</div>
+                                <div class="text-color-secondary text-sm mb-3">Ulubione debiuty i miejsce, gdzie najczęściej lądują twoje figury.</div>
                                 <div class="profile-kicker mb-2">Ulubione debiuty</div>
                                 <div class="grid mb-3">
                                     <div class="col-12 md:col-6">
                                         <div class="tendency-subcard">
-                                            <div class="profile-kicker">Jako Biały</div>
+                                            <div class="profile-kicker">Jako White</div>
                                             <div class="opening-rank-list" id="profile-white-openings"></div>
                                         </div>
                                     </div>
                                     <div class="col-12 md:col-6">
                                         <div class="tendency-subcard">
-                                            <div class="profile-kicker">Jako Czarne</div>
+                                            <div class="profile-kicker">Jako Black</div>
                                             <div class="opening-rank-list" id="profile-black-defences"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="profile-kicker mb-2">Mapy cieplne ruchu</div>
-                                <div class="heatmap-note mb-2">Twoje pola docelomy są białe i czarne, podzielone na otwarcie / środkową grę / końcową fazę. Plansze są wyświetlane z twojej strony.</div>
+                                <div class="heatmap-note mb-2">Twoje pola docelowe są białe i czarne, podzielone na otwarcie / środkową grę / końcową fazę. Plansze są wyświetlane z twojej strony.</div>
                                 <div id="player-move-heatmap" class="heatmap-matrix-wrap"></div>
                             </div>
                         </div>
@@ -424,14 +437,14 @@
                             <div class="p-card">
                                 <div class="p-card-body">
                                     <div class="p-card-title mb-1">Jak długo przetrwał każdy element</div>
-                                    <div class="text-collub-secondary text-sm mb-3">Średnia żywotność (w ruchach) każdej początkomyj figury jako biała i.</div>
+                                    <div class="text-color-secondary text-sm mb-3">Średnia żywotność (w ruchach) każdej początkowej figury jako biała i.</div>
                                     <div id="analysis-piece-survival"></div>
                                 </div>
                             </div>
                             <div class="p-card">
                                 <div class="p-card-body">
                                     <div class="p-card-title mb-1">Szach-mat z</div>
-                                    <div class="text-collub-secondary text-sm mb-3">Która figura dała twojemu matowi, wygrywa procentowo.</div>
+                                    <div class="text-color-secondary text-sm mb-3">Która figura dała twojemu matowi, wygrywa procentowo.</div>
                                     <div id="analysis-checkmates"></div>
                                 </div>
                             </div>
@@ -442,12 +455,12 @@
                 <div id="tab-learning" class="p-tabview-panel dash-panel">
                     <div id="learn-browse">
                         <div class="p-buttonset mb-3">
-                            <button type="button" class="p-button p-component learn-subtab" data-learn="openings" onclick="switchUcz sięSection('openings', this)">Otwarcia</button>
-                            <button type="button" class="p-button p-component p-button-outlined learn-subtab" data-learn="famoNas" onclick="switchUcz sięSection('famoNas', this)">Słynne gry</button>
+                            <button type="button" class="p-button p-component learn-subtab" data-learn="openings" onclick="switchLearnSection('openings', this)">Otwarcia</button>
+                            <button type="button" class="p-button p-component p-button-outlined learn-subtab" data-learn="famous" onclick="switchLearnSection('famous', this)">Słynne gry</button>
                         </div>
                         <span class="p-input-icon-left w-full mb-3 block">
                             <i class="pi pi-search"></i>
-                            <input type="search" id="learn-search" class="p-inputtext p-component w-full" placeholder="Szukaj otwarcia lub słynne partie..." oninput="renderUcz sięingBrowse()">
+                            <input type="search" id="learn-search" class="p-inputtext p-component w-full" placeholder="Szukaj otwarcia lub słynne partie..." oninput="renderLearningBrowse()">
                         </span>
                         <div id="learn-groups"></div>
                     </div>
@@ -465,34 +478,34 @@
                     <span class="p-button-icon-left pi pi-arrow-left"></span>
                     <span class="p-button-label">Powrót do profilu</span>
                 </button>
-                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenObecnieReview()" title="Przeczytaj tę recenzję gry jeszcze raz z bardziej szczegółowym wyszukiwaniem w wyszukiwarce">
+                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenCurrentReview()" title="Przeczytaj tę recenzję gry jeszcze raz z bardziej szczegółowym wyszukiwaniem w wyszukiwarce">
                     <span class="p-button-icon-left pi pi-bolt"></span>
                     <span class="p-button-label">Opublikuj pełniejszą recenzję</span>
                 </button>
                 <span id="review-depth-badge" class="review-depth-badge"></span>
-                <span id="review-deepen-statNas" class="text-collub-secondary text-sm"></span>
+                <span id="review-deepen-status" class="text-color-secondary text-sm"></span>
             </div>
 
             <div id="review-matchup" class="review-matchup mb-3"></div>
 
-            <div id="game-stluby-box" class="p-card game-stluby mb-3" style="display:none">
+            <div id="game-story-box" class="p-card game-story mb-3" style="display:none">
                 <div class="p-card-body">
-                    <div class="game-stluby-kicker" id="game-stluby-kicker">Dlaczego wygrałeś</div>
-                    <div class="game-stluby-headline" id="game-stluby-headline"></div>
-                    <div class="game-stluby-detail" id="game-stluby-detail"></div>
-                    <div class="game-stluby-link" id="game-stluby-link" style="display:none">Przeskocz do kluczomygo momentu →</div>
+                    <div class="game-story-kicker" id="game-story-kicker">Dlaczego wygrałeś</div>
+                    <div class="game-story-headline" id="game-story-headline"></div>
+                    <div class="game-story-detail" id="game-story-detail"></div>
+                    <div class="game-story-link" id="game-story-link" style="display:none">Przeskocz do kluczowego momentu →</div>
                 </div>
             </div>
 
             <div id="current-move-info" class="p-card mb-3">
                 <div class="p-card-body">
                     <span id="move-opening" class="opening-tag"></span>
-                    <div class="flex jNastify-content-betmyen align-items-center">
+                    <div class="flex justify-content-between align-items-center">
                         <div id="move-title" class="text-xl font-bold">Wybierz ruch</div>
                         <div id="move-badge"></div>
                     </div>
-                    <div id="move-desc" class="text-collub-secondary text-sm mt-2">Wybierz ruch, aby zobaczyć recenzję.</div>
-                    <div id="move-alt" class="move-alt text-collub-secondary text-sm mt-2" style="display:none"></div>
+                    <div id="move-desc" class="text-color-secondary text-sm mt-2">Wybierz ruch, aby zobaczyć recenzję.</div>
+                    <div id="move-alt" class="move-alt text-color-secondary text-sm mt-2" style="display:none"></div>
                 </div>
             </div>
 
@@ -501,13 +514,13 @@
                     <span class="p-button-icon-left pi pi-step-backward"></span>
                     <span class="p-button-label">Start</span>
                 </button>
-                <button type="button" id="btn-key-move" class="p-button p-component" onclick="goToKluczMove()" title="Przejdź do kluczomygo momentu" disabled>
+                <button type="button" id="btn-key-move" class="p-button p-component" onclick="goToKeyMove()" title="Przejdź do kluczowego momentu" disabled>
                     <span class="p-button-icon-left pi pi-star-fill"></span>
                     <span class="p-button-label">Klucz</span>
                 </button>
-                <button type="button" class="p-button p-component p-button-secondary" onclick="goToKoniec()" title="Koniec gry">
+                <button type="button" class="p-button p-component p-button-secondary" onclick="goToEnd()" title="Koniec gry">
                     <span class="p-button-label">Koniec</span>
-                    <span class="p-button-icon-right pi pi-step-flubward"></span>
+                    <span class="p-button-icon-right pi pi-step-forward"></span>
                 </button>
             </div>
 
@@ -515,7 +528,7 @@
                 <div id="active-board" class="chess-board"></div>
                 <svg id="arrow-overlay" class="arrow-overlay" viewBox="0 0 100 100">
                     <defs>
-                        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" lubient="auto">
+                        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto">
                             <path d="M0,0 L4,2 L0,4 Z" fill="rgba(52, 211, 153, 0.9)" />
                         </marker>
                     </defs>
@@ -539,15 +552,15 @@
                 </button>
             </div>
 
-            <aside class="app-upgrade-card review-app-promo mt-4" aria-label="Załóż konto Szach-mat Więcej">
+            <aside class="app-upgrade-card review-app-promo mt-4" aria-label="Załóż konto CheckmateMore">
                 <div class="app-upgrade-copy">
                     <span class="app-upgrade-kicker">Po tej recenzji</span>
                     <strong>Trzymaj tę grę w dłuższej perspektywie.</strong>
-                    <p>Darmomy konto Szach-mat Więcej przechowuje analizowane mecze i łączy je na przestrzeni czasu. Pro dodaje cotygodniomy coachingi, śledzenie trendów lubaz treningi osobiste.</p>
+                    <p>Darmowe konto CheckmateMore przechowuje analizowane mecze i łączy je na przestrzeni czasu. Pro dodaje cotygodniowe coachingi, śledzenie trendów oraz treningi osobiste.</p>
                 </div>
                 <div class="app-upgrade-actions">
-                    <a href="https://app.checkmatemlube.com/" class="p-button p-component cm-primary"><span class="p-button-label">Załóż darmomy konto</span></a>
-                    <a href="../../Ceny/" class="p-button p-component p-button-outlined"><span class="p-button-label">Expllube Pro</span></a>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Załóż darmowe konto</span></a>
+                    <a href="/pl/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore Pro</span></a>
                 </div>
             </aside>
         </div>
@@ -571,7 +584,7 @@
                             </li>
                             <li role="presentation">
                                 <a href="#" class="p-tabview-nav-link" data-review-tab="moves" onclick="switchTab('moves', this); return false;" role="tab">
-                                    <i class="pi pi-slubt-alt" aria-hidden="true"></i>
+                                    <i class="pi pi-sort-alt" aria-hidden="true"></i>
                                     <span class="p-tabview-title">Ruchy</span>
                                 </a>
                             </li>
@@ -618,24 +631,24 @@
     <div id="about-view" class="about-view" style="display:none">
         <div class="p-card">
             <div class="p-card-body">
-                <h2 class="about-title mb-1">O Szach-mat Więcej Lite</h2>
+                <h2 class="about-title mb-1">O CheckmateMore Lite</h2>
                 <p class="faq-def mb-3">Wszystko działa w twojej przeglądarce. Stockfish, cache, coaching i statystyki. Nie jest wymagane konto.</p>
                 <div class="p-tabview p-component about-tabs">
                     <div class="p-tabview-nav-container">
                         <div class="p-tabview-nav-content">
                             <ul class="p-tabview-nav" role="tablist">
                                 <li class="p-highlight" role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="how" onclick="switchO nasTab('how', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="how" onclick="switchAboutTab('how', this); return false;" role="tab">
                                         <span class="p-tabview-title">Jak to działa</span>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="features" onclick="switchO nasTab('features', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="features" onclick="switchAboutTab('features', this); return false;" role="tab">
                                         <span class="p-tabview-title">Zestaw funkcji</span>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="settings" onclick="switchO nasTab('settings', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="settings" onclick="switchAboutTab('settings', this); return false;" role="tab">
                                         <span class="p-tabview-title">Ustawienia</span>
                                     </a>
                                 </li>
@@ -670,7 +683,7 @@
 <script src="/js/chess/cache.js?v=20260811h"></script>
 <script src="/js/chess/analysis.js?v=20260829a"></script>
 <script src="/js/chess/pieces.js?v=20260811h"></script>
-<script src="/js/chess/sclubing.js?v=20260826a"></script>
+<script src="/js/chess/scoring.js?v=20260826a"></script>
 <script src="/js/chess/components.js?v=20260829d"></script>
 <script src="/js/chess/ui.js?v=20260829d"></script>
 <script src="/js/chess/insights.js?v=20260829a"></script>

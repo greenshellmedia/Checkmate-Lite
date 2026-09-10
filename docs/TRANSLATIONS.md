@@ -7,10 +7,10 @@ English (`en-GB`) is the source and fallback language. Spanish, French, German, 
 Use PowerShell from the repository root:
 
 ```powershell
-$env:AZURE_TRANSLATOR_KEY = 'your-key'
-$env:AZURE_TRANSLATOR_REGION = 'uksouth'
-# Optional for a custom Azure resource endpoint:
-$env:AZURE_TRANSLATOR_ENDPOINT = 'https://api.cognitive.microsofttranslator.com'
+$env:AZURE_TRANSLATOR_KEY = 'Key 1 or Key 2 from the Azure resource'
+$env:AZURE_TRANSLATOR_REGION = 'the resource Location, for example uksouth'
+# Optional. Copy the Endpoint from the same resource's Keys and Endpoint page:
+$env:AZURE_TRANSLATOR_ENDPOINT = 'https://your-resource.cognitiveservices.azure.com/'
 ./scripts/translations.ps1 Extract
 ./scripts/translations.ps1 DryRun
 ./scripts/translations.ps1 Generate
@@ -44,6 +44,10 @@ The browser saves the selected language in `localStorage` under `cmp:locale`. Ot
 - Empty Azure results are skipped without blocking the rest of the batch. They remain pending and can be retried on a later run.
 - If a command is interrupted, run `Generate` again. Completed batches are already recorded.
 - If the key is rejected, rotate it in Azure, update the local environment variable or CI secret, and rerun. Never place keys in source files, catalogue files, browser JavaScript or workflow YAML.
+- HTTP 401 means Azure received the request but rejected its authentication. Copy the key, Location and optional endpoint from the same resource. The Location must match exactly. PowerShell environment variables apply only to the current terminal, so set them again after opening a new one. The generator trims accidental surrounding whitespace and prints only whether each setting is present, never its value.
+- The standard global endpoint is `https://api.cognitive.microsofttranslator.com`. A resource-specific endpoint normally looks like `https://your-resource.cognitiveservices.azure.com/`. The generator adds the correct translation path for either form, and also accepts a complete translation endpoint.
 - A connection timeout means Azure never returned an HTTP response. Check VPN/firewall access to port 443 and confirm `AZURE_TRANSLATOR_ENDPOINT`. The PowerShell runner enables Node's environment-proxy support, so existing `HTTPS_PROXY` and `NO_PROXY` settings are respected on current Node releases.
 
 Static pages use locale prefixes such as `/fr/pricing/`, plus canonical and `hreflang` links. Run the page build before deployment so search engines and users without JavaScript receive translated copy.
+
+`BuildPages` repairs protected brand terms, translates only visible copy and approved metadata, then regenerates all locale pages and the multilingual sitemap. URLs, hostnames, paths, scripts and HTML markup are never passed through catalogue replacement. The build finishes by validating every canonical, reciprocal `hreflang` cluster, internal file reference and sitemap entry.

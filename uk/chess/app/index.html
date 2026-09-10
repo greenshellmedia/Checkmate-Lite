@@ -2,31 +2,44 @@
 <html lang="uk" data-cmp-locale-default="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewpабоt" content="width=device-width, initial-scale=1.0">
-    <title>Шах і матБільше Lite</title>
-    <meta name="description" content="Шах і матБільше Lite. Завантажте профіль або гру Chess.com для огляду Stockfish у вашому браузері. Обліковий запис не потрібен.">
-    <link rel="canonical" href="https://checkmatemабоe.com/chess/app/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckmateMore Lite</title>
+    <meta name="description" content="CheckmateMore Lite. Завантажте профіль або гру Chess.com для огляду Stockfish у вашому браузері. Обліковий запис не потрібен.">
+    <link rel="canonical" href="https://checkmatemore.com/uk/chess/app/">
     <script type="application/ld+json">
-    {"@context":"https://schema.абоg","@type":"SoftwareApplication","name":"Шах і матБільше Lite","applicationCategабоy":"GameApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Безкоштовний огляд шахової партії Stockfish у браузері. Обліковий запис не потрібен.","url":"https://checkmatemабоe.com/chess/app/"}
-    </script>
-    <meta name="colабо-scheme" content="light dark">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CheckmateMore Lite",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "description": "Безкоштовний огляд шахової партії Stockfish у браузері. Обліковий запис не потрібен.",
+  "url": "https://checkmatemore.com/chess/app/"
+}
+</script>
+    <meta name="color-scheme" content="light dark">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="shабоtcut icon" href="../../favicon.ico">
-    <link rel="manifest" href="../../site.миbmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
     <script>
     (function () {
-        var base = 'https://cdn.jsdelivr.net/npm/primeng@17.18.15/resнашces/themes/';
+        var base = 'https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/themes/';
         var light = base + 'md-light-indigo/theme.css';
         var dark = base + 'md-dark-indigo/theme.css';
         var link = document.createElement('link');
         link.id = 'pf-theme';
         link.rel = 'stylesheet';
-        var mq = window.matchMedia('(prefers-colабо-scheme: dark)');
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
         function apply(isDark) {
             link.href = isDark ? dark : light;
-            document.documentElement.style.colабоScheme = isDark ? 'dark' : 'light';
+            document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
             document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
         }
         apply(mq.matches);
@@ -35,41 +48,41 @@
         else if (mq.addListener) mq.addListener(function (e) { apply(e.matches); });
     })();
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resнашces/primeng.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/primeng.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
-    <link rel="stylesheet" href="../../brта-tokens.css?v=20260829a">
-    <link rel="stylesheet" href="../../chess.css?v=20260829d">
-    <link rel="stylesheet" href="../../lite-theme.css?v=20260829d">
-    <link rel="stylesheet" href="../../brта.css?v=20260829d">
+    <link rel="stylesheet" href="/brand-tokens.css?v=20260829a">
+    <link rel="stylesheet" href="/chess.css?v=20260829d">
+    <link rel="stylesheet" href="/lite-theme.css?v=20260829d">
+    <link rel="stylesheet" href="/brand.css?v=20260829d">
     <script src="/js/clean-url.js"></script>
   <link rel="stylesheet" href="/localization/localization.css?v=1">
   <script src="/js/localization.js"></script>
-  <link rel="alternate" hreflang="en-GB" href="https://checkmatemабоe.com/chess/app/">
-  <link rel="alternate" hreflang="es" href="https://checkmatemабоe.com/es/chess/app/">
-  <link rel="alternate" hreflang="fr" href="https://checkmatemабоe.com/fr/chess/app/">
-  <link rel="alternate" hreflang="de" href="https://checkmatemабоe.com/de/chess/app/">
-  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemабоe.com/pt-br/chess/app/">
-  <link rel="alternate" hreflang="it" href="https://checkmatemабоe.com/it/chess/app/">
-  <link rel="alternate" hreflang="nl" href="https://checkmatemабоe.com/nl/chess/app/">
-  <link rel="alternate" hreflang="pl" href="https://checkmatemабоe.com/pl/chess/app/">
-  <link rel="alternate" hreflang="uk" href="https://checkmatemабоe.com/uk/chess/app/">
-  <link rel="alternate" hreflang="ru" href="https://checkmatemабоe.com/ru/chess/app/">
-  <link rel="alternate" hreflang="x-default" href="https://checkmatemабоe.com/chess/app/">
-  <script src="../../../js/affiliate-attribution.js"></script>
+  <script src="/js/affiliate-attribution.js"></script>
   <script type="text/javascript" src="https://api.goaffpro.com/loader.js?shop=pmnkfjiswh"></script>
+  <link rel="alternate" hreflang="en-GB" href="https://checkmatemore.com/chess/app/">
+  <link rel="alternate" hreflang="es" href="https://checkmatemore.com/es/chess/app/">
+  <link rel="alternate" hreflang="fr" href="https://checkmatemore.com/fr/chess/app/">
+  <link rel="alternate" hreflang="de" href="https://checkmatemore.com/de/chess/app/">
+  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemore.com/pt-br/chess/app/">
+  <link rel="alternate" hreflang="it" href="https://checkmatemore.com/it/chess/app/">
+  <link rel="alternate" hreflang="nl" href="https://checkmatemore.com/nl/chess/app/">
+  <link rel="alternate" hreflang="pl" href="https://checkmatemore.com/pl/chess/app/">
+  <link rel="alternate" hreflang="uk" href="https://checkmatemore.com/uk/chess/app/">
+  <link rel="alternate" hreflang="ru" href="https://checkmatemore.com/ru/chess/app/">
+  <link rel="alternate" hreflang="x-default" href="https://checkmatemore.com/chess/app/">
 </head>
 <body class="cm-lite">
 <a class="cm-skip" href="#analyze-view">Перейти до змісту</a>
 <div class="app-shell">
     <header class="app-topnav" role="banner">
-        <a href="../../" class="app-brта" title="Шах і матБільше Lite" aria-label="Шах і матБільше Lite Дім">
-            <span class="app-brта-logo">
-                <img class="app-brта-logo-light" src="/assets/checkmatemабоe-logo-black.svg" alt="Шах і матБільше">
-                <img class="app-brта-logo-dark" src="/assets/checkmatemабоe-logo-white.svg" alt="Шах і матБільше">
+        <a href="/uk/" class="app-brand" title="CheckmateMore Lite" aria-label="CheckmateMore Lite Home">
+            <span class="app-brand-logo">
+                <img class="app-brand-logo-light" src="/assets/checkmatemore-logo-black.svg" alt="CheckmateMore">
+                <img class="app-brand-logo-dark" src="/assets/checkmatemore-logo-white.svg" alt="CheckmateMore">
             </span>
-            <span class="app-brта-tier">Lite</span>
+            <span class="app-brand-tier">Lite</span>
         </a>
         <nav class="app-topnav-links" aria-label="Первинна школа">
             <button type="button" class="app-topnav-link is-active" data-view="analyze" onclick="switchAppView('analyze')">Аналіз</button>
@@ -84,15 +97,15 @@
             <p class="lite-intro-lede">Lite Chess.com огляди ігор локально в цьому браузері з Stockfish. Це безкоштовно, не потребує облікового запису і не веде історію тренерів між візитами.</p>
             <div class="flex flex-column md:flex-row gap-3 align-items-stretch md:align-items-end">
                 <div class="lite-field flex-1 w-full">
-                    <label fабо="Миername">Chess.com ім'я користувача</label>
+                    <label for="username">Chess.com ім'я користувача</label>
                     <span class="p-input-icon-left w-full">
-                        <i class="pi pi-Миer"></i>
-                        <input type="text" id="Миername" class="p-inputtext p-component w-full" placeholder="Наприклад, Хікару" autocomplete="Миername">
+                        <i class="pi pi-user"></i>
+                        <input type="text" id="username" class="p-inputtext p-component w-full" placeholder="Наприклад, Хікару" autocomplete="username">
                     </span>
                 </div>
                 <div class="lite-review-actions">
                     <div class="lite-field" id="review-mode-field">
-                        <label fабо="review-mode">Режим повторення</label>
+                        <label for="review-mode">Режим повторення</label>
                         <select id="review-mode" class="p-inputtext p-component lite-review-select" onchange="updateReviewModeButton()">
                             <option value="single" selected>Огляд однієї з моїх останніх ігор</option>
                             <option value="profile">Порівняйте мої останні ігри</option>
@@ -102,7 +115,7 @@
                         <span class="p-button-icon-left pi pi-spin pi-spinner"></span>
                         <span class="p-button-label">Запуск двигуна...</span>
                     </button>
-                    <button id="btnСтоп" type="button" class="p-button p-component p-button-danger" onclick="stopAnalysis()">
+                    <button id="btnStop" type="button" class="p-button p-component p-button-danger" onclick="stopAnalysis()">
                         <span class="p-button-icon-left pi pi-stop"></span>
                         <span class="p-button-label">Стоп</span>
                     </button>
@@ -112,21 +125,21 @@
         </div>
     </section>
 
-    <div id="lite-promo-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeLiteПроmo()">
+    <div id="lite-promo-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeLitePromo()">
         <div class="p-card single-game-dialog lite-promo-dialog" role="dialog" aria-modal="true" aria-labelledby="lite-promo-title">
             <div class="p-card-body">
                 <div class="lite-promo-icon" aria-hidden="true"><i class="pi pi-star-fill"></i></div>
                 <div id="lite-promo-title" class="p-card-title mb-2">Тримайте свій прогрес у шахах на зв'язку</div>
-                <p class="text-colабо-secondary mt-0">Безкоштовний акаунт Шах і матБільше зберігає проаналізовані ігри та поєднує їх у довгострокову картину. Про додає щотижневий коучинг, відстеження трендів та особисту практику.</p>
+                <p class="text-color-secondary mt-0">Безкоштовний акаунт CheckmateMore зберігає проаналізовані ігри та поєднує їх у довгострокову картину. Pro додає щотижневий коучинг, відстеження трендів та особисту практику.</p>
                 <div class="lite-promo-points">
                     <span><i class="pi pi-check"></i> Безкоштовний акаунт із збереженою історією гри</span>
                     <span><i class="pi pi-check"></i> Ігри, з'єднані в одну картину</span>
                     <span><i class="pi pi-star"></i> Професійні щотижневі тренування, тренди та тренування</span>
                 </div>
-                <div class="flex flex-wrap jМиtify-content-end gap-2 mt-4">
-                    <button type="button" class="p-button p-component p-button-text" onclick="closeLiteПроmo()"><span class="p-button-label">Продовжуйте користуватися Lite</span></button>
-                    <a href="https://app.checkmatemабоe.com/" class="p-button p-component cm-primary"><span class="p-button-label">Створіть безкоштовний акаунт</span></a>
-                    <a href="../../Ціноутворення/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explабоe Про</span></a>
+                <div class="flex flex-wrap justify-content-end gap-2 mt-4">
+                    <button type="button" class="p-button p-component p-button-text" onclick="closeLitePromo()"><span class="p-button-label">Продовжуйте користуватися Lite</span></button>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Створіть безкоштовний акаунт</span></a>
+                    <a href="/uk/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore Pro</span></a>
                 </div>
             </div>
         </div>
@@ -135,16 +148,16 @@
     <div id="single-game-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeSingleGamePicker()">
         <div class="p-card single-game-dialog" role="dialog" aria-modal="true" aria-labelledby="single-game-title">
             <div class="p-card-body">
-                <div class="flex jМиtify-content-betмиen align-items-center mb-3">
+                <div class="flex justify-content-between align-items-center mb-3">
                     <div>
                         <div id="single-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem">Виберіть гру</div>
-                        <div id="single-game-sub" class="text-colабо-secondary text-sm">Останні 10 ігор · Останні перші</div>
+                        <div id="single-game-sub" class="text-color-secondary text-sm">Останні 10 ігор · Останні перші</div>
                     </div>
                     <button type="button" class="p-button p-component p-button-text p-button-rounded" onclick="closeSingleGamePicker()" title="Закриття">
                         <span class="p-button-icon pi pi-times"></span>
                     </button>
                 </div>
-                <div id="single-game-statМи" class="text-colабо-secondary text-sm mb-3">Завантаження...</div>
+                <div id="single-game-status" class="text-color-secondary text-sm mb-3">Завантаження...</div>
                 <div id="single-game-list" class="single-game-list"></div>
             </div>
         </div>
@@ -155,10 +168,10 @@
             <div class="p-card-body">
                 <div class="mb-3">
                     <div id="analysis-preset-title" class="p-card-title mb-1">Виберіть глибину аналізу</div>
-                    <div class="text-colабо-secondary text-sm">Обирайте, наскільки ретельно Stockfish має переглядати ваші ігри. Ви можете змінити це у будь-який час у розділі «Про → налаштуваннях».</div>
+                    <div class="text-color-secondary text-sm">Обирайте, наскільки ретельно Stockfish має переглядати ваші ігри. Ви можете змінити це у будь-який час у розділі «Про → налаштуваннях».</div>
                 </div>
                 <div id="analysis-preset-list" class="preset-grid preset-grid-modal mb-3"></div>
-                <div class="flex jМиtify-content-end">
+                <div class="flex justify-content-end">
                     <button type="button" class="p-button p-component" onclick="confirmAnalysisPresetModal()">
                         <span class="p-button-label">Продовжуйте з цим пресетом</span>
                     </button>
@@ -172,19 +185,19 @@
     <div id="chart-game-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeChartGameDialog()">
         <div class="p-card single-game-dialog chart-game-dialog" role="dialog" aria-modal="true" aria-labelledby="chart-game-title">
             <div class="p-card-body">
-                <div class="flex jМиtify-content-betмиen align-items-start mb-3">
+                <div class="flex justify-content-between align-items-start mb-3">
                     <div>
                         <div id="chart-game-result" class="chart-game-result mb-1"></div>
                         <div id="chart-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem"></div>
-                        <div id="chart-game-sub" class="text-colабо-secondary text-sm"></div>
+                        <div id="chart-game-sub" class="text-color-secondary text-sm"></div>
                     </div>
                     <button type="button" class="p-button p-component p-button-text p-button-rounded" onclick="closeChartGameDialog()" title="Закриття">
                         <span class="p-button-icon pi pi-times"></span>
                     </button>
                 </div>
                 <div id="chart-game-stats" class="chart-game-stats mb-3"></div>
-                <div id="chart-game-detail" class="text-colабо-secondary text-sm mb-3"></div>
-                <div class="flex jМиtify-content-end gap-2">
+                <div id="chart-game-detail" class="text-color-secondary text-sm mb-3"></div>
+                <div class="flex justify-content-end gap-2">
                     <button type="button" class="p-button p-component p-button-text" onclick="closeChartGameDialog()">
                         <span class="p-button-label">Скасувати</span>
                     </button>
@@ -201,24 +214,24 @@
         <div class="p-card mb-3" id="profile-header" hidden>
             <div class="p-card-body">
                 <div class="flex gap-3 align-items-center">
-                    <img id="profile-Аватар" class="profile-Аватар" alt="Аватар" src="">
+                    <img id="profile-avatar" class="profile-avatar" alt="Аватар" src="">
                     <div class="flex-1">
-                        <div id="profile-display-name" class="text-2xl font-bold mb-1">Шах і матБільше Lite</div>
-                        <div id="profile-header-sub" class="text-colабо-secondary text-sm mb-3">Lite огляди Chess.com ігор у вашому браузері. Відкрийте Про нас, щоб побачити, як працюють етикетки.</div>
+                        <div id="profile-display-name" class="text-2xl font-bold mb-1">CheckmateMore Lite</div>
+                        <div id="profile-header-sub" class="text-color-secondary text-sm mb-3">Lite огляди Chess.com ігор у вашому браузері. Відкрийте About, щоб побачити, як працюють етикетки.</div>
                         <div class="flex flex-wrap gap-2" id="profile-stat-row"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Створіть акаунт Шах і матБільше">
+        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Створіть акаунт CheckmateMore">
             <div class="app-upgrade-copy">
                 <span class="app-upgrade-kicker">Після цього огляду</span>
                 <strong>Тримайте свої ігри між собою.</strong>
-                <p>Безкоштовний акаунт Шах і матБільше зберігає проаналізовані ігри та поєднує їх у довгострокову картину. Про додає щотижневий коучинг, відстеження трендів та особисту практику.</p>
+                <p>Безкоштовний акаунт CheckmateMore зберігає проаналізовані ігри та поєднує їх у довгострокову картину. Pro додає щотижневий коучинг, відстеження трендів та особисту практику.</p>
             </div>
             <div class="app-upgrade-actions">
-                <a href="https://app.checkmatemабоe.com/" class="p-button p-component cm-primary"><span class="p-button-label">Створіть безкоштовний акаунт</span></a>
-                <a href="../../Ціноутворення/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explабоe Про</span></a>
+                <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Створіть безкоштовний акаунт</span></a>
+                <a href="/uk/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore Pro</span></a>
             </div>
         </aside>
 
@@ -288,14 +301,14 @@
                         <div class="p-card full">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Форма точності</div>
-                                <div class="text-colабо-secondary text-sm mb-3">Середня точність ходів між проаналізованими іграми. Виберіть точку, щоб відкрити цю гру. Точність оцінюється на основі цього огляду, а не з огляду гри Chess.com.</div>
+                                <div class="text-color-secondary text-sm mb-3">Середня точність ходів між проаналізованими іграми. Виберіть точку, щоб відкрити цю гру. Точність оцінюється на основі цього огляду, а не з огляду гри Chess.com.</div>
                                 <div id="overview-accuracy" class="overview-accuracy"></div>
                             </div>
                         </div>
                         <div class="p-card full">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Chess.com рейтинг проти оціненої продуктивності гри</div>
-                                <div class="text-colабо-secondary text-sm mb-3">Ваш рейтинг Chess.com після кожної гри порівнюється з місцевою оцінкою Stockfish про те, як грали в цю гру. Ця оцінка не є офіційною.</div>
+                                <div class="text-color-secondary text-sm mb-3">Ваш рейтинг Chess.com після кожної гри порівнюється з місцевою оцінкою Stockfish про те, як грали в цю гру. Ця оцінка не є офіційною.</div>
                                 <div id="overview-elo-chart" class="overview-elo-chart"></div>
                             </div>
                         </div>
@@ -308,14 +321,14 @@
                         <div class="p-card">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Якісна форма</div>
-                                <div class="text-colабо-secondary text-sm mb-3">Розподіл оцінок якості гри та поточна серія.</div>
-                                <div id="overview-fабоm"></div>
+                                <div class="text-color-secondary text-sm mb-3">Розподіл оцінок якості гри та поточна серія.</div>
+                                <div id="overview-form"></div>
                             </div>
                         </div>
                         <div class="p-card">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-3">Найкраще &amp; wабоst</div>
-                                <div class="best-wабоst-grid" id="overview-best-wабоst"></div>
+                                <div class="p-card-title mb-3">Best &amp; worst</div>
+                                <div class="best-worst-grid" id="overview-best-worst"></div>
                             </div>
                         </div>
                         <div class="p-card full">
@@ -331,18 +344,18 @@
                     <div id="matches-empty" class="tab-empty-state"></div>
                     <div id="matches-content">
                         <div class="flex flex-wrap gap-2 mb-3 align-items-center">
-                            <select id="filter-colабо" class="p-inputtext p-component" onchange="renderМатчіTab()">
+                            <select id="filter-color" class="p-inputtext p-component" onchange="renderMatchesTab()">
                                 <option value="all">Всі кольори</option>
                                 <option value="white">Білий</option>
                                 <option value="black">Чорний</option>
                             </select>
-                            <select id="filter-result" class="p-inputtext p-component" onchange="renderМатчіTab()">
+                            <select id="filter-result" class="p-inputtext p-component" onchange="renderMatchesTab()">
                                 <option value="all">Всі результати</option>
                                 <option value="WIN">Перемоги</option>
                                 <option value="LOSS">Втрати</option>
                                 <option value="DRAW">Нічия</option>
                             </select>
-                            <select id="filter-time" class="p-inputtext p-component" onchange="renderМатчіTab()">
+                            <select id="filter-time" class="p-inputtext p-component" onchange="renderMatchesTab()">
                                 <option value="all">Контроль усіх часових часів</option>
                                 <option value="bullet">Куля</option>
                                 <option value="blitz">Бліц</option>
@@ -350,9 +363,9 @@
                                 <option value="classical">Класика</option>
                                 <option value="daily">Щоденні</option>
                             </select>
-                            <div id="match-sабоt-chip" class="match-sабоt-chip p-tag p-component">
-                                <span id="match-sабоt-label">Відсортовано за відсотком найкращих</span>
-                                <button type="button" class="p-button p-button-text p-button-sm p-component" onclick="clearМатчіSабоt()">Чисто</button>
+                            <div id="match-sort-chip" class="match-sort-chip p-tag p-component">
+                                <span id="match-sort-label">Відсортовано за відсотком найкращих</span>
+                                <button type="button" class="p-button p-button-text p-button-sm p-component" onclick="clearMatchesSort()">Чисто</button>
                             </div>
                         </div>
                         <div id="game-list-view"></div>
@@ -365,14 +378,14 @@
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Примітки тренера</div>
-                                <div class="text-colабо-secondary text-sm mb-3">Нотатки з ігор, які Lite переглядав у цьому браузері. Це не щотижневий коучинг акаунтів.</div>
+                                <div class="text-color-secondary text-sm mb-3">Нотатки з ігор, які Lite переглядав у цьому браузері. Це не щотижневий коучинг акаунтів.</div>
                                 <div id="analysis-coach"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Частота тем</div>
-                                <div class="text-colабо-secondary text-sm mb-3">Дивіться, як часто з'являється кожна тактична або позиційна тема. Виберіть приклад, щоб перейти до ходу.</div>
+                                <div class="text-color-secondary text-sm mb-3">Дивіться, як часто з'являється кожна тактична або позиційна тема. Виберіть приклад, щоб перейти до ходу.</div>
                                 <div id="analysis-themes"></div>
                             </div>
                         </div>
@@ -384,22 +397,22 @@
                     <div id="stats-content">
                         <div class="p-card mb-3">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Fабоm &amp; finishes</div>
-                                <div class="text-colабо-secondary text-sm mb-3">Точність, CPL за фазами, коливання оцінки, фініші, діапазони розриву рейтингів і розподіл контролю часу.</div>
-                                <div id="analysis-fабоm"></div>
+                                <div class="p-card-title mb-1">Form &amp; finishes</div>
+                                <div class="text-color-secondary text-sm mb-3">Точність, CPL за фазами, коливання оцінки, фініші, діапазони розриву рейтингів і розподіл контролю часу.</div>
+                                <div id="analysis-form"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Tactics, engine &amp; opponents</div>
-                                <div class="text-colабо-secondary text-sm mb-3">Показники матеріальних подій, пропущені захоплення/перевірки двигуна, топ-2 у MultiPV і чи караєте ви провалу суперника.</div>
+                                <div class="text-color-secondary text-sm mb-3">Показники матеріальних подій, пропущені захоплення/перевірки двигуна, топ-2 у MultiPV і чи караєте ви провалу суперника.</div>
                                 <div id="analysis-tactics"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Тенденції гравців</div>
-                                <div class="text-colабо-secondary text-sm mb-3">Улюблені дебюти та місце, де ваші фігури потрапляють найчастіше.</div>
+                                <div class="text-color-secondary text-sm mb-3">Улюблені дебюти та місце, де ваші фігури потрапляють найчастіше.</div>
                                 <div class="profile-kicker mb-2">Улюблені дебюти</div>
                                 <div class="grid mb-3">
                                     <div class="col-12 md:col-6">
@@ -424,14 +437,14 @@
                             <div class="p-card">
                                 <div class="p-card-body">
                                     <div class="p-card-title mb-1">Як довго зберігається кожна деталь</div>
-                                    <div class="text-colабо-secondary text-sm mb-3">Середнє життя (у ходах) кожної стартової фігури як білої та чорної.</div>
+                                    <div class="text-color-secondary text-sm mb-3">Середнє життя (у ходах) кожної стартової фігури як білої та чорної.</div>
                                     <div id="analysis-piece-survival"></div>
                                 </div>
                             </div>
                             <div class="p-card">
                                 <div class="p-card-body">
                                     <div class="p-card-title mb-1">Шах і мат з</div>
-                                    <div class="text-colабо-secondary text-sm mb-3">Яка фігура доставить ваш шах і мат виграє за відсотками.</div>
+                                    <div class="text-color-secondary text-sm mb-3">Яка фігура доставить ваш шах і мат виграє за відсотками.</div>
                                     <div id="analysis-checkmates"></div>
                                 </div>
                             </div>
@@ -442,12 +455,12 @@
                 <div id="tab-learning" class="p-tabview-panel dash-panel">
                     <div id="learn-browse">
                         <div class="p-buttonset mb-3">
-                            <button type="button" class="p-button p-component learn-subtab" data-learn="openings" onclick="switchВчитисяSection('openings', this)">Відкриття</button>
-                            <button type="button" class="p-button p-component p-button-outlined learn-subtab" data-learn="famoМи" onclick="switchВчитисяSection('famoМи', this)">Відомі ігри</button>
+                            <button type="button" class="p-button p-component learn-subtab" data-learn="openings" onclick="switchLearnSection('openings', this)">Відкриття</button>
+                            <button type="button" class="p-button p-component p-button-outlined learn-subtab" data-learn="famous" onclick="switchLearnSection('famous', this)">Відомі ігри</button>
                         </div>
                         <span class="p-input-icon-left w-full mb-3 block">
                             <i class="pi pi-search"></i>
-                            <input type="search" id="learn-search" class="p-inputtext p-component w-full" placeholder="Пошук відкриттів або відомих ігор..." oninput="renderВчитисяingBrowse()">
+                            <input type="search" id="learn-search" class="p-inputtext p-component w-full" placeholder="Пошук відкриттів або відомих ігор..." oninput="renderLearningBrowse()">
                         </span>
                         <div id="learn-groups"></div>
                     </div>
@@ -465,49 +478,49 @@
                     <span class="p-button-icon-left pi pi-arrow-left"></span>
                     <span class="p-button-label">Повернутися до профілю</span>
                 </button>
-                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenСучасністьReview()" title="Запустіть цей огляд гри ще раз із більш повним пошуком на движках">
+                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenCurrentReview()" title="Запустіть цей огляд гри ще раз із більш повним пошуком на движках">
                     <span class="p-button-icon-left pi pi-bolt"></span>
                     <span class="p-button-label">Проведіть повніший огляд</span>
                 </button>
                 <span id="review-depth-badge" class="review-depth-badge"></span>
-                <span id="review-deepen-statМи" class="text-colабо-secondary text-sm"></span>
+                <span id="review-deepen-status" class="text-color-secondary text-sm"></span>
             </div>
 
             <div id="review-matchup" class="review-matchup mb-3"></div>
 
-            <div id="game-stабоy-box" class="p-card game-stабоy mb-3" style="display:none">
+            <div id="game-story-box" class="p-card game-story mb-3" style="display:none">
                 <div class="p-card-body">
-                    <div class="game-stабоy-kicker" id="game-stабоy-kicker">Чому ти переміг</div>
-                    <div class="game-stабоy-headline" id="game-stабоy-headline"></div>
-                    <div class="game-stабоy-detail" id="game-stабоy-detail"></div>
-                    <div class="game-stабоy-link" id="game-stабоy-link" style="display:none">Перейдемо до ключового моменту →</div>
+                    <div class="game-story-kicker" id="game-story-kicker">Чому ти переміг</div>
+                    <div class="game-story-headline" id="game-story-headline"></div>
+                    <div class="game-story-detail" id="game-story-detail"></div>
+                    <div class="game-story-link" id="game-story-link" style="display:none">Перейдемо до ключового моменту →</div>
                 </div>
             </div>
 
             <div id="current-move-info" class="p-card mb-3">
                 <div class="p-card-body">
                     <span id="move-opening" class="opening-tag"></span>
-                    <div class="flex jМиtify-content-betмиen align-items-center">
+                    <div class="flex justify-content-between align-items-center">
                         <div id="move-title" class="text-xl font-bold">Виберіть хід</div>
                         <div id="move-badge"></div>
                     </div>
-                    <div id="move-desc" class="text-colабо-secondary text-sm mt-2">Виберіть хід, щоб переглянути відгук.</div>
-                    <div id="move-alt" class="move-alt text-colабо-secondary text-sm mt-2" style="display:none"></div>
+                    <div id="move-desc" class="text-color-secondary text-sm mt-2">Виберіть хід, щоб переглянути відгук.</div>
+                    <div id="move-alt" class="move-alt text-color-secondary text-sm mt-2" style="display:none"></div>
                 </div>
             </div>
 
             <div class="review-nav review-nav-jump flex flex-wrap gap-2 mb-3">
-                <button type="button" class="p-button p-component p-button-secondary" onclick="goToПочаток()" title="Початок гри">
+                <button type="button" class="p-button p-component p-button-secondary" onclick="goToStart()" title="Початок гри">
                     <span class="p-button-icon-left pi pi-step-backward"></span>
                     <span class="p-button-label">Початок</span>
                 </button>
-                <button type="button" id="btn-key-move" class="p-button p-component" onclick="goToКлючMove()" title="Перейти до ключового моменту" disabled>
+                <button type="button" id="btn-key-move" class="p-button p-component" onclick="goToKeyMove()" title="Перейти до ключового моменту" disabled>
                     <span class="p-button-icon-left pi pi-star-fill"></span>
                     <span class="p-button-label">Ключ</span>
                 </button>
-                <button type="button" class="p-button p-component p-button-secondary" onclick="goToКінець()" title="Кінець гри">
+                <button type="button" class="p-button p-component p-button-secondary" onclick="goToEnd()" title="Кінець гри">
                     <span class="p-button-label">Кінець</span>
-                    <span class="p-button-icon-right pi pi-step-fабоward"></span>
+                    <span class="p-button-icon-right pi pi-step-forward"></span>
                 </button>
             </div>
 
@@ -515,7 +528,7 @@
                 <div id="active-board" class="chess-board"></div>
                 <svg id="arrow-overlay" class="arrow-overlay" viewBox="0 0 100 100">
                     <defs>
-                        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" абоient="auto">
+                        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto">
                             <path d="M0,0 L4,2 L0,4 Z" fill="rgba(52, 211, 153, 0.9)" />
                         </marker>
                     </defs>
@@ -539,15 +552,15 @@
                 </button>
             </div>
 
-            <aside class="app-upgrade-card review-app-promo mt-4" aria-label="Створіть акаунт Шах і матБільше">
+            <aside class="app-upgrade-card review-app-promo mt-4" aria-label="Створіть акаунт CheckmateMore">
                 <div class="app-upgrade-copy">
                     <span class="app-upgrade-kicker">Після цього огляду</span>
                     <strong>Тримайте цю гру в довгостроковій перспективі.</strong>
-                    <p>Безкоштовний акаунт Шах і матБільше зберігає проаналізовані ігри та поєднує їх з часом. Про додає щотижневий коучинг, відстеження трендів і особисті тренування.</p>
+                    <p>Безкоштовний акаунт CheckmateMore зберігає проаналізовані ігри та поєднує їх з часом. Pro додає щотижневий коучинг, відстеження трендів і особисті тренування.</p>
                 </div>
                 <div class="app-upgrade-actions">
-                    <a href="https://app.checkmatemабоe.com/" class="p-button p-component cm-primary"><span class="p-button-label">Створіть безкоштовний акаунт</span></a>
-                    <a href="../../Ціноутворення/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explабоe Про</span></a>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Створіть безкоштовний акаунт</span></a>
+                    <a href="/uk/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Explore Pro</span></a>
                 </div>
             </aside>
         </div>
@@ -571,7 +584,7 @@
                             </li>
                             <li role="presentation">
                                 <a href="#" class="p-tabview-nav-link" data-review-tab="moves" onclick="switchTab('moves', this); return false;" role="tab">
-                                    <i class="pi pi-sабоt-alt" aria-hidden="true"></i>
+                                    <i class="pi pi-sort-alt" aria-hidden="true"></i>
                                     <span class="p-tabview-title">Ходи</span>
                                 </a>
                             </li>
@@ -618,24 +631,24 @@
     <div id="about-view" class="about-view" style="display:none">
         <div class="p-card">
             <div class="p-card-body">
-                <h2 class="about-title mb-1">Про Шах і матБільше Lite</h2>
+                <h2 class="about-title mb-1">Про CheckmateMore Lite</h2>
                 <p class="faq-def mb-3">Все працює у вашому браузері. Stockfish, кеш, коучинг і статистика. Обліковий запис не потрібен.</p>
                 <div class="p-tabview p-component about-tabs">
                     <div class="p-tabview-nav-container">
                         <div class="p-tabview-nav-content">
                             <ul class="p-tabview-nav" role="tablist">
                                 <li class="p-highlight" role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="how" onclick="switchПро насTab('how', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="how" onclick="switchAboutTab('how', this); return false;" role="tab">
                                         <span class="p-tabview-title">Як це працює</span>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="features" onclick="switchПро насTab('features', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="features" onclick="switchAboutTab('features', this); return false;" role="tab">
                                         <span class="p-tabview-title">Набір функцій</span>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="settings" onclick="switchПро насTab('settings', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="settings" onclick="switchAboutTab('settings', this); return false;" role="tab">
                                         <span class="p-tabview-title">Місця дії</span>
                                     </a>
                                 </li>
@@ -670,7 +683,7 @@
 <script src="/js/chess/cache.js?v=20260811h"></script>
 <script src="/js/chess/analysis.js?v=20260829a"></script>
 <script src="/js/chess/pieces.js?v=20260811h"></script>
-<script src="/js/chess/scабоing.js?v=20260826a"></script>
+<script src="/js/chess/scoring.js?v=20260826a"></script>
 <script src="/js/chess/components.js?v=20260829d"></script>
 <script src="/js/chess/ui.js?v=20260829d"></script>
 <script src="/js/chess/insights.js?v=20260829a"></script>

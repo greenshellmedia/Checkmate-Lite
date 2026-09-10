@@ -14,3 +14,4 @@ jobs:
       - run: npm ci
       - run: npm run translations:test
       - run: npm run translations:validate
+      - run: npm run seo:validate

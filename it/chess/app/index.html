@@ -2,31 +2,44 @@
 <html lang="it" data-cmp-locale-default="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewpoppuret" content="width=device-width, initial-scale=1.0">
-    <title>CheckmateMoppuree Lite</title>
-    <meta name="description" content="CheckmateMoppuree Lite. Carica un profilo Chess.com o un gioco per una recensione di Stockfish nel browser. Nessun account richiesto.">
-    <link rel="canonical" href="https://checkmatemoppuree.com/chess/app/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckmateMore Lite</title>
+    <meta name="description" content="CheckmateMore Lite. Carica un profilo Chess.com o un gioco per una recensione di Stockfish nel browser. Nessun account richiesto.">
+    <link rel="canonical" href="https://checkmatemore.com/it/chess/app/">
     <script type="application/ld+json">
-    {"@context":"https://schema.oppureg","@type":"SoftwareApplication","name":"CheckmateMoppuree Lite","applicationCategoppurey":"GameApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Recensione gratuita del gioco di scacchi Stockfish nel browser. Nessun account richiesto.","url":"https://checkmatemoppuree.com/chess/app/"}
-    </script>
-    <meta name="coloppure-scheme" content="light dark">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CheckmateMore Lite",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "description": "Recensione gratuita del gioco di scacchi Stockfish nel browser. Nessun account richiesto.",
+  "url": "https://checkmatemore.com/chess/app/"
+}
+</script>
+    <meta name="color-scheme" content="light dark">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="shoppuretcut icon" href="../../favicon.ico">
-    <link rel="manifest" href="../../site.noibmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
     <script>
     (function () {
-        var base = 'https://cdn.jsdelivr.net/npm/primeng@17.18.15/resIl nostroces/themes/';
+        var base = 'https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/themes/';
         var light = base + 'md-light-indigo/theme.css';
         var dark = base + 'md-dark-indigo/theme.css';
         var link = document.createElement('link');
         link.id = 'pf-theme';
         link.rel = 'stylesheet';
-        var mq = window.matchMedia('(prefers-coloppure-scheme: dark)');
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
         function apply(isDark) {
             link.href = isDark ? dark : light;
-            document.documentElement.style.coloppureScheme = isDark ? 'dark' : 'light';
+            document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
             document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
         }
         apply(mq.matches);
@@ -35,45 +48,45 @@
         else if (mq.addListener) mq.addListener(function (e) { apply(e.matches); });
     })();
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resIl nostroces/primeng.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeng@17.18.15/resources/primeng.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Datatype:wdth,wght@50..100,100..900&family=Domine:wght@400..700&family=Inter:wght@100..900&display=swap">
-    <link rel="stylesheet" href="../../bre-tokens.css?v=20260829a">
-    <link rel="stylesheet" href="../../chess.css?v=20260829d">
-    <link rel="stylesheet" href="../../lite-theme.css?v=20260829d">
-    <link rel="stylesheet" href="../../bre.css?v=20260829d">
+    <link rel="stylesheet" href="/brand-tokens.css?v=20260829a">
+    <link rel="stylesheet" href="/chess.css?v=20260829d">
+    <link rel="stylesheet" href="/lite-theme.css?v=20260829d">
+    <link rel="stylesheet" href="/brand.css?v=20260829d">
     <script src="/js/clean-url.js"></script>
   <link rel="stylesheet" href="/localization/localization.css?v=1">
   <script src="/js/localization.js"></script>
-  <link rel="alternate" hreflang="en-GB" href="https://checkmatemoppuree.com/chess/app/">
-  <link rel="alternate" hreflang="es" href="https://checkmatemoppuree.com/es/chess/app/">
-  <link rel="alternate" hreflang="fr" href="https://checkmatemoppuree.com/fr/chess/app/">
-  <link rel="alternate" hreflang="de" href="https://checkmatemoppuree.com/de/chess/app/">
-  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemoppuree.com/pt-br/chess/app/">
-  <link rel="alternate" hreflang="it" href="https://checkmatemoppuree.com/it/chess/app/">
-  <link rel="alternate" hreflang="nl" href="https://checkmatemoppuree.com/nl/chess/app/">
-  <link rel="alternate" hreflang="pl" href="https://checkmatemoppuree.com/pl/chess/app/">
-  <link rel="alternate" hreflang="uk" href="https://checkmatemoppuree.com/uk/chess/app/">
-  <link rel="alternate" hreflang="ru" href="https://checkmatemoppuree.com/ru/chess/app/">
-  <link rel="alternate" hreflang="x-default" href="https://checkmatemoppuree.com/chess/app/">
-  <script src="../../../js/affiliate-attribution.js"></script>
+  <script src="/js/affiliate-attribution.js"></script>
   <script type="text/javascript" src="https://api.goaffpro.com/loader.js?shop=pmnkfjiswh"></script>
+  <link rel="alternate" hreflang="en-GB" href="https://checkmatemore.com/chess/app/">
+  <link rel="alternate" hreflang="es" href="https://checkmatemore.com/es/chess/app/">
+  <link rel="alternate" hreflang="fr" href="https://checkmatemore.com/fr/chess/app/">
+  <link rel="alternate" hreflang="de" href="https://checkmatemore.com/de/chess/app/">
+  <link rel="alternate" hreflang="pt-BR" href="https://checkmatemore.com/pt-br/chess/app/">
+  <link rel="alternate" hreflang="it" href="https://checkmatemore.com/it/chess/app/">
+  <link rel="alternate" hreflang="nl" href="https://checkmatemore.com/nl/chess/app/">
+  <link rel="alternate" hreflang="pl" href="https://checkmatemore.com/pl/chess/app/">
+  <link rel="alternate" hreflang="uk" href="https://checkmatemore.com/uk/chess/app/">
+  <link rel="alternate" hreflang="ru" href="https://checkmatemore.com/ru/chess/app/">
+  <link rel="alternate" hreflang="x-default" href="https://checkmatemore.com/chess/app/">
 </head>
 <body class="cm-lite">
 <a class="cm-skip" href="#analyze-view">Salta al contenuto</a>
 <div class="app-shell">
     <header class="app-topnav" role="banner">
-        <a href="../../" class="app-bre" title="CheckmateMoppuree Lite" aria-label="Casa CheckmateMoppuree Lite">
-            <span class="app-bre-logo">
-                <img class="app-bre-logo-light" src="/assets/checkmatemoppuree-logo-black.svg" alt="CheckmateMoppuree">
-                <img class="app-bre-logo-dark" src="/assets/checkmatemoppuree-logo-white.svg" alt="CheckmateMoppuree">
+        <a href="/it/" class="app-brand" title="CheckmateMore Lite" aria-label="Casa CheckmateMore Lite">
+            <span class="app-brand-logo">
+                <img class="app-brand-logo-light" src="/assets/checkmatemore-logo-black.svg" alt="CheckmateMore">
+                <img class="app-brand-logo-dark" src="/assets/checkmatemore-logo-white.svg" alt="CheckmateMore">
             </span>
-            <span class="app-bre-tier">Lite</span>
+            <span class="app-brand-tier">Lite</span>
         </a>
         <nav class="app-topnav-links" aria-label="Primarie">
             <button type="button" class="app-topnav-link is-active" data-view="analyze" onclick="switchAppView('analyze')">Analisi</button>
-            <button type="button" class="app-topnav-link" data-view="about" onclick="switchAppView('about')">Infoppuremazioni</button>
+            <button type="button" class="app-topnav-link" data-view="about" onclick="switchAppView('about')">Informazioni</button>
         </nav>
     </header>
 
@@ -84,15 +97,15 @@
             <p class="lite-intro-lede">Recensioni lite Chess.com giochi localmente in questo browser con Stockfish. È gratuito, non richiede account e non conserva una cronologia di allenamento tra una visita e l'altra.</p>
             <div class="flex flex-column md:flex-row gap-3 align-items-stretch md:align-items-end">
                 <div class="lite-field flex-1 w-full">
-                    <label foppure="noiername">Chess.com nome utente</label>
+                    <label for="username">Chess.com nome utente</label>
                     <span class="p-input-icon-left w-full">
-                        <i class="pi pi-noier"></i>
-                        <input type="text" id="noiername" class="p-inputtext p-component w-full" placeholder="Ad esempio Hikaru" autocomplete="noiername">
+                        <i class="pi pi-user"></i>
+                        <input type="text" id="username" class="p-inputtext p-component w-full" placeholder="Ad esempio Hikaru" autocomplete="username">
                     </span>
                 </div>
                 <div class="lite-review-actions">
                     <div class="lite-field" id="review-mode-field">
-                        <label foppure="review-mode">Modalità recensione</label>
+                        <label for="review-mode">Modalità recensione</label>
                         <select id="review-mode" class="p-inputtext p-component lite-review-select" onchange="updateReviewModeButton()">
                             <option value="single" selected>Recensisci uno dei miei ultimi giochi</option>
                             <option value="profile">Confronta i miei ultimi giochi</option>
@@ -100,9 +113,9 @@
                     </div>
                     <button id="btnScan" type="button" class="p-button p-component cm-primary" onclick="startSelectedAnalysis()" disabled>
                         <span class="p-button-icon-left pi pi-spin pi-spinner"></span>
-                        <span class="p-button-label">Avvio motoppuree...</span>
+                        <span class="p-button-label">Avvio motore...</span>
                     </button>
-                    <button id="btnFermati" type="button" class="p-button p-component p-button-danger" onclick="stopAnalysis()">
+                    <button id="btnStop" type="button" class="p-button p-component p-button-danger" onclick="stopAnalysis()">
                         <span class="p-button-icon-left pi pi-stop"></span>
                         <span class="p-button-label">Fermati</span>
                     </button>
@@ -117,16 +130,16 @@
             <div class="p-card-body">
                 <div class="lite-promo-icon" aria-hidden="true"><i class="pi pi-star-fill"></i></div>
                 <div id="lite-promo-title" class="p-card-title mb-2">Mantieni connessi i tuoi progressi a scacchi</div>
-                <p class="text-coloppure-secondary mt-0">Un account gratuito CheckmateMoppuree ha analizzato i giochi e li collega in un quadro a lungo termine. Pro aggiunge coaching settimanale, monitoppureaggio delle tendenze e allenamento personale.</p>
+                <p class="text-color-secondary mt-0">Un account gratuito CheckmateMore ha analizzato i giochi e li collega in un quadro a lungo termine. Pro aggiunge coaching settimanale, monitoraggio delle tendenze e allenamento personale.</p>
                 <div class="lite-promo-points">
-                    <span><i class="pi pi-check"></i> Account gratuito con cronologia di gioco memoppureizzata</span>
+                    <span><i class="pi pi-check"></i> Account gratuito con cronologia di gioco memorizzata</span>
                     <span><i class="pi pi-check"></i> I giochi connessi in un'unica immagine</span>
                     <span><i class="pi pi-star"></i> Allenamento settimanale professionale, tendenze e allenamenti</span>
                 </div>
-                <div class="flex flex-wrap jnoitify-content-end gap-2 mt-4">
-                    <button type="button" class="p-button p-component p-button-text" onclick="closeLitePromo()"><span class="p-button-label">Continua a noiare Lite</span></button>
-                    <a href="https://app.checkmatemoppuree.com/" class="p-button p-component cm-primary"><span class="p-button-label">Crea un account gratuito</span></a>
-                    <a href="../../Prezzi/" class="p-button p-component p-button-outlined"><span class="p-button-label">Esploppurea Pro</span></a>
+                <div class="flex flex-wrap justify-content-end gap-2 mt-4">
+                    <button type="button" class="p-button p-component p-button-text" onclick="closeLitePromo()"><span class="p-button-label">Continua a usare Lite</span></button>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Crea un account gratuito</span></a>
+                    <a href="/it/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Esplora Pro</span></a>
                 </div>
             </div>
         </div>
@@ -135,16 +148,16 @@
     <div id="single-game-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeSingleGamePicker()">
         <div class="p-card single-game-dialog" role="dialog" aria-modal="true" aria-labelledby="single-game-title">
             <div class="p-card-body">
-                <div class="flex jnoitify-content-betnoien align-items-center mb-3">
+                <div class="flex justify-content-between align-items-center mb-3">
                     <div>
                         <div id="single-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem">Scegli un gioco</div>
-                        <div id="single-game-sub" class="text-coloppure-secondary text-sm">Ultime 10 partite · l'ultima prima</div>
+                        <div id="single-game-sub" class="text-color-secondary text-sm">Ultime 10 partite · l'ultima prima</div>
                     </div>
                     <button type="button" class="p-button p-component p-button-text p-button-rounded" onclick="closeSingleGamePicker()" title="Chiudi">
                         <span class="p-button-icon pi pi-times"></span>
                     </button>
                 </div>
-                <div id="single-game-statnoi" class="text-coloppure-secondary text-sm mb-3">Caricamento...</div>
+                <div id="single-game-status" class="text-color-secondary text-sm mb-3">Caricamento...</div>
                 <div id="single-game-list" class="single-game-list"></div>
             </div>
         </div>
@@ -155,10 +168,10 @@
             <div class="p-card-body">
                 <div class="mb-3">
                     <div id="analysis-preset-title" class="p-card-title mb-1">Scegli la profondità di analisi</div>
-                    <div class="text-coloppure-secondary text-sm">Scegli quanto Stockfish dovrebbe esaminare i tuoi giochi. Puoi cambiare questo in qualsiasi momento nelle Impostazioni di Circa →.</div>
+                    <div class="text-color-secondary text-sm">Scegli quanto Stockfish dovrebbe esaminare i tuoi giochi. Puoi cambiare questo in qualsiasi momento nelle Impostazioni di Circa →.</div>
                 </div>
                 <div id="analysis-preset-list" class="preset-grid preset-grid-modal mb-3"></div>
-                <div class="flex jnoitify-content-end">
+                <div class="flex justify-content-end">
                     <button type="button" class="p-button p-component" onclick="confirmAnalysisPresetModal()">
                         <span class="p-button-label">Continua con questo preset</span>
                     </button>
@@ -172,19 +185,19 @@
     <div id="chart-game-overlay" class="single-game-overlay" style="display:none" onclick="if (event.target === this) closeChartGameDialog()">
         <div class="p-card single-game-dialog chart-game-dialog" role="dialog" aria-modal="true" aria-labelledby="chart-game-title">
             <div class="p-card-body">
-                <div class="flex jnoitify-content-betnoien align-items-start mb-3">
+                <div class="flex justify-content-between align-items-start mb-3">
                     <div>
                         <div id="chart-game-result" class="chart-game-result mb-1"></div>
                         <div id="chart-game-title" class="p-card-title mb-1" style="margin-bottom:0.25rem"></div>
-                        <div id="chart-game-sub" class="text-coloppure-secondary text-sm"></div>
+                        <div id="chart-game-sub" class="text-color-secondary text-sm"></div>
                     </div>
                     <button type="button" class="p-button p-component p-button-text p-button-rounded" onclick="closeChartGameDialog()" title="Chiudi">
                         <span class="p-button-icon pi pi-times"></span>
                     </button>
                 </div>
                 <div id="chart-game-stats" class="chart-game-stats mb-3"></div>
-                <div id="chart-game-detail" class="text-coloppure-secondary text-sm mb-3"></div>
-                <div class="flex jnoitify-content-end gap-2">
+                <div id="chart-game-detail" class="text-color-secondary text-sm mb-3"></div>
+                <div class="flex justify-content-end gap-2">
                     <button type="button" class="p-button p-component p-button-text" onclick="closeChartGameDialog()">
                         <span class="p-button-label">Cancella</span>
                     </button>
@@ -201,24 +214,24 @@
         <div class="p-card mb-3" id="profile-header" hidden>
             <div class="p-card-body">
                 <div class="flex gap-3 align-items-center">
-                    <img id="profile-Avatar" class="profile-Avatar" alt="Avatar" src="">
+                    <img id="profile-avatar" class="profile-avatar" alt="Avatar" src="">
                     <div class="flex-1">
-                        <div id="profile-display-name" class="text-2xl font-bold mb-1">CheckmateMoppuree Lite</div>
-                        <div id="profile-header-sub" class="text-coloppure-secondary text-sm mb-3">Recensioni lite Chess.com giochi nel tuo browser. Apri Infoppuremazioni per vedere come funzionano le etichette.</div>
+                        <div id="profile-display-name" class="text-2xl font-bold mb-1">CheckmateMore Lite</div>
+                        <div id="profile-header-sub" class="text-color-secondary text-sm mb-3">Recensioni lite Chess.com giochi nel tuo browser. Apri About per vedere come funzionano le etichette.</div>
                         <div class="flex flex-wrap gap-2" id="profile-stat-row"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Crea un account CheckmateMoppuree">
+        <aside id="profile-app-promo" class="app-upgrade-card profile-app-promo mb-3" hidden aria-label="Crea un account CheckmateMore">
             <div class="app-upgrade-copy">
                 <span class="app-upgrade-kicker">Dopo questa recensione</span>
                 <strong>Mantieni le partite connesse.</strong>
-                <p>Un account gratuito CheckmateMoppuree ha analizzato i giochi e li collega in un quadro a lungo termine. Pro aggiunge coaching settimanale, monitoppureaggio delle tendenze e allenamento personale.</p>
+                <p>Un account gratuito CheckmateMore ha analizzato i giochi e li collega in un quadro a lungo termine. Pro aggiunge coaching settimanale, monitoraggio delle tendenze e allenamento personale.</p>
             </div>
             <div class="app-upgrade-actions">
-                <a href="https://app.checkmatemoppuree.com/" class="p-button p-component cm-primary"><span class="p-button-label">Crea un account gratuito</span></a>
-                <a href="../../Prezzi/" class="p-button p-component p-button-outlined"><span class="p-button-label">Esploppurea Pro</span></a>
+                <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Crea un account gratuito</span></a>
+                <a href="/it/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Esplora Pro</span></a>
             </div>
         </aside>
 
@@ -229,7 +242,7 @@
                         <li class="p-highlight" role="presentation">
                             <a href="#" class="p-tabview-nav-link" data-tab="overview" onclick="switchDashTab('overview', this); return false;" role="tab">
                                 <i class="pi pi-th-large" aria-hidden="true"></i>
-                                <span class="p-tabview-title">Panoppureamica</span>
+                                <span class="p-tabview-title">Panoramica</span>
                             </a>
                         </li>
                         <li role="presentation">
@@ -263,7 +276,7 @@
                 <div id="tab-overview" class="p-tabview-panel dash-panel active">
                     <div id="progress-box" class="p-card mb-3">
                         <div class="p-card-body">
-                            <div id="progress-text" class="font-bold">Prepareo...</div>
+                            <div id="progress-text" class="font-bold">Preparando...</div>
                             <div class="progress-details">
                                 <div class="p-card">
                                     <div class="p-card-body py-2">
@@ -287,15 +300,15 @@
                     <div id="overview-content" class="overview-grid">
                         <div class="p-card full">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Foppurema di precisione</div>
-                                <div class="text-coloppure-secondary text-sm mb-3">Accuratezza media delle mosse tra le partite analizzate. Seleziona un punto per aprire quella partita. L'accuratezza è stimata da questa recensione, non dalla Game Review di Chess.com.</div>
+                                <div class="p-card-title mb-1">Forma di precisione</div>
+                                <div class="text-color-secondary text-sm mb-3">Accuratezza media delle mosse tra le partite analizzate. Seleziona un punto per aprire quella partita. L'accuratezza è stimata da questa recensione, non dalla Game Review di Chess.com.</div>
                                 <div id="overview-accuracy" class="overview-accuracy"></div>
                             </div>
                         </div>
                         <div class="p-card full">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Chess.com valutazione rispetto alle prestazioni stimate del gioco</div>
-                                <div class="text-coloppure-secondary text-sm mb-3">Il tuo punteggio Chess.com dopo ogni partita, rispetto a una stima locale di Stockfish su come si è giocata quella partita. La stima non è una valutazione ufficiale.</div>
+                                <div class="text-color-secondary text-sm mb-3">Il tuo punteggio Chess.com dopo ogni partita, rispetto a una stima locale di Stockfish su come si è giocata quella partita. La stima non è una valutazione ufficiale.</div>
                                 <div id="overview-elo-chart" class="overview-elo-chart"></div>
                             </div>
                         </div>
@@ -307,15 +320,15 @@
                         </div>
                         <div class="p-card">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Foppurema di qualità</div>
-                                <div class="text-coloppure-secondary text-sm mb-3">Distribuzione dei punteggi di qualità del gioco e della tua striscia attuale.</div>
-                                <div id="overview-foppurem"></div>
+                                <div class="p-card-title mb-1">Forma di qualità</div>
+                                <div class="text-color-secondary text-sm mb-3">Distribuzione dei punteggi di qualità del gioco e della tua striscia attuale.</div>
+                                <div id="overview-form"></div>
                             </div>
                         </div>
                         <div class="p-card">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-3">Il meglio &amp; woppurest</div>
-                                <div class="best-woppurest-grid" id="overview-best-woppurest"></div>
+                                <div class="p-card-title mb-3">Best &amp; worst</div>
+                                <div class="best-worst-grid" id="overview-best-worst"></div>
                             </div>
                         </div>
                         <div class="p-card full">
@@ -331,28 +344,28 @@
                     <div id="matches-empty" class="tab-empty-state"></div>
                     <div id="matches-content">
                         <div class="flex flex-wrap gap-2 mb-3 align-items-center">
-                            <select id="filter-coloppure" class="p-inputtext p-component" onchange="renderPartiteTab()">
-                                <option value="all">Tutti i coloppurei</option>
+                            <select id="filter-color" class="p-inputtext p-component" onchange="renderMatchesTab()">
+                                <option value="all">Tutti i colori</option>
                                 <option value="white">Bianco</option>
                                 <option value="black">Nero</option>
                             </select>
-                            <select id="filter-result" class="p-inputtext p-component" onchange="renderPartiteTab()">
+                            <select id="filter-result" class="p-inputtext p-component" onchange="renderMatchesTab()">
                                 <option value="all">Tutti i risultati</option>
-                                <option value="WIN">Vittoppureie</option>
+                                <option value="WIN">Vittorie</option>
                                 <option value="LOSS">Perdite</option>
-                                <option value="DRAW">Soppureteggi</option>
+                                <option value="DRAW">Sorteggi</option>
                             </select>
-                            <select id="filter-time" class="p-inputtext p-component" onchange="renderPartiteTab()">
-                                <option value="all">Controlli tempoppureali</option>
+                            <select id="filter-time" class="p-inputtext p-component" onchange="renderMatchesTab()">
+                                <option value="all">Controlli temporali</option>
                                 <option value="bullet">Proiettile</option>
                                 <option value="blitz">Blitz</option>
                                 <option value="rapid">Rapido</option>
                                 <option value="classical">Classica</option>
                                 <option value="daily">Quotidiano</option>
                             </select>
-                            <div id="match-soppuret-chip" class="match-soppuret-chip p-tag p-component">
-                                <span id="match-soppuret-label">Ordinato per percentuale miglioppuree</span>
-                                <button type="button" class="p-button p-button-text p-button-sm p-component" onclick="clearPartiteSoppuret()">Libero</button>
+                            <div id="match-sort-chip" class="match-sort-chip p-tag p-component">
+                                <span id="match-sort-label">Ordinato per percentuale migliore</span>
+                                <button type="button" class="p-button p-button-text p-button-sm p-component" onclick="clearMatchesSort()">Libero</button>
                             </div>
                         </div>
                         <div id="game-list-view"></div>
@@ -365,14 +378,14 @@
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Note sul pullman</div>
-                                <div class="text-coloppure-secondary text-sm mb-3">Note dai giochi che Lite ha recensito in questo browser. Questo non è un account coaching settimanale.</div>
+                                <div class="text-color-secondary text-sm mb-3">Note dai giochi che Lite ha recensito in questo browser. Questo non è un account coaching settimanale.</div>
                                 <div id="analysis-coach"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Frequenza del tema</div>
-                                <div class="text-coloppure-secondary text-sm mb-3">Vedi quanto spesso appare ogni tema tattico o posizionale. Seleziona un esempio per saltare alla mossa.</div>
+                                <div class="text-color-secondary text-sm mb-3">Vedi quanto spesso appare ogni tema tattico o posizionale. Seleziona un esempio per saltare alla mossa.</div>
                                 <div id="analysis-themes"></div>
                             </div>
                         </div>
@@ -384,33 +397,33 @@
                     <div id="stats-content">
                         <div class="p-card mb-3">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Foppurem &amp; finishes</div>
-                                <div class="text-coloppure-secondary text-sm mb-3">Precisione, CPL per fase, oscillazioni di valutazione, finali, bee di differenza di valutazione e suddivisioni di controllo del tempo.</div>
-                                <div id="analysis-foppurem"></div>
+                                <div class="p-card-title mb-1">Form &amp; finishes</div>
+                                <div class="text-color-secondary text-sm mb-3">Precisione, CPL per fase, oscillazioni di valutazione, finali, bande di differenza di valutazione e suddivisioni di controllo del tempo.</div>
+                                <div id="analysis-form"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
                                 <div class="p-card-title mb-1">Tactics, engine &amp; opponents</div>
-                                <div class="text-coloppure-secondary text-sm mb-3">Tassi di eventi materiali, catture o controlli mancati del motoppuree, colpi multiPV tra i primi 2 e se punire gli scivoloni degli avversari.</div>
+                                <div class="text-color-secondary text-sm mb-3">Tassi di eventi materiali, catture o controlli mancati del motore, colpi multiPV tra i primi 2 e se punire gli scivoloni degli avversari.</div>
                                 <div id="analysis-tactics"></div>
                             </div>
                         </div>
                         <div class="p-card mb-3">
                             <div class="p-card-body">
-                                <div class="p-card-title mb-1">Tendenze dei giocatoppurei</div>
-                                <div class="text-coloppure-secondary text-sm mb-3">Aperture preferite e dove i tuoi pezzi cadono più spesso.</div>
+                                <div class="p-card-title mb-1">Tendenze dei giocatori</div>
+                                <div class="text-color-secondary text-sm mb-3">Aperture preferite e dove i tuoi pezzi cadono più spesso.</div>
                                 <div class="profile-kicker mb-2">Aperture preferite</div>
                                 <div class="grid mb-3">
                                     <div class="col-12 md:col-6">
                                         <div class="tendency-subcard">
-                                            <div class="profile-kicker">Come Bianco</div>
+                                            <div class="profile-kicker">Come White</div>
                                             <div class="opening-rank-list" id="profile-white-openings"></div>
                                         </div>
                                     </div>
                                     <div class="col-12 md:col-6">
                                         <div class="tendency-subcard">
-                                            <div class="profile-kicker">Come Nero</div>
+                                            <div class="profile-kicker">Come Black</div>
                                             <div class="opening-rank-list" id="profile-black-defences"></div>
                                         </div>
                                     </div>
@@ -424,14 +437,14 @@
                             <div class="p-card">
                                 <div class="p-card-body">
                                     <div class="p-card-title mb-1">Quanto tempo sopravvive ogni pezzo</div>
-                                    <div class="text-coloppure-secondary text-sm mb-3">Vita media (in mosse) di ogni pezzo iniziale come Bianco e come Nero.</div>
+                                    <div class="text-color-secondary text-sm mb-3">Vita media (in mosse) di ogni pezzo iniziale come Bianco e come Nero.</div>
                                     <div id="analysis-piece-survival"></div>
                                 </div>
                             </div>
                             <div class="p-card">
                                 <div class="p-card-body">
                                     <div class="p-card-title mb-1">Scacco matto con</div>
-                                    <div class="text-coloppure-secondary text-sm mb-3">Quale pezzo ha dato scacco matto vince, in percentuale.</div>
+                                    <div class="text-color-secondary text-sm mb-3">Quale pezzo ha dato scacco matto vince, in percentuale.</div>
                                     <div id="analysis-checkmates"></div>
                                 </div>
                             </div>
@@ -442,12 +455,12 @@
                 <div id="tab-learning" class="p-tabview-panel dash-panel">
                     <div id="learn-browse">
                         <div class="p-buttonset mb-3">
-                            <button type="button" class="p-button p-component learn-subtab" data-learn="openings" onclick="switchImparaSection('openings', this)">Aperture</button>
-                            <button type="button" class="p-button p-component p-button-outlined learn-subtab" data-learn="famonoi" onclick="switchImparaSection('famonoi', this)">Giochi famosi</button>
+                            <button type="button" class="p-button p-component learn-subtab" data-learn="openings" onclick="switchLearnSection('openings', this)">Aperture</button>
+                            <button type="button" class="p-button p-component p-button-outlined learn-subtab" data-learn="famous" onclick="switchLearnSection('famous', this)">Giochi famosi</button>
                         </div>
                         <span class="p-input-icon-left w-full mb-3 block">
                             <i class="pi pi-search"></i>
-                            <input type="search" id="learn-search" class="p-inputtext p-component w-full" placeholder="Cerca aperture o partite famose..." oninput="renderImparaingBrowse()">
+                            <input type="search" id="learn-search" class="p-inputtext p-component w-full" placeholder="Cerca aperture o partite famose..." oninput="renderLearningBrowse()">
                         </span>
                         <div id="learn-groups"></div>
                     </div>
@@ -463,51 +476,51 @@
             <div class="flex flex-wrap gap-2 align-items-center mb-3">
                 <button type="button" class="p-button p-component p-button-secondary" onclick="exitReview()">
                     <span class="p-button-icon-left pi pi-arrow-left"></span>
-                    <span class="p-button-label">Toppurena al profilo</span>
+                    <span class="p-button-label">Torna al profilo</span>
                 </button>
-                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenAttualitàReview()" title="Rifai questa recensione del gioco con una ricerca più completa nei motoppurei">
+                <button type="button" id="btn-deepen" class="p-button p-component" onclick="deepenCurrentReview()" title="Rifai questa recensione del gioco con una ricerca più completa nei motori">
                     <span class="p-button-icon-left pi pi-bolt"></span>
                     <span class="p-button-label">Fai una recensione più completa</span>
                 </button>
                 <span id="review-depth-badge" class="review-depth-badge"></span>
-                <span id="review-deepen-statnoi" class="text-coloppure-secondary text-sm"></span>
+                <span id="review-deepen-status" class="text-color-secondary text-sm"></span>
             </div>
 
             <div id="review-matchup" class="review-matchup mb-3"></div>
 
-            <div id="game-stoppurey-box" class="p-card game-stoppurey mb-3" style="display:none">
+            <div id="game-story-box" class="p-card game-story mb-3" style="display:none">
                 <div class="p-card-body">
-                    <div class="game-stoppurey-kicker" id="game-stoppurey-kicker">Perché hai vinto</div>
-                    <div class="game-stoppurey-headline" id="game-stoppurey-headline"></div>
-                    <div class="game-stoppurey-detail" id="game-stoppurey-detail"></div>
-                    <div class="game-stoppurey-link" id="game-stoppurey-link" style="display:none">Salta al momento chiave →</div>
+                    <div class="game-story-kicker" id="game-story-kicker">Perché hai vinto</div>
+                    <div class="game-story-headline" id="game-story-headline"></div>
+                    <div class="game-story-detail" id="game-story-detail"></div>
+                    <div class="game-story-link" id="game-story-link" style="display:none">Salta al momento chiave →</div>
                 </div>
             </div>
 
             <div id="current-move-info" class="p-card mb-3">
                 <div class="p-card-body">
                     <span id="move-opening" class="opening-tag"></span>
-                    <div class="flex jnoitify-content-betnoien align-items-center">
+                    <div class="flex justify-content-between align-items-center">
                         <div id="move-title" class="text-xl font-bold">Seleziona una mossa</div>
                         <div id="move-badge"></div>
                     </div>
-                    <div id="move-desc" class="text-coloppure-secondary text-sm mt-2">Scegli una mossa per vedere la recensione.</div>
-                    <div id="move-alt" class="move-alt text-coloppure-secondary text-sm mt-2" style="display:none"></div>
+                    <div id="move-desc" class="text-color-secondary text-sm mt-2">Scegli una mossa per vedere la recensione.</div>
+                    <div id="move-alt" class="move-alt text-color-secondary text-sm mt-2" style="display:none"></div>
                 </div>
             </div>
 
             <div class="review-nav review-nav-jump flex flex-wrap gap-2 mb-3">
-                <button type="button" class="p-button p-component p-button-secondary" onclick="goToInizio()" title="Inizio della partita">
+                <button type="button" class="p-button p-component p-button-secondary" onclick="goToStart()" title="Inizio della partita">
                     <span class="p-button-icon-left pi pi-step-backward"></span>
                     <span class="p-button-label">Inizio</span>
                 </button>
-                <button type="button" id="btn-key-move" class="p-button p-component" onclick="goToChiaveMove()" title="Salta al momento chiave" disabled>
+                <button type="button" id="btn-key-move" class="p-button p-component" onclick="goToKeyMove()" title="Salta al momento chiave" disabled>
                     <span class="p-button-icon-left pi pi-star-fill"></span>
                     <span class="p-button-label">Chiave</span>
                 </button>
-                <button type="button" class="p-button p-component p-button-secondary" onclick="goToFine()" title="Fine del gioco">
+                <button type="button" class="p-button p-component p-button-secondary" onclick="goToEnd()" title="Fine del gioco">
                     <span class="p-button-label">Fine</span>
-                    <span class="p-button-icon-right pi pi-step-foppureward"></span>
+                    <span class="p-button-icon-right pi pi-step-forward"></span>
                 </button>
             </div>
 
@@ -515,7 +528,7 @@
                 <div id="active-board" class="chess-board"></div>
                 <svg id="arrow-overlay" class="arrow-overlay" viewBox="0 0 100 100">
                     <defs>
-                        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" oppureient="auto">
+                        <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto">
                             <path d="M0,0 L4,2 L0,4 Z" fill="rgba(52, 211, 153, 0.9)" />
                         </marker>
                     </defs>
@@ -539,15 +552,15 @@
                 </button>
             </div>
 
-            <aside class="app-upgrade-card review-app-promo mt-4" aria-label="Crea un account CheckmateMoppuree">
+            <aside class="app-upgrade-card review-app-promo mt-4" aria-label="Crea un account CheckmateMore">
                 <div class="app-upgrade-copy">
                     <span class="app-upgrade-kicker">Dopo questa recensione</span>
                     <strong>Tieni questo gioco in un quadro a lungo termine.</strong>
-                    <p>Un account gratuito CheckmateMoppuree ha analizzato i giochi e li collega nel tempo. Pro aggiunge coaching settimanale, monitoppureaggio delle tendenze e pratica personale.</p>
+                    <p>Un account gratuito CheckmateMore ha analizzato i giochi e li collega nel tempo. Pro aggiunge coaching settimanale, monitoraggio delle tendenze e pratica personale.</p>
                 </div>
                 <div class="app-upgrade-actions">
-                    <a href="https://app.checkmatemoppuree.com/" class="p-button p-component cm-primary"><span class="p-button-label">Crea un account gratuito</span></a>
-                    <a href="../../Prezzi/" class="p-button p-component p-button-outlined"><span class="p-button-label">Esploppurea Pro</span></a>
+                    <a href="https://app.checkmatemore.com/" class="p-button p-component cm-primary"><span class="p-button-label">Crea un account gratuito</span></a>
+                    <a href="/it/pricing/" class="p-button p-component p-button-outlined"><span class="p-button-label">Esplora Pro</span></a>
                 </div>
             </aside>
         </div>
@@ -571,7 +584,7 @@
                             </li>
                             <li role="presentation">
                                 <a href="#" class="p-tabview-nav-link" data-review-tab="moves" onclick="switchTab('moves', this); return false;" role="tab">
-                                    <i class="pi pi-soppuret-alt" aria-hidden="true"></i>
+                                    <i class="pi pi-sort-alt" aria-hidden="true"></i>
                                     <span class="p-tabview-title">Mosse</span>
                                 </a>
                             </li>
@@ -596,15 +609,15 @@
         </div>
     </div>
 
-    <nav id="app-float-nav" class="app-float-nav" aria-label="Spazio di lavoppureo">
+    <nav id="app-float-nav" class="app-float-nav" aria-label="Spazio di lavoro">
         <button type="button" class="app-float-item is-active" data-tab="overview" onclick="switchDashTab('overview')">
-            <i class="pi pi-th-large" aria-hidden="true"></i><span>Panoppureamica</span>
+            <i class="pi pi-th-large" aria-hidden="true"></i><span>Panoramica</span>
         </button>
         <button type="button" class="app-float-item" data-tab="matches" onclick="switchDashTab('matches')">
             <i class="pi pi-list" aria-hidden="true"></i><span>Partite</span>
         </button>
         <button type="button" class="app-float-item" data-tab="coaching" onclick="switchDashTab('coaching')">
-            <i class="pi pi-comments" aria-hidden="true"></i><span>Allenatoppuree</span>
+            <i class="pi pi-comments" aria-hidden="true"></i><span>Allenatore</span>
         </button>
         <button type="button" class="app-float-item" data-tab="stats" onclick="switchDashTab('stats')">
             <i class="pi pi-chart-bar" aria-hidden="true"></i><span>Statistiche</span>
@@ -618,24 +631,24 @@
     <div id="about-view" class="about-view" style="display:none">
         <div class="p-card">
             <div class="p-card-body">
-                <h2 class="about-title mb-1">Infoppuremazioni su CheckmateMoppuree Lite</h2>
+                <h2 class="about-title mb-1">Informazioni su CheckmateMore Lite</h2>
                 <p class="faq-def mb-3">Tutto gira nel tuo browser. Stockfish, cache, coaching e statistiche. Nessun account richiesto.</p>
                 <div class="p-tabview p-component about-tabs">
                     <div class="p-tabview-nav-container">
                         <div class="p-tabview-nav-content">
                             <ul class="p-tabview-nav" role="tablist">
                                 <li class="p-highlight" role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="how" onclick="switchInfoppuremazioniTab('how', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="how" onclick="switchAboutTab('how', this); return false;" role="tab">
                                         <span class="p-tabview-title">Come funziona</span>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="features" onclick="switchInfoppuremazioniTab('features', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="features" onclick="switchAboutTab('features', this); return false;" role="tab">
                                         <span class="p-tabview-title">Set di funzionalità</span>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#" class="p-tabview-nav-link" data-about="settings" onclick="switchInfoppuremazioniTab('settings', this); return false;" role="tab">
+                                    <a href="#" class="p-tabview-nav-link" data-about="settings" onclick="switchAboutTab('settings', this); return false;" role="tab">
                                         <span class="p-tabview-title">Impostazioni</span>
                                     </a>
                                 </li>
@@ -670,7 +683,7 @@
 <script src="/js/chess/cache.js?v=20260811h"></script>
 <script src="/js/chess/analysis.js?v=20260829a"></script>
 <script src="/js/chess/pieces.js?v=20260811h"></script>
-<script src="/js/chess/scoppureing.js?v=20260826a"></script>
+<script src="/js/chess/scoring.js?v=20260826a"></script>
 <script src="/js/chess/components.js?v=20260829d"></script>
 <script src="/js/chess/ui.js?v=20260829d"></script>
 <script src="/js/chess/insights.js?v=20260829a"></script>
