@@ -5,7 +5,7 @@ import { hash, keyFor } from './localization-lib.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outputDir = path.join(root, 'localization');
-const ignoredDirs = new Set(['.git', '.github', '.vs', '.verify', 'node_modules', 'localization', 'scripts']);
+const ignoredDirs = new Set(['.git', '.github', '.vs', '.verify', 'node_modules', 'localization', 'scripts', 'es', 'fr', 'de', 'pt-br', 'it', 'nl', 'pl', 'uk', 'ru']);
 const entries = new Map();
 const provenance = {};
 const shouldKeep = text => {

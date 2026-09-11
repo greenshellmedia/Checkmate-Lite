@@ -606,7 +606,6 @@
   "auto.520f7babc45daa21": "Gardez ces éléments séparés",
   "auto.b76daf035c4b2242": "Gardez ce jeu dans une perspective à plus long terme.",
   "auto.adf4f15af96e5f34": "Continuez à utiliser Lite",
-  "auto.a3903a99275edfba": "Gardez vos progrès aux échecs connectés",
   "auto.ce085acc22761a09": "Gardez vos jeux connectés.",
   "auto.99a52df3ff3d4994": "Clé",
   "auto.13166b63aaa73022": "Roi",
@@ -1269,5 +1268,7 @@
   "auto.9224150eae2ab9b6": "Vos cases de destination sont les cases Blanches et Noires, réparties par ouverture / milieu de partie / fin de partie. Les plateaux sont affichés de votre côté.",
   "auto.322f11d859778f0d": "Votre critique de jeu s’affiche dans ce navigateur. Vous n’avez pas besoin d’un compte.",
   "auto.310ea5d31ea3788f": "Votre prochain mouvement",
-  "auto.f6672b6037e59677": "Votre raté initiale"
+  "auto.f6672b6037e59677": "Votre raté initiale",
+  "auto.c51a6153d9cb6ba5": "Vous aimez CheckmateMore Lite ?",
+  "auto.3da53f43f46be5c0": "Créez un compte gratuit pour profiter d’analyses plus poussées, d’exercices, de conseils et d’un entraînement fondés sur vos parties."
 }

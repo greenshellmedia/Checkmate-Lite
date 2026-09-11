@@ -220,6 +220,8 @@ html, body {
     .lite-review-actions, .lite-review-select, .lite-review-actions .p-button { width: 100%; }
     .app-upgrade-card { align-items: stretch; flex-direction: column; }
     .app-upgrade-actions .p-button { flex: 1 1 auto; justify-content: center; }
+    .app-topnav-links { flex: 1 1 100%; }
+    .app-account-cta { flex: 1 1 auto; margin-left: 0; }
 }
 
 /* Keep Prime components on Inter (theme tokens otherwise pull Roboto) */
@@ -395,7 +397,13 @@ html[data-theme="dark"] .app-brand-king-black {
 .app-topnav-links {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.25rem;
+}
+.app-account-cta {
+    margin-left: 0.35rem;
+    text-decoration: none;
+    white-space: nowrap;
 }
 .app-topnav-link {
     border: 0;

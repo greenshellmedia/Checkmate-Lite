@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-06T18:37:53.982Z",
-  "sourceHash": "dd02a7d7741ec308d23300abd94d7130cd51383ba144e90bec74d9e7b07fe837",
+  "generatedAt": "2026-09-11T19:09:07.076Z",
+  "sourceHash": "1dc03fd80be0b41ba118374693030b929ea3c787986531c2dbcbc4bcba1cccd8",
   "entries": {
     "auto.7d4110a1877afee5": [
       {
@@ -260,6 +260,112 @@
         "context": "text"
       }
     ],
+    "auto.db14ef13b26907e3": [
+      {
+        "file": "chess/app/index.html",
+        "context": "text"
+      },
+      {
+        "file": "chess-game-analysis/index.html",
+        "context": "text"
+      },
+      {
+        "file": "chess-tactics-practice-from-your-games/index.html",
+        "context": "text"
+      },
+      {
+        "file": "compare/chess-com-analysis/index.html",
+        "context": "text"
+      },
+      {
+        "file": "contact/index.html",
+        "context": "text"
+      },
+      {
+        "file": "featured/index.html",
+        "context": "text"
+      },
+      {
+        "file": "guides/how-to-find-recurring-chess-mistakes/index.html",
+        "context": "text"
+      },
+      {
+        "file": "guides/how-to-review-chess-games/index.html",
+        "context": "text"
+      },
+      {
+        "file": "guides/how-to-stop-hanging-queens/index.html",
+        "context": "text"
+      },
+      {
+        "file": "guides/index.html",
+        "context": "text"
+      },
+      {
+        "file": "guides/opening-mistakes-by-rating/index.html",
+        "context": "text"
+      },
+      {
+        "file": "guides/what-chess-accuracy-means/index.html",
+        "context": "text"
+      },
+      {
+        "file": "guides/why-you-lose-winning-chess-positions/index.html",
+        "context": "text"
+      },
+      {
+        "file": "how-it-works/index.html",
+        "context": "text"
+      },
+      {
+        "file": "improvement-proof/index.html",
+        "context": "text"
+      },
+      {
+        "file": "index.html",
+        "context": "text"
+      },
+      {
+        "file": "play-chess-bots/index.html",
+        "context": "text"
+      },
+      {
+        "file": "pricing/index.html",
+        "context": "text"
+      },
+      {
+        "file": "privacy/index.html",
+        "context": "text"
+      },
+      {
+        "file": "research/clock-pressure-chess-mistakes/index.html",
+        "context": "text"
+      },
+      {
+        "file": "research/common-chess-blunders-by-rating-band/index.html",
+        "context": "text"
+      },
+      {
+        "file": "research/index.html",
+        "context": "text"
+      },
+      {
+        "file": "research/openings-with-most-blunders-in-our-analysed-sample/index.html",
+        "context": "text"
+      },
+      {
+        "file": "research/queen-hangs-1000-1500/index.html",
+        "context": "text"
+      },
+      {
+        "file": "terms/index.html",
+        "context": "text"
+      },
+      {
+        "file": "weekly-chess-coaching/index.html",
+        "context": "text"
+      }
+    ],
     "auto.95b37b2269aefc57": [
       {
         "file": "chess/app/index.html",
@@ -314,13 +420,13 @@
         "context": "text"
       }
     ],
-    "auto.a3903a99275edfba": [
+    "auto.c51a6153d9cb6ba5": [
       {
         "file": "chess/app/index.html",
         "context": "text"
       }
     ],
-    "auto.69333a57a66477b1": [
+    "auto.3da53f43f46be5c0": [
       {
         "file": "chess/app/index.html",
         "context": "text"
@@ -519,6 +625,12 @@
       }
     ],
     "auto.ce085acc22761a09": [
+      {
+        "file": "chess/app/index.html",
+        "context": "text"
+      }
+    ],
+    "auto.69333a57a66477b1": [
       {
         "file": "chess/app/index.html",
         "context": "text"
@@ -1937,108 +2049,6 @@
       }
     ],
     "auto.bc02b7f2e57b4f0e": [
-      {
-        "file": "chess-game-analysis/index.html",
-        "context": "text"
-      },
-      {
-        "file": "chess-tactics-practice-from-your-games/index.html",
-        "context": "text"
-      },
-      {
-        "file": "compare/chess-com-analysis/index.html",
-        "context": "text"
-      },
-      {
-        "file": "contact/index.html",
-        "context": "text"
-      },
-      {
-        "file": "featured/index.html",
-        "context": "text"
-      },
-      {
-        "file": "guides/how-to-find-recurring-chess-mistakes/index.html",
-        "context": "text"
-      },
-      {
-        "file": "guides/how-to-review-chess-games/index.html",
-        "context": "text"
-      },
-      {
-        "file": "guides/how-to-stop-hanging-queens/index.html",
-        "context": "text"
-      },
-      {
-        "file": "guides/index.html",
-        "context": "text"
-      },
-      {
-        "file": "guides/opening-mistakes-by-rating/index.html",
-        "context": "text"
-      },
-      {
-        "file": "guides/what-chess-accuracy-means/index.html",
-        "context": "text"
-      },
-      {
-        "file": "guides/why-you-lose-winning-chess-positions/index.html",
-        "context": "text"
-      },
-      {
-        "file": "how-it-works/index.html",
-        "context": "text"
-      },
-      {
-        "file": "improvement-proof/index.html",
-        "context": "text"
-      },
-      {
-        "file": "index.html",
-        "context": "text"
-      },
-      {
-        "file": "play-chess-bots/index.html",
-        "context": "text"
-      },
-      {
-        "file": "pricing/index.html",
-        "context": "text"
-      },
-      {
-        "file": "privacy/index.html",
-        "context": "text"
-      },
-      {
-        "file": "research/clock-pressure-chess-mistakes/index.html",
-        "context": "text"
-      },
-      {
-        "file": "research/common-chess-blunders-by-rating-band/index.html",
-        "context": "text"
-      },
-      {
-        "file": "research/index.html",
-        "context": "text"
-      },
-      {
-        "file": "research/openings-with-most-blunders-in-our-analysed-sample/index.html",
-        "context": "text"
-      },
-      {
-        "file": "research/queen-hangs-1000-1500/index.html",
-        "context": "text"
-      },
-      {
-        "file": "terms/index.html",
-        "context": "text"
-      },
-      {
-        "file": "weekly-chess-coaching/index.html",
-        "context": "text"
-      }
-    ],
-    "auto.db14ef13b26907e3": [
       {
         "file": "chess-game-analysis/index.html",
         "context": "text"

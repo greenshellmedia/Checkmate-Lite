@@ -606,7 +606,6 @@
   "auto.520f7babc45daa21": "Haltet diese getrennt",
   "auto.b76daf035c4b2242": "Halte dieses Spiel langfristig.",
   "auto.adf4f15af96e5f34": "Benutze weiterhin Lite",
-  "auto.a3903a99275edfba": "Halte deinen Schachfortschritt verbunden",
   "auto.ce085acc22761a09": "Halte deine Spiele verbunden.",
   "auto.99a52df3ff3d4994": "Legende",
   "auto.13166b63aaa73022": "König",
@@ -1269,5 +1268,7 @@
   "auto.9224150eae2ab9b6": "Dein Zielfeld ist als Weiß und Schwarz aufgeteilt, aufgeteilt nach Eröffnungs-/Mittelspiel/Endspiel. Die Bretter werden von deiner Seite gezeigt.",
   "auto.322f11d859778f0d": "Deine Spielbewertung läuft in diesem Browser. Du brauchst kein Konto.",
   "auto.310ea5d31ea3788f": "Dein nächster Schritt",
-  "auto.f6672b6037e59677": "Deine ursprüngliche Miss"
+  "auto.f6672b6037e59677": "Deine ursprüngliche Miss",
+  "auto.c51a6153d9cb6ba5": "Gefällt dir CheckmateMore Lite?",
+  "auto.3da53f43f46be5c0": "Erstelle ein kostenloses Konto für ausführlichere Analysen, Aufgaben, Coaching und Training auf Grundlage deiner Partien."
 }

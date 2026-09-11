@@ -606,7 +606,6 @@
   "auto.520f7babc45daa21": "Mantenha esses pontos separados",
   "auto.b76daf035c4b2242": "Mantenha esse jogo em um quadro de longo prazo.",
   "auto.adf4f15af96e5f34": "Continue usando o Lite",
-  "auto.a3903a99275edfba": "Mantenha seu progresso no xadrez conectado",
   "auto.ce085acc22761a09": "Mantenha seus jogos conectados.",
   "auto.99a52df3ff3d4994": "Chave",
   "auto.13166b63aaa73022": "Rei",
@@ -1269,5 +1268,7 @@
   "auto.9224150eae2ab9b6": "Seus quadrados de destino são Branco e Preto, divididos por abertura / meio de jogo / final. Os tabuleiros são mostrados do seu lado.",
   "auto.322f11d859778f0d": "Sua análise de jogo roda neste navegador. Você não precisa de uma conta.",
   "auto.310ea5d31ea3788f": "Seu próximo passo",
-  "auto.f6672b6037e59677": "Sua primeira falha"
+  "auto.f6672b6037e59677": "Sua primeira falha",
+  "auto.c51a6153d9cb6ba5": "Está gostando da CheckmateMore Lite?",
+  "auto.3da53f43f46be5c0": "Crie uma conta gratuita para ter análises mais detalhadas, exercícios, orientação e treino baseados nas suas partidas."
 }

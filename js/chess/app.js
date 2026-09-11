@@ -113,10 +113,12 @@ function readLiteRunCount() {
     catch (_) { return 0; }
 }
 
-function recordLiteRunCompletion() {
-    const count = readLiteRunCount() + 1;
+function recordLiteRunCompletion(reviewedGames = 1) {
+    const count = readLiteRunCount() + Math.max(1, Number(reviewedGames) || 1);
     try { localStorage.setItem(LITE_RUN_COUNT_KEY, String(count)); } catch (_) {}
-    // Upgrade panels sit below review content; do not interrupt the first look with a modal.
+    let promoSeen = false;
+    try { promoSeen = localStorage.getItem(LITE_PROMO_SEEN_KEY) === '1'; } catch (_) {}
+    if (count >= 2 && !promoSeen) setTimeout(openLitePromo, 450);
 }
 
 function openLitePromo() {
@@ -442,7 +444,6 @@ async function startAnalysis() {
             sortAnalysedGames(profileState);
             renderProfileOverview(profileState);
             log('There are no new games to analyse, so Lite will use the saved reviews.');
-            recordLiteRunCompletion();
             stopAnalysis();
             return;
         }
@@ -495,7 +496,7 @@ async function startAnalysis() {
         log(completedNormally
             ? `Done. Analysed ${completed} new game${completed === 1 ? '' : 's'} · ${cacheSaves} saved · profile now ${profileState.games} total.`
             : `Stopped after ${completed} / ${totalNew} new games · profile has ${profileState.games} total.`);
-        if (completedNormally && profileState?.games) recordLiteRunCompletion();
+        if (completedNormally && completed > 0) recordLiteRunCompletion(completed);
     } catch (e) { log(`Analysis Error: ${e.message}`, true); }
     stopAnalysis();
 }

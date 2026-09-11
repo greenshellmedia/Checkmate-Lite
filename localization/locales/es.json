@@ -606,7 +606,6 @@
   "auto.520f7babc45daa21": "Mantén estos datos separados",
   "auto.b76daf035c4b2242": "Mantén este juego en un panorama a largo plazo.",
   "auto.adf4f15af96e5f34": "Sigue usando Lite",
-  "auto.a3903a99275edfba": "Mantén tu progreso en el ajedrez conectado",
   "auto.ce085acc22761a09": "Mantén tus partidas conectadas.",
   "auto.99a52df3ff3d4994": "Clave",
   "auto.13166b63aaa73022": "Rey",
@@ -1269,5 +1268,7 @@
   "auto.9224150eae2ab9b6": "Tus casillas de destino son blancas y negras, divididas por apertura / mitad de partida / final. Los tableros se muestran desde tu lado.",
   "auto.322f11d859778f0d": "Tu reseña de juego se ejecuta en este navegador. No necesitas una cuenta.",
   "auto.310ea5d31ea3788f": "Tu siguiente movimiento",
-  "auto.f6672b6037e59677": "Tu fallo original"
+  "auto.f6672b6037e59677": "Tu fallo original",
+  "auto.c51a6153d9cb6ba5": "¿Te está gustando CheckmateMore Lite?",
+  "auto.3da53f43f46be5c0": "Crea una cuenta gratuita para acceder a análisis más detallados, ejercicios, orientación y entrenamiento basados en tus partidas."
 }
