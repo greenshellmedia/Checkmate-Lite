@@ -8,6 +8,7 @@ const origin = 'https://checkmatemore.com';
 const source = JSON.parse(fs.readFileSync(path.join(root, 'localization/source-catalogue.json'), 'utf8'));
 const keyByEnglish = new Map(Object.entries(source).map(([id, value]) => [value, id]));
 const publicFiles = [];
+const englishOnlyPrefixes = ['/blog/', '/about-checkmatemore/'];
 const ignored = new Set(['node_modules', '.git', '.vs', '.verify', 'localization', ...targetLocales.map(localeFolder)]);
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -58,13 +59,14 @@ function translateHtml(english, catalogue) {
   protectedBlocks.forEach((block, index) => { html = html.replace(`___CMP_PROTECTED_BLOCK_${index}___`, block); });
   return html;
 }
-function languageLinks(route) {
-  return [...locales.map(({ code }) => `<link rel="alternate" hreflang="${code}" href="${absoluteUrl(route, code)}">`),
+function languageLinks(route, englishOnly = false) {
+  const availableLocales = englishOnly ? [{ code: sourceLocale }] : locales;
+  return [...availableLocales.map(({ code }) => `<link rel="alternate" hreflang="${code}" href="${absoluteUrl(route, code)}">`),
     `<link rel="alternate" hreflang="x-default" href="${absoluteUrl(route, sourceLocale)}">`].join('\n  ');
 }
-function setLanguageLinks(html, route) {
+function setLanguageLinks(html, route, englishOnly = false) {
   html = html.replace(/\s*<link rel="alternate" hreflang="[^"]+" href="[^"]+">/gi, '');
-  return html.replace('</head>', `  ${languageLinks(route)}\n</head>`);
+  return html.replace('</head>', `  ${languageLinks(route, englishOnly)}\n</head>`);
 }
 function localizeNavigation(html, locale, route) {
   const prefix = localeFolder(locale);
@@ -75,6 +77,7 @@ function localizeNavigation(html, locale, route) {
       const resolved = new URL(value, `${origin}${route}`);
       const suffix = `${resolved.search}${resolved.hash}`;
       if (name.toLowerCase() === 'src' || path.posix.extname(resolved.pathname)) return `${name}="${resolved.pathname}${suffix}"`;
+      if (englishOnlyPrefixes.some(englishPath => resolved.pathname.startsWith(englishPath))) return `${name}="${resolved.pathname}${suffix}"`;
       const pagePath = resolved.pathname.startsWith(`/${prefix}/`) ? resolved.pathname : `/${prefix}${resolved.pathname}`;
       return `${name}="${pagePath}${suffix}"`;
     });
@@ -85,9 +88,11 @@ const built = [];
 for (const file of publicFiles) {
   const relative = path.relative(root, file);
   const route = routeFor(relative);
-  const english = setLanguageLinks(fs.readFileSync(file, 'utf8'), route);
+  const englishOnly = englishOnlyPrefixes.some(prefix => route.startsWith(prefix));
+  const english = setLanguageLinks(fs.readFileSync(file, 'utf8'), route, englishOnly);
   fs.writeFileSync(file, english, 'utf8');
-  built.push({ locale: sourceLocale, route });
+  built.push({ locale: sourceLocale, route, englishOnly });
+  if (englishOnly) continue;
   for (const locale of targetLocales) {
     const cataloguePath = path.join(root, 'localization/locales', `${locale}.json`);
     if (!fs.existsSync(cataloguePath)) throw new Error(`Missing ${locale} catalogue. Run translations.ps1 Generate first.`);
@@ -102,11 +107,14 @@ for (const file of publicFiles) {
     const destination = path.join(root, localeFolder(locale), relative);
     fs.mkdirSync(path.dirname(destination), { recursive: true });
     fs.writeFileSync(destination, html, 'utf8');
-    built.push({ locale, route });
+    built.push({ locale, route, englishOnly: false });
   }
 }
 
 const lastmod = new Date().toISOString().slice(0, 10);
-const sitemapEntries = built.map(({ locale, route }) => `  <url>\n    <loc>${absoluteUrl(route, locale)}</loc>\n${locales.map(({ code }) => `    <xhtml:link rel="alternate" hreflang="${code}" href="${absoluteUrl(route, code)}"/>`).join('\n')}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${absoluteUrl(route, sourceLocale)}"/>\n    <lastmod>${lastmod}</lastmod>\n  </url>`);
+const sitemapEntries = built.map(({ locale, route, englishOnly }) => {
+  const availableLocales = englishOnly ? [{ code: sourceLocale }] : locales;
+  return `  <url>\n    <loc>${absoluteUrl(route, locale)}</loc>\n${availableLocales.map(({ code }) => `    <xhtml:link rel="alternate" hreflang="${code}" href="${absoluteUrl(route, code)}"/>`).join('\n')}\n    <xhtml:link rel="alternate" hreflang="x-default" href="${absoluteUrl(route, sourceLocale)}"/>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
+});
 fs.writeFileSync(path.join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${sitemapEntries.join('\n')}\n</urlset>\n`, 'utf8');
 console.log(`Built ${built.length} canonical pages and a ${built.length}-URL multilingual sitemap.`);

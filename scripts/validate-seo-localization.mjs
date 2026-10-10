@@ -8,6 +8,7 @@ const origin = 'https://checkmatemore.com';
 const source = JSON.parse(fs.readFileSync(path.join(root, 'localization/source-catalogue.json'), 'utf8'));
 const ignored = new Set(['node_modules', '.git', '.vs', '.verify', 'localization', ...targetLocales.map(localeFolder)]);
 const sourceFiles = [];
+const englishOnlyPrefixes = ['/blog/', '/about-checkmatemore/'];
 const errors = [];
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -27,7 +28,8 @@ const expectedUrls = new Set();
 for (const sourceFile of sourceFiles) {
   const relative = path.relative(root, sourceFile);
   const route = routeFor(sourceFile);
-  for (const { code } of locales) {
+  const expectedLocales = englishOnlyPrefixes.some(prefix => route.startsWith(prefix)) ? [{ code: sourceLocale }] : locales;
+  for (const { code } of expectedLocales) {
     const file = code === sourceLocale ? sourceFile : path.join(root, localeFolder(code), relative);
     const url = expectedUrl(route, code);
     expectedUrls.add(url);
@@ -38,7 +40,7 @@ for (const sourceFile of sourceFiles) {
     const lang = html.match(/<html\b[^>]*\blang="([^"]+)"/i)?.[1];
     if (lang !== code) errors.push(`${code}/${route}: html lang is ${lang || 'missing'}`);
     const alternates = new Map([...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/gi)].map(match => [match[1], match[2]]));
-    for (const alternate of locales) {
+    for (const alternate of expectedLocales) {
       const expected = expectedUrl(route, alternate.code);
       if (alternates.get(alternate.code) !== expected) errors.push(`${code}/${route}: bad hreflang ${alternate.code}`);
     }

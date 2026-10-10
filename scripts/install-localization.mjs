@@ -14,12 +14,14 @@ function walk(dir) {
 }
 function install(file) {
   let html = fs.readFileSync(file, 'utf8');
+  const relative = path.relative(root, file).replaceAll('\\', '/');
+  const englishOnly = relative.startsWith('blog/') || relative.startsWith('about-checkmatemore/');
   const depth = path.relative(root, path.dirname(file)).split(path.sep).filter(Boolean).length;
   const prefix = depth ? '../'.repeat(depth) : '';
   var additions = '';
   if (!html.includes('https://api.goaffpro.com/loader.js?shop=pmnkfjiswh')) additions += '  <script type="text/javascript" src="https://api.goaffpro.com/loader.js?shop=pmnkfjiswh"></script>\n';
   if (!html.includes('js/affiliate-attribution.js')) additions += `  <script src="${prefix}js/affiliate-attribution.js"></script>\n`;
-  if (!html.includes('js/localization.js')) additions += `  <link rel="stylesheet" href="${prefix}localization/localization.css?v=1">\n  <script src="${prefix}js/localization.js"></script>\n`;
+  if (!englishOnly && !html.includes('js/localization.js')) additions += `  <link rel="stylesheet" href="${prefix}localization/localization.css?v=1">\n  <script src="${prefix}js/localization.js"></script>\n`;
   if (!additions) return;
   html = html.replace('</head>', `${additions}</head>`);
   fs.writeFileSync(file, html, 'utf8');

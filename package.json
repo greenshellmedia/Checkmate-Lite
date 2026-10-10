@@ -18,9 +18,12 @@
     "translations:build-pages": "node scripts/repair-protected-translations.mjs && node scripts/build-localized-pages.mjs && node scripts/validate-seo-localization.mjs",
     "translations:repair-protected": "node scripts/repair-protected-translations.mjs",
     "seo:validate": "node scripts/validate-seo-localization.mjs",
+    "seo:validate:public": "node scripts/validate-public-seo.mjs",
     "translations:test": "node --test localization/tests/*.test.mjs",
     "test:attribution": "node --test scripts/tests/affiliate-attribution.test.cjs",
-    "build:public": "node scripts/build-public-pages.mjs && node scripts/install-localization.mjs && node scripts/extract-translations.mjs",
+    "build:blog": "node scripts/build-blog.mjs && node scripts/normalise-public-seo.mjs",
+    "build:site": "node scripts/build-blog.mjs && node scripts/normalise-public-seo.mjs && node scripts/install-localization.mjs && node scripts/build-localized-pages.mjs && node scripts/validate-seo-localization.mjs && node scripts/validate-public-seo.mjs",
+    "build:public": "node scripts/build-public-pages.mjs && node scripts/build-blog.mjs && node scripts/normalise-public-seo.mjs && node scripts/install-localization.mjs && node scripts/extract-translations.mjs",
     "start": "npx --yes serve -l 3000 ."
   },
   "repository": {

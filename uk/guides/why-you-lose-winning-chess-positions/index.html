@@ -36,22 +36,36 @@
       "@type": "Organization",
       "@id": "https://checkmatemore.com/#organization",
       "name": "CheckmateMore",
-      "url": "https://checkmatemore.com",
-      "logo": "https://checkmatemore.com/assets/android-chrome-512x512.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "url": "https://checkmatemore.com/contact/"
-      }
+      "url": "https://checkmatemore.com/",
+      "logo": "https://checkmatemore.com/assets/checkmatemore-icon-light.svg",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "support@checkmatemore.com"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "privacy",
+          "email": "privacy@checkmatemore.com"
+        }
+      ],
+      "alternateName": "CheckmateMore Pro",
+      "legalName": "Green Shell Media",
+      "email": "hello@checkmatemore.com"
     },
     {
       "@type": "WebSite",
       "@id": "https://checkmatemore.com/#website",
-      "url": "https://checkmatemore.com",
+      "url": "https://checkmatemore.com/",
       "name": "CheckmateMore",
       "publisher": {
         "@id": "https://checkmatemore.com/#organization"
-      }
+      },
+      "alternateName": [
+        "CheckmateMore Pro",
+        "Checkmate More"
+      ]
     },
     {
       "@type": "Article",
@@ -60,9 +74,7 @@
       "datePublished": "2026-08-24",
       "dateModified": "2026-08-24",
       "author": {
-        "@type": "Organization",
-        "name": "Редакційна команда CheckmateMore",
-        "url": "https://checkmatemore.com/contact/"
+        "@id": "https://checkmatemore.com/#organization"
       },
       "publisher": {
         "@id": "https://checkmatemore.com/#organization"
@@ -136,7 +148,9 @@
       <nav class="cm-nav" aria-label="Основна навігація">
         <a href="/uk/how-it-works/">Як це працює</a>
         <a href="/uk/guides/" class="is-current">Путівники</a>
+        <a href="/blog/">Blog</a>
         <a href="/uk/pricing/">Ціноутворення</a>
+        <a href="/about-checkmatemore/">Про нас</a>
         <a href="https://app.checkmatemore.com/featured" class="cm-featured-nav"><i class="pi pi-star-fill" aria-hidden="true"></i> Обрані</a>
         <a href="/uk/chess/app/" class="p-button p-component p-button-sm cm-btn">Використовуйте Lite</a>
         <a href="https://app.checkmatemore.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Створити безкоштовний акаунт</span></a>
@@ -150,7 +164,9 @@
             <a href="/uk/chess/app/">Використовуйте Lite без акаунта</a>
             <a href="/uk/how-it-works/">Як це працює</a>
             <a href="/uk/guides/">Путівники</a>
+            <a href="/blog/">Blog</a>
             <a href="/uk/pricing/">Ціноутворення</a>
+            <a href="/about-checkmatemore/">Про нас</a>
             <a href="https://app.checkmatemore.com/featured">Запрошені гравці</a>
             <a href="/uk/chess-game-analysis/">Аналіз гри</a>
             <a href="/uk/weekly-chess-coaching/">Щотижневе тренування</a>
@@ -200,6 +216,7 @@
       </div>
       <div>
         <h3>Вчитися</h3>
+        <a href="/blog/">Blog</a>
         <a href="/uk/guides/">Шахові гіди</a>
         <a href="/uk/research/">Дослідницькі нотатки</a>
         <a href="/uk/compare/chess-com-analysis/">Порівняння підходів</a>
@@ -207,6 +224,7 @@
       </div>
       <div>
         <h3>Компанія</h3>
+        <a href="/about-checkmatemore/">About CheckmateMore</a>
         <a href="/uk/contact/">Контакт</a>
         <a href="/uk/privacy/">Приватність</a>
         <a href="/uk/terms/">Умови</a>

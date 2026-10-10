@@ -31,22 +31,36 @@
       "@type": "Organization",
       "@id": "https://checkmatemore.com/#organization",
       "name": "CheckmateMore",
-      "url": "https://checkmatemore.com",
-      "logo": "https://checkmatemore.com/assets/android-chrome-512x512.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "url": "https://checkmatemore.com/contact/"
-      }
+      "url": "https://checkmatemore.com/",
+      "logo": "https://checkmatemore.com/assets/checkmatemore-icon-light.svg",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "support@checkmatemore.com"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "privacy",
+          "email": "privacy@checkmatemore.com"
+        }
+      ],
+      "alternateName": "CheckmateMore Pro",
+      "legalName": "Green Shell Media",
+      "email": "hello@checkmatemore.com"
     },
     {
       "@type": "WebSite",
       "@id": "https://checkmatemore.com/#website",
-      "url": "https://checkmatemore.com",
+      "url": "https://checkmatemore.com/",
       "name": "CheckmateMore",
       "publisher": {
         "@id": "https://checkmatemore.com/#organization"
-      }
+      },
+      "alternateName": [
+        "CheckmateMore Pro",
+        "Checkmate More"
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -144,7 +158,9 @@
       <nav class="cm-nav" aria-label="Основная навигация">
         <a href="/ru/how-it-works/">Как это работает</a>
         <a href="/ru/guides/">Путеводители</a>
+        <a href="/blog/">Blog</a>
         <a href="/ru/pricing/" class="is-current">Цены</a>
+        <a href="/about-checkmatemore/">О компании</a>
         <a href="https://app.checkmatemore.com/featured" class="cm-featured-nav"><i class="pi pi-star-fill" aria-hidden="true"></i> Избранные</a>
         <a href="/ru/chess/app/" class="p-button p-component p-button-sm cm-btn">Используйте Lite</a>
         <a href="https://app.checkmatemore.com/" class="p-button p-component p-button-sm cm-primary"><span class="p-button-label">Создать бесплатный аккаунт</span></a>
@@ -158,7 +174,9 @@
             <a href="/ru/chess/app/">Используйте Lite без аккаунта</a>
             <a href="/ru/how-it-works/">Как это работает</a>
             <a href="/ru/guides/">Путеводители</a>
+            <a href="/blog/">Blog</a>
             <a href="/ru/pricing/">Цены</a>
+            <a href="/about-checkmatemore/">О компании</a>
             <a href="https://app.checkmatemore.com/featured">Избранные игроки</a>
             <a href="/ru/chess-game-analysis/">Анализ игры</a>
             <a href="/ru/weekly-chess-coaching/">Еженедельные тренировки</a>
@@ -339,7 +357,8 @@
       </div>
     </section>
 
-    <section class="cm-final" aria-labelledby="pricing-final">
+    <section class="cm-section cm-tinted cm-blog-promo"><div class="cm-wrap"><p class="cm-kicker">From the CheckmateMore blog</p><h2>Read the ideas behind the feature.</h2><nav class="cm-related" aria-label="Related blog articles"><a href="/blog/how-to-build-a-chess-training-plan-from-your-own-games/">Build a training plan from your own games</a><a href="/blog/improvement-proof-how-to-tell-whether-training-is-changing-your-decisions/">Check whether training is changing your decisions</a><a href="/blog/">Browse every article</a></nav></div></section>
+<section class="cm-final" aria-labelledby="pricing-final">
       <div class="cm-wrap">
         <p class="cm-kicker">Следующий шаг</p>
         <h2 id="pricing-final">Создай историю, а потом начинай доказывать свой прогресс.</h2>
@@ -372,6 +391,7 @@
       </div>
       <div>
         <h3>Учитесь</h3>
+        <a href="/blog/">Blog</a>
         <a href="/ru/guides/">Шахматные путеводители</a>
         <a href="/ru/research/">Научные заметки</a>
         <a href="/ru/compare/chess-com-analysis/">Сравните подходы</a>
@@ -379,6 +399,7 @@
       </div>
       <div>
         <h3>Компания</h3>
+        <a href="/about-checkmatemore/">About CheckmateMore</a>
         <a href="/ru/contact/">Контакт</a>
         <a href="/ru/privacy/">Конфиденциальность</a>
         <a href="/ru/terms/">Условия</a>
