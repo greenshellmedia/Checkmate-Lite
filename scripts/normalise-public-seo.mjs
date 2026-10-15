@@ -41,13 +41,16 @@ function addNavigation(html, prefix) {
 }
 
 function addFooterLinks(html, prefix) {
-  return html.replace(/<footer class="cm-footer">[\s\S]*?<\/footer>/i, footer => {
+  return html.replace(/<footer class="(?:cm-footer|seo-footer)">[\s\S]*?<\/footer>/i, footer => {
     let next = footer;
     if (!/href="[^"]*blog\//.test(next)) {
       next = next.replace(/(<h3>Learn<\/h3>)/i, `$1\n        <a href="${prefix}blog/">Blog</a>`);
     }
     if (!/href="[^"]*about-checkmatemore\//.test(next)) {
       next = next.replace(/(<h3>Company<\/h3>)/i, `$1\n        <a href="${prefix}about-checkmatemore/">About CheckmateMore</a>`);
+    }
+    if (!/href="https:\/\/www\.instagram\.com\/checkmatemore\/?"/i.test(next)) {
+      next = next.replace(/(<h3>Company<\/h3>)/i, '$1\n        <a href="https://www.instagram.com/checkmatemore/">Instagram</a>');
     }
     return next;
   });
@@ -70,6 +73,7 @@ function improveStructuredData(html) {
             legalName: 'Green Shell Media',
             url: 'https://checkmatemore.com/',
             logo: 'https://checkmatemore.com/assets/checkmatemore-icon-light.svg',
+            sameAs: ['https://www.instagram.com/checkmatemore/'],
             email: 'hello@checkmatemore.com',
             contactPoint: [
               { '@type': 'ContactPoint', contactType: 'customer support', email: 'support@checkmatemore.com' },

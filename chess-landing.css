@@ -1326,6 +1326,11 @@ summary:focus-visible,
     display: flex;
     min-height: 100%;
     flex-direction: column;
+    padding: 1.2rem 1.25rem 1.35rem;
+}
+.cm-blog-card::before {
+    flex: 0 0 3px;
+    margin: -1.2rem -1.25rem 1.1rem;
 }
 .cm-blog-card time,
 .cm-article-date {
@@ -1378,8 +1383,8 @@ summary:focus-visible,
 .cm-article-hero h1 { max-width: 22ch; }
 .cm-article-layout {
     display: grid;
-    grid-template-columns: minmax(0, 46rem) minmax(14rem, 19rem);
-    gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: minmax(0, 46rem) minmax(14rem, 18rem);
+    gap: clamp(2rem, 4vw, 3.75rem);
     align-items: start;
     justify-content: space-between;
 }
@@ -1419,6 +1424,9 @@ summary:focus-visible,
 .cm-article-aside ol { margin: 0.8rem 0 1.2rem; padding-left: 1.2rem; }
 .cm-article-aside li { margin: 0.45rem 0; color: var(--cm-muted); font-size: 0.86rem; }
 .cm-article-aside .p-button { width: 100%; justify-content: center; }
+.cm-article-section { padding-block: clamp(2.2rem, 4.5vw, 3.8rem); }
+.cm-blog-related > .cm-card { padding: 1.15rem 1.2rem 1.25rem; }
+.cm-blog-related > .cm-card::before { margin: -1.15rem -1.2rem 1rem; }
 
 @media (max-width: 1020px) {
     .cm-plan-cards,
@@ -1435,6 +1443,7 @@ summary:focus-visible,
     .cm-blog-related,
     .cm-article-layout { grid-template-columns: 1fr; }
     .cm-article-aside { position: static; }
+    .cm-article-section { padding-block: 2rem; }
     .cm-landing .seo-hero { text-align: left; }
     .cm-landing .seo-hero h1,
     .cm-landing .seo-answer { margin-inline: 0; }
@@ -1464,6 +1473,15 @@ summary:focus-visible,
 }
 
 @media (max-width: 620px) {
+    .cm-editorial .cm-wrap { width: calc(100% - 2rem); }
+    .cm-blog-grid,
+    .cm-blog-related { gap: 0.85rem; }
+    .cm-blog-card { padding: 1rem 1.05rem 1.15rem; }
+    .cm-blog-card::before { margin: -1rem -1.05rem 0.9rem; }
+    .cm-blog-related > .cm-card { padding: 1rem 1.05rem 1.1rem; }
+    .cm-blog-related > .cm-card::before { margin: -1rem -1.05rem 0.9rem; }
+    .cm-prose p,
+    .cm-prose li { line-height: 1.68; }
     .cm-blog-loop { grid-template-columns: 1fr; }
     .cm-blog-loop li { min-height: 0; }
     .cm-blog-loop li::before { margin-bottom: 0.65rem; }

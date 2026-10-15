@@ -17,7 +17,8 @@ const brandLogo = `<span class="seo-logo-assets"><img class="seo-logo-light" src
 function schemas(page) {
   const common = [{
     '@type': 'Organization', '@id': `${origin}/#organization`, name: 'CheckmateMore', url: origin,
-    logo: `${origin}/assets/android-chrome-512x512.png`, contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', url: `${origin}/contact/` }
+    logo: `${origin}/assets/android-chrome-512x512.png`, sameAs: ['https://www.instagram.com/checkmatemore/'],
+    contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', url: `${origin}/contact/` }
   }, { '@type': 'WebSite', '@id': `${origin}/#website`, url: origin, name: 'CheckmateMore', publisher: { '@id': `${origin}/#organization` } }];
   if (page.article) common.push({
     '@type': 'Article', headline: page.h1, description: page.description, datePublished: isoDate, dateModified: isoDate,
@@ -36,7 +37,7 @@ function header() {
 }
 
 function footer() {
-  return `<footer class="seo-footer"><div class="seo-wrap seo-footer-grid"><div><a class="seo-logo" href="/" aria-label="CheckmateMore home">${brandLogo}</a><p>Chess analysis that remembers how you play.</p></div><div><h3>Product</h3><a href="/how-it-works/">How it works</a><a href="/chess-game-analysis/">Game analysis</a><a href="/weekly-chess-coaching/">Weekly coaching</a><a href="/pricing/">Pricing</a></div><div><h3>Learn</h3><a href="/guides/">Chess guides</a><a href="/research/">Research notes</a><a href="/compare/chess-com-analysis/">Compare approaches</a><a href="${app}/featured">Featured players</a></div><div><h3>Company</h3><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="${app}">Open Pro beta</a></div></div></footer>`;
+  return `<footer class="seo-footer"><div class="seo-wrap seo-footer-grid"><div><a class="seo-logo" href="/" aria-label="CheckmateMore home">${brandLogo}</a><p>Chess analysis that remembers how you play.</p></div><div><h3>Product</h3><a href="/how-it-works/">How it works</a><a href="/chess-game-analysis/">Game analysis</a><a href="/weekly-chess-coaching/">Weekly coaching</a><a href="/pricing/">Pricing</a></div><div><h3>Learn</h3><a href="/guides/">Chess guides</a><a href="/research/">Research notes</a><a href="/compare/chess-com-analysis/">Compare approaches</a><a href="${app}/featured">Featured players</a></div><div><h3>Company</h3><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="${app}">Open Pro beta</a><a href="https://www.instagram.com/checkmatemore/">Instagram</a></div></div></footer>`;
 }
 
 function render(page) {
