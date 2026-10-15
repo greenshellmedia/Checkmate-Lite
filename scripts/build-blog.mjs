@@ -177,19 +177,46 @@ const posts = [
       <p>Choose the clearest repeated decision and work on it for a short block. Keep playing enough games to create later evidence. If the issue does not recur, record that honestly rather than declaring it fixed.</p>
       <h2>What to do next</h2>
       <p>Review five recent games and identify the first difficult decision in each. Compare your notes with the guide to <a href="../../guides/how-to-find-recurring-chess-mistakes/">finding repeated mistakes</a> and the product page for <a href="../../chess-game-analysis/">practical game analysis</a>.</p>`
+  },
+  {
+    slug: 'how-to-calculate-chess-variations-without-getting-lost',
+    title: 'How to Calculate Chess Variations Without Getting Lost',
+    description: 'A clear method for choosing candidate moves, calculating an opponent’s strongest reply and knowing when a chess variation is finished.',
+    intro: 'Calculation is not about seeing every move on the board. It is about testing a few serious candidates against the replies your opponent is most likely to find.',
+    publishedIso: '2026-10-15',
+    publishedLabel: '15 October 2026',
+    body: `
+      <h2>Give your calculation a question to answer</h2>
+      <p>When a position becomes sharp, it is easy to follow one line, remember half of another and reach a decision without comparing either. Start with a question instead: does this move work against the opponent’s strongest reply, and what sort of position will remain?</p>
+      <h2>Choose a short list of candidates</h2>
+      <p>First ask what your opponent is threatening. Then look for forcing moves: checks, captures and direct threats. Add a quieter move only when it solves a clear problem or improves a piece with a purpose.</p>
+      <p>Two or three candidates are usually enough to begin. If you keep finding more, compare their ideas before calculating every branch. A move that does nothing about an immediate threat may not deserve a long line.</p>
+      <h2>Calculate one move at a time</h2>
+      <h3>Look for the strongest reply</h3>
+      <p>After choosing a candidate, do not hope your opponent makes the reply you want. Check their forcing options first, then the moves that create the greatest problem for you. If your move only works against a natural but careless reply, it is not a sound calculation.</p>
+      <h3>Keep each line separate</h3>
+      <p>Follow one candidate to a sensible stopping point before switching to the next. This stops a common muddle: borrowing a useful move from one variation and quietly inserting it into another.</p>
+      <h3>Stop when the position can be judged</h3>
+      <p>You do not need to calculate until the pieces come off. Stop when the forcing moves have ended and you can assess the position: material, king safety, active pieces, pawn structure and the next threat. If one side is still facing a serious check or attack, the line is not quiet yet.</p>
+      <div class="cm-example"><span class="cm-example-badge">Illustrative opening example, not a game by a named player</span><h3>Do not move the queen just because it is attacked</h3><p>After 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6?, Black attacks the queen. White can instead calculate 4.Qxf7#, because the bishop on c4 protects the queen on f7 and the king has no safe reply. The useful habit is not memorising this trap. It is checking forcing moves before automatically answering an attack.</p></div>
+      <h2>Compare the positions, not the length of the lines</h2>
+      <p>A longer variation is not automatically better. If one candidate wins material but leaves your king exposed, while another keeps a small advantage with no immediate danger, compare the resulting positions honestly. Calculation gives you the evidence; judgement helps you choose.</p>
+      <h2>What to do next</h2>
+      <p>In your next game review, return to one position where you felt lost. Write down two candidate moves, the strongest reply to each and the point where you can judge the resulting position. Check your notes against <a href="../../chess-game-analysis/">CheckmateMore’s game analysis</a>, then use <a href="../../blog/from-a-missed-tactic-to-a-useful-training-position/">a critical moment as a training position</a> if the calculation exposed a pattern worth practising. A <a href="../../guides/how-to-review-chess-games/">guide to reviewing your games</a> gives you a simple place to start.</p>`
   }
 ];
 
 const bySlug = new Map(posts.map(post => [post.slug, post]));
 const relatedSlugs = {
-  'how-to-review-a-chess-game-without-chasing-accuracy': ['what-repeated-chess-mistakes-are-trying-to-tell-you', 'from-a-missed-tactic-to-a-useful-training-position'],
+  'how-to-review-a-chess-game-without-chasing-accuracy': ['what-repeated-chess-mistakes-are-trying-to-tell-you', 'how-to-calculate-chess-variations-without-getting-lost'],
   'what-repeated-chess-mistakes-are-trying-to-tell-you': ['decision-dna-finding-the-choices-you-repeat-in-chess', 'how-to-build-a-chess-training-plan-from-your-own-games'],
   'decision-dna-finding-the-choices-you-repeat-in-chess': ['what-repeated-chess-mistakes-are-trying-to-tell-you', 'improvement-proof-how-to-tell-whether-training-is-changing-your-decisions'],
   'why-stockfish-alone-does-not-explain-a-human-chess-mistake': ['how-to-review-a-chess-game-without-chasing-accuracy', 'decision-dna-finding-the-choices-you-repeat-in-chess'],
-  'from-a-missed-tactic-to-a-useful-training-position': ['how-to-review-a-chess-game-without-chasing-accuracy', 'how-to-build-a-chess-training-plan-from-your-own-games'],
+  'from-a-missed-tactic-to-a-useful-training-position': ['how-to-review-a-chess-game-without-chasing-accuracy', 'how-to-calculate-chess-variations-without-getting-lost'],
   'improvement-proof-how-to-tell-whether-training-is-changing-your-decisions': ['decision-dna-finding-the-choices-you-repeat-in-chess', 'how-to-build-a-chess-training-plan-from-your-own-games'],
   'how-to-build-a-chess-training-plan-from-your-own-games': ['what-repeated-chess-mistakes-are-trying-to-tell-you', 'practical-chess-analysis-for-players-who-are-stuck'],
-  'practical-chess-analysis-for-players-who-are-stuck': ['how-to-build-a-chess-training-plan-from-your-own-games', 'why-stockfish-alone-does-not-explain-a-human-chess-mistake']
+  'practical-chess-analysis-for-players-who-are-stuck': ['how-to-build-a-chess-training-plan-from-your-own-games', 'why-stockfish-alone-does-not-explain-a-human-chess-mistake'],
+  'how-to-calculate-chess-variations-without-getting-lost': ['how-to-review-a-chess-game-without-chasing-accuracy', 'from-a-missed-tactic-to-a-useful-training-position']
 };
 
 function organisationGraph() {
@@ -213,7 +240,7 @@ function breadcrumbs(items) {
   })) };
 }
 
-function head({ title, description, canonical, type = 'website', graph }) {
+function head({ title, description, canonical, type = 'website', graph, articlePublishedIso = publishedIso }) {
   return `<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -228,8 +255,8 @@ function head({ title, description, canonical, type = 'website', graph }) {
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${origin}/assets/social-card.svg">
   <meta property="og:image:alt" content="CheckmateMore, chess analysis that remembers how you play">
-  ${type === 'article' ? `<meta property="article:published_time" content="${publishedIso}">
-  <meta property="article:modified_time" content="${publishedIso}">` : ''}
+  ${type === 'article' ? `<meta property="article:published_time" content="${articlePublishedIso}">
+  <meta property="article:modified_time" content="${articlePublishedIso}">` : ''}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
@@ -286,7 +313,7 @@ const hubGraph = [...organisationGraph(), {
   description: 'Practical chess improvement writing based on real games, repeated decisions, personal practice and evidence of change.',
   url: hubCanonical, isPartOf: { '@id': `${origin}/#website` }, about: { '@id': `${origin}/#organization` }
 }, breadcrumbs([['Home', `${origin}/`], ['Blog', hubCanonical]])];
-const cards = posts.map(post => `<article class="cm-card cm-blog-card" data-tone="accuracy"><time datetime="${publishedIso}">${publishedLabel}</time><h2><a href="/blog/${post.slug}/">${post.title}</a></h2><p>${post.intro}</p><a class="cm-text-link" href="/blog/${post.slug}/">Read article <span aria-hidden="true">→</span></a></article>`).join('');
+const cards = posts.map(post => `<article class="cm-card cm-blog-card" data-tone="accuracy"><time datetime="${post.publishedIso || publishedIso}">${post.publishedLabel || publishedLabel}</time><h2><a href="/blog/${post.slug}/">${post.title}</a></h2><p>${post.intro}</p><a class="cm-text-link" href="/blog/${post.slug}/">Read article <span aria-hidden="true">→</span></a></article>`).join('');
 write('blog', shell({
   current: 'blog',
   headHtml: head({ title: 'Chess Improvement Blog | CheckmateMore', description: 'Practical chess writing about reviewing real games, repeated decisions, personal training and evidence that habits are changing.', canonical: hubCanonical, graph: hubGraph }),
@@ -295,10 +322,12 @@ write('blog', shell({
 
 for (const post of posts) {
   const canonical = `${origin}/blog/${post.slug}/`;
+  const postPublishedIso = post.publishedIso || publishedIso;
+  const postPublishedLabel = post.publishedLabel || publishedLabel;
   const related = relatedSlugs[post.slug].map(slug => bySlug.get(slug));
   const graph = [...organisationGraph(), {
     '@type': 'BlogPosting', '@id': `${canonical}#article`, headline: post.title, description: post.description,
-    datePublished: publishedIso, dateModified: publishedIso, mainEntityOfPage: canonical,
+    datePublished: postPublishedIso, dateModified: postPublishedIso, mainEntityOfPage: canonical,
     author: { '@id': `${origin}/#organization` }, publisher: { '@id': `${origin}/#organization` },
     image: { '@type': 'ImageObject', url: `${origin}/assets/social-card.svg`, caption: 'CheckmateMore, chess analysis that remembers how you play' },
     isPartOf: { '@id': `${origin}/#website` }
@@ -306,8 +335,8 @@ for (const post of posts) {
   const relatedCards = related.map(item => `<article class="cm-card"><h3><a href="/blog/${item.slug}/">${item.title}</a></h3><p>${item.intro}</p></article>`).join('');
   write(`blog/${post.slug}`, shell({
     current: 'blog',
-    headHtml: head({ title: `${post.title} | CheckmateMore`, description: post.description, canonical, type: 'article', graph }),
-    main: `<article><header class="cm-page-hero cm-article-hero"><div class="cm-wrap"><nav class="cm-crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>${post.title}</span></nav><p class="cm-eyebrow">CheckmateMore blog</p><h1>${post.title}</h1><p class="cm-lede">${post.intro}</p><p class="cm-article-date"><time datetime="${publishedIso}">Published ${publishedLabel}</time></p></div></header><div class="cm-section cm-article-section"><div class="cm-wrap cm-article-layout"><div class="cm-prose">${post.body}</div><aside class="cm-article-aside"><p class="cm-kicker">The CheckmateMore loop</p><ol><li>Analyse your games</li><li>Understand decisions</li><li>Find repeated patterns</li><li>Practise key positions</li><li>Review later evidence</li></ol><a href="${app}" class="p-button p-component cm-primary"><span class="p-button-label">Try a free account</span></a></aside></div></div></article><section class="cm-section cm-tinted"><div class="cm-wrap"><p class="cm-kicker">Related reading</p><h2>Continue with the next decision.</h2><div class="cm-blog-related">${relatedCards}</div><nav class="cm-related" aria-label="Related CheckmateMore pages"><a href="/how-it-works/">How CheckmateMore works</a><a href="/guides/">Chess guides</a><a href="/blog/">All blog articles</a></nav></div></section><section class="cm-final"><div class="cm-wrap"><p class="cm-kicker">Chess analysis that remembers how you play</p><h2>Review the decisions behind the moves.</h2><p>Create a free account to keep your analysed games and training in one place.</p><div class="cm-cta"><a href="${app}" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span></a><a href="/chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Use Lite without an account</span></a></div></div></section>`
+    headHtml: head({ title: `${post.title} | CheckmateMore`, description: post.description, canonical, type: 'article', graph, articlePublishedIso: postPublishedIso }),
+    main: `<article><header class="cm-page-hero cm-article-hero"><div class="cm-wrap"><nav class="cm-crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>${post.title}</span></nav><p class="cm-eyebrow">CheckmateMore blog</p><h1>${post.title}</h1><p class="cm-lede">${post.intro}</p><p class="cm-article-date"><time datetime="${postPublishedIso}">Published ${postPublishedLabel}</time></p></div></header><div class="cm-section cm-article-section"><div class="cm-wrap cm-article-layout"><div class="cm-prose">${post.body}</div><aside class="cm-article-aside"><p class="cm-kicker">The CheckmateMore loop</p><ol><li>Analyse your games</li><li>Understand decisions</li><li>Find repeated patterns</li><li>Practise key positions</li><li>Review later evidence</li></ol><a href="${app}" class="p-button p-component cm-primary"><span class="p-button-label">Try a free account</span></a></aside></div></div></article><section class="cm-section cm-tinted"><div class="cm-wrap"><p class="cm-kicker">Related reading</p><h2>Continue with the next decision.</h2><div class="cm-blog-related">${relatedCards}</div><nav class="cm-related" aria-label="Related CheckmateMore pages"><a href="/how-it-works/">How CheckmateMore works</a><a href="/guides/">Chess guides</a><a href="/blog/">All blog articles</a></nav></div></section><section class="cm-final"><div class="cm-wrap"><p class="cm-kicker">Chess analysis that remembers how you play</p><h2>Review the decisions behind the moves.</h2><p>Create a free account to keep your analysed games and training in one place.</p><div class="cm-cta"><a href="${app}" class="p-button p-component cm-primary"><span class="p-button-label">Create a free account</span></a><a href="/chess/app/" class="p-button p-component cm-btn"><span class="p-button-label">Use Lite without an account</span></a></div></section>`
   }));
 }
 

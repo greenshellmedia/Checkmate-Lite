@@ -57,7 +57,11 @@ for (const file of files) {
   if (route.startsWith('/blog/') && route !== '/blog/') {
     if (!/"@type":\s*"BlogPosting"/.test(html)) errors.push(`${route}: missing BlogPosting data`);
     if (!/"@type":\s*"BreadcrumbList"/.test(html)) errors.push(`${route}: missing BreadcrumbList data`);
-    if (!/<time datetime="2026-10-10">Published 10 October 2026<\/time>/.test(html)) errors.push(`${route}: publication date does not match visible content`);
+    const visiblePublished = html.match(/<time datetime="(\d{4}-\d{2}-\d{2})">Published ([^<]+)<\/time>/);
+    const schemaPublished = html.match(/"datePublished":\s*"(\d{4}-\d{2}-\d{2})"/);
+    const metadataPublished = html.match(/<meta property="article:published_time" content="(\d{4}-\d{2}-\d{2})">/);
+    if (!visiblePublished || !schemaPublished || visiblePublished[1] !== schemaPublished[1]) errors.push(`${route}: publication date does not match BlogPosting data`);
+    if (!metadataPublished || visiblePublished?.[1] !== metadataPublished[1]) errors.push(`${route}: publication date does not match article metadata`);
   }
   const directory = path.dirname(file);
   for (const match of html.matchAll(/\bhref="([^"#?]+)(?:[?#][^"]*)?"/gi)) {

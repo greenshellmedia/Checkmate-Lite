@@ -1,1 +1,8 @@
 node_modules/
+
+# Visual Studio workspace and per-user state
+.vs/
+
+# Local Codex workspace settings and attachments
+.codex/
+.codex-remote-attachments/
